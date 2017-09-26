@@ -7,7 +7,62 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
         accountResource: $resource("/app/signup/:accountId", {},{
             signUpAccount: { method:"POST", isArray:false },
             resetPassword: { method:"PUT", params:{accountId:-1}, isArray:false }
-        })
+        }),
+        refreshToken: function(){
+            var token = ULStorageService.getToken();
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+            var data = "refresh_token=" +  token.refresh_token + "&grant_type=refresh_token";
+            $http.post("/app/ico/token", data, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Accept": "application/json",
+                    "Authorization": "Basic d2lmaWN1cnJlbmN5OmQybG1hV04xY25KbGI="
+                }
+            }).then(function (response) {
+                var expiredAt = new Date();
+                var token = response.data;
+                expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
+                response.expires_at = expiredAt.getTime();
+                ULStorageService.set('token', token);
+                deferred.resolve(response);
+                HttpBuffer.retryAll();
+            }).catch(function (error) {
+                deferred.reject(error);
+            });
+            return promise;
+        },
+        getToken: function(credentials){
+            var data = "username=" +  encodeURIComponent(credentials.username) + "&password="
+                    + encodeURIComponent(credentials.password) + "&grant_type=password";
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+            $http.post('/app/ico/token', data, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Accept": "application/json",
+                    "Authorization": "Basic d2lmaWN1cnJlbmN5OmQybG1hV04xY25KbGI="
+                }
+            }).then(function (response) {
+                var token = response.data;
+                var expiredAt = new Date();
+                expiredAt.setSeconds(expiredAt.getSeconds() + token.expires_in);
+                response.expires_at = expiredAt.getTime();
+                ULStorageService.set('token', token);
+                deferred.resolve(response);
+            }).catch(function(error){
+                deferred.reject(error);
+            });
+            return promise;
+        },
+        guid : function guid(){
+            /** it just version 4 guid **/
+            function s4(){
+                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            };
+            return [s4(), s4(), '-', s4(), '-', s4(), '-', s4(), s4(), s4()].join();
+        }
+
     };
 }]).factory('AuthTokenInterceptor',["ULStorageService", "$q","HttpBuffer", "$rootScope", function(ULStorageService, $q, HttpBuffer, $rootScope){
     return {
