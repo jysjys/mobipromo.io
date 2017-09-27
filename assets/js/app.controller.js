@@ -83,23 +83,24 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         infoIsValid = infoIsValid && !$scope.signinModel.loading;
         return infoIsValid;
     };
-    $scope.signin = function signIn(){
-        var credentials = {
-            username: $scope.signinModel.account,
-            password: md5.createHash($scope.signinModel.password)
-        };
-        $scope.signinModel.loading++;
-        MainRemoteResource.getToken(credentials).then(function(success){
-            $state.go('app.subscribelist');
-            $scope.signinModel.loading--;
-            $scope.display.error = undefined;
-        }).catch(function(error){
-            console.log(error);
-            $scope.signinModel.loading--;
-            if(error && error.data && error.data.code){
-                $scope.display.error = error.data;
-            };
-        });
+    $scope.signIn = function signIn(){
+        // var credentials = {
+        //     username: $scope.signinModel.account,
+        //     password: md5.createHash($scope.signinModel.password)
+        // };
+        // $scope.signinModel.loading++;
+        // MainRemoteResource.getToken(credentials).then(function(success){
+        //     $state.go('app.ico');
+        //     $scope.signinModel.loading--;
+        //     $scope.display.error = undefined;
+        // }).catch(function(error){
+        //     console.log(error);
+        //     $scope.signinModel.loading--;
+        //     if(error && error.data && error.data.code){
+        //         $scope.display.error = error.data;
+        //     };
+        // });
+        $state.go('app.ico');
     };
     $rootScope.icoEnv = {
         couldLogin:true,

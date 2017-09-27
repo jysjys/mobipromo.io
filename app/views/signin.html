@@ -12,7 +12,7 @@
         <div class="col-md-5">
             <div class="signup-form wow fadeInUp">
                 <h1>登录</h1>
-                <form action="#" method="post" class="registration-form">
+                <form>
                     <div class="form-group">
                         <label class="sr-only" for="form-name">User name</label>
                         <input type="text" name="form-name" placeholder="Enter Your Name..." class="form-name form-control" id="form-name" ng-model="signinModel.data.account">
@@ -21,7 +21,7 @@
                         <label class="sr-only" for="form-phone">Password</label>
                         <input type="password" name="form-phone" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password">
                     </div>
-                    <button class="btn" ng-click="signIn(signinModel.data)" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">Sigin !</button>
+                    <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">Sigin !</button>
                     <p>
                         *We never share your details with anyone and that's a promise
                     </p>
