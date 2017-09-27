@@ -3,3 +3,44 @@
     <div class="panel-body">
     </div>
 </div>
+<div class="pitch text-center">
+    <div class="container">
+        <div class="pitch-intro">
+            <h1 class="wow fadeInDown" data-wow-delay="0.2s">ETH/BTC的收币地址分别如下：</h1>
+        </div>
+        <div class="col-md-16">
+            <div class="col-md-6 wow fadeInDown" data-wow-delay="0.2s">
+                <div class="pitch-icon">
+                    <qrcode data="{{icoModel.data.ico.eth.address}}"></qrcode>
+                </div>
+                <div class="pitch-content">
+                    <h1> ETH </h1>
+                    <p>
+                        您的ETH地址是：{{icoModel.data.ico.eth.address}}
+                    </p>
+                    <a>
+                        您投入的ETH数量是：{{icoModel.data.ico.eth.amount}}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 wow fadeInDown" data-wow-delay="0.2s">
+                <div class="pitch-icon">
+                    <qrcode data="{{icoModel.data.ico.btc.address}}"></qrcode>
+                </div>
+
+                <div class="pitch-content">
+                    <h1> BTC </h1>
+                    <p>
+                        您的BTC地址是：{{icoModel.data.ico.btc.address}}
+                    </p>
+                    <a>
+                        您投入的BTC数量是：{{icoModel.data.ico.btc.amount}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pitch-intro">
+                <h2 class="wow fadeInDown" data-wow-delay="0.2s">换算后的ACC币的总数量是：{{icoModel.data.ico.acc.amount}}</h2>
+        </div>  
+    </div>
+</div>

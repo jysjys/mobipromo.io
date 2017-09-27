@@ -22,7 +22,8 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'signup',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signup.html'
+                    templateUrl: 'app/views/signup.html',
+                    controller: 'SignUpController'
                 }
             }
         })
@@ -30,7 +31,8 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'signin',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signin.html'
+                    templateUrl: 'app/views/signin.html',
+                    controller: 'LoginController'
                 }
             }
         })
@@ -38,7 +40,8 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'ico',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/ico.html'
+                    templateUrl: 'app/views/ico.html',
+                    controller: 'IcoController'
                 }
             }
         })

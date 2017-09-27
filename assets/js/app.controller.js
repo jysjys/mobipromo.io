@@ -19,6 +19,52 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         $state.go("app.signup");
     };
 }]).controller("ContentController", ["$scope", function($scope) {
+}]).controller("IcoController", ["$scope", function($scope) {
+    $scope.icoModel = {
+        data:{},
+        display:{
+        },
+        action:{
+        }
+    };
+    var model = $scope.icoModel;
+    model.action.getAccountIcoProcess = function getAccountIcoProcess(){
+        var accountIco = {
+            ico:[
+                {
+                    bankType:'eth',
+                    amount: 2,
+                    address: '0xa2eF9863F9bd037bfA2b645aCe5968c822641D46'
+                },{
+                    bankType:"btc",
+                    amount: 1,
+                    address: "1HwtQCDGktHgJX3LTjf132GAFoWgyY​Esdw"
+                },{
+                    bankType:"acc",
+                    amount: 32000,
+                    address: "0xa2eF9863F9bd037bfA2b645aCe5968c822641D46"
+                }
+            ]
+        };
+        var ico = {};
+        for(var index = 0; index < accountIco.ico.length; ++index){
+            var icoItem = accountIco.ico[index];
+            switch (icoItem.bankType) {
+                case 'eth':
+                ico.eth = icoItem;
+                break;
+                case 'btc':
+                ico.btc = icoItem;
+                break;
+                case 'acc':
+                ico.acc = icoItem;
+                break;
+            }
+        }
+        model.data.ico = ico;
+    };
+
+    model.action.getAccountIcoProcess();
 }]).controller("LoginController", ["$scope", "$rootScope", "MainRemoteResource", "$state","md5", function($scope, $rootScope, MainRemoteResource, $state, md5){
     $scope.signinModel = {
         loading: 0,
@@ -31,7 +77,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         infoIsValid = infoIsValid && !$scope.signinModel.loading;
         return infoIsValid;
     };
-    $scope.signin = function signin(){
+    $scope.signin = function signIn(){
         var credentials = {
             username: $scope.signinModel.account,
             password: md5.createHash($scope.signinModel.password)

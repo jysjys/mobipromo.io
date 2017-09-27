@@ -1099,7 +1099,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 .pitch-icon {
-	margin: 0 0 10px 0;
+	margin: 0 0 0 0;
 	background: #3333CC;
 	width: 60px;
 	height: 60px;
@@ -1126,7 +1126,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 	line-height: 1.2;
 	letter-spacing: 0;
 	color: #454545;
-	margin: 0 0 10px 0;
+	margin: 0 0 0 10px;
 }
 
 .pitch-content p {
@@ -1137,6 +1137,14 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 	letter-spacing: 0;
 }
 
+.pitch-content a {
+	margin-top:10px;
+	font-family: 'Poppins';
+	font-size: 16px;
+	line-height: 1.5;
+	color: #457AEC;
+	letter-spacing: 0;
+}
 
 /*----------------------------------------------------
 ----------- Features Icon Styling Starts -------------
