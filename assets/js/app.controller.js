@@ -10,13 +10,19 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     };
     var model = $scope.signUpModel;
     model.action.signUp = function signUp(signUpData){
-        var singUp = {
+        var signUp = {
             account: signUpData.account,
             email: signUpData.email,
-            password: md5.createHash(signUp.password.trim())
+            password: md5.createHash((signUpData.password || "").trim())
         };
         console.log(JSON.stringify(signUp));
-        $state.go("app.signup");
+        $state.go("app.signin");
+    };
+    model.action.validate = function validate(){
+        let isOk = model.data.account && model.data.account.trim().length> 5;//account ok
+        isOk = isOk && model.data.email; //email ok
+        isOk = isOk && model.data.password && model.data.password.trim().length > 8 && model.data.password == model.data.confirm;// password ok;
+        return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
 }]).controller("IcoController", ["$scope", function($scope) {
