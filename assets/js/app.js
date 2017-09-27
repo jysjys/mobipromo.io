@@ -22,7 +22,8 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'signup',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signup.html'
+                    templateUrl: 'app/views/signup.html',
+                    controller: 'SignUpController'
                 }
             }
         })
