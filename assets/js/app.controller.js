@@ -73,34 +73,35 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     model.action.getAccountIcoProcess();
 }]).controller("LoginController", ["$scope", "$rootScope", "MainRemoteResource", "$state","md5", function($scope, $rootScope, MainRemoteResource, $state, md5){
     $scope.signinModel = {
-        loading: 0,
-        account: '',
-        password: ''
+        data:{
+            loading: 0,
+            account: '',
+            password: ''
+        }
     };
     $scope.display = {};
     $scope.validSignInInfo = function validSignInInfo(){
-        var infoIsValid = $scope.signinModel.account && $scope.signinModel.password;
-        infoIsValid = infoIsValid && !$scope.signinModel.loading;
+        var infoIsValid = $scope.signinModel.data.account && $scope.signinModeldata.data.password;
+        infoIsValid = infoIsValid && !$scope.signinModel.data.loading;
         return infoIsValid;
     };
     $scope.signIn = function signIn(){
-        // var credentials = {
-        //     username: $scope.signinModel.account,
-        //     password: md5.createHash($scope.signinModel.password)
-        // };
-        // $scope.signinModel.loading++;
-        // MainRemoteResource.getToken(credentials).then(function(success){
-        //     $state.go('app.ico');
-        //     $scope.signinModel.loading--;
-        //     $scope.display.error = undefined;
-        // }).catch(function(error){
-        //     console.log(error);
-        //     $scope.signinModel.loading--;
-        //     if(error && error.data && error.data.code){
-        //         $scope.display.error = error.data;
-        //     };
-        // });
-        $state.go('app.ico');
+        var credentials = {
+            username: $scope.signinModel.data.account,
+            password: md5.createHash($scope.signinModel.data.password)
+        };
+        $scope.signinModel.data.loading++;
+        MainRemoteResource.getToken(credentials).then(function(success){
+            $state.go('app.ico');
+            $scope.signinModel.data.loading--;
+            $scope.display.error = undefined;
+        }).catch(function(error){
+            console.log(error);
+            $scope.signinModel.data.loading--;
+            if(error && error.data && error.data.code){
+                $scope.display.error = error.data;
+            };
+        });
     };
     $rootScope.icoEnv = {
         couldLogin:true,

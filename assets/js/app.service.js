@@ -13,11 +13,11 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
             var deferred = $q.defer();
             var promise = deferred.promise;
             var data = "refresh_token=" +  token.refresh_token + "&grant_type=refresh_token";
-            $http.post("/app/ico/token", data, {
+            $http.post("/promo/token", data, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Accept": "application/json",
-                    "Authorization": "Basic d2lmaWN1cnJlbmN5OmQybG1hV04xY25KbGI="
+                    "Authorization": "Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
                 }
             }).then(function (response) {
                 var expiredAt = new Date();
@@ -37,11 +37,11 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
                     + encodeURIComponent(credentials.password) + "&grant_type=password";
             var deferred = $q.defer();
             var promise = deferred.promise;
-            $http.post('/app/ico/token', data, {
+            $http.post('/promo/token', data, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "Accept": "application/json",
-                    "Authorization": "Basic d2lmaWN1cnJlbmN5OmQybG1hV04xY25KbGI="
+                    "Authorization": "Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
                 }
             }).then(function (response) {
                 var token = response.data;
