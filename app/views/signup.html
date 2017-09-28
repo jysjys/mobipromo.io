@@ -12,22 +12,37 @@
         <div class="col-md-5">
             <div class="signup-form wow fadeInUp">
                 <h1>Register for free Trial - get 20% off when you Buy</h1>
-                <form>
+                <form name="myForm">
                     <div class="form-group">
                         <label class="sr-only" for="form-name">User name</label>
-                        <input type="text" name="form-name" placeholder="Enter Your Name..." class="form-name form-control" id="form-name" ng-model="signUpModel.data.account">
+                        <input type="text" name="formName" placeholder="Enter Your Name..." class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">请输入账号</label>
+                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">请输入至少6位账号</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-email">Email</label>
-                        <input type="email" name="form-email" placeholder="Email Address..." class="form-email form-control" id="form-email" ng-model="signUpModel.data.email">
+                        <input type="email" name="formEmail" placeholder="Email Address..." class="form-email form-control" id="form-email" ng-model="signUpModel.data.email" required>
+                        <div style="color:red" ng-show="myForm.formEmail.$dirty && myForm.formEmail.$invalid">
+                                <label ng-show="myForm.formEmail.$error.required">邮箱是必须的。</label>
+                                <label ng-show="myForm.formEmail.$error.email">非法的邮箱地址。</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-phone">Password</label>
-                        <input type="password" name="form-phone" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password">
+                        <input type="password" name="formPassword" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password" required>
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
+                                <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signUpModel.data.password && signUpModel.data.password.trim().length > 8 )">请输入至少9位密码</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-phone">Confirm</label>
                         <input type="password" name="form-phone" placeholder="Confirm Password..." class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.confirm">
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="signUpModel.data.confirm.trim().length > 0 && (signUpModel.data.password != signUpModel.data.confirm)">密码不一致</label>
+                        </div>
                     </div>
                     <button type="button" class="btn" ng-click="signUpModel.action.signUp(signUpModel.data)" ng-disabled="!(signUpModel.action.validate())">Sign me up!</button>
                     <p>

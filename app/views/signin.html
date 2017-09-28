@@ -12,14 +12,23 @@
         <div class="col-md-5">
             <div class="signup-form wow fadeInUp">
                 <h1>Sign in</h1>
-                <form>
+                <form name="myForm">
                     <div class="form-group">
                         <label class="sr-only" for="form-name">User name</label>
-                        <input type="text" name="form-name" placeholder="Enter Your Name..." class="form-name form-control" id="form-name" ng-model="signinModel.data.account">
+                        <input type="text" name="formName" placeholder="Enter Your Name..." class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">请输入账号</label>
+                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signinModel.data.account && signinModel.data.account.trim().length > 5 )">请输入至少6位账号</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-phone">Password</label>
-                        <input type="password" name="form-phone" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password">
+
+                        <input type="password" name="formPassword" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
+                        <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">
+                        <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
+                        <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">请输入至少6位密码</label>
+                        </div>
                     </div>
                     <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Sigin !</button>
                     <p>
