@@ -4,6 +4,7 @@
 angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemoteResource", "$state","md5", function($scope, MainRemoteResource, $state, md5) {
     $scope.signUpModel = {
         data:{
+            loading: 0
         },
         action:{
         }
@@ -13,10 +14,22 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         var signUp = {
             account: signUpData.account,
             email: signUpData.email,
-            password: md5.createHash((signUpData.password || "").trim())
+            password: md5.createHash((signUpData.password || "").trim()),
+            accountType:"email"
         };
         console.log(JSON.stringify(signUp));
-        $state.go("app.signin");
+        $scope.signUpModel.data.loading++;
+        MainRemoteResource.accountResource.signUpAccount({}, signUp).$promise.then(function(success){
+            $state.go('app.signin');
+            $scope.signinModel.data.loading--;
+        }).catch(function(error){
+            console.log(error);
+            $scope.signinModel.data.loading--;
+            if(error && error.data && error.data.code){
+                $scope.display.error = error.data;
+            };
+
+        })
     };
     model.action.validate = function validate(){
         let isOk = model.data.account && model.data.account.trim().length> 5;//account ok
@@ -25,7 +38,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
-}]).controller("IcoController", ["$scope", function($scope) {
+}]).controller("IcoController", ["$scope", "MainRemoteResource", function($scope,MainRemoteResource) {
     $scope.icoModel = {
         data:{},
         display:{
@@ -34,40 +47,30 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         }
     };
     var model = $scope.icoModel;
+
     model.action.getAccountIcoProcess = function getAccountIcoProcess(){
-        var accountIco = {
-            ico:[
-                {
-                    bankType:'eth',
-                    amount: 2,
-                    address: '0xa2eF9863F9bd037bfA2b645aCe5968c822641D46'
-                },{
-                    bankType:"btc",
-                    amount: 1,
-                    address: "1HwtQCDGktHgJX3LTjf132GAFoWgyY​Esdw"
-                },{
-                    bankType:"acc",
-                    amount: 32000,
-                    address: "0xa2eF9863F9bd037bfA2b645aCe5968c822641D46"
+        MainRemoteResource.accountResource.getAccountIco().$promise.then(function(success){
+            var accountIco = success.data;
+            var ico = {};
+            for(var index = 0; index < accountIco.length; ++index){
+                var icoItem = accountIco[index];
+                switch (icoItem.bankType) {
+                    case 'ETH':
+                    ico.eth = icoItem;
+                    break;
+                    case 'BTC':
+                    ico.btc = icoItem;
+                    break;
+                    case 'acc':
+                    ico.acc = icoItem;
+                    break;
                 }
-            ]
-        };
-        var ico = {};
-        for(var index = 0; index < accountIco.ico.length; ++index){
-            var icoItem = accountIco.ico[index];
-            switch (icoItem.bankType) {
-                case 'eth':
-                ico.eth = icoItem;
-                break;
-                case 'btc':
-                ico.btc = icoItem;
-                break;
-                case 'acc':
-                ico.acc = icoItem;
-                break;
             }
-        }
-        model.data.ico = ico;
+            model.data = ico;
+            // alert(model.data.btc.bankAddress);
+        }).catch(function(error){
+            console.log(error);
+        })
     };
 
     model.action.getAccountIcoProcess();

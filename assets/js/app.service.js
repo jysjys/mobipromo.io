@@ -4,9 +4,10 @@ var mobi = angular.module("mobipromo");
 
 mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q','HttpBuffer', function($resource, $http, ULStorageService, $q, HttpBuffer) {
     return {
-        accountResource: $resource("/app/signup/:accountId", {},{
+        accountResource: $resource("/promo/public/account/:accountId", {},{
             signUpAccount: { method:"POST", isArray:false },
-            resetPassword: { method:"PUT", params:{accountId:-1}, isArray:false }
+            resetPassword: { method:"PUT", params:{accountId:-1}, isArray:false },
+            getAccountIco:{ url:'/promo/authed/account/ico/process', method:"GET", isArray:false}
         }),
         refreshToken: function(){
             var token = ULStorageService.getToken();
@@ -69,7 +70,7 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
         request: function(config){
             config.headers = config.headers || {};
             var token = ULStorageService.get('token');
-            var needToken = config.url.indexOf("wifiauth/authed") > -1;
+            var needToken = config.url.indexOf("/promo/authed") > -1;
             if(needToken){
                 config.headers.Authorization = 'Bearer ' + (token && token.access_token);
             }
