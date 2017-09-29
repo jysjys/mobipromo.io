@@ -13,8 +13,8 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: '/',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signup.html',
-                    controller: 'SignUpController'
+                    templateUrl: 'app/views/ico.html',
+                    controller: 'IcoController'
                 }
             }
         })

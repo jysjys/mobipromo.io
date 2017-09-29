@@ -38,7 +38,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
-}]).controller("IcoController", ["$scope", "MainRemoteResource", function($scope,MainRemoteResource) {
+}]).controller("IcoController", ["$scope", "MainRemoteResource", "$state", function($scope, MainRemoteResource, $state) {
     $scope.icoModel = {
         data:{},
         display:{
@@ -70,6 +70,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
             // alert(model.data.btc.bankAddress);
         }).catch(function(error){
             console.log(error);
+            $state.go('app.signin');
         })
     };
 
