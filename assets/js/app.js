@@ -54,7 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             }
         })
     ;
-    $urlRouterProvider.otherwise('/signup');
+    $urlRouterProvider.otherwise('/ico');
 }).config(['$httpProvider', function($httpProvider){
     $httpProvider.interceptors.push("AuthTokenInterceptor");
 }]);
