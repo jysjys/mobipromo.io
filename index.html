@@ -33,12 +33,27 @@
               </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+
                 <ul class="nav navbar-nav">
-                    <li><a class="page-scroll" href="/whitepaper">White Paper</a></li>
+                  <!--<% if(!userinfo){ %>-->
+                  <li><a class="page-scroll" href="./index3.html">Login</a></li>
+                  <!--<% }else{ %>-->
+                    <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
+                  <!--<% } %>-->
+                    <li><a class="page-scroll" href="./whitepaper.pdf">White Paper</a></li>
                     <li><a class="page-scroll" href="#features">Introduction</a></li>
                     <li><a class="page-scroll" href="#review-section">BST Roadmap</a></li>
                     <li><a class="page-scroll" href="#team">Team</a></li>
                     <li><a class="page-scroll" href="#contact">Contact Us</a></li>
+                    <li class="page-scroll-language">
+                      <a class="page-scroll" id="page-scroll" href="">language</a>
+                    <div class="language">
+                      <ul>
+                        <li><a>中文</a></li>
+                        <li><a>English</a></li>
+                      </ul>
+                    </div>
+                    </li>
                 </ul>
             </div>
           </div>
@@ -79,7 +94,7 @@
         <div class="container">
           <div class="features-inner">
             <div class="col-md-6">
-              <img class="img-responsive wow fadeIn" src="assets/images/flow.jpg" alt="Features" style="padding-top:80px;padding-bottom:80px;"/>
+              <img class="img-responsive wow fadeIn" src="assets/images/flow.png" alt="Features" style="padding-top:80px;padding-bottom:80px;"/>
             </div>
             <div class="col-md-6">
               <div class="features-list">
@@ -224,5 +239,8 @@
   <script type="text/javascript" src="assets/js/plugins.js"></script>
   <script type="text/javascript" src="assets/js/menu.js"></script>
   <script type="text/javascript" src="assets/js/custom.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js/angular-translate.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js/angular-translate-loader-static-files.min.js"></script>
   </body>
 </html>
