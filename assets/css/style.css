@@ -702,7 +702,10 @@ p {
 /* ------------ Signup Hero Section ------------ */
 
 .signup .hero-section {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url(../images/app_bg.jpg) no-repeat center center;
+    /*background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url(../images/app_bg.jpg) no-repeat center center;*/
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     padding: 150px 0 100px 0;
 }
@@ -725,7 +728,7 @@ p {
 
 .signup-form {
     padding: 25px 25px 30px 25px;
-    background: #3333CC;
+    /*background: #3333CC;*/
     -moz-border-radius: 0 0 4px 4px;
     -webkit-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
@@ -861,7 +864,7 @@ textarea.form-control::-webkit-input-placeholder {
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
-    background: #111111;
+    background: #;
     border: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -1171,7 +1174,7 @@ button.btn.active:focus {
 .pitch-intro {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 0 100px 0;
+    padding: 0 0 35px 0;
 }
 
 .pitch-intro h1 {
@@ -1193,7 +1196,8 @@ button.btn.active:focus {
 
 .pitch-icon {
     margin: 0 0 10px 0;
-    background: #3333CC;
+    /*background: #3333CC;*/
+    border:1px solid grey;
     width: 60px;
     height: 60px;
     display: inline-block;
@@ -1826,8 +1830,16 @@ button.btn.active:focus {
 .cta-sub {
     padding-top: 150px;
     padding-bottom: 150px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)), url(../images/cta_bg.jpg) no-repeat center center;
-    background-size: cover;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),  no-repeat center center;
+    background-image: url("../images/cta_bg.png");
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    height: -webkit-fill-available;
+    /*padding: 0;*/
+    overflow: hidden;
+    background-size: 100% 100%;
+    /*background-size: cover;*/
 }
 
 .cta-inner {
