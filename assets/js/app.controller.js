@@ -21,15 +21,14 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         $scope.signUpModel.data.loading++;
         MainRemoteResource.accountResource.signUpAccount({}, signUp).$promise.then(function(success){
             $state.go('app.signin');
-            $scope.signinModel.data.loading--;
+            $scope.signUpModel.data.loading--;
         }).catch(function(error){
             console.log(error);
-            $scope.signinModel.data.loading--;
+            $scope.signUpModel.data.loading--;
             if(error && error.data && error.data.code){
                 $scope.display.error = error.data;
             };
-
-        })
+        });
     };
     model.action.validate = function validate(){
         let isOk = model.data.account && model.data.account.trim().length> 5;//account ok
