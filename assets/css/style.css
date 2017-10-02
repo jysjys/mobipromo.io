@@ -2296,11 +2296,17 @@ button.btn.active:focus {
         padding: 0 5px 0 5px;
         border-radius: 0 5px 5px 0;
     }
+    .cta-sub2 {
+        padding:5px;
+    }
 }
 
 @media screen and (max-width: 399px) {
     .cta-sub {
         text-align: center;
+    }
+    .cta-sub2 {
+        padding:5px;
     }
     .subscribe-form {
         text-align: center;
