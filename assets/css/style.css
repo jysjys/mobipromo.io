@@ -1331,7 +1331,7 @@ button.btn.active:focus {
     font-family: 'Josefin Sans';
     font-size: 16px;
     line-height: 1.2;
-    color: #A1A1A1;
+    /*color: #A1A1A1;*/
 }
 
 
