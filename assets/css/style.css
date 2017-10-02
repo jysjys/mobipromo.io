@@ -1375,11 +1375,11 @@ button.btn.active:focus {
 /* --------------- Feature Sub ------------ */
 
 .product .feature-sub {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99)), url(../images/bg1.jpg);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding: 150px 0 150px 0;
+    padding: 50px 0 50px 0;
 }
 
 .product .sub-inner {
