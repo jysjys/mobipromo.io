@@ -1238,7 +1238,7 @@ button.btn.active:focus {
 .pitch-icon {
     margin: 0 0 10px 0;
     /*background: #3333CC;*/
-    border:1px solid grey;
+    border:0px solid grey;
     width: 60px;
     height: 60px;
     display: inline-block;
