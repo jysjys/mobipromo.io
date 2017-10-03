@@ -16,7 +16,7 @@
                 <form name="myForm">
                     <div class="form-group">
                         <label class="sr-only" for="form-name">User name</label>
-                        <input type="text" name="formName" placeholder="Enter Your Name..." style="border-radius: 4px" class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
+                        <input type="text" name="formName" placeholder="Enter Your Name..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account number</label>
                                 <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">Please enter at least 6 bits</label>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-email">Email</label>
-                        <input type="email" name="formEmail" placeholder="Email Address..." class="form-email form-control" id="form-email" ng-model="signUpModel.data.email" required>
+                        <input type="email" name="formEmail" placeholder="Email Address..."  style="padding-left:15px;border-radius: 4px;" class="form-email form-control" id="form-email" ng-model="signUpModel.data.email" required>
                         <div style="color:red" ng-show="myForm.formEmail.$dirty && myForm.formEmail.$invalid">
                                 <label ng-show="myForm.formEmail.$error.required">Please enter your email</label>
                                 <label ng-show="myForm.formEmail.$error.email">email error</label>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-phone">Password</label>
-                        <input type="password" name="formPassword" placeholder="Password..." class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password" required>
+                        <input type="password" name="formPassword" placeholder="Password..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">Please enter your password</label>
                                 <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signUpModel.data.password && signUpModel.data.password.trim().length > 8 )">Please enter at least 9 bits</label>
