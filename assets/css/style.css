@@ -1330,7 +1330,7 @@ button.btn.active:focus {
     font-family: 'Josefin Sans';
     font-size: 16px;
     line-height: 1.2;
-    color: #A1A1A1;
+    /*color: #A1A1A1;*/
 }
 
 
@@ -1374,11 +1374,11 @@ button.btn.active:focus {
 /* --------------- Feature Sub ------------ */
 
 .product .feature-sub {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99)), url(../images/bg1.jpg);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding: 150px 0 150px 0;
+    padding: 50px 0 50px 0;
 }
 
 .product .sub-inner {
@@ -2295,11 +2295,17 @@ button.btn.active:focus {
         padding: 0 5px 0 5px;
         border-radius: 0 5px 5px 0;
     }
+    .cta-sub2 {
+        padding:5px;
+    }
 }
 
 @media screen and (max-width: 399px) {
     .cta-sub {
         text-align: center;
+    }
+    .cta-sub2 {
+        padding:5px;
     }
     .subscribe-form {
         text-align: center;
