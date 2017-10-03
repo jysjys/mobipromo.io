@@ -33,7 +33,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     model.action.validate = function validate(){
         let isOk = model.data.account && model.data.account.trim().length> 5;//account ok
         isOk = isOk && model.data.email; //email ok
-        isOk = isOk && model.data.password && model.data.password.trim().length > 8 && model.data.password == model.data.confirm;// password ok;
+        isOk = isOk && model.data.password && model.data.password.trim().length > 8;//&& model.data.password == model.data.confirm;// password ok;
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
@@ -88,6 +88,9 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         infoIsValid = infoIsValid && !$scope.signinModel.data.loading;
         return infoIsValid;
     };
+    $scope.gotoSignUp = function gotoSignUp(){
+        $state.go('app.signup');
+    }
     $scope.signIn = function signIn(){
         var credentials = {
             username: $scope.signinModel.data.account,
