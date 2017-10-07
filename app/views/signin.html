@@ -1,33 +1,38 @@
 <div class="hero-section">
-    <div class="container nopadding" style="display: flex;justify-content: center;align-items: center;">
-        <div class="col-md-7" style="z-index: -1">
-            <img src="assets/images/bg1.jpg" height="60" style="width: 115%;height: auto" alt="BST">
-        </div>
-        <div class="col-md-5">
-            <div class="signup-form wow fadeInUp">
-                <h1>CAN is a really application to build distributed application for business.</h1>
-                <form name="myForm">
-                    <div class="form-group">
-                        <label class="sr-only" for="form-name">User name</label>
-                        <input type="text" name="formName" placeholder="Enter Your Name..." style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
-                        <div style="color:red;margin-top:5px;">
-                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account</label>
-                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signinModel.data.account && signinModel.data.account.trim().length > 5 )">Please enter at least 6 bits</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="form-phone">Password</label>
+    <div class="row" style="margin-left:0px;margin-right:0px;">
+    <div class="container">
+        
+            <div class="col-md-6" style="z-index: -1">
+                <img src="assets/logos/can.png" height="60" style="width: 95%;height: auto" alt="BST">
+            </div>
 
-                        <input type="password" name="formPassword" placeholder="Password..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
-                        <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">
-                        <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">Please enter your password</label>
-                        <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Please enter at least 9 bits</label>
+            <div class="col-md-6">
+                <div class="signup-form wow fadeInUp">
+                    <h1>CAN is a really application to build distributed application for business.</h1>
+                    <form name="myForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="form-name">User name</label>
+                            <input type="text" name="formName" placeholder="Enter Your Name..." style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
+                            <div style="color:red;margin-top:5px;">
+                                    <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account</label>
+                                    <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signinModel.data.account && signinModel.data.account.trim().length > 5 )">Please enter at least 6 bits</label>
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Sign in !</button>
-                    <span style="float: right; padding-top: 15px;font-size: 12px;">No Account? <a ng-click="gotoSignUp()" style="color: red; ">Click here</a></span>
-                </form>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-phone">Password</label>
+
+                            <input type="password" name="formPassword" placeholder="Password..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
+                            <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">
+                            <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">Please enter your password</label>
+                            <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Please enter at least 9 bits</label>
+                            </div>
+                        </div>
+                        <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Sign in !</button>
+                        <span style="float: right; padding-top: 15px;font-size: 12px;">No Account? <a ng-click="gotoSignUp()" style="color: red;cursor:pointer; " >Click here</a></span>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
