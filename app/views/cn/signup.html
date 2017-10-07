@@ -1,0 +1,55 @@
+<div class="hero-section">
+    <div class="row" style="margin-left:0px;margin-right:0px;">
+    <div class="container">
+    
+        <div class="col-md-6" style="z-index: -1;">
+            <img src="/assets/logos/can.png" height="60" style="width: 95%;height: auto" alt="BST">
+            <!--<div class="hero-content">-->
+                <!--<h1>Build your custom landing pages with Advent</h1>-->
+                <!--<p>-->
+                    <!--With a handful of pre made landing page templates and <br class="hidden-xs"> multipurpose blocks you can build your dream website <br class="hidden-xs"> or landing page with the help of Advent.-->
+                <!--</p>-->
+                <!--<a class="btn btn-primary btn-action btn-round popup wow fadeInUp" data-wow-delay="0.2s" href="#">Know more</a>-->
+            <!--</div>-->
+        </div>
+        <div class="col-md-6">
+            <div class="signup-form wow fadeInUp">
+                <h1>CAN 是去中心化的内容和广告运营网络.</h1>
+                <form name="myForm">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-name">用户名</label>
+                        <input type="text" name="formName" placeholder="请输入账户名..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">请输入账户名称将会作为登录使用</label>
+                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">最少需要6个字符</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="form-email">电子邮件</label>
+                        <input type="email" name="formEmail" placeholder="请输入邮件地址..."  style="padding-left:15px;border-radius: 4px;" class="form-email form-control" id="form-email" ng-model="signUpModel.data.email" required>
+                        <div style="color:red" ng-show="myForm.formEmail.$dirty && myForm.formEmail.$invalid">
+                                <label ng-show="myForm.formEmail.$error.required">请输入您的电子邮件</label>
+                                <label ng-show="myForm.formEmail.$error.email">邮件地址错误</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="form-phone">密码</label>
+                        <input type="password" name="formPassword" placeholder="请输入密码..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password" required>
+                        <div style="color:red;margin-top:5px;">
+                                <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
+                                <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signUpModel.data.password && signUpModel.data.password.trim().length > 8 )">最少需要9个字符</label>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="sr-only" for="form-phone">Confirm</label>-->
+                        <!--<input type="password" name="form-phone" placeholder="Confirm Password..." class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.confirm">-->
+                        <!--<div style="color:red;margin-top:5px;">-->
+                                <!--<label ng-show="signUpModel.data.confirm.trim().length > 0 && (signUpModel.data.password != signUpModel.data.confirm)">Password inconsistency</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <button type="button" class="btn" ng-click="signUpModel.action.signUp(signUpModel.data)" ng-disabled="!(signUpModel.action.validate())">注册!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
