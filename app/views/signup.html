@@ -47,7 +47,8 @@
                         <div class="input-group">
                             <!-- <label class="" for="form-id-card-number">Choose Your Country</label> -->
                             <span class="input-group-addon" id="basic-addon1">Choose Your Country</span>
-                            <select class="form-control" id="country" ng-model="signUpModel.data.country" ng-options="option.name for option in countries track by option.id">
+                            <select class="form-control" id="country" ng-model="signUpModel.data.country" ng-options="option.country for option in countryList.countries">
+                                <option label="Select Your Country" value="">
                             </select>
                         </div>
                     </div>
