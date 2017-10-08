@@ -46,11 +46,10 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         var isOk = model.data.account && model.data.account.trim().length> 5;//account ok
         isOk = isOk && model.data.email; //email ok
         isOk = isOk && model.data.password && model.data.password.trim().length > 8;//&& model.data.password == model.data.confirm;// password ok;
-        console.log('country:',model.data.country);
+        
         isOk = isOk && model.data.country&&model.data.country.id=='other';
         isOk = isOk && model.data.agree == true;
-        console.log('agree:',model.data.agree);
-        console.log(model.data);
+        
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
