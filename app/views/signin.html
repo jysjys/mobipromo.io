@@ -11,10 +11,10 @@
                     <h1>CAN is a really application to build distributed application for business.</h1>
                     <form name="myForm">
                         <div class="form-group">
-                            <label class="sr-only" for="form-name">User name</label>
-                            <input type="text" name="formName" placeholder="Enter Your Name..." style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
+                            <label class="sr-only" for="form-name">Account Name</label>
+                            <input type="text" name="formName" placeholder="Enter Your account name..." style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
                             <div style="color:red;margin-top:5px;">
-                                    <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account</label>
+                                    <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account name</label>
                                     <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signinModel.data.account && signinModel.data.account.trim().length > 5 )">Please enter at least 6 bits</label>
                             </div>
                         </div>

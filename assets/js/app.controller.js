@@ -9,13 +9,25 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         action:{
         }
     };
+
+    $scope.countries = [
+        {name:'中国',id:'cn'},
+        {name:'中国香港',id:'hk'},
+        {name:'其他国家',id:'other'}];
+    
     var model = $scope.signUpModel;
     model.action.signUp = function signUp(signUpData){
+        
         var signUp = {
             account: signUpData.account,
             email: signUpData.email,
             password: md5.createHash((signUpData.password || "").trim()),
-            accountType:"email"
+            accountType:"email",
+            firstName:signUpData.firstName,
+            lastName:signUpData.lastName,
+            country:signUpData.country,
+            idCardNumber:signUpData.idCardNumber,
+            phone:signUpData.phone
         };
         console.log(JSON.stringify(signUp));
         $scope.signUpModel.data.loading++;
