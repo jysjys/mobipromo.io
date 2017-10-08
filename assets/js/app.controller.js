@@ -43,9 +43,14 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         });
     };
     model.action.validate = function validate(){
-        let isOk = model.data.account && model.data.account.trim().length> 5;//account ok
+        var isOk = model.data.account && model.data.account.trim().length> 5;//account ok
         isOk = isOk && model.data.email; //email ok
         isOk = isOk && model.data.password && model.data.password.trim().length > 8;//&& model.data.password == model.data.confirm;// password ok;
+        console.log('country:',model.data.country);
+        isOk = isOk && model.data.country&&model.data.country.id=='other';
+        isOk = isOk && model.data.agree == true;
+        console.log('agree:',model.data.agree);
+        console.log(model.data);
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
@@ -86,6 +91,12 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     };
 
     model.action.getAccountIcoProcess();
+    $scope.logout  = function(){
+        console.log('oooooo');
+        MainRemoteResource.logout();
+        $state.go('app.signin');
+    }
+
 }]).controller("LoginController", ["$scope", "$rootScope", "MainRemoteResource", "$state","md5", function($scope, $rootScope, MainRemoteResource, $state, md5){
     $scope.signinModel = {
         data:{
@@ -123,7 +134,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     };
     $rootScope.icoEnv = {
         couldLogin:true,
-        couldLogout:false,
+        couldLogout:true,
         couldList:false,
         couldSubscribe:false
     };

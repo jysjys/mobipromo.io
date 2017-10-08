@@ -56,6 +56,9 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
             });
             return promise;
         },
+        logout:function(){
+            ULStorageService.remove('token');
+        },
         guid : function guid(){
             /** it just version 4 guid **/
             function s4(){

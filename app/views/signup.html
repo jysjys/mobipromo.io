@@ -20,7 +20,7 @@
                         <label class="sr-only" for="form-name">Account Name</label>
                         <input type="text" name="formName" placeholder="Enter Your account Name..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
                         <div style="color:red;margin-top:5px;">
-                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account number</label>
+                                <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">Please enter your account name</label>
                                 <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">Please enter at least 6 chars</label>
                         </div>
                     </div>
@@ -44,8 +44,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="" for="form-id-card-number">Choose Your Country</label>
-                        <select class="form-control" id="country" ng-model="signUpModel.data.country" ng-options="option.name for option in countries track by option.id">
+                        <div class="input-group">
+                            <!-- <label class="" for="form-id-card-number">Choose Your Country</label> -->
+                            <span class="input-group-addon" id="basic-addon1">Choose Your Country</span>
+                            <select class="form-control" id="country" ng-model="signUpModel.data.country" ng-options="option.name for option in countries track by option.id">
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-id-card-number">Id Card Number</label>
@@ -83,8 +87,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" ng-model="signUpModel.data.accepted">
-                            接受<a href="buyer.html" target="_new">购买者协议</a>
+                        <input class="form-check-input" type="checkbox" value="agree" ng-model="signUpModel.data.agree">
+                            接受<a href="buyer.html" target="_new" style="color:teal;font-weight:bold;">购买者协议</a>
                         </label>
                     </div>
                     <!--<div class="form-group">-->
