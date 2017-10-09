@@ -1,3 +1,159 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="95 74 623 406" width="623pt" height="406pt"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:date>2017-10-09 15:12Z</dc:date><!-- Produced by OmniGraffle Professional 5.4.2 --></metadata><defs><filter id="Shadow" filterUnits="userSpaceOnUse"><feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="3.488"/><feOffset in="blur" result="offset" dx="0" dy="4"/><feFlood flood-color="black" flood-opacity=".75" result="flood"/><feComposite in="flood" in2="offset" operator="in"/></filter><font-face font-family="Helvetica" font-size="12" units-per-em="1000" underline-position="-75.683594" underline-thickness="49.316406" slope="0" x-height="522.94922" cap-height="717.28516" ascent="770.01953" descent="-229.98047" font-weight="500"><font-face-src><font-face-name name="Helvetica"/></font-face-src></font-face><font-face font-family="PingFang SC" font-size="24" panose-1="2 11 6 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="78" slope="0" x-height="600" cap-height="860" ascent="1060.0022" descent="-340.0007" font-weight="600"><font-face-src><font-face-name name="PingFangSC-Medium"/></font-face-src></font-face></defs><g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1"><title>版面 10</title><g><title>图层 1</title><g><use xl:href="#id10_Graphic" filter="url(#Shadow)"/><use xl:href="#id11_Graphic" filter="url(#Shadow)"/><use xl:href="#id12_Graphic" filter="url(#Shadow)"/><use xl:href="#id13_Graphic" filter="url(#Shadow)"/><use xl:href="#id14_Graphic" filter="url(#Shadow)"/><use xl:href="#id15_Graphic" filter="url(#Shadow)"/><use xl:href="#id16_Graphic" filter="url(#Shadow)"/><use xl:href="#id17_Graphic" filter="url(#Shadow)"/><use xl:href="#id18_Graphic" filter="url(#Shadow)"/><use xl:href="#id19_Graphic" filter="url(#Shadow)"/></g><path d="M 225 468 C 225.66667 102 595.33333 115.33333 595.33333 115.33333" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/><g id="id10_Graphic"><ellipse cx="227.54342" cy="418.0808" rx="5.000008" ry="4.666674" fill="white"/><ellipse cx="227.54342" cy="418.0808" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id11_Graphic"><ellipse cx="232.59676" cy="383.27048" rx="5.000008" ry="4.666674" fill="#d5ecff"/><ellipse cx="232.59676" cy="383.27048" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id12_Graphic"><ellipse cx="240.84715" cy="348.64444" rx="5.000008" ry="4.666674" fill="#d5ecff"/><ellipse cx="240.84715" cy="348.64444" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id13_Graphic"><ellipse cx="253.0568" cy="313.84278" rx="5.000008" ry="4.666674" fill="#d5ecff"/><ellipse cx="253.0568" cy="313.84278" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id14_Graphic"><ellipse cx="265.24194" cy="287.96531" rx="5.000008" ry="4.666674" fill="white"/><ellipse cx="265.24194" cy="287.96531" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id15_Graphic"><ellipse cx="285.6259" cy="254.96244" rx="5.000008" ry="4.666674" fill="#d5ecff"/><ellipse cx="285.6259" cy="254.96244" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id16_Graphic"><ellipse cx="314.09073" cy="221.01798" rx="5.000008" ry="4.666674" fill="white"/><ellipse cx="314.09073" cy="221.01798" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id17_Graphic"><ellipse cx="411.20778" cy="154.055005" rx="5.000008" ry="4.666674" fill="white"/><ellipse cx="411.20778" cy="154.055005" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id18_Graphic"><ellipse cx="460.86282" cy="135.352845" rx="5.000008" ry="4.666674" fill="white"/><ellipse cx="460.86282" cy="135.352845" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="id19_Graphic"><ellipse cx="523.43337" cy="121.001525" rx="5.000008" ry="4.666674" fill="#d5ecff"/><ellipse cx="523.43337" cy="121.001525" rx="5.000008" ry="4.666674" stroke="#365897" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><text transform="translate(238 412.0808)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".15136719" y="11" textLength="48.697266">Oct 2017</tspan></text><text transform="translate(238.93683 426.0808)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".4970703" y="11" textLength="54.00586">ICO starts</tspan></text><text transform="translate(173.33333 376.6038)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".15136719" y="11" textLength="48.697266">Oct 2017</tspan></text><text transform="translate(114.83333 390.60382)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".15527344" y="11" textLength="104.689453">CAN smart contract</tspan></text><text transform="translate(251.27014 342.38055)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".15136719" y="11" textLength="48.697266">Oct 2017</tspan></text><text transform="translate(252.27014 356.38055)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".15527344" y="11" textLength="50.689453">ICO ends</tspan></text><text transform="translate(193.08686 306.66666)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".15136719" y="11" textLength="48.697266">Oct 2017</tspan></text><text transform="translate(104.086863 320.66667)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".29296875" y="11" textLength="137.41406">List on exchange platform</tspan></text><text transform="translate(275.83332 283.29864)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".31542969" y="11" textLength="51.36914">Nov 2017</tspan></text><text transform="translate(275.66667 297.29864)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".142578125" y="11" textLength="162.71484">Deploy smart contract for CAN</tspan></text><text transform="translate(225.09517 247.16848)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".31542969" y="11" textLength="51.36914">Dec 2017</tspan></text><text transform="translate(158.07853 204.22938)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="20.082031" y="11" textLength="39.996094">CAN W</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="59.638672" y="11" textLength="59.361328">allet 1.0RC</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="30.957031" y="25" textLength="69.35742">Deploy CAN </tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="99.658203" y="25" textLength="19.341797">API</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".27734375" y="39" textLength="118.722656">List on three platforms</tspan></text><text transform="translate(325.66667 214.50183)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".4814453" y="11" textLength="46.03711">Q1 2018</tspan></text><text transform="translate(325.66668 227.16849)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="0" y="11" textLength="118.71094">List on more platforms</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="0" y="25" textLength="39.996094">CAN W</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="39.55664" y="25" textLength="59.361328">allet 2.0RC</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="0" y="39" textLength="34.669922">CAN fl</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="34.669922" y="39" textLength="164.0918">ow in MobiPromo global nodes</tspan></text><text transform="translate(365.20778 131.70501)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".150390625" y="11" textLength="52.69922">May 2018</tspan></text><text transform="translate(180.7078 102.458764)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".53515625" y="11" textLength="235.46484">Deploy prototype CAN application in test net</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="29.896484" y="25" textLength="206.10352">Deploy prototype CAN client in test net</tspan></text><text transform="translate(459.33333 144.721664)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".31152344" y="11" textLength="49.376953">Jun 2018</tspan></text><text transform="translate(481.26668 98)" fill="#4572b2"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#4572b2" x=".4814453" y="11" textLength="46.03711">Q3 2018</tspan></text><text transform="translate(459.33333 159.42382)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="0" y="11" textLength="248.13281">Deploy prototype CAN application in Ethereum</tspan><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x="0" y="25" textLength="218.77148">Deploy prototype CAN client in Ethereum</tspan></text><text transform="translate(434.26664 84)" fill="#538bda"><tspan font-family="Helvetica" font-size="12" font-weight="500" fill="#538bda" x=".31835938" y="11" textLength="93.36328">Better UE in CAN</tspan></text><text transform="translate(330.4587 168.67738)" fill="#e20005"><tspan font-family="PingFang SC" font-size="24" font-weight="600" fill="#e20005" x=".392" y="25" textLength="51.216">CAN</tspan></text></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="3 72 798 423" width="798pt" height="423pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.4.2 
+    <dc:date>2017-10-09 17:52:20 +0000</dc:date>
+  </metadata>
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="#a9a9a9">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Avenir Next" font-size="12" panose-1="2 11 5 3 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="468" cap-height="708" ascent="1e3" descent="-365.9973" font-weight="500">
+      <font-face-src>
+        <font-face-name name="AvenirNext-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Avenir Next" font-size="24" panose-1="2 11 7 3 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="498" cap-height="708" ascent="1e3" descent="-365.9973" font-weight="bold">
+      <font-face-src>
+        <font-face-name name="AvenirNext-DemiBold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>ROADMAP_CAN</title>
+    <g>
+      <title>图层 1</title>
+      <path d="M 235.72727 493.63636 C 236.32975 162.87816 545.1522 108.0881 604.6191 100.60339" marker-end="url(#FilledArrow_Marker)" stroke="#a9a9a9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <circle cx="237.56554" cy="451.3746" r="3.600006" fill="#999"/>
+      <circle cx="237.56554" cy="451.3746" r="3.600006" stroke="#999" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="248.12693" cy="386.7723" r="3.600006" fill="#2e3dc5"/>
+      <circle cx="248.12693" cy="386.7723" r="3.600006" stroke="#2e3dc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="264.41518" cy="336.36682" r="3.600006" fill="#2e3dc5"/>
+      <circle cx="264.41518" cy="336.36682" r="3.600006" stroke="#2e3dc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="287.01582" cy="290.73864" r="3.600006" fill="#999"/>
+      <circle cx="287.01582" cy="290.73864" r="3.600006" stroke="#999" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="314.33273" cy="251.375" r="3.600006" fill="#2e3dc5"/>
+      <circle cx="314.33273" cy="251.375" r="3.600006" stroke="#2e3dc5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <circle cx="386.4286" cy="183.90033" r="3.600006" fill="#999"/>
+      <circle cx="433.79374" cy="154.74634" r="3.600006" fill="#999"/>
+      <circle cx="503.11495" cy="124.7838" r="3.600006" fill="#999"/>
+      <circle cx="558.32985" cy="108.96662" r="3.600006" fill="#2e3dc5"/>
+      <text transform="translate(259.99282 440.4471)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x="0" y="12" textLength="79.812">Sep 30th 2017</tspan>
+      </text>
+      <text transform="translate(156.04 383.98583)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x=".168" y="12" textLength="11.76">IC</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="11.784" y="12" textLength="33.06">O star</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="44.7" y="12" textLength="9.132">ts</tspan>
+      </text>
+      <text transform="translate(131.04 366.98583)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".218" y="12" textLength="78.564">Oct 11th 2017</tspan>
+      </text>
+      <text transform="translate(259.99282 458.82875)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="12" textLength="8.64">C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="8.496" y="12" textLength="48.66">AN Smar</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="57.012" y="12" textLength="35.232">t contr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="92.1" y="12" textLength="16.212">act</tspan>
+      </text>
+      <text transform="translate(304.56 334.453)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".142" y="12" textLength="115.716">About Oct 21th 2017</tspan>
+      </text>
+      <text transform="translate(304.56 350.953)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="12" textLength="11.76">IC</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="11.616" y="12" textLength="40.008">O ends</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="28" textLength="66.636">Launch on e</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="66.564" y="28" textLength="5.808">x</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="72.3" y="28" textLength="60.876">change pla</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="133.056" y="28" textLength="29.592">tform</tspan>
+      </text>
+      <text transform="translate(187.8538 263.18365)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".402" y="12" textLength="53.196">Nov 2017</tspan>
+      </text>
+      <text transform="translate(3.8538085 281.86315)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x=".38" y="12" textLength="69.432">Deploy smar</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="69.668" y="12" textLength="35.232">t contr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="104.756" y="12" textLength="51.372">acts for C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="155.984" y="12" textLength="60.648">AN applica</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="216.512" y="12" textLength="21.108">tion</tspan>
+      </text>
+      <text transform="translate(368.46045 246.84226)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".106" y="12" textLength="52.788">Dec 2017</tspan>
+      </text>
+      <text transform="translate(368.46045 263.34226)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="12" textLength="8.64">C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="8.496" y="12" textLength="20.568">AN </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="28.92" y="12" textLength="11.664">W</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="40.152" y="12" textLength="64.848">allet v1.0RC</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="28" textLength="51.42">Deploy C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="51.276" y="28" textLength="20.568">AN </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="71.628" y="28" textLength="173.376">API service v1.0RC on the cloud</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="44" textLength="74.892">Launch on thr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="74.676" y="44" textLength="33.78">ee pla</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="108.336" y="44" textLength="34.92">tforms</tspan>
+      </text>
+      <text transform="translate(251.5384 151.70183)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".042" y="12" textLength="47.916">Q1 2018</tspan>
+      </text>
+      <text transform="translate(91.53841 168.20183)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="64.48" y="12" textLength="82.02">Launch on mor</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="146.284" y="12" textLength="26.916">e pla</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="173.08" y="12" textLength="34.92">tforms</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="103" y="28" textLength="8.64">C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="111.496" y="28" textLength="20.568">AN </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="131.92" y="28" textLength="11.664">W</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="143.152" y="28" textLength="64.848">allet v2.0RC</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x=".64" y="44" textLength="8.64">C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="9.136" y="44" textLength="27.096">AN fl</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="36.232" y="44" textLength="67.824">ow in MobiP</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="103.48" y="44" textLength="4.32">r</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="107.584" y="44" textLength="100.416">omo global nodes</tspan>
+      </text>
+      <text transform="translate(428.64 73.22)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".156" y="12" textLength="50.688">Jun 2018</tspan>
+      </text>
+      <text transform="translate(188.64 89.72)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="35.7" y="12" textLength="115.152">Deploy RC version of</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="151.14" y="12" textLength="3"> </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="153.924" y="12" textLength="112.86">Ads delivery in Ether</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="266.568" y="12" textLength="24.432">eum</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x=".804" y="28" textLength="115.152">Deploy RC version of</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="116.244" y="28" textLength="3"> </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="119.028" y="28" textLength="75.444">Ads administr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="194.328" y="28" textLength="6.408">a</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="200.616" y="28" textLength="66.168">tion in Ether</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="266.568" y="28" textLength="24.432">eum</tspan>
+      </text>
+      <text transform="translate(463.54464 175.70183)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".474" y="12" textLength="5.904">J</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x="6.306" y="12" textLength="44.22">an 2018</tspan>
+      </text>
+      <text transform="translate(575.28 127.8233)" fill="#aeaeae">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#aeaeae" x=".042" y="12" textLength="47.916">Q3 2018</tspan>
+      </text>
+      <text transform="translate(463.54464 189.90398)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="12" textLength="54.72">Deploy pr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="54.504" y="12" textLength="99.156">ototype version of</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="153.948" y="12" textLength="3"> </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="156.732" y="12" textLength="144.876">Ads delivery in the test net</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="0" y="28" textLength="54.72">Deploy pr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="54.504" y="28" textLength="99.156">ototype version of</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="153.948" y="28" textLength="3"> </tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="156.732" y="28" textLength="75.444">Ads administr</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="232.032" y="28" textLength="6.408">a</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="238.32" y="28" textLength="98.184">tion in the test net</tspan>
+      </text>
+      <text transform="translate(575.28 145.71738)" fill="#af9d71">
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x=".428" y="12" textLength="22.284">Mor</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="22.496" y="12" textLength="49.944">e applica</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="72.32" y="12" textLength="63.828">tions with C</tspan>
+        <tspan font-family="Avenir Next" font-size="12" font-weight="500" fill="#af9d71" x="136.004" y="12" textLength="17.568">AN</tspan>
+      </text>
+      <text transform="translate(325.6708 194.88816)" fill="#ff2500">
+        <tspan font-family="Avenir Next" font-size="24" font-weight="bold" fill="#ff2500" x=".46" y="24" textLength="16.704">C</tspan>
+        <tspan font-family="Avenir Next" font-size="24" font-weight="bold" fill="#ff2500" x="16.876" y="24" textLength="35.664">AN</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
