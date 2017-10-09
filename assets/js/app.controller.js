@@ -806,7 +806,6 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         MainRemoteResource.accountResource.signUpAccount({}, signUp).$promise.then(function(success){
             $state.go('app.signin');
             $scope.signUpModel.data.loading--;
-            $scope.signUpModel.data.isShowRegisterErr = 0;
         }).catch(function(error){
             console.log(error);
             $scope.signUpModel.data.isShowRegisterErr++;
