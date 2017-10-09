@@ -4,7 +4,8 @@
 angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemoteResource", "$state","md5", function($scope, MainRemoteResource, $state, md5) {
     $scope.signUpModel = {
         data:{
-            loading: 0
+            loading: 0,
+            isShowRegisterErr: 0
         },
         action:{
         }
@@ -788,7 +789,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
 
     var model = $scope.signUpModel;
     model.action.signUp = function signUp(signUpData){
-        
+      $scope.signUpModel.data.isShowRegisterErr = 0;
         var signUp = {
             account: signUpData.account,
             email: signUpData.email,
@@ -805,8 +806,10 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         MainRemoteResource.accountResource.signUpAccount({}, signUp).$promise.then(function(success){
             $state.go('app.signin');
             $scope.signUpModel.data.loading--;
+            $scope.signUpModel.data.isShowRegisterErr = 0;
         }).catch(function(error){
             console.log(error);
+            $scope.signUpModel.data.isShowRegisterErr++;
             $scope.signUpModel.data.loading--;
             if(error && error.data && error.data.code){
                 $scope.display.error = error.data;
@@ -874,7 +877,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         data:{
             loading: 0,
             account: '',
-            password: ''
+            password: '',
+            isShowLoginErr: 0
         }
     };
     $scope.display = {};
@@ -887,6 +891,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         $state.go('app.signup');
     }
     $scope.signIn = function signIn(){
+        $scope.signinModel.data.isShowLoginErr = 0;
         var credentials = {
             username: $scope.signinModel.data.account,
             password: md5.createHash($scope.signinModel.data.password)
@@ -895,9 +900,11 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         MainRemoteResource.getToken(credentials).then(function(success){
             $state.go('app.ico');
             $scope.signinModel.data.loading--;
+            $scope.signinModel.data.isShowLoginErr = 0;
             $scope.display.error = undefined;
         }).catch(function(error){
             console.log(error);
+            $scope.signinModel.data.isShowLoginErr++;
             $scope.signinModel.data.loading--;
             if(error && error.data && error.data.code){
                 $scope.display.error = error.data;

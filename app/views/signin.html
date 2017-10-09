@@ -29,6 +29,9 @@
                         </div>
                         <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">Sign in !</button>
                         <span style="float: right; padding-top: 15px;font-size: 12px;">No Account? <a ng-click="gotoSignUp()" style="color: red;cursor:pointer; " >Click here</a></span>
+                        <div>
+                            <label style="color:red;margin-top:5px;" ng-show="signinModel.data.isShowLoginErr">The login failed. Please try again</label>
+                        </div>
                     </form>
                 </div>
             </div>
