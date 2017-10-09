@@ -101,6 +101,9 @@
                         <!--</div>-->
                     <!--</div>-->
                     <button type="button" class="btn" ng-click="signUpModel.action.signUp(signUpModel.data)" ng-disabled="!(signUpModel.action.validate())">注册!</button>
+                    <div>
+                        <label style="color:red;margin-top:5px;" ng-show="signUpModel.data.isShowRegisterErr">注册失败，请重试</label>
+                    </div>
                 </form>
             </div>
         </div>

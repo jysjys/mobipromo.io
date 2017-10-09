@@ -29,6 +29,9 @@
                         </div>
                         <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">登录!</button>
                         <span style="float: right; padding-top: 15px;font-size: 12px;">还没注册? <a ng-click="gotoSignUp()" style="color: red;cursor:pointer; " >注册</a></span>
+                        <div>
+                            <label style="color:red;margin-top:5px;" ng-show="signinModel.data.isShowLoginErr">登录失败，请重试</label>
+                        </div>
                     </form>
                 </div>
             </div>
