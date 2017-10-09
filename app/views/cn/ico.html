@@ -1,9 +1,11 @@
-
-<div class="panel panel-default">
-    <div class="panel-body">
+<div class="pitch text-center" ng-show="!authenticated">
+    <div class="container">
+        <div class="pitch-intro">
+            <h1>认证中....</h1>
+        </div>
     </div>
-</div>
-<div class="pitch text-center">
+</div>    
+<div class="pitch text-center" ng-show="authenticated">
     <div class="container">
         <div class="pitch-intro">
             <h1 class="wow fadeInDown" data-wow-delay="0.2s">ETH/BTC address is as follows：</h1>
