@@ -1216,7 +1216,7 @@ button.btn.active:focus {
 .pitch-intro {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 0 35px 0;
+    padding: 0 0 10px 0;
 }
 
 .pitch-intro h1 {
@@ -2420,4 +2420,8 @@ a {
 
 .language li {
     margin: 3px 0;
+}
+.pitch-content-a{
+    display: block;
+    text-align: justify;
 }
