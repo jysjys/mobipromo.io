@@ -858,8 +858,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
             // alert(model.data.btc.bankAddress);
         }).catch(function(error){
             console.log(error);
-            //var gotoSignIn= function(){console.log('goto');$state.go('app.signin');}
-            //$timeout(gotoSignIn,3000);
+            var gotoSignIn= function(){console.log('goto');$state.go('app.signin');}
+            $timeout(gotoSignIn,3000);
         })
     };
 
