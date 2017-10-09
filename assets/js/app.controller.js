@@ -824,7 +824,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         return isOk;
     };
 }]).controller("ContentController", ["$scope", function($scope) {
-}]).controller("IcoController", ["$scope", "MainRemoteResource", "$state", function($scope, MainRemoteResource, $state) {
+}]).controller("IcoController", ["$scope", "MainRemoteResource", "$state","$timeout", function($scope, MainRemoteResource, $state,$timeout) {
+    $scope.authenticated=false;
     $scope.icoModel = {
         data:{},
         display:{
@@ -836,6 +837,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
 
     model.action.getAccountIcoProcess = function getAccountIcoProcess(){
         MainRemoteResource.accountResource.getAccountIco().$promise.then(function(success){
+            $scope.authenticated = true;
             var accountIco = success.data;
             var ico = {};
             for(var index = 0; index < accountIco.length; ++index){
@@ -856,7 +858,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
             // alert(model.data.btc.bankAddress);
         }).catch(function(error){
             console.log(error);
-            $state.go('app.signin');
+            //var gotoSignIn= function(){console.log('goto');$state.go('app.signin');}
+            //$timeout(gotoSignIn,3000);
         })
     };
 
