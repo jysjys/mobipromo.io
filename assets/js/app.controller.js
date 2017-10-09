@@ -862,7 +862,6 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
 
     model.action.getAccountIcoProcess();
     $scope.logout  = function(){
-        console.log('oooooo');
         MainRemoteResource.logout();
         $state.go('app.signin');
     }
