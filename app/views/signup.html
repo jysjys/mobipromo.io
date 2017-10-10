@@ -61,7 +61,7 @@
                         <input type="text" name="formIdCardNumber" placeholder="Id Card Number..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-id-card-number" ng-model="signUpModel.data.idCardNumber" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formIdCardNumber.$dirty && myForm.formIdCardNumber.$error.required">Please enter your Id Card Number</label>
-                                <label ng-show="myForm.formIdCardNumber.$dirty && !myForm.formIdCardNumber.$error.required && !(signUpModel.data.idCardNumber && signUpModel.data.idCardNumber.trim().length > 2 )">Please enter at least 2 chars</label>
+                                <label ng-show="myForm.formIdCardNumber.$dirty && !myForm.formIdCardNumber.$error.required && !(signUpModel.data.idCardNumber && signUpModel.data.idCardNumber.trim().length > 1 )">Please enter at least 2 chars</label>
                         </div>
                     </div>
 
@@ -69,8 +69,8 @@
                         <label class="sr-only" for="form-phone">Phone/Mobile number</label>
                         <input type="text" name="formPhone" placeholder="Phone/Mobile number..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.phone" required>
                         <div style="color:red;margin-top:5px;">
-                                <label ng-show="myForm.formPhone.$dirty && myForm.formPhone.$error.required">Please enter your Id Card Number</label>
-                                <label ng-show="myForm.formPhone.$dirty && !myForm.formPhone.$error.required && !(signUpModel.data.phone && signUpModel.data.phone.trim().length > 6 )">Please enter at least 6 chars</label>
+                                <label ng-show="myForm.formPhone.$dirty && myForm.formPhone.$error.required">Please enter your Phone/Mobile number</label>
+                                <label ng-show="myForm.formPhone.$dirty && !myForm.formPhone.$error.required && !(signUpModel.data.phone && signUpModel.data.phone.trim().length > 5 )">Please enter at least 6 chars</label>
                         </div>
                     </div>    
                     
