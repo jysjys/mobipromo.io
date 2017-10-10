@@ -1,0 +1,41 @@
+<div class="hero-section">
+    <div class="row" style="margin-left:0px;margin-right:0px;">
+    <div class="container">
+        
+            <div class="col-md-6" style="z-index: -1">
+                <img src="/assets/logos/can.png" height="60" style="width: 95%;height: auto" alt="BST">
+            </div>
+
+            <div class="col-md-6">
+                <div class="signup-form wow fadeInUp">
+                    <h1>CAN 是去中心化的内容和广告运营网络.</h1>
+                    <form name="myForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="form-name">用户名</label>
+                            <input type="text" name="formName" placeholder="请输入账号名..." style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signinModel.data.account" required>
+                            <div style="color:red;margin-top:5px;">
+                                    <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">请输入账户</label>
+                                    <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signinModel.data.account && signinModel.data.account.trim().length > 5 )">请输入最少6个字符</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-phone">密码</label>
+
+                            <input type="password" name="formPassword" placeholder="请输入密码..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
+                            <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">
+                            <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
+                            <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">请输入至少9个字符</label>
+                            </div>
+                        </div>
+                        <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">登录!</button>
+                        <span style="float: right; padding-top: 15px;font-size: 12px;">还没注册? <a ng-click="gotoSignUp()" style="color: red;cursor:pointer; " >注册</a></span>
+                        <div>
+                            <label style="color:red;margin-top:5px;" ng-show="signinModel.data.isShowLoginErr">登录失败，请重试</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

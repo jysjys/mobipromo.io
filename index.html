@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>MobiPromo</title>
-    <link rel="icon" href="assets/logos/BST.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="assets/logos/can_favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="ICO web site for BST">
+    <meta name="description" content="ICO web site for CAN">
     <meta name="keywords" content="MobiPromo, Blockchain, Decentralized, Ad">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css"> -->
@@ -14,7 +14,7 @@
     <!-- Resource style -->
     <link rel="stylesheet" href="assets/css/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/owl.theme.css">
-    <link rel="stylesheet" href="assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
     <!-- Resource style -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" type="text/css" href="assets/css/default.css">
@@ -38,7 +38,7 @@
     }
 
     #countdown2 {
-        background: rgb(255,255,255,0)
+        background: rgb(255, 255, 255, 0)
     }
 
     .contribute {
@@ -77,6 +77,22 @@
     .p3 p {
         text-align: left;
     }
+
+    .blink {
+        animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+        20% {
+            color: #e51720;
+        }
+    }
+    .participate 
+    {
+        font-weight: 500;
+        font-size: 18px;
+        /*color: #e51720 !important;*/
+    }
     </style>
 </head>
 
@@ -93,20 +109,20 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand page-scroll" href="#main"><img src="assets/logos/logo_2.png" height="30" alt="BST" /></a>
+                        <a class="navbar-brand page-scroll" href="#main"><img src="assets/logos/can.png" height="30" alt="CAN" /></a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <!--<% if(!userinfo){ %>-->
-                            <li><a class="page-scroll" href="./index-signup.html">Sign-In/Sign-Up</a></li>
+                            <li><a class="page-scroll participate blink" href="./index-signup.html">Participate ICO</a></li>
                             <!--<% }else{ %>-->
                             <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
                             <!--<% } %>-->
                             <li><a class="page-scroll" href="./whitepaper.pdf">White Paper</a></li>
                             <li><a class="page-scroll" href="#features">Introduction</a></li>
                             <li><a class="page-scroll" href="#team">Team</a></li>
-                            <li><a class="page-scroll" href="#roadmap">BST Roadmap</a></li>
+                            <li><a class="page-scroll" href="#roadmap">CAN Roadmap</a></li>
                             <li><a class="page-scroll" href="#contact">Contact Us</a></li>
                             <li><a class="page-scroll" href="/cn/">中文</a></li>
                         </ul>
@@ -117,31 +133,28 @@
         </div>
         <!-- /.container-fluid -->
         <div class="countdown-section" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));" id="ico">
-              <div style="text-align: center;font-size: 34px;margin-top: 100px;padding-top:100px;margin-bottom:50px;">BST ICO will start in</div>
-              <div id="countdown2" class="ClassyCountdown"></div>
+            <div style="text-align: center;font-size: 34px;margin-top: 100px;padding-top:100px;margin-bottom:50px;">CAN ICO will start in</div>
+            <div id="countdown2" class="ClassyCountdown"></div>
         </div>
-
         <!--<div style="text-align: center;font-size: 25px";>Token sale ends in</div>-->
         <div class="main product" id="main">
             <!-- Count down-->
-            
 
             <!-- Main Section-->
-
             <div style="padding: 50px 0 100px 0;">
                 <div class="container nopadding">
                     <div class="col-md-6">
-                        <img class="img-responsive wow fadeIn" src="assets/images/large_logo.png" alt="Hero Image" style="padding:150px 50px 100px 50px;" />
+                        <img class="img-responsive wow fadeIn" src="assets/logos/can.png" alt="Hero Image" style="padding:150px 50px 100px 50px;" />
                     </div>
                     <div class="col-md-6">
-                        <div class="hero-content" >
-                            <h1 class="wow fadeInUp" data-wow-delay="0s">BST
-<br>Business Service Token
+                        <div class="hero-content">
+                            <h1 class="wow fadeInUp" data-wow-delay="0s">CAN
+<br>Content and Ad Network
 </h1>
                             <p class="wow fadeInUp" data-wow-delay="0.2s">
                                 A very NB token for content and AD distribution.
                             </p>
-                            <a class="btn btn-primary btn-action popup wow fadeInUp" data-wow-delay="0.2s" href="index-signup.html">ICO(Buy Token)</a>
+                            <a class="btn btn-primary btn-action popup wow fadeInUp" data-wow-delay="0.2s" href="index-signup.html">Paticipate Now</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +162,7 @@
             <div class="about text-center">
                 <div class="container">
                     <div class="about-content">
-                        <h2 class="wow fadeInUp" data-wow-delay="0.1s">BST is the token designed for advertising services based on the constantly growing Mobipromo system. With the help of BST, the current advertising platform will be gradually transformed into a decentralized advertising system/platform.
+                        <h2 class="wow fadeInUp" data-wow-delay="0.1s">CAN is the token designed for advertising services based on the constantly growing Mobipromo system. With the help of CAN, the current advertising platform will be gradually transformed into a decentralized advertising system/platform.
             </h2>
                         <h3 class="wow fadeInUp" data-wow-delay="0.2s">- James Lau</h3>
                     </div>
@@ -158,10 +171,11 @@
             <div id="features" class="features">
                 <div class="container">
                     <div class="features-inner" style="text-align:center;">
-                      <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="font-size:34px;">The Value Of BST</h1> 
-                        
+
+                      <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="font-size:34px;">The Value Of CAN</h1>
+
                       <div class="features-list" style="display:inline-block;text-align:center;padding-top:30px;">
-                          
+
                           <ul class="wow fadeInUp" data-wow-delay="0.2s">
                               <li>Auto value increasing</li>
                               <li>Advanced advertisement solution</li>
@@ -170,7 +184,8 @@
                               <li>Easy for Extending</li>
                           </ul>
                       </div>
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -178,8 +193,10 @@
                 <div class="container">
                     <h2 style="font-size:34px;line-height:40px;">MobiPromo is being decentralized</h2>
                     <div class="features-list" style="display:inline-block;text-align:center;padding-top:30px;">
-                          
+
+
                           <ul class="wow fadeInUp" data-wow-delay="0.2s">
+
                             <li>What is MobiPromo doing?</li>
                             <ul>
                                 <li>Targeted Advertising</li>
@@ -188,12 +205,12 @@
                             </ul>
                             <li>What will MobiPromo do next?</li>
                             <ul>
-                              <li>Deploy BST into Mobipromo ecosystem</li>
-                              <li>Decentralize Mobipromo system</li>
+                                <li>Deploy CAN into Mobipromo ecosystem</li>
+                                <li>Decentralize Mobipromo system</li>
                             </ul>
-                          </ul>
+                        </ul>
                     </div>
-                    <img src="assets/images/bst_strategy.png" style="width:80%;">
+                    <img src="assets/images/can_strategy.svg" style="width:80%;">
                 </div>
             </div>
             <div class="pitch text-center" id="team">
@@ -201,125 +218,156 @@
                     <div class="pitch-intro">
                         <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">PROJECT TEAM</h1>
                         <!--<p class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">-->
-                        <!--BST Team is a global team.-->
+                        <!--CAN Team is a global team.-->
                         <!--</p>-->
                     </div>
                     <div class="col-md-12">
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_JasonWu.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>Jason Wu</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, CEO, holding a Master degree of Electrical Engineering from Tsing-hua University. He is currently one of the founders in Mobipromo Ltd, a leading WiFi proximity marketing company.He was working in Tsinghua University for researching and developing in internet applications.He was one of the founders of Beijing EEE-times company which was listed on third board stock market in China.</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_JamesLau.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>James Lau</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, CTO. He is a senior Engineer and Software Team Leader.He has worked in IT industry for more than 20 years and has full experienc-es in all fields of software technique. He had led development of many inter-net applications in different areas.He keeps following the current tech trends and now is working on research and development of block chain technology.He has the working experience in Oracle as a principal technical analyst.</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_RichardSze.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>Richard Sze</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, holding a Bachelor of Arts Degree, major in International Businesses (Japanese Studies) from City University of Hong Kong.has over 23 years of experience in sales development and marketing.  He was leading the global sales team in a multinational telecom equipment manufacturer and from scratch, he had successfully gained the trust as well as the businesses more than ten major strategic customers in China and Hong Kong within the period of 1 year and 3 months (2003-2004). These customers include the famous China OEMs in telecommunications such as ZTE, Huawei, Konka and Haier.</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_JoeyNG.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>Joey Ng</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, holding a Master degree of Business Administration from the University of Bradford, UK. He is currently one of the founders and CFO in 3Y5 marketing Ltd(sub company of MobiPromo), a leading and largest WiFi marketing company in Hong Kong. He also worked as CMO in an APP development company in Science Park for 2 years before joining 3Y5 marketing Ltd.Howard Chan (Business Development Director) male, holding a degree from Abilene Texas University, Texas.has over 20 years of experience in sales and marketing, including assisting Ravago (the biggest recycle plastic in the world) to open the market in Thailand, assisting Thai suppliers to import rice to Welcome Supermarket (one of the biggest supermarket chain in Hong Kong) and assisting a petrol catalyst company in China to sell their products to SK Chemical in Korea, PT Polytama in Indonesia, PPT in Thailand etc.</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; margin-top: 25px;animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
-                                
+
+                                <img src="/assets/images/circle_Ola-Johannes-Lind.png" style="width:100%;">
+
                             </div>
                             <div class="pitch-content">
                                 <h1>Ola Johannes Lind</h1>
                             </div>
-                        </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
-                            <div class="pitch-icon">
-                                <i class="ion-cube"></i>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, CMO. Nationality Sweden.He has a degree in management and worked in the United States. He had led the team to conduct Internet and mobile Internet related business in mul-tiple countries and has rich experiences of marketing management.</a>
                             </div>
+                        </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
+                            <div class="pitch-icon">
+                                <img src="/assets/images/circle_WilliamTait.png" style="width:100%;">                            </div>
                             <div class="pitch-content">
                                 <h1>William Tait</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262;">male, Nationality Australian. Worked in Internet media and IT companies in the United States for a long year. He has rich experience on Internet product design and development.</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
-                            <div class="pitch-icon">
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px;float: initial; animation-delay: 0.2s; animation-name: fadeInDown;">
+                            <div class="pitch-icon" style="margin-top: 25px">
                                 <img src="/assets/images/circle_HowardChen.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>Howard Chan</h1>
                             </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">male, holding a degree from Abilene Texas University, Texas.
+                                    has over 20 years of experience in sales and marketing, including assisting Ravago (the biggest recycle plastic in the world) to open the market in Thailand, assisting Thai suppliers to import rice to Welcome Supermarket (one of the biggest supermarket chain in Hong Kong) and assisting a petrol catalyst company in China to sell their products to SK Chemical in Korea, PT Polytama in Indonesia, PPT in Thailand etc.</a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
             <div class="pitch text-center" id="advisor" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));">
-              <div class="container">
-                      <!-- -->
-                        <div class="pitch-intro">
-                            <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">ADVISOR TEAM</h1>
+                <div class="container">
+                    <!-- -->
+                    <div class="pitch-intro">
+                        <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">ADVISOR TEAM</h1>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
+
+                            <div class="pitch-icon">
+                                <img src="/assets/images/circle_DavidTang.png" style="width:100%;">
+                            </div>
+                            <div class="pitch-content">
+                                <h1>David Tang</h1>
+                            </div>
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">David Tang ,Early blockchain participant. Former eBay project manager. Regional Champion of MasterCard Hackathon and competed on behalf of the Asia-Pacific region in the World MasterCard Hackathon Competition. He has been invited to join the team in MasterCard for payment gateway development. Tang is now focusing on blockchain business solution development.serial entrepreneur. Former eBay project manager. Founded MEWS, an online news platform, and acquired by Share Economy Group Ltd (HK1178). Regional Champion of MasterCard Hackathon. He has been invited to join the team in MasterCard for payment gateway development. Tang is now focusing on blockchain business solution development.</a>
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
-                                <div class="pitch-icon">
-                                    <img src="/assets/images/circle_DavidTang.png" style="width:100%;">
-                                </div>
-                                <div class="pitch-content">
-                                    <h1>David Tang</h1>
-                                </div>
-                                <div>
-                                    <a style="color:#646262">David Tang , serial entrepreneur. Former eBay project manager. Founded MEWS, an online news platform, and acquired by Share Economy Group Ltd (HK1178). Regional Champion of MasterCard Hackathon. He has been invited to join the team in MasterCard for payment gateway development. Tang is now focusing on blockchain business solution development.</a>
-                                </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
+
+                            <div class="pitch-icon">
+                                <img src="/assets/images/circle_JohnnyAuYeung.png" style="width:100%;">
                             </div>
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
-                                <div class="pitch-icon">
-                                    <img src="/assets/images/circle_JohnnyAuYeung.png" style="width:100%;">
-                                </div>
-                                <div class="pitch-content">
-                                    <h1>Johnny Au Yeung</h1>
-                                </div>
-                                <div>
-                                    <a style="color:#646262">Johnny Au Yeung, Graduated in Northeastern University with Computer Engineering Major. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum. Has interviewed by largest blockchain media in Taiwan.</a>
-                                </div>
+                            <div class="pitch-content">
+                                <h1>Johnny Au Yeung</h1>
+
                             </div>
-                            <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
-                                <div class="pitch-icon">
-                                    <!-- <img src="/assets/images/circle_JohnnyAuYeung.png" style="width:100%;"> -->
-                                </div>
-                                <div class="pitch-content">
-                                    <h1>Henrii Yu</h1>
-                                </div>
-                                
+                            <div>
+                                <a class="pitch-content-a" style="color:#646262">Johnny Au Yeung,Ethereum developer. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.Graduated in Northeastern University with Computer Engineering Major. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum. Has been interviewed by largest blockchain media in Taiwan.</a>
+
                             </div>
+                        </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
+                            <div class="pitch-icon">
+                                 <img src="/assets/images/circle_Henry-Yu.png" style="width:100%;">
+                            </div>
+                            <div class="pitch-content">
+                                <h1>Henry Yu</h1>
+                            </div>
+                            <div><a class="pitch-content-a" style="color: #646262;">Henry Yu,Practising blockchain lawyer and early Bitcoin adopter. With over 15 years of legal experience in various international law firms and leading investment bank. Founded his own law firm, L&Y Law Office (www.lylawoffice.com), to provide legal services to the blockchain and cryptocurrency communities.Appointed as the Hon. Legal Advisor to the Hong Kong Federation of Invention and Innovation and to the Institute of Financial Technologists of Asia. Member of the Technology Committee of the Hong Kong Law Society.
+                                Graduated in King’s College, University of London (LLB, AKC) and then the University of Hong Kong (PCLL). Has been interviewed by CNBC and other blockchain media.</a></div>
                         </div>
                     </div>
+                </div>
             </div>
             <!-- Subscribe Form -->
             <div class="cta-sub2 no-color" id="roadmap">
                 <div class="container">
-                  <img src="assets/images/cta_bg.png" style="width:100%;">
-                    <!-- <div class="cta-inner" -->
 
-                        <!--<h1 class="wow fadeInUp" data-wow-delay="0s">Thanks for your instresting.</h1>-->
-                        <!--<p class="wow fadeInUp" data-wow-delay="0.2s">-->
-                        <!--Please leave your <br class="hidden-xs"> e-mail address.-->
-                        <!--</p>-->
-                        <!-- <div class="form wow fadeInUp" data-wow-delay="0.3s"> -->
-                        <!--<form id="signup" class="formee" action="assets/php/subscribe.php" method="post">-->
-                        <!--<input name="email" id="email" type="text" /><input class="right inputnew" type="submit" title="Send" value="订阅" />-->
-                        <!--</form>-->
-                        <!--<div id="response"></div>-->
+                  <img src="assets/images/can_roadmap.svg" style="width:100%;">
+
+                    <!-- <div class="cta-inner" -->
+                    <!--<h1 class="wow fadeInUp" data-wow-delay="0s">Thanks for your instresting.</h1>-->
+                    <!--<p class="wow fadeInUp" data-wow-delay="0.2s">-->
+                    <!--Please leave your <br class="hidden-xs"> e-mail address.-->
+                    <!--</p>-->
+                    <!-- <div class="form wow fadeInUp" data-wow-delay="0.3s"> -->
+                    <!--<form id="signup" class="formee" action="assets/php/subscribe.php" method="post">-->
+                    <!--<input name="email" id="email" type="text" /><input class="right inputnew" type="submit" title="Send" value="订阅" />-->
+                    <!--</form>-->
+                    <!--<div id="response"></div>-->
                     <!-- /div-->
                 </div>
             </div>
@@ -328,19 +376,21 @@
         <div class="footer">
             <div class="container">
                 <div class="col-md-6">
-                    <img src="assets/logos/logo_2.png" style="height:30px;" alt="BST" />
+                    <img src="assets/logos/can.png" style="height:30px;" alt="CAN" />
                     <p>
-                        MobiPromo/BST Team
+                        MobiPromo/CAN Team
+
 
                                 <br>
                                   is focusing on information delivering and value exchanging.
                                   <br>
                                   <a href="http://www.mobipromosystem.com">MobiPromo System</a>
-                                
+
+
                     </p>
                     <div class="footer-text">
                         <p>
-                            Copyright © 2017 MobiPromo Hongkong.
+                            Copyright © 2017 MobiPromo Ltd.
                         </p>
                     </div>
                 </div>
@@ -367,31 +417,34 @@
     </div>
     <!-- Wrapper-->
     <!-- Jquery and Js Plugins -->
-    <script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script>
+    <!--script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins.js"></script>
     <script type="text/javascript" src="assets/js/menu.js"></script>
     <script type="text/javascript" src="assets/js/custom.js"></script>
     <script type="text/javascript" src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/jquery.knob.js"></script>
-    <script src="assets/js/jquery.throttle.js"></script>
-    <script src="assets/count-down/countdown.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.throttle.js"></script>
+    <script type="text/javascript" src="assets/count-down/countdown.js"></script>
 </body>
 
 </html>
 <script type="text/javascript">
 $(document).ready(function() {
-    var icoStartDate = new Date(2017,09,10,12);//-10-05 12:00:00');
-    console.log(icoStartDate);
+    var icoStartDate = new Date(2017, 09, 10, 12); //-10-05 12:00:00');
+
     var today = new Date();
+
     var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
-    console.log(toICO);
+
+
     $('#countdown2').ClassyCountdown({
         end: toICO,
         now: '1',
         labels: true,
-        
+
         style: {
             element: "",
             textResponsive: .5,

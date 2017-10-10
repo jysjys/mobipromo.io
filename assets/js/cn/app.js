@@ -13,7 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: '/',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/ico.html',
+                    templateUrl: '/app/views/cn/ico.html',
                     controller: 'IcoController'
                 }
             }
@@ -22,7 +22,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'signup',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signup.html',
+                    templateUrl: '/app/views/cn/signup.html',
                     controller: 'SignUpController'
                 }
             }
@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'signin',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/signin.html',
+                    templateUrl: '/app/views/cn/signin.html',
                     controller: 'LoginController'
                 }
             }
@@ -40,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'ico',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/ico.html',
+                    templateUrl: '/app/views/cn/ico.html',
                     controller: 'IcoController'
                 }
             }
@@ -49,7 +49,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
             url: 'notice',
             views: {
                 'content@': {
-                    templateUrl: 'app/views/notice.html'
+                    templateUrl: '/app/views/cn/notice.html'
                 }
             }
         })
@@ -58,13 +58,13 @@ app.config(function($stateProvider, $urlRouterProvider ) {
 }).config(['$httpProvider', function($httpProvider){
     $httpProvider.interceptors.push("AuthTokenInterceptor");
 }]);
-app.run(['$rootScope', 'HttpBuffer', '$state','MainRemoteResource', 'ULStorageService','$timeout', function($rootScope, HttpBuffer, $state, MainRemoteResource, ULStorageService,$timeout){
+app.run(['$rootScope', 'HttpBuffer', '$state','MainRemoteResource', 'ULStorageService', function($rootScope, HttpBuffer, $state, MainRemoteResource, ULStorageService){
     $rootScope.$on('event:auth-refreshToken', function refreshToken(){
         MainRemoteResource.refreshToken();
     });
     $rootScope.$on('event:auth-loginRequired', function gotoLogin(){
         HttpBuffer.rejectAll();
-        $timeout(function(){$state.go("app.signin");},3000);
+        $state.go("app.signin");
     });
     $rootScope.icoEnv = {
         couldLogin:true,
