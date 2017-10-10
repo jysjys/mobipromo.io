@@ -22,7 +22,7 @@
                         <input type="text" name="formName" placeholder="输入用户名..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-name" ng-model="signUpModel.data.account" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formName.$dirty && myForm.formName.$error.required">请输入账户名称将会作为登录使用</label>
-                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">Please enter at least 6 chars</label>
+                                <label ng-show="myForm.formName.$dirty && !myForm.formName.$error.required && !(signUpModel.data.account && signUpModel.data.account.trim().length > 5 )">请输入至少6位字符</label>
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                         <input type="text" name="formFirstName" placeholder="名..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-first-name" ng-model="signUpModel.data.firstName" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formFirstName.$dirty && myForm.formFirstName.$error.required">请输入名字</label>
-                                <label ng-show="myForm.formFirstName.$dirty && !myForm.formFirstName.$error.required && !(signUpModel.data.firstName && signUpModel.data.firstName.trim().length >= 1 )">Please enter at least 1 chars</label>
+                                <label ng-show="myForm.formFirstName.$dirty && !myForm.formFirstName.$error.required && !(signUpModel.data.firstName && signUpModel.data.firstName.trim().length >= 1 )">请输入至少1位字符</label>
                         </div>
                     </div>
                     
@@ -40,7 +40,7 @@
                         <input type="text" name="formLastName" placeholder="姓..."  style="padding-left:15px;border-radius: 4px;" class="form-name form-control" id="form-last-name" ng-model="signUpModel.data.lastName" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formLastName.$dirty && myForm.formLastName.$error.required">请输入姓</label>
-                                <label ng-show="myForm.formLastName.$dirty && !myForm.formLastName.$error.required && !(signUpModel.data.lastName && signUpModel.data.lastName.trim().length >= 1 )">Please enter at least 1 chars</label>
+                                <label ng-show="myForm.formLastName.$dirty && !myForm.formLastName.$error.required && !(signUpModel.data.lastName && signUpModel.data.lastName.trim().length >= 1 )">请输入至少1位字符</label>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
                         <input type="text" name="formIdCardNumber" placeholder="证件号码..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-id-card-number" ng-model="signUpModel.data.idCardNumber" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formIdCardNumber.$dirty && myForm.formIdCardNumber.$error.required">请输入证件号码</label>
-                                <label ng-show="myForm.formIdCardNumber.$dirty && !myForm.formIdCardNumber.$error.required && !(signUpModel.data.idCardNumber && signUpModel.data.idCardNumber.trim().length > 2 )">Please enter at least 2 chars</label>
+                                <label ng-show="myForm.formIdCardNumber.$dirty && !myForm.formIdCardNumber.$error.required && !(signUpModel.data.idCardNumber && signUpModel.data.idCardNumber.trim().length > 1 )">请输入至少2位字符</label>
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                         <input type="text" name="formPhone" placeholder="电话号码..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.phone" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formPhone.$dirty && myForm.formPhone.$error.required">请输入电话号码</label>
-                                <label ng-show="myForm.formPhone.$dirty && !myForm.formPhone.$error.required && !(signUpModel.data.phone && signUpModel.data.phone.trim().length > 6 )">Please enter at least 6 chars</label>
+                                <label ng-show="myForm.formPhone.$dirty && !myForm.formPhone.$error.required && !(signUpModel.data.phone && signUpModel.data.phone.trim().length > 5 )">请输入至少6位字符</label>
                         </div>
                     </div>    
                     
@@ -89,7 +89,7 @@
                         <input type="password" name="formPassword" placeholder="密码..."  style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signUpModel.data.password" required>
                         <div style="color:red;margin-top:5px;">
                                 <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
-                                <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signUpModel.data.password && signUpModel.data.password.trim().length > 8 )">Please enter at least 9 bits</label>
+                                <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signUpModel.data.password && signUpModel.data.password.trim().length > 8 )">请输入至少9位字符</label>
                         </div>
                     </div>
                     <div class="form-group">

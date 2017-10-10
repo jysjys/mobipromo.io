@@ -99,7 +99,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <!--<% if(!userinfo){ %>-->
-                            <li><a class="page-scroll" href="/cn/index-signup.html">参与ICO</a></li>
+                            <li><a class="page-scroll" href="javascript:void(0)" id="paticipateIcoId" onclick="gotoLogin()">参与ICO</a></li>
                             <!--<% }else{ %>-->
                             <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
                             <!--<% } %>-->
@@ -141,7 +141,7 @@
                             <p class="wow fadeInUp" data-wow-delay="0.2s">
                                 前所未有的内容与广告传播的生态系统媒介.
                             </p>
-                            <a class="btn btn-primary btn-action popup wow fadeInUp" data-wow-delay="0.2s" href="index-signup.html">参与ICO</a>
+                            <a class="btn btn-primary btn-action popup wow fadeInUp" data-wow-delay="0.2s" href="javascript:void(0)" id="paticipateId" onclick="gotoLogin()">参与ICO</a>
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                             </div>
                             <div>
                                 <p class="pitch-content-a" style="color:#646262;">Nationality Australian</p>
-                                <p class="pitch-content-a" style="color:#646262;">Worked in Internet media and IT companies in the United States for a long year. He has rich experience on Internet product design and development.</p>
+                                <p class="pitch-content-a" style="color:#646262;">Worked in Internet media and IT companies in the United States for many years. He has rich experience on Internet product design and development.</p>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px;float: initial; animation-delay: 0.2s; animation-name: fadeInDown;">
@@ -335,10 +335,9 @@
                             </div>
                             <div class="pitch-content">
                                 <h1>Johnny Au Yeung</h1>
-                                <h2>Ethereum developer</h2>
                             </div>
                             <div>
-                                <p class="pitch-content-a" style="color:#646262">Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.</p>
+                                <p class="pitch-content-a" style="color:#646262">Ethereum developer. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.</p>
 <p class="pitch-content-a" style="color:#646262">Graduated in Northeastern University with Computer Engineering Major.</p>
 
                             </div>
@@ -350,7 +349,7 @@
                             <div class="pitch-content">
                                 <h1>Henry Yu</h1>
                             </div>
-                            <div><a class="pitch-content-a" style="color: #646262;">Henry Yu,Practising blockchain lawyer and early Bitcoin adopter. With over 15 years of legal experience in various international law firms and leading investment bank. Founded his own law firm, L&Y Law Office (www.lylawoffice.com), to provide legal services to the blockchain and cryptocurrency communities.Appointed as the Hon. Legal Advisor to the Hong Kong Federation of Invention and Innovation and to the Institute of Financial Technologists of Asia. Member of the Technology Committee of the Hong Kong Law Society.
+                            <div><a class="pitch-content-a" style="color: #646262;">Henry Yu, Practising blockchain lawyer and early Bitcoin adopter. With over 15 years of legal experience in various international law firms and leading investment bank. Founded his own law firm, L&Y Law Office (www.lylawoffice.com), to provide legal services to the blockchain and cryptocurrency communities. Appointed as the Hon. Legal Advisor to the Hong Kong Federation of Invention and Innovation and to the Institute of Financial Technologists of Asia. Member of the Technology Committee of the Hong Kong Law Society.
                                 Graduated in King’s College, University of London (LLB, AKC) and then the University of Hong Kong (PCLL). Has been interviewed by CNBC and other blockchain media.</a></div>
                         </div>
                     </div>
@@ -445,6 +444,18 @@
 
 </html>
 <script type="text/javascript">
+function gotoLogin(){
+    var icoStartDate = new Date("10 11,2017 12:00:00"); //"month dd,yyyy hh:mm:ss"
+        var today = new Date();
+        var surplusTime = today.getTime()-icoStartDate.getTime();
+        if(surplusTime>0){
+            var aPaticipate = document.getElementById("paticipateId");  
+            //指定<a>标签的href  
+            aPaticipate.href = "index-signup.html";
+            var aPaticipateIco = document.getElementById("paticipateIcoId");   
+            aPaticipateIco.href = "index-signup.html";
+        }
+}
 $(document).ready(function() {
     var icoStartDate = new Date(2017,09,11,12);//-10-05 12:00:00');
     var today = new Date();

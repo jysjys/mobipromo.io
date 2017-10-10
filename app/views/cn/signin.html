@@ -22,12 +22,12 @@
                             <label class="sr-only" for="form-phone">密码</label>
 
                             <input type="password" name="formPassword" placeholder="请输入密码..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
-                            <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">
+                            <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">
                             <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">请输入密码</label>
-                            <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">请输入至少9个字符</label>
+                            <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">请输入至少9个字符</label>
                             </div>
                         </div>
-                        <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 5 )">登录!</button>
+                        <button class="btn" ng-click="signIn()" ng-disabled="!(signinModel.data.account && signinModel.data.account.trim().length> 5) || !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">登录!</button>
                         <span style="float: right; padding-top: 15px;font-size: 12px;">还没注册? <a ng-click="gotoSignUp()" style="color: red;cursor:pointer; " >注册</a></span>
                         <div>
                             <label style="color:red;margin-top:5px;" ng-show="signinModel.data.isShowLoginErr">登录失败，请重试</label>
