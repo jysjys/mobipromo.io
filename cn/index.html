@@ -99,7 +99,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <!--<% if(!userinfo){ %>-->
-                            <li><a class="page-scroll" href="/cn/index-signup.html">登录/注册</a></li>
+                            <li><a class="page-scroll" href="/cn/index-signup.html">参与ICO</a></li>
                             <!--<% }else{ %>-->
                             <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
                             <!--<% } %>-->
@@ -116,7 +116,7 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-        <div class="countdown-section can-bg"  id="ico">
+        <div class="countdown-section can-bg-light"  id="ico">
               <div style="text-align: center;font-size: 34px;margin-top: 100px;padding-top:100px;margin-bottom:50px;">距离CAN ICO启动还有 </div>
               <div id="countdown2" class="ClassyCountdown"></div>
         </div>
@@ -288,7 +288,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pitch text-center" id="advisor" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));">
+            <div class="pitch text-center can-bg-light" id="advisor">
                 <div class="container">
                     <!-- -->
                     <div class="pitch-intro">
@@ -352,6 +352,18 @@
                         <!--<div id="response"></div>-->
                     <!-- /div-->
                 </div>
+            </div>
+            <div class="pitch text-center can-bg">
+                <div class="pitch-intro">
+                        <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">加入我们的社区</h1>
+                </div>
+                <div class="socials">
+                        <a href="http://facebook.com/can_mp" target="_blank" class="sns fb"></a>
+                        <a href="http://twitter.com/can_mp" target="_blank" class="sns tw"></a>
+                        <a href="http://linkedin.com/company/can_mp" target="_blank" class="sns li"></a>
+                        <a href="http://t.me/can_mp" target="_blank" class="sns tg"></a>
+                        <a href="http://can_mp.slack.com" target="_blank" class="sns sk"></a>
+                    </div>
             </div>
         </div>
         <!-- Footer Section -->
@@ -417,11 +429,10 @@
 </html>
 <script type="text/javascript">
 $(document).ready(function() {
-    var icoStartDate = new Date(2017,09,10,12);//-10-05 12:00:00');
-    console.log(icoStartDate);
+    var icoStartDate = new Date(2017,09,10,18);//-10-05 12:00:00');
     var today = new Date();
     var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
-    console.log(toICO);
+
     $('#countdown2').ClassyCountdown({
         end: toICO,
         now: '1',
