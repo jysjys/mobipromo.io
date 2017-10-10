@@ -797,7 +797,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
             accountType:"email",
             firstName:signUpData.firstName,
             lastName:signUpData.lastName,
-            country:signUpData.country,
+            country:signUpData.country.country,
             idCardNumber:signUpData.idCardNumber,
             phone:signUpData.phone
         };
