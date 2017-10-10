@@ -847,9 +847,8 @@ textarea.form-control {
     vertical-align: middle;
     background: #F8F8F8;
     border: 1px solid #DDDDDD;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-size: 14px;
     line-height: 50px;
     /*color: #888888;*/
     color:#333333;
@@ -878,7 +877,6 @@ textarea:focus,
 textarea.form-control:focus {
     outline: 0;
     background: #FFFFFF;
-    border: 1px solid #111;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
