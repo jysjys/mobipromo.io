@@ -1417,7 +1417,7 @@ button.btn.active:focus {
 /* --------------- Feature Sub ------------ */
 
 .product .feature-sub {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));
+    /*background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -2425,3 +2425,46 @@ a {
     display: block;
     text-align: justify;
 }
+
+
+
+.sns {
+    background-color: white;
+    width: 32px;
+    height: 32px;
+    transition: all .2s linear 0s;
+    display: inline-block;
+    border-radius: 16px;
+    margin-right: 7px;
+}
+.fb {
+        background-image: url(../images/facebook_w.png);
+}
+
+.tw {
+    background-image: url(../images/twitter_w.png);
+}
+
+.li {
+    background-image: url(../images/ln_icon_w.png);
+}
+
+.tg {
+    background-image: url(../images/telegram_w.png);
+}
+
+.sk {
+    background-image: url(../images/slack_w.png);
+}
+
+.can-bg{
+    background: rgba(146,127,84,0.55);
+}
+
+.can-bg{
+    background: rgba(146,127,84,0.3);
+}
+    
+.can-bg-old{
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(146, 127, 84, 0.99));
+}    
