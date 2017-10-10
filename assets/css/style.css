@@ -2242,7 +2242,7 @@ button.btn.active:focus {
         font-size: 14px;
     }
     .about-content h2 {
-        font-size: 38px;
+        font-size: 24px;
     }
     .software .hero-content h1 {
         font-size: 42px;
@@ -2423,7 +2423,9 @@ a {
 }
 .pitch-content-a{
     display: block;
-    text-align: justify;
+    /*text-align: justify;*/
+    text-align: left;
+    text-indent: 1.2em;
 }
 
 
@@ -2461,7 +2463,7 @@ a {
     background: rgba(146,127,84,0.55);
 }
 
-.can-bg{
+.can-bg-light{
     background: rgba(146,127,84,0.3);
 }
     
