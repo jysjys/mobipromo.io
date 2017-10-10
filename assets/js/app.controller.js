@@ -821,7 +821,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
         isOk = isOk && model.data.email; //email ok
         isOk = isOk && model.data.password && model.data.password.trim().length > 8;//&& model.data.password == model.data.confirm;// password ok;
         
-        isOk = isOk && model.data.country&&model.data.country.country!='中国香港'&&model.data.country.country!='中国'&&model.data.country.country!='United States';
+        //isOk = isOk && model.data.country&&model.data.country.country!='中国香港'&&model.data.country.country!='中国'&&model.data.country.country!='United States';
+        isOk = isOk && model.data.country&&model.data.country.country!='中国'&&model.data.country.country!='United States';
         isOk = isOk && model.data.agree == true;
         
         return isOk;
