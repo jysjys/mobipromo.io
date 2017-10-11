@@ -115,7 +115,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <!--<% if(!userinfo){ %>-->
-                            <li><a class="page-scroll participate blink" href="javascript:void(0)" id="paticipateIcoId" onclick="gotoLogin()">Participate ICO</a></li>
+                            <li><a class="page-scroll participate blink" href="/index-signup.html" id="paticipateIcoId">Participate ICO</a></li>
                             <!--<% }else{ %>-->
                             <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
                             <!--<% } %>-->
@@ -132,6 +132,25 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
+        <div class="countdown-section can-bg-light" id="ico" style="margin-top:100px;padding-top:100px;padding-bottom:100px;">
+            <!-- /.container-fluid -->
+            <section class="container">
+                <div style="text-align: center;font-size: 25px;padding-bottom: 20px " ;>CAN ICO Progress</div>
+                <input type="radio" class="radio" name="progress" value="five" id="five">
+                <label for="five" class="label">5%</label>
+                <input type="radio" class="radio" name="progress" value="twentyfive" id="twentyfive">
+                <label for="twentyfive" class="label">25%</label>
+                <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
+                <label for="fifty" class="label">50%</label>
+                <input type="radio" class="radio" name="progress" value="seventyfive" id="seventyfive">
+                <label for="seventyfive" class="label">75%</label>
+                <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
+                <label for="onehundred" class="label">100%</label>
+                <div class="progress" style="height: 12px">
+                    <div id='icostatus' class="progress-bar"></div>
+                </div>
+            </section>
+        </div>
         <div class="countdown-section can-bg-light" id="ico">
             <div style="text-align: center;font-size: 34px;margin-top: 100px;padding-top:100px;margin-bottom:50px;">CAN ICO will start in</div>
             <div id="countdown2" class="ClassyCountdown"></div>
@@ -469,20 +488,9 @@
 
 </html>
 <script type="text/javascript">
-function gotoLogin(){
-    var icoStartDate = new Date("10 11,2017 12:00:00"); //"month dd,yyyy hh:mm:ss"
-        var today = new Date();
-        var surplusTime = today.getTime()-icoStartDate.getTime();
-        if(surplusTime>0){
-            var aPaticipate = document.getElementById("paticipateId");  
-            //指定<a>标签的href  
-            aPaticipate.href = "index-signup.html";
-            var aPaticipateIco = document.getElementById("paticipateIcoId");   
-            aPaticipateIco.href = "index-signup.html";
-        }
-}
+
 $(document).ready(function() {
-    var icoStartDate = new Date(2017, 09, 11, 12); //-10-05 12:00:00');
+    var icoStartDate = new Date(2017, 09, 25, 12); //-10-05 12:00:00');
 
     var today = new Date();
 
@@ -534,6 +542,10 @@ $(document).ready(function() {
         onEndCallback: function() {
             console.log("Time out!");
         }
+    });
+    $.get('/icostatus').then(function(data){
+        var data=JSON.parse(data);
+        $('#icostatus').css('width',data.status);
     });
 });
 </script>

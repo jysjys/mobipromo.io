@@ -30,7 +30,7 @@
     <style>
     .ClassyCountdown {
         margin: 0 auto 30px auto;
-        max-width: 800px;
+        max-width: 400px;
         width: calc(100%);
         padding: 30px;
         margin-bottom: 0;
@@ -38,7 +38,7 @@
     }
 
     #countdown2 {
-        background: rgb(255,255,255,0)
+        background: rgb(255, 255, 255, 0)
     }
 
     .contribute {
@@ -99,7 +99,7 @@
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <!--<% if(!userinfo){ %>-->
-                            <li><a class="page-scroll" href="javascript:void(0)" id="paticipateIcoId" onclick="gotoLogin()">参与ICO</a></li>
+                            <li><a class="page-scroll" href="/cn/index-signup.html">参与ICO</a></li>
                             <!--<% }else{ %>-->
                             <!--<li><a class="page-scroll" href="./index3.html">Logout</a></li>-->
                             <!--<% } %>-->
@@ -116,25 +116,44 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-        <div class="countdown-section can-bg-light"  id="ico">
-              <div style="text-align: center;font-size: 34px;margin-top: 100px;padding-top:100px;margin-bottom:50px;">距离CAN ICO启动还有 </div>
-              <div id="countdown2" class="ClassyCountdown"></div>
+        <!-- /.container-fluid -->
+        <div class="countdown-section can-bg-light" id="ico" style="margin-top:100px;padding-top:50px;">
+            <!-- /.container-fluid -->
+            <section class="container">
+                <div style="text-align: center;font-size: 25px;padding-bottom: 20px " ;>CAN ICO 进度</div>
+                <input type="radio" class="radio" name="progress" value="five" id="five">
+                <label for="five" class="label">5%</label>
+                <input type="radio" class="radio" name="progress" value="twentyfive" id="twentyfive">
+                <label for="twentyfive" class="label">25%</label>
+                <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
+                <label for="fifty" class="label">50%</label>
+                <input type="radio" class="radio" name="progress" value="seventyfive" id="seventyfive">
+                <label for="seventyfive" class="label">75%</label>
+                <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
+                <label for="onehundred" class="label">100%</label>
+                <div class="progress" style="height: 12px">
+                    <div id='icostatus' class="progress-bar"></div>
+                </div>
+            </section>
+            <div class="countdown-section" id="ico">
+                <div style="text-align: center;font-size: 18px;margin-top:20px;">距离CAN ICO结束还有 </div>
+                <div id="countdown2" class="ClassyCountdown"></div>
+            </div>
+            <div class="text-center" style="padding-bottom:20px;">
+                <h2>CAN: 1ETH=8000CAN 1BTC=14000CAN</h2>
+            </div>
         </div>
-
         <!--<div style="text-align: center;font-size: 25px";>Token sale ends in</div>-->
         <div class="main product" id="main">
             <!-- Count down-->
-            
-
             <!-- Main Section-->
-
             <div style="padding: 50px 0 100px 0;">
                 <div class="container nopadding">
                     <div class="col-md-6">
                         <img class="img-responsive wow fadeIn" src="/assets/logos/can.png" alt="Hero Image" style="padding:150px 50px 100px 50px;" />
                     </div>
                     <div class="col-md-6">
-                        <div class="hero-content" >
+                        <div class="hero-content">
                             <h1 class="wow fadeInUp" data-wow-delay="0s">CAN
 <br>Content and Ad Network
 </h1>
@@ -158,19 +177,16 @@
             <div id="features" class="features">
                 <div class="container">
                     <div class="features-inner" style="text-align:center;">
-                      <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="font-size:34px;">CAN价值</h1> 
-                        
-                      <div class="features-list" style="display:inline-block;text-align:center;padding-top:30px;">
-                          
-                          <ul class="wow fadeInUp" data-wow-delay="0.2s">
-                              <li>自增值</li>
-                              <li>高级广告解决方案</li>
-                              <li>易跟踪</li>
-                              <li>易部署</li>
-                              <li>易扩展</li>
-                          </ul>
-                      </div>
-                        
+                        <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="font-size:34px;">CAN价值</h1>
+                        <div class="features-list" style="display:inline-block;text-align:center;padding-top:30px;">
+                            <ul class="wow fadeInUp" data-wow-delay="0.2s">
+                                <li>自增值</li>
+                                <li>高级广告解决方案</li>
+                                <li>易跟踪</li>
+                                <li>易部署</li>
+                                <li>易扩展</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -178,8 +194,7 @@
                 <div class="container">
                     <h2 style="font-size:34px;line-height:40px;">MobiPromo去中心化路程</h2>
                     <div class="features-list" style="display:inline-block;text-align:center;padding-top:30px;">
-                          
-                          <ul class="wow fadeInUp" data-wow-delay="0.2s">
+                        <ul class="wow fadeInUp" data-wow-delay="0.2s">
                             <li>MobiPromo的专业</li>
                             <ul>
                                 <li>精准广告</li>
@@ -188,16 +203,14 @@
                             </ul>
                             <li>MobiPromo的目标</li>
                             <ul>
-                              <li>导入CAN到Mobipromo生态</li>
-                              <li>去中心化的MobiPromo系统</li>
+                                <li>导入CAN到Mobipromo生态</li>
+                                <li>去中心化的MobiPromo系统</li>
                             </ul>
-                          </ul>
+                        </ul>
                     </div>
                     <img src="/assets/images/can_strategy.svg" style="width:80%;">
                 </div>
             </div>
-            
-
             <div class="pitch text-center " id="team">
                 <div class="container">
                     <div class="pitch-intro">
@@ -218,9 +231,10 @@
                             <div>
                                 <p class="pitch-content-a" style="color:#646262">
                                     Holding a Master degree of Electrical Engineering from Tsinghua University. He is currently one of the founders in MobiPromo Ltd, a leading WiFi proximity marketing company.</p>
-<p class="pitch-content-a" style="color:#646262">He was working in Tsinghua University for researching and developing in internet applications.<p>
-<p class="pitch-content-a" style="color:#646262">He was one of the founders of Beijing EEE-times company which was listed on third board stock market in China.</p>
-                                </a>
+                                <p class="pitch-content-a" style="color:#646262">He was working in Tsinghua University for researching and developing in internet applications.
+                                    <p>
+                                        <p class="pitch-content-a" style="color:#646262">He was one of the founders of Beijing EEE-times company which was listed on third board stock market in China.</p>
+                                        </a>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
@@ -233,9 +247,9 @@
                             </div>
                             <div>
                                 <p class="pitch-content-a" style="color:#646262">He is a senior Engineer and Software Team Leader.</p>
-<p class="pitch-content-a" style="color:#646262">He has worked in IT industry for more than 20 years and has full experiences in all fields of software technique. He had led development of many internet applications in different areas.</p>
-<p class="pitch-content-a" style="color:#646262">He keeps following the current tech trends and now is working on research and development of block chain technology.</p>
-<p class="pitch-content-a" style="color:#646262">He has the working experience in Oracle as a principal technical analyst.</p>
+                                <p class="pitch-content-a" style="color:#646262">He has worked in IT industry for more than 20 years and has full experiences in all fields of software technique. He had led development of many internet applications in different areas.</p>
+                                <p class="pitch-content-a" style="color:#646262">He keeps following the current tech trends and now is working on research and development of block chain technology.</p>
+                                <p class="pitch-content-a" style="color:#646262">He has the working experience in Oracle as a principal technical analyst.</p>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
@@ -265,9 +279,7 @@
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; margin-top: 25px;animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
-
                                 <img src="/assets/images/circle_Ola-Johannes-Lind.png" style="width:100%;">
-
                             </div>
                             <div class="pitch-content">
                                 <h1>Ola Johannes Lind</h1>
@@ -280,7 +292,7 @@
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
-                                <img src="/assets/images/circle_WilliamTait.png" style="width:100%;">                            </div>
+                                <img src="/assets/images/circle_WilliamTait.png" style="width:100%;"> </div>
                             <div class="pitch-content">
                                 <h1>William Morris Tait</h1>
                                 <h2>Product Director</h2>
@@ -299,11 +311,11 @@
                                 <h2>Business Development Director</h2>
                             </div>
                             <div>
-                                <p class="pitch-content-a" style="color:#646262">Holding a degree from Abilene Texas University, Texas.<p>
-<p class="pitch-content-a" style="color:#646262">Has over 20 years of experience in sales and marketing, including assisting Ravago (the biggest recycle plastic in the world) to open the market in Thailand, assisting Thai suppliers to import rice to Welcome Supermarket (one of the biggest supermarket chain in Hong Kong) and assisting a petrol catalyst company in China to sell their products to SK Chemical in Korea, PT Polytama in Indonesia, PPT in Thailand etc.</p>
+                                <p class="pitch-content-a" style="color:#646262">Holding a degree from Abilene Texas University, Texas.
+                                    <p>
+                                        <p class="pitch-content-a" style="color:#646262">Has over 20 years of experience in sales and marketing, including assisting Ravago (the biggest recycle plastic in the world) to open the market in Thailand, assisting Thai suppliers to import rice to Welcome Supermarket (one of the biggest supermarket chain in Hong Kong) and assisting a petrol catalyst company in China to sell their products to SK Chemical in Korea, PT Polytama in Indonesia, PPT in Thailand etc.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -314,9 +326,7 @@
                         <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">ADVISOR TEAM</h1>
                     </div>
                     <div class="col-md-12">
-
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
-
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_DavidTang.png" style="width:100%;">
                             </div>
@@ -329,7 +339,6 @@
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
-
                             <div class="pitch-icon">
                                 <img src="/assets/images/circle_JohnnyAuYeung.png" style="width:100%;">
                             </div>
@@ -338,13 +347,12 @@
                             </div>
                             <div>
                                 <p class="pitch-content-a" style="color:#646262">Ethereum developer. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.</p>
-<p class="pitch-content-a" style="color:#646262">Graduated in Northeastern University with Computer Engineering Major.</p>
-
+                                <p class="pitch-content-a" style="color:#646262">Graduated in Northeastern University with Computer Engineering Major.</p>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible;margin-top: 25px; animation-delay: 0.2s; animation-name: fadeInDown;">
                             <div class="pitch-icon">
-                                 <img src="/assets/images/circle_Henry-Yu.png" style="width:100%;">
+                                <img src="/assets/images/circle_Henry-Yu.png" style="width:100%;">
                             </div>
                             <div class="pitch-content">
                                 <h1>Henry Yu</h1>
@@ -355,36 +363,32 @@
                     </div>
                 </div>
             </div>
-
             <!-- Subscribe Form -->
             <div class="cta-sub2 no-color" id="roadmap">
                 <div class="container">
-
-                  <img src="/assets/images/can_roadmap.svg" style="width:100%;">
-
+                    <img src="/assets/images/can_roadmap.svg" style="width:100%;">
                     <!-- <div class="cta-inner" -->
-
-                        <!--<h1 class="wow fadeInUp" data-wow-delay="0s">Thanks for your instresting.</h1>-->
-                        <!--<p class="wow fadeInUp" data-wow-delay="0.2s">-->
-                        <!--Please leave your <br class="hidden-xs"> e-mail address.-->
-                        <!--</p>-->
-                        <!-- <div class="form wow fadeInUp" data-wow-delay="0.3s"> -->
-                        <!--<form id="signup" class="formee" action="assets/php/subscribe.php" method="post">-->
-                        <!--<input name="email" id="email" type="text" /><input class="right inputnew" type="submit" title="Send" value="订阅" />-->
-                        <!--</form>-->
-                        <!--<div id="response"></div>-->
+                    <!--<h1 class="wow fadeInUp" data-wow-delay="0s">Thanks for your instresting.</h1>-->
+                    <!--<p class="wow fadeInUp" data-wow-delay="0.2s">-->
+                    <!--Please leave your <br class="hidden-xs"> e-mail address.-->
+                    <!--</p>-->
+                    <!-- <div class="form wow fadeInUp" data-wow-delay="0.3s"> -->
+                    <!--<form id="signup" class="formee" action="assets/php/subscribe.php" method="post">-->
+                    <!--<input name="email" id="email" type="text" /><input class="right inputnew" type="submit" title="Send" value="订阅" />-->
+                    <!--</form>-->
+                    <!--<div id="response"></div>-->
                     <!-- /div-->
                 </div>
             </div>
             <div class="pitch text-center can-bg">
                 <div class="pitch-intro">
-                        <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">加入我们的社区</h1>
+                    <h1 class="wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">加入我们的社区</h1>
                 </div>
                 <div class="socials">
-                        <a href="https://www.facebook.com/canteam.hk/" target="_blank" class="sns fb"></a>
-                        <a href="https://twitter.com/CANteam_" target="_blank" class="sns tw"></a>
-                        <a href="https://t.me/CANteam" target="_blank" class="sns tg"></a>
-                        <a href="https://canteamworkspace.slack.com/" target="_blank" class="sns sk"></a>
+                    <a href="https://www.facebook.com/canteam.hk/" target="_blank" class="sns fb"></a>
+                    <a href="https://twitter.com/CANteam_" target="_blank" class="sns tw"></a>
+                    <a href="https://t.me/CANteam" target="_blank" class="sns tg"></a>
+                    <a href="https://canteamworkspace.slack.com/" target="_blank" class="sns sk"></a>
                 </div>
             </div>
         </div>
@@ -395,12 +399,9 @@
                     <img src="/assets/logos/can.png" style="height:30px;" alt="CAN" />
                     <p>
                         MobiPromo/CAN 团队
-
-                                <br>
-                                  专注于信息交付和价值交换.
-                                  <br>
-                                  <a href="http://www.mobipromosystem.com">MobiPromo 系统</a>
-                                
+                        <br> 专注于信息交付和价值交换.
+                        <br>
+                        <a href="http://www.mobipromosystem.com">MobiPromo 系统</a>
                     </p>
                     <div class="footer-text">
                         <p>
@@ -444,36 +445,24 @@
 
 </html>
 <script type="text/javascript">
-function gotoLogin(){
-    var icoStartDate = new Date("10 11,2017 12:00:00"); //"month dd,yyyy hh:mm:ss"
-        var today = new Date();
-        var surplusTime = today.getTime()-icoStartDate.getTime();
-        if(surplusTime>0){
-            var aPaticipate = document.getElementById("paticipateId");  
-            //指定<a>标签的href  
-            aPaticipate.href = "index-signup.html";
-            var aPaticipateIco = document.getElementById("paticipateIcoId");   
-            aPaticipateIco.href = "index-signup.html";
-        }
-}
 $(document).ready(function() {
-    var icoStartDate = new Date(2017,09,11,12);//-10-05 12:00:00');
+    var icoStartDate = new Date(2017, 09, 25, 12); //-10-05 12:00:00');
     var today = new Date();
-    var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+    var toICO = Math.trunc((icoStartDate.getTime() - today.getTime()) / 1000);
 
     $('#countdown2').ClassyCountdown({
         end: toICO,
         now: '1',
         labels: true,
         labelsOptions: {
-                lang: {
-                    days: '天',
-                    hours: '小时',
-                    minutes: '分钟',
-                    seconds: '秒'
-                },
-                style: 'font-size: 0.5em;'
+            lang: {
+                days: '天',
+                hours: '小时',
+                minutes: '分钟',
+                seconds: '秒'
             },
+            style: 'font-size: 0.5em;'
+        },
         style: {
             element: "",
             textResponsive: .5,
@@ -514,6 +503,10 @@ $(document).ready(function() {
         onEndCallback: function() {
             console.log("Time out!");
         }
+    });
+    $.get('/icostatus').then(function(data) {
+        var data = JSON.parse(data);
+        $('#icostatus').css('width', data.status);
     });
 });
 </script>
