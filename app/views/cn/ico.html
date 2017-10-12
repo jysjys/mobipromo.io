@@ -8,7 +8,7 @@
 <div class="pitch text-center" ng-show="authenticated">
     <div class="container">
         <div class="pitch-intro">
-            <h1 class="wow fadeInDown" data-wow-delay="0.2s">ETH/BTC address is as follows：</h1>
+            <h1 class="wow fadeInDown" data-wow-delay="0.2s">ETH/BTC 地址如下：</h1>
         </div>
         <div class="col-md-16">
             <div class="col-md-6 wow fadeInDown" data-wow-delay="0.2s">
@@ -18,10 +18,10 @@
                 <div class="pitch-content">
                     <h1> ETH </h1>
                     <p>
-                        your eth address is：{{icoModel.data.eth.bankAddress}}
+                        您的以太坊地址：{{icoModel.data.eth.bankAddress}}
                     </p>
                     <a>
-                        your eth amount is：{{icoModel.data.eth.remain}}
+                        您的以太坊数量：{{icoModel.data.eth.remain}}
                     </a>
                 </div>
             </div>
@@ -33,16 +33,19 @@
                 <div class="pitch-content">
                     <h1> BTC </h1>
                     <p>
-                        your btc address is：{{icoModel.data.btc.bankAddress}}
+                        您的BTC地址：{{icoModel.data.btc.bankAddress}}
                     </p>
                     <a>
-                        your btc amount is：{{icoModel.data.btc.remain}}
+                        您的BTC数量：{{icoModel.data.btc.remain}}
                     </a>
                 </div>
             </div>
         </div>
         <div class="pitch-intro">
-                <h2 class="wow fadeInDown" data-wow-delay="0.2s">The total amount of converted CAN coins is：{{icoModel.data.ico.acc.amount}}</h2>
-        </div>  
+                <h2 class="wow fadeInDown" data-wow-delay="0.2s">CAN总量：{{icoModel.data.ico.acc.amount}}</h2>
+        </div>
+        <div class="pitch-intro">
+            <button class="btn btn-action wow fadeInUp" ng-click="logout()">退出登录</button>
+        </div>
     </div>
 </div>

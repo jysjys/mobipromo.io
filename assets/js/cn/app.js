@@ -58,13 +58,13 @@ app.config(function($stateProvider, $urlRouterProvider ) {
 }).config(['$httpProvider', function($httpProvider){
     $httpProvider.interceptors.push("AuthTokenInterceptor");
 }]);
-app.run(['$rootScope', 'HttpBuffer', '$state','MainRemoteResource', 'ULStorageService', function($rootScope, HttpBuffer, $state, MainRemoteResource, ULStorageService){
+app.run(['$rootScope', 'HttpBuffer', '$state','MainRemoteResource', 'ULStorageService', '$timeout',function($rootScope, HttpBuffer, $state, MainRemoteResource, ULStorageService,$timeout){
     $rootScope.$on('event:auth-refreshToken', function refreshToken(){
         MainRemoteResource.refreshToken();
     });
     $rootScope.$on('event:auth-loginRequired', function gotoLogin(){
         HttpBuffer.rejectAll();
-        $state.go("app.signin");
+        $timeout(function(){$state.go("app.signin");},3000);
     });
     $rootScope.icoEnv = {
         couldLogin:true,
