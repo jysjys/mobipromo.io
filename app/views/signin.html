@@ -19,9 +19,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="form-phone">Password</label>
+                            <label class="sr-only" for="form-password">Password</label>
 
-                            <input type="password" name="formPassword" placeholder="Password..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-phone" ng-model="signinModel.data.password" required>
+                            <input type="password" name="formPassword" placeholder="Password..." style="padding-left:15px;border-radius: 4px;" class="form-phone form-control" id="form-password" ng-model="signinModel.data.password" required>
                             <div style="color:red;margin-top:5px;" ng-show="(myForm.formPassword.$dirty && myForm.formPassword.$invalid) || !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">
                             <label ng-show="myForm.formPassword.$dirty && myForm.formPassword.$error.required">Please enter your password</label>
                             <label ng-show="myForm.formPassword.$dirty && !myForm.formPassword.$error.required && !(signinModel.data.password && signinModel.data.password.trim().length > 8 )">Please enter at least 9 bits</label>
