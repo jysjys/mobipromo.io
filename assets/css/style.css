@@ -2458,11 +2458,13 @@ a {
 }
 
 .can-bg{
-    background: rgba(146,127,84,0.55);
+    /*background: rgba(146,127,84,0.55);*/
+    background: rgb(119, 203, 253);
 }
 
 .can-bg-light{
-    background: rgba(146,127,84,0.3);
+    /*background: rgba(146,127,84,0.3);*/
+    background: rgb(119, 203, 253);
 }
     
 .can-bg-old{
