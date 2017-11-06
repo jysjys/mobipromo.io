@@ -9,6 +9,21 @@ mobi.service("MainRemoteResource",["$resource", "$http",'ULStorageService', '$q'
             resetPassword: { method:"PUT", params:{accountId:-1}, isArray:false },
             getAccountIco:{ url:'/promo/authed/account/ico/process', method:"GET", isArray:false}
         }),
+        uploadCanAddress:function(candata){
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+            $http.post('/promo/authed/account/ico/canaddress', candata, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            }).then(function (response) {
+                deferred.resolve(response);
+            }).catch(function(error){
+                deferred.reject(error);
+            });
+            return promise;
+        },
         refreshToken: function(){
             var token = ULStorageService.getToken();
             var deferred = $q.defer();

@@ -830,8 +830,11 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
 }]).controller("ContentController", ["$scope", function($scope) {
 }]).controller("IcoController", ["$scope", "MainRemoteResource", "$state","$timeout", function($scope, MainRemoteResource, $state,$timeout) {
     $scope.authenticated=false;
+    $scope.isshowSubmit = 0;
     $scope.icoModel = {
-        data:{},
+        data:{
+          receiveCanAddress:''
+        },
         display:{
         },
         action:{
@@ -842,10 +845,10 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     model.action.getAccountIcoProcess = function getAccountIcoProcess(){
         MainRemoteResource.accountResource.getAccountIco().$promise.then(function(success){
             $scope.authenticated = true;
-            var accountIco = success.data;
+            var icobankdata = success.data.bankDate;
             var ico = {};
-            for(var index = 0; index < accountIco.length; ++index){
-                var icoItem = accountIco[index];
+            for(var index = 0; index < icobankdata.length; ++index){
+                var icoItem = icobankdata[index];
                 switch (icoItem.bankType) {
                     case 'ETH':
                     ico.eth = icoItem;
@@ -857,6 +860,12 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
                     ico.acc = icoItem;
                     break;
                 }
+            }
+            if(typeof(success.data.receiveCanAddress)!="undefined" && success.data.receiveCanAddress!=null){
+              ico.receiveCanAddress = success.data.receiveCanAddress+'';
+              $scope.isshowSubmit++;
+            }else{
+              $scope.isshowSubmit = 0;
             }
             model.data = ico;
             // alert(model.data.btc.bankAddress);
@@ -871,6 +880,22 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     $scope.logout  = function(){
         MainRemoteResource.logout();
         $state.go('app.signin');
+    }
+    $scope.submitAddress  = function(){
+      var candata = {
+        canAddress:$scope.icoModel.data.receiveCanAddress
+      };
+      MainRemoteResource.uploadCanAddress(candata).then(function(result){
+          $scope.isshowSubmit++;
+          alert("update success！");  
+      }).catch(function(error){
+            console.log(error);
+            var gotoSignIn= function(){console.log('goto');$state.go('app.signin');}
+            $timeout(gotoSignIn,3000);
+      })
+    }
+    $scope.updateAddress  = function(){
+      $scope.isshowSubmit = 0;
     }
 
 }]).controller("LoginController", ["$scope", "$rootScope", "MainRemoteResource", "$state","md5", function($scope, $rootScope, MainRemoteResource, $state, md5){

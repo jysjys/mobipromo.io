@@ -44,8 +44,20 @@
         <div class="pitch-intro">
                 <h2 class="wow fadeInDown" data-wow-delay="0.2s">CAN总量：{{icoModel.data.ico.acc.amount}}</h2>
         </div>
-        <div class="pitch-intro">
-            <button class="btn btn-action wow fadeInUp" ng-click="logout()">退出登录</button>
+        <div class="pitch-content" style="width:100%;Margin:20px;border:1px solid #000">
+            <form style="padding-top:20px">
+                请输入您的CAN收币地址:
+                <input  style="width:50%;text-align:center" ng-disabled="isshowSubmit > 0" type="text" ng-model="icoModel.data.receiveCanAddress">
+            </form>
+            <label style="color:red;margin-top:5px;" ng-show="icoModel.data.receiveCanAddress.length != 42">CAN地址错误</label>
+            <p style="padding-top:20px">你的CAN地址是: {{icoModel.data.receiveCanAddress}}</p>
+            <div class="pitch-intro">
+                <button  ng-show="isshowSubmit == 0" class="btn btn-action wow fadeInUp"  style="padding-top:20px" ng-click="submitAddress()">提交地址</button>
+                <button  ng-show="isshowSubmit > 0" class="btn btn-action wow fadeInUp"  style="padding-top:20px" ng-click="updateAddress()">更新地址</button>
+            </div>
+        </div>
+        <div class="pitch-intro" style="padding-top:20px">
+            <button class="btn btn-action wow fadeInUp" ng-click="logout()">退出账号</button>
         </div>
     </div>
 </div>
