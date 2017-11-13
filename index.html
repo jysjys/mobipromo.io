@@ -37,10 +37,6 @@
         display: block
     }
 
-    #countdown2 {
-        background: rgb(255, 255, 255, 0)
-    }
-
     .contribute {
         margin: 0 auto;
         border: 1px solid #8f7f5a;
@@ -134,33 +130,14 @@
 
         <!-- /.container-fluid -->
         
-        <div class="countdown-section can-bg-light" id="ico" style="margin-top:100px;padding-top:50px;">
+        <div class="countdown-section can-bg-light" id="ico" style="margin-top:100px;padding:100px;">
             <!-- /.container-fluid -->
-            <section class="container">
-                <div style="text-align: center;font-size: 25px;padding-bottom: 20px " ;>CAN ICO Progress</div>
-
-               <div class="countdown-label">
-                  <label for="five" class="label">5%</label>
-                  <label for="five" class="label">25%</label>
-                  <label for="five" class="label">50%</label>
-                  <label for="five" class="label">75%</label>
-                  <label for="five" class="label">100%</label>
-               </div>
-                <input type="radio" class="radio" name="progress" value="five" id="five">
-                <input type="radio" class="radio" name="progress" value="twentyfive" id="twentyfive">
-                <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
-                <input type="radio" class="radio" name="progress" value="seventyfive" id="seventyfive">
-                <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
-                <div class="progress" style="height: 12px">
-                    <div id='icostatus' class="progress-bar"></div>
-                </div>
-
-            </section>
+            
             <div class="countdown-section" id="ico">
-                <div style="text-align: center;font-size: 18px;margin-top:20px;">CAN ICO ends in</div>
-                <div id="countdown2" class="ClassyCountdown"></div>
+                <div style="text-align: center;font-size: 18px;margin-top:20px;">CAN TOKEN SALE HAS ENDED</div>
+
             </div>
-            <div class="text-center" style="padding-bottom:20px;">
+            <div class="text-center" style="padding-top:40px;">
                 <h2>CAN: 1ETH=8000CAN 1BTC=140000CAN</h2>
             </div>
         </div>
@@ -511,65 +488,3 @@
 </body>
 
 </html>
-<script type="text/javascript">
-
-$(document).ready(function() {
-    var icoStartDate = new Date(2017, 10, 10, 12); //-10-05 12:00:00');
-
-    var today = new Date();
-
-    var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
-
-
-    $('#countdown2').ClassyCountdown({
-        end: toICO,
-        now: '1',
-        labels: true,
-
-        style: {
-            element: "",
-            textResponsive: .5,
-            days: {
-                gauge: {
-                    thickness: .01,
-                    bgColor: "rgba(0,0,0,0.05)",
-                    fgColor: "#1abc9c"
-                },
-                textCSS: 'font-family:\'Open Sans\'; font-size:25px; font-weight:300; color:#34495e;'
-            },
-            hours: {
-                gauge: {
-                    thickness: .01,
-                    bgColor: "rgba(0,0,0,0.05)",
-                    fgColor: "#2980b9"
-                },
-                textCSS: 'font-family:\'Open Sans\'; font-size:25px; font-weight:300; color:#34495e;'
-            },
-            minutes: {
-                gauge: {
-                    thickness: .01,
-                    bgColor: "rgba(0,0,0,0.05)",
-                    fgColor: "#8e44ad"
-                },
-                textCSS: 'font-family:\'Open Sans\'; font-size:25px; font-weight:300; color:#34495e;'
-            },
-            seconds: {
-                gauge: {
-                    thickness: .01,
-                    bgColor: "rgba(0,0,0,0.05)",
-                    fgColor: "#f39c12"
-                },
-                textCSS: 'font-family:\'Open Sans\'; font-size:25px; font-weight:300; color:#34495e;'
-            }
-
-        },
-        onEndCallback: function() {
-            console.log("Time out!");
-        }
-    });
-    $.get('/icostatus').then(function(data){
-        var data=JSON.parse(data);
-        $('#icostatus').css('width',data.status);
-    });
-});
-</script>
