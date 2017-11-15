@@ -833,7 +833,8 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
     $scope.isshowSubmit = 0;
     $scope.icoModel = {
         data:{
-          receiveCanAddress:''
+          receiveCanAddress:'',
+          canAmount:0
         },
         display:{
         },
@@ -856,9 +857,6 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
                     case 'BTC':
                     ico.btc = icoItem;
                     break;
-                    case 'acc':
-                    ico.acc = icoItem;
-                    break;
                 }
             }
             if(typeof(success.data.receiveCanAddress)!="undefined" && success.data.receiveCanAddress!=null){
@@ -867,6 +865,7 @@ angular.module("mobipromo").controller("SignUpController", ["$scope", "MainRemot
             }else{
               $scope.isshowSubmit = 0;
             }
+            ico.canAmount = success.data.canAmount;
             model.data = ico;
             // alert(model.data.btc.bankAddress);
         }).catch(function(error){
