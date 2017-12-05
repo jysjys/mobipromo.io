@@ -1043,7 +1043,20 @@ button.btn.active:focus {
         font-size: 34px !important;
     }
 }
-
+@media only screen and (max-width: 768px) {
+    .xinxi {
+        position: relative;
+        left: 50%;
+        margin-left: -17px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .navbar-nav {
+        position: relative;
+        right: 50%;
+        margin-right: -70px;
+    }
+}
 
 /* -----------------------------------------------------
 --------------- App Home Styling starts ----------------
@@ -1060,6 +1073,7 @@ button.btn.active:focus {
 .app img {
     margin: 0 auto;
 }
+.app
 
 .app-info h1 {
     font-size: 34px;
@@ -1275,7 +1289,8 @@ button.btn.active:focus {
     font-size: 14px;
     line-height: 20px;
     color: #A1A1A1;
-    padding: 20px 170px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .distribution .btnn img {
     height: 20px;
@@ -2176,7 +2191,7 @@ button.btn.active:focus {
 /* ------- Footer Section Styling Starts ------- */
 
 .footer {
-    background-image: url(../images/footer-bg.png);
+    background-image: url(../images/footer-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
