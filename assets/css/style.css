@@ -1216,7 +1216,8 @@ button.btn.active:focus {
     font-size: 16px;
     line-height: 20px;
     color: #DA8331;
-    word-break: break-all;
+    /*word-break: break-all;*/
+    word-wrap:break-word;
     position: relative;
     min-width: 200px;
     overflow: hidden;
@@ -1224,6 +1225,7 @@ button.btn.active:focus {
 .about_child p {
     padding: 20px 30px;
     padding-bottom: 30px;
+    font-size: 14px;
 }
 .about_child div {
     background: #DA8331;
