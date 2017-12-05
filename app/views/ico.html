@@ -42,21 +42,9 @@
             </div>
         </div>
         <div class="pitch-intro">
-                <h2 class="wow fadeInDown" data-wow-delay="0.2s">The total amount of converted CAN coins is：{{icoModel.data.canAmount}}</h2>
+                <h2 class="wow fadeInDown" data-wow-delay="0.2s">The total amount of converted CAN coins is：{{icoModel.data.ico.acc.amount}}</h2>
         </div>  
-        <div class="pitch-content" style="width:100%;Margin:20px;border:1px solid #000">
-            <form style="padding-top:20px">
-                Enter Your CAN Receive Address:
-                <input  style="width:50%;text-align:center" ng-disabled="isshowSubmit > 0" type="text" ng-model="icoModel.data.receiveCanAddress">
-            </form>
-            <label style="color:red;margin-top:5px;" ng-show="icoModel.data.receiveCanAddress.length != 42">can address is error</label>
-            <p style="padding-top:20px">Your CAN address is: {{icoModel.data.receiveCanAddress}}</p>
-            <div class="pitch-intro">
-                <button  ng-show="isshowSubmit == 0" class="btn btn-action wow fadeInUp"  style="padding-top:20px" ng-click="submitAddress()">Submit Address</button>
-                <button  ng-show="isshowSubmit > 0" class="btn btn-action wow fadeInUp"  style="padding-top:20px" ng-click="updateAddress()">Update Address</button>
-            </div>
-        </div>
-        <div class="pitch-intro" style="padding-top:20px">
+        <div class="pitch-intro">
             <button class="btn btn-action wow fadeInUp" ng-click="logout()">Logout</button>
         </div>
     </div>
