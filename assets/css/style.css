@@ -386,21 +386,31 @@ p {
 
 
 
-.carousel-caption {
-    padding-bottom: 8%;
+.info {
+    position: relative;
 }
-.carousel-caption h2 {
+.info h2 {
+    color: #ffffff;
     font-size: 50px;
     /*font-weight: bold;*/
     line-height: 100px;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
 }
-.carousel-caption p {
+.info p {
+    color: #ffffff;
     margin-top: 30px;
     font-size: 20px;
     font-weight: 100;
     line-height: 40px;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translateX(-50%);
 }
-.carousel-caption .btn {
+.info .btn {
     width: 175px;
     height: 45px;
     border: 1px solid #ffffff;
@@ -408,8 +418,12 @@ p {
     text-align: center;
     font-size: 18px;
     margin-top: 25px;
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translateX(-50%);
 }
-.carousel-caption .btn:hover {
+.info .btn:hover {
     color: #ffffff;
 }
 
@@ -1042,19 +1056,40 @@ button.btn.active:focus {
     .slider-pro h2.sp-layer {
         font-size: 34px !important;
     }
-}
-@media only screen and (max-width: 768px) {
     .xinxi {
         position: relative;
         left: 50%;
         margin-left: -17px;
     }
-}
-@media only screen and (max-width: 768px) {
     .navbar-nav {
         position: relative;
         right: 50%;
         margin-right: -70px;
+    }
+    .info h2 {
+        font-size: 18px;
+        line-height: 100px;
+        position: absolute;
+        top: 9%;
+    }
+    .info p {
+        margin-top: 13px;
+        font-size: 12px;
+        line-height: 10px;
+        position: absolute;
+        top: 38%
+    }
+    .info .btn {
+        width: 120px;
+        height: 30px;
+        line-height: 20px;
+        font-size: 14px;
+        margin-top: 25px;
+        position: absolute;
+        top: 50%;
+    }
+    .navbar-brand>img {
+        height: 20px;
     }
 }
 
