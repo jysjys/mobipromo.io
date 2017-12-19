@@ -1,0 +1,76 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
+<title>mobipromo</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="assets/css/login.css" />
+<style>
+	.presale-container {
+		margin-top: 10%;
+	}
+</style>
+<body>
+
+<div class="presale-container">
+	<h1>订单表单信息</h1>
+	
+	<div class="connect">
+		<p>www.mobipromo.io</p>
+	</div>
+	<div>
+		<input type="text" name="device_name" class="device_name" placeholder="设备名称"/>
+	</div>
+	<div>
+		<input type="text" name="username" class="username" placeholder="姓名"/>
+	</div>
+	<div>
+		<input type="text" name="phone_number" class="phone_number" placeholder="电话"/>
+	</div>
+	<div>
+		<input type="text" name="mailbox" class="mailbox" placeholder="邮箱"/>
+	</div>
+	<div>
+		<input type="text" name="zip_code" class="zip_code" placeholder="邮编"/>
+	</div>
+	<div>
+		<input type="text" name="address" class="address" placeholder="收货地址"/>
+	</div>
+	<button id="submit" type="submit">确认提交</button>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<!-- <script src="assets/js/common.js"></script> -->
+<!--背景图片自动更换-->
+<script src="assets/js/supersized.3.2.7.min.js"></script>
+<script src="assets/js/supersized-init.js"></script>
+<!--表单验证-->
+<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
+<script>
+	$("#submit").click(function () {
+		var datalogin = {
+			device_name: $("input[name='device_name']").val(),
+			username: $("input[name='username']").val(),
+			phone_number: $("input[name='phone_number']").val(),
+			mailbox: $("input[name='mailbox']").val(),
+			zip_code: $("input[name='zip_code']").val(),
+			address: $("input[name='address']").val()
+		}
+		$.ajax({
+			url: './',
+			type: 'POST',
+			dataType: 'JSON',
+			success: function (data) {
+				console.log(data);
+			},
+			error: function (data) {
+				console.log(data)
+			}
+		})
+	})
+</script>
+</body>
+</html>

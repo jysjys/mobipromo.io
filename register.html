@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
+<title>mobipromo</title>
+<link rel="stylesheet" href="assets/css/login.css" />
+<body>
+
+<div class="register-container">
+	<h1>欢迎注册Mobipromo</h1>
+	
+	<div class="connect">
+		<p>www.mobipromo.io</p>
+	</div>
+		<div>
+			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+		</div>
+		<div>
+			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button id="submit" type="submit">注 册</button>
+	<a href="index.html" style="display: block">
+		<button type="button" class="register-tis">已经有账号？</button>
+	</a>
+
+</div>
+
+
+<script src="assets/js/jquery.min.js"></script>
+<!-- <script src="assets/js/common.js"></script> -->
+<!--背景图片自动更换-->
+<script src="assets/js/supersized.3.2.7.min.js"></script>
+<script src="assets/js/supersized-init.js"></script>
+<!--表单验证-->
+<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
+<script>
+
+	$("#submit").click(function () {
+		var username = $("input[name='username']").val(),
+		password = $("input[name='password']").val(),
+		confirm_password = $("input[name='confirm_password']").val(),
+		phone_number = $("input[name='phone_number']").val,
+		email = $("input[name='email']").val(),
+		phone_number_test = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/
+		// if(username && password && confirm_password && phone_number) {
+		// 	console.log("请填写完整信息")
+		// }
+		// if(!password == confirm_password) {
+		// 	console.log('两次输入密码不一致')
+		// }
+		// if(!phone_number_test.test(phone_number)) {
+		// 	console.log('手机号码不正确')
+		// }
+			var dataregister = {
+				"account": phone_number,
+			    "email": email,
+			    "password": password,
+    			"phone": phone_number
+			}
+		console.log(typeof JSON.parse(dataregister))
+		$.ajax({
+			headers: {
+		        Accept: "application/json; charset=utf-8"
+		    },
+		 	type: 'POST',
+			url: 'http://192.168.1.126:8101/promo/public/account',
+			data: dataregister,
+			contentType: 'json',
+			success: function (data) {
+				console.log(data);
+			},
+			error: function (data) {
+				console.log(data)
+			}
+		})
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+
+  h1,h2,h3,h4,h5,h6,p,ul,li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    /*opacity:  0.5;*/
+    border-bottom: none;
+  }
+  .navbar-brand {
+    height: 100px;
+    padding-top: 25px;
+  }
+  .navbar-brand img {
+    height: 50px;
+  }
+
+  .navbar-nav>li>a {
+    font-size: 18px;
+    line-height: 80px;
+    color: #f6f6f6 !important;
+  }
+  .navbar-nav>li>a:hover {
+    color: #FF3B00 !important;
+  }
+  .nav>li>a {
+    padding: 10px 50px;
+  }
+  .navbar-toggle {
+    margin-top: 30px;
+  }
+
+
+
+
+  .top_banner {
+    width: 100%;
+    background-image: url(../images/can_banner.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .top_banner>.container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  .top_banner h1 {
+    font-size: 30px;
+    color: #F6F6F6;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1.5px;
+    width: 100%;
+  }
+  .top_banner h1:nth-child(1) {
+    top: 25%;
+  }
+  .top_banner h1:nth-child(2) {
+    top: 32%;
+  }
+  .top_banner h6 {
+    font-size: 16px;
+    line-height: 28px;
+    color: #ffffff;
+    margin-top: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 1.5px;
+    width: 100%;
+    top: 40%;
+  }
+
+
+
+
+
+  .can_info {
+    background: #091838;
+    color: #ffffff;
+    padding: 30px 0;
+  }
+  .can_info h1 {
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 65px;
+  }
+  .can_info h2 {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 4px;
+    margin-bottom: 22px
+  }
+  .can_info p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .info_left img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .info_right {
+    margin-bottom: 50px;
+  }
+
+  .can_carousel {
+    height: 618px;
+    overflow: hidden;
+  }
+  .can_carousel .swiper-container-carousel {
+  }
+  .can_carousel h1 {
+    font-size: 18px;
+    line-height: 21px;
+    color: #303030;
+    margin: 77px 0;
+  }
+  .can_carousel .swiper-slide {
+    width: 649px;
+    height: 312px;
+    border-radius: 4px;
+    box-shadow: 1px 2px 6px 3px #DBF6FF;
+    margin: 2px 0;
+  }
+  .can_carousel .swiper-slide h1 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #303030;
+    margin-top: 70px;
+    margin-bottom: 20px;
+  }
+  .can_carousel .swiper-slide p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #303030;
+
+  }
+  .can_carousel .swiper-slide .slide_btn img{
+    height: 44px;
+    margin-top: 75px;
+  }
+
+
+
+  .can_network {
+    background: #f6f6f6;
+    background: rgba(246, 246, 246, 1);
+  }
+  .can_network img {
+    width: 100%;
+  }
+
+
+
+
+
+
+  .can_child_list {
+    padding-bottom: 76px;
+  }
+  .child_list {
+    transition: all 0.5s;
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari and Chrome */
+    -o-transition: all 0.5s; /* Opera */
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .child_list:hover {
+    /*left: -7px;*/
+    top: -7px;
+  }
+  .can_child_list h1 {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 50px;
+    margin-bottom: 65px;
+  }
+  .child_list {
+    width: 380px;
+    height: 348px;
+    border: 1px solid #00b9f9;
+    border-radius: 1px;
+    padding: 12px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+  }
+  .child_list:nth-child(3) {
+    margin-right: 0;
+  }
+  .child_list:hover {
+    box-shadow: 0px 2px 6px 3px #dbf6ff;
+  }
+  .child_list h2 {
+    font-size: 16px;
+    line-height: 66px;
+    color: #303030;
+    text-align: center;
+  }
+  .child_list p {
+    font-size: 14px;
+    line-height: 21px;
+    color: #303030;
+
+  }
+
+
+
+
+
+
+
+
+
+  .can_people {
+    padding: 100px 0;
+    background: rgba(246, 246, 246, 1);
+    /*height: 618px;*/
+  }
+  .can_people .row {
+    margin: 0 -50px;
+  }
+  .can_people .can_people_btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-15%);
+  }
+  .can_people h1 {
+    width: 178px;
+    height: 55px;
+    font-size: 18px;
+    line-height: 55px;
+    text-align: center;
+    color: #ffffff;
+    background: #68C9F5;
+    margin: 0 auto 86px auto;
+    border-radius: 2px;
+    margin-right: 2px;
+    /*transition: all 0.5s;*/
+  }
+  .can_people_btn h1:nth-child(1) {
+    background: #ffffff;
+    border: 1px solid #68C9F5;
+    color: #68C9F5;
+  }
+ /* .can_people h1:hover {
+    background: #ffffff;
+    border: 1px solid #68C9F5;
+    color: #68C9F5;
+  }*/
+  .swiper-container-people ul {
+    overflow: hidden;
+    list-style: none;
+    /*width: 85%;*/
+    margin: 0 auto;
+  }
+  .swiper-container-people ul li {
+    float: left;
+    position: relative;
+    height: 220px;
+    padding-top: 70px;
+    margin: 0 20px;
+  }
+  .swiper-container-people ul li div {
+    background: url(../images/people_border.png);
+    background-size: 100% 100%;
+    /*border: 1px solid #00b9f9;*/
+    width: 270px;
+    height: 132px;
+    padding-top: 70px;
+    text-align: center;
+  }
+  .swiper-container-people ul li div span {
+    font-size: 14px;
+    line-height: 16px;
+    color: #303030;
+  }
+  .swiper-container-people ul li img {
+    height: 129px;
+    position: absolute;
+    top: 9px;
+    left: 80px;
+  }
+
+
+
+
+  .can_time_axis {
+    /*height: 562px;*/
+    padding-bottom: 100px;
+    position: relative;
+  }
+  .can_time_axis>.row {
+    width: 100%;
+  }
+  .can_time_axis h1 {
+    font-size: 18px;
+    line-height: 220px;
+  }
+  .can_time_axis h2 {
+    width: 80%;
+    height: 1px;
+    background: #e2e2e2;
+    position: absolute;
+    top: 256px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .can_time_axis ul {
+    list-style: none;
+    overflow: hidden;
+    width: 61%;
+    margin: 0 auto
+  }
+  .can_time_axis ul li {
+    width: 169px;
+    height: 130px;
+    /*border: 1px solid #000000;*/
+    float: left;
+    margin-right: 65px;
+    text-align: center;
+  }
+  .can_time_axis ul li:nth-child(4) {
+    margin-right: 0;
+  }
+  .can_time_axis ul li p {
+    width: 67px;
+    height: 67px;
+    border: 1px solid #00b9f9;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 67px;
+    text-align: center;
+    color: #303030;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    z-index: 99;
+  }
+  .can_time_axis ul li span {
+    font-size: 14px;
+    color: #303030;
+  }
+
+  @media (max-width: 1366px) {
+    .navbar-nav>li>a {
+      padding: 10px 22px;
+    }
+  }
+  @media (max-width: 992px) {
+    .navbar-nav>li>a {
+      padding: 10px 18px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+      .navbar-brand {
+        height: 52px;
+        padding-top: 14px;
+      }
+      .navbar-toggle {
+        margin-top: 10px;
+      }
+      .navbar-brand img {
+        height: 30px;
+      }
+      .top_banner {
+        height: 211px;/*
+        padding-top: 50px;
+        padding-bottom: 50px;*/
+      }
+      .top_banner h1 {
+        font-size: 14px;
+        line-height: 16px;
+      }
+      .top_banner h1:nth-child(1) {
+        top: 32%;
+      }
+      .top_banner h1:nth-child(2) {
+        top: 42%;
+      }
+      .top_banner h6 {
+        font-size: 12px;
+        line-height: 14px;
+        top: 49%;
+      }
+      .child_list {
+        margin: 30px auto;
+        width: 360px;
+      }
+      .child_list:nth-child(3) {
+        margin-right: auto;
+      }
+      .can_carousel .swiper-slide {
+        width: 300px;
+      }
+      .swiper-container-people ul li {
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+      }
+      .can_people .can_people_btn {
+        transform: translateX(-42%) !important;
+      }
+      .can_people .can_people_btn h1 {
+        width: 158px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 16px;
+      }
+      .can_time_axis ul li {
+        margin: 0 40px;
+      }
+
+  }
+  @media screen and (max-width: 1366px) {
+      .child_list {
+        margin: 30px auto !important;
+        float: none;
+      }
+      .can_people .row {
+        margin: 0 -15px;
+      }
+      .can_time_axis h2 {
+        display: none;
+      }
+      .can_time_axis ul li {
+        margin-right: 0;
+      }
+  }
+  @media screen and (max-width: 992px) {
+    .swiper-container-people ul {
+        margin: 0 50px;
+    }
+    .can_footer {
+        height: 805px !important;
+    }
+    .can_people .can_people_btn {
+      transform: translateX(-26%);
+    }
+  }
+  
