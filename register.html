@@ -50,9 +50,31 @@
 		var username = $("input[name='username']").val(),
 		password = $("input[name='password']").val(),
 		confirm_password = $("input[name='confirm_password']").val(),
-		phone_number = $("input[name='phone_number']").val,
+		phone_number = $("input[name='phone_number']").val(),
 		email = $("input[name='email']").val(),
-		phone_number_test = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/
+		phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/;
+		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		if(!username) {
+			console.log('username not empty')
+		} else if(username.length < 6 || username.length > 20) {
+			console.log('username length error')
+		} else if(!password) {
+			console.log('password not empty')
+		} else if(password < 6 || password.length > 20) {
+			console.log('password length error')
+		} else if(!confirm_password) {
+			console.log('password not empty')
+		} else if(confirm_password != password) {
+			console.log('confirm_password not repeat')
+		} else if(!phone_number) {
+			console.log('password not empty')
+		} else if(!phone_number_reg.test(phone_number)) {
+			console.log('phone_number error')
+		} else if(!email_reg) {
+			console.log('password not empty')
+		} else if(!email_reg.test(email)) {
+			console.log('email error')
+		}
 		// if(username && password && confirm_password && phone_number) {
 		// 	console.log("请填写完整信息")
 		// }
@@ -62,21 +84,28 @@
 		// if(!phone_number_test.test(phone_number)) {
 		// 	console.log('手机号码不正确')
 		// }
-			var dataregister = {
-				"account": phone_number,
-			    "email": email,
-			    "password": password,
-    			"phone": phone_number
-			}
-		console.log(typeof JSON.parse(dataregister))
-		$.ajax({
-			headers: {
-		        Accept: "application/json; charset=utf-8"
-		    },
-		 	type: 'POST',
-			url: 'http://192.168.1.126:8101/promo/public/account',
-			data: dataregister,
-			contentType: 'json',
+
+		var dataregister = {
+		    "account": phone_number,
+		    "accountType": 'email',
+		    "country": "sdfa",
+		    "email": email,
+		    "firstName": "1",
+		    "idCardNumber": "12345678",
+		    "lastName": "7",
+		    "password": password,
+		    "phone": phone_number
+		   }
+		  console.log(dataregister)
+		  $.ajax({
+		   headers: {
+		          Accept: "application/json; charset=utf-8",
+		    	  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
+		      },
+		    type: 'POST',
+		   url: '/promo/public/account',
+		   data: JSON.stringify(dataregister),
+		   contentType: "application/json; charset=utf-8",
 			success: function (data) {
 				console.log(data);
 			},
