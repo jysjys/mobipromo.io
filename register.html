@@ -10,12 +10,11 @@
 
 <div class="register-container">
 	<h1>欢迎注册Mobipromo</h1>
-	
 	<div class="connect">
 		<p>www.mobipromo.io</p>
 	</div>
 		<div>
-			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+			<input type="text" name="accountName" class="accountName" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
 			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
@@ -47,17 +46,17 @@
 <script>
 
 	$("#submit").click(function () {
-		var username = $("input[name='username']").val(),
+		var accountName = $("input[name='accountName']").val(),
 		password = $("input[name='password']").val(),
 		confirm_password = $("input[name='confirm_password']").val(),
 		phone_number = $("input[name='phone_number']").val(),
 		email = $("input[name='email']").val(),
 		phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/;
 		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-		if(!username) {
-			console.log('username not empty')
-		} else if(username.length < 6 || username.length > 20) {
-			console.log('username length error')
+		if(!accountName) {
+			console.log('accountName not empty')
+		} else if(accountName.length < 6 || accountName.length > 20) {
+			console.log('accountName length error')
 		} else if(!password) {
 			console.log('password not empty')
 		} else if(password < 6 || password.length > 20) {
@@ -75,7 +74,7 @@
 		} else if(!email_reg.test(email)) {
 			console.log('email error')
 		}
-		// if(username && password && confirm_password && phone_number) {
+		// if(accountName && password && confirm_password && phone_number) {
 		// 	console.log("请填写完整信息")
 		// }
 		// if(!password == confirm_password) {
@@ -86,31 +85,34 @@
 		// }
 
 		var dataregister = {
-		    "account": phone_number,
-		    "accountType": 'email',
-		    "country": "sdfa",
-		    "email": email,
-		    "firstName": "1",
-		    "idCardNumber": "12345678",
-		    "lastName": "7",
-		    "password": password,
-		    "phone": phone_number
+			"account": phone_number,
+			"accountName": accountName,
+			"accountType": 'email',
+			"country": "sdfa",
+			"email": email,
+			"firstName": "1",
+			"idCardNumber": "12345678",
+			"lastName": "7",
+			"password": password,
+			"phone": phone_number
 		   }
 		  console.log(dataregister)
 		  $.ajax({
 		   headers: {
-		          Accept: "application/json; charset=utf-8",
-		    	  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
-		      },
-		    type: 'POST',
+				  Accept: "application/json; charset=utf-8",
+				  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
+			  },
+			type: 'POST',
 		   url: '/promo/public/account',
 		   data: JSON.stringify(dataregister),
 		   contentType: "application/json; charset=utf-8",
 			success: function (data) {
-				console.log(data);
+				console.log('');
+				location.href = '/indexlogin.html';
 			},
 			error: function (data) {
 				console.log(data)
+				$('#submit').after('<span style="color:red;"></span>');
 			}
 		})
 	});
