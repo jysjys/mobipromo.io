@@ -12,6 +12,7 @@
 	.presale-container {
 		margin-top: 10%;
 	}
+
 </style>
 <body>
 
@@ -41,9 +42,75 @@
 	</div>
 	<div style="position: relative;">
 		<input type="text" name="buyAmount" class="buyAmount" placeholder="购买数量不大于3台"/>
-	<button id='jiage' style='width: 50px; height: 50px; display: block; position: absolute; left: 70%; top: 0;'></button>
+	<button id='jiage' style='width: 50px; height: 50px; display: block; position: absolute; left: 62%; top: 0;'></button>
 	</div>
 	<button id="submit" type="submit">确认提交</button>
+</div>
+<style>
+		.pay_btn {
+			overflow: hidden;
+			top: 15px;
+		}
+		.pay_btn div{
+			float: left;	
+			width: 136px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 16px;
+			border: 1px solid #ffffff;
+			border-radius: 7px;
+			cursor: pointer;
+		}
+		.pay_btn div:nth-child(1) {
+			margin-right: 23px;
+		}
+		.qr_code {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: -20%;
+			padding-top: 350px;
+			background: #ffffff;
+			display: none;
+		}
+		.qr_code h1 {
+			font-size: 30px;
+			color: #666666;
+		}
+		.qr_code h2 {
+			font-size: 18px;
+			color: #666666;
+		}
+		.delate {
+			font-size: 26px;
+			color: red;
+			position: relative;
+			left: 20%;
+			top: -34%;
+			cursor: pointer;
+		}
+		body {
+			position: relative;
+		}
+</style>
+<button class="pay" style='background: none; display: none;'>
+<div class="pay_btn">
+	<div class='wechat'>微信支付</div>
+	<div class='alipay'>支付宝支付</div>
+</div>
+</button>
+<div class='qr_code qr_wechat'>
+	<span class="delate">X</span>
+	<h1>微信付款</h1>
+	<img src="assets/images/footer_qr.png" width='200px;' height='200px;' alt="">
+	<h2>1000元</h2>
+</div>
+<div class='qr_code qr_alipay'>
+	<h1>支付宝付款</h1>
+	<span class="delate">X</span>
+	<img src="assets/images/footer_qr.png" width='200px;' height='200px;' alt="">
+	<h2>1000元</h2>
 </div>
 <style>
 	.list {
@@ -83,7 +150,6 @@
 		<li>联系电话</li>
 	</ul>
 </div>
-
 <script src="assets/js/jquery.min.js"></script>
 <!-- <script src="assets/js/common.js"></script> -->
 <!--背景图片自动更换-->
@@ -92,6 +158,28 @@
 <!--表单验证-->
 <!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
 <script>
+$("#submit").click( function() {
+		console.log('hello')
+		$(".pay").css({
+			"display": 'inline-block'
+		})
+	})
+$(".wechat").click(function() {
+	$(".qr_wechat").css({
+		'display':'block',
+	});
+})
+$(".alipay").click(function() {
+	$(".qr_alipay").css({
+		'display':'block',
+	});
+})
+$(".delate").click( function() {
+	console.log('hello')
+	$(this).parent().css({
+		"display": 'none'
+	})
+})
 function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取值**/  
     //用处理字符串的方式查找到key对应value  
     var name = escape(name);  

@@ -11,6 +11,8 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
@@ -35,12 +37,14 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Whitepapper</a></li>
-        <li><a href="#">Brief</a></li>
-        <li><a href="#">NEWS</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Roadma</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#Product">Product</a></li>
+        <li><a href="#Brief">Brief</a></li>
+        <li><a href="#News">NEWS</a></li>
+        <li><a href="#Team">Team</a></li>
+        <!-- <li><a href="#Roadma">Roadma</a></li> -->
+        <li><a href="#Contact_Us">Contact Us</a></li>
         <li><a href="cn/index.html">中文</a></li>
+        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">登陆</a></li> -->
       </ul>
     </div>
   </div>
@@ -54,14 +58,98 @@
   </div>
 </section>
 <section class="can_info">
-  <div class='container'>
-    <div class="row">
+  <div class='container' style='overflow: hidden;'>
+    <div class='row can_info_btn'>
+      <ul>
+        <li class="info">Intro.</li>
+        <li class='pre_sale'>Pre-sale</li>
+      </ul>
+    </div>
+    <div class="row" id='sale_count' style='display: none'>
+      <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
+      <h2>已售出<span class='sale_amount'>0</span>台</h2>
+    </div>
+    <style>
+      .text .type-time {
+        margin-top: 40px;
+      }
+    </style>
+    <div class="countdown container can_pre_sale" style='height: auto; margin-bottom: 50px; overflow: hidden; display: none'>
+      <div class="clock row">
+        <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+          <div class="wrap">
+            <div class="inner">
+              <div id="canvas-days" class="clock-canvas"></div>
+
+              <div class="text">
+                <p class="val">0</p>
+                <p class="type-days type-time">天</p>
+              </div><!-- /.text -->
+            </div><!-- /.inner -->
+          </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+          <div class="wrap">
+            <div class="inner">
+              <div id="canvas-hours" class="clock-canvas"></div>
+
+              <div class="text">
+                <p class="val">0</p>
+                <p class="type-hours type-time">时</p>
+              </div><!-- /.text -->
+            </div><!-- /.inner -->
+          </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+          <div class="wrap">
+            <div class="inner">
+              <div id="canvas-minutes" class="clock-canvas"></div>
+
+              <div class="text">
+                <p class="val">0</p>
+                <p class="type-minutes type-time">分</p>
+              </div><!-- /.text -->
+            </div><!-- /.inner -->
+          </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+          <div class="wrap">
+            <div class="inner">
+              <div id="canvas-seconds" class="clock-canvas"></div>
+
+              <div class="text">
+                <p class="val">0</p>
+                <p class="type-seconds type-time">秒</p>
+              </div><!-- /.text -->
+            </div><!-- /.inner -->
+          </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+      </div><!-- /.clock -->
+      <div class="join_btn" style='#666666'>立即参与</div>
+    </div><!-- /.countdown-wrapper -->
+    <div class="row" id='Product' style='margin-bottom: 150px;'>
+      <div class="info_left col-md-6">
+        <img src="assets/images/can_box.png" alt="info_png" width='80%;'>
+      </div>
+      <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
+        <h1 class="text-center">
+          CAN STARBOX
+        </h1>
+        <!-- <h2 class="text-center">CAN</h2> -->
+        <p class="text-left">CAN STARBOX: it is used to integrate the decentralized content delivery network with the Nodes.  It also supports Wi-Fi, Router and the usgae of crytocurrency. It is the first decentralised application built on blockchain technology. CAN STARBOX is not merely a mining machine nor a simple WiFi equipment, it is a full function equipment in tegrating decentralised applications, Wi-Fi, location marketing as well 
+        as blockchain digital wealth creation.</p>
+      </div>
+    </div>
+    <div class="row" id="Brief">
       <div class="info_left col-md-6">
         <img src="assets/images/info_left.png" alt="info_png" width='80%;'>
       </div>
       <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
         <h1 class="text-center">
-          <img src="assets/images/can_canlogo.png" width='30px' height='30px;' alt="">
+          <img src="assets/images/can_canlogo.png" width='50px' height='50px;' alt="">
         </h1>
         <h2 class="text-center">CAN</h2>
         <p class="text-left">CAN (Content and Ad Nework) was issued based on the brand name -- MobiPromo which is renowned globally and based her thousands of Wi-Fi locations all over the world. In a year time, the second generation of our products will be developed, tested and applied in the market. With one year promotion, we will have 1 million nodes in full operation. And it will be highly useful and attractive to the sizeable content providers and also global advertisers to join into our network.</p>
@@ -69,7 +157,7 @@
     </div>
   </div>
 </section>
-<section class="can_carousel">
+<section class="can_carousel" id="News">
   <div class="container">
     <div class="row">
       <h1 class='text-center'>NEWS</h1>
@@ -109,26 +197,35 @@
     <img src="assets/images/can_network.svg" alt="net_work">
   </div>
 </section>
-<section class='can_child_list'>
+<section class='can_child_list' id="Contact_Us">
   <div class="container">
     <h1 class='text-center'>MobiPromo</h1>
     <div class='row'>
         <div class='col-md-12 col-sm-12 child_list wow animate fadeIn' data-wow-duration="2s" data-wow-delay="0.5s">
           <h2>CDN</h2>
-          <p>Content Distribution Network: Different applications such as Games, videos, Realtime Broadcast, downl oads, digital hardwares etc. have been consistently boosting up the demands for the bandwidth on inter net connection. It makes the cost for bandwidth kee p surging up. And yet, having a cost effective band width has becomea pressing need for content provid ers. CDN can effectively solve the problem. CDN pro vides services like internet speed up, data storage, cl oud management etc. Today,the market size of CDN will soon reach an amazing scale of USD10 Billions.</p>
+          <p>Content Delivery Network: Different applications such as Games, videos, Realtime Broadcast, downloads, digital hardwares etc. have been consistently boosting up 
+          the demands for the bandwidth on internet connection.  It makes the cost 
+          for bandwidth keep surging up.  And yet, having a cost effective bandwidth has 
+          become a pressing need for content providers. CDN can effectively solve the 
+          problem. CDN provides services like internet speed up, data storage, cloud 
+          management etc. Today,the market size of CDN will soon reach an amazing scale 
+          of USD10 Billions.</p>
         </div>
         <div class='col-md-12 col-sm-12 child_list wow animate fadeIn' data-wow-duration="2s" data-wow-delay="0.5s">
           <h2>A.N</h2>
-          <p>The advertisers who use Mobipromo services are be nefited as they can easily trace who, when and wher e their Advertisement are being displayed. Such tran sparency enabled by MobiPromo system using Block chain Technology can also effectively avoid the fraud ulent numbers and data which occur to most of the o nline Ads today. The real effectiveness of the ADs can be easily seen by the advertisers. Further, withthe precision of Mobipromo system which directs the rig ht AD to the right people at the right location, Advertis ers can thus minimise their budget as well as maxim izing the effects of their ADs.</p>
-        </div>
-        <div class='col-md-12 col-sm-12 child_list wow animate fadeIn' data-wow-duration="2s" data-wow-delay="0.5s">
-          <h2>CAN STARTBOX</h2>
-          <p>CAN STARTBOX: it is used to integrate the decentralized content distribution network with the Nodes. It also supports Wi-Fi, Router and the usgae of crytocurrency. It is the first decentralised application built on blockchain technology. CAN-HD is not merely a mining machine nor a simple WiFi equipment, it is a full function equipment integrating decentralised appli cations, Wi-Fi, location marketing as well as blockcha in digital wealth creation.</p>
+          <p>The advertisers who use Mobipromo services are benefited as they can easily 
+          trace who, when and where their Advertisement are being displayed. Such 
+          transparency enabled by MobiPromo system using Blockchain Technology can 
+          also effectively avoid the fraudulent numbers and data which occur to most of the 
+          online Ads today. The real effectiveness of the ADs can be easily seen by the 
+          advertisers.  Further, with the precision of Mobipromo system which directs the 
+          right AD to the right people at the right location, Advertisers can thus minimise 
+          their budget as well as maximizing the effects of their ADs.</p>
         </div>
     </div>
   </div>
 </section>
-<section class='can_people'>
+<section class='can_people' id="Team">
     <div class='container'>
         
     
@@ -239,7 +336,7 @@
     </div>
     </div>
 </section>
-<section class='can_time_axis' style='display: none;'>
+<section class='can_time_axis' id="Roadma" style='display: none;'>
   <div class='row' style='overflow: hidden;'>
     <h1 class='text-center'>Roadmap</h1>
     <h2 class='line'></h2>
@@ -289,22 +386,6 @@
     </div>
   </div>
 </section>
-<style>
-  .can_footer {
-    height: 444px;
-    background-image: url(assets/images/footer.png);
-    background-size: 100% 100%;
-    padding-top: 135px;
-    color: #ffffff;
-  }
-  .can_footer div {
-    text-align: center;
-  }
-  .can_footer p {
-    font-size: 18px;
-    line-height: 21px;
-  }
-</style>
 <footer class='can_footer'>
   <div class='container'>
     <div class='row'>
@@ -320,7 +401,7 @@
         <p style='margin-top: 30px;'>MobiPromo System</p>
       </div>
       <div class='col-md-4' style="padding-top: 70px;">
-        <img src="assets/images/qr_code.png" alt="footer_qr.png" width='97px;'>
+        <img src="assets/images/footer_qr.png" alt="footer_qr.png" width='97px;'>
       </div>
     </div>
   </div>
@@ -330,14 +411,99 @@
     <!-- Wrapper-->
     <!-- Jquery and Js Plugins -->
     <!--script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <!-- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <script src='assets/js/bootstrap.min.js'></script>
     <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
     <script type="text/javascript" src="assets/js/swiper-3.4.2.min.js"></script>
     <script type='text/javascript' src='assets/js/jquery-1.11.1.min.js'></script>
     <script type='text/javascript' src='assets/js/jquery.particleground.min.js'></script>
     <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script>
+    <script type="text/javascript" src="assets/js/kinetic.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='assets/js/index.js'></script>
+    <script>
+        // var icoStartDate = new Date('2017-12-22 12:00:00');//-10-05 12:00:00');
+        // var today = new Date();
+        // var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+        // $('.countdown').final_countdown({
+        //   'start': 0,
+        //   'end': toICO,
+        //   'now': 0        
+        // });
+      // $(".pre_sale").click( function () {
+      //   $(".pre_sale").css({
+      //     'color': '#ffffff'
+      //   })
+      //   $(".info").css({
+      //     'color': '#a0a0a0'
+      //   })
+      //   $("#Product").css({
+      //     'display': 'none'
+      //   },300);
+      //   $(".can_pre_sale").css({
+      //     'height': 'auto'
+      //   })
+      // });
+      // $(".info").click( function () {
+
+      //   $("#Product").css({
+      //     'display': 'block'
+      //   },300);
+      //   $(".can_pre_sale").css({
+      //     'height': '0'
+      //   });
+      //   $(".pre_sale").css({
+      //     'color': '#a0a0a0'
+      //   })
+      //   $(".info").css({
+      //     'color': '#ffffff'
+      //   })
+      // })
+      $(".join_btn").click(function() {
+        window.location.href="presale.html"
+      })
+      // var x = getCookieValue('Authorization');
+      // $.ajax({
+      //   headers: {
+      //         Accept: "application/json; charset=utf-8",
+      //       Authorization: 'Bearer' + ' ' + x
+      //     },
+      //   type: 'GET',
+      //   contentType: "application/json; charset=utf-8",
+      //   url: '/promo/authed/user/account',
+      //   success: function (data) {
+      //     $("#login").html(data.phone);
+      //     $("#login").removeAttr("href");
+      //   },
+      //   error: function(data) {
+      //     console.log('fail')
+      //   }
+      // })
+      // 已售出多少台设备
+      // $.ajax({
+      //   headers: {
+      //         Accept: "application/json; charset=utf-8"
+      //     },
+      //   type: 'GET',
+      //   contentType: "application/json; charset=utf-8",
+      //   url: '/promo/public/buy/get/boxhadsell',
+      //   success: function (data) {
+      //     $(".sale_amount").html(data.data);
+      //   },
+      //   error: function(data) {
+      //     console.log('fail')
+      //   }
+      // })
+      // setInterval(function() {
+      //   var x = new Date();
+      //   if(x>=icoStartDate){
+      //     $('.clock').css({
+      //       'display': 'none'
+      //     })
+      //   }
+      // },2000)
+    </script>
 </body>
 
 </html>
