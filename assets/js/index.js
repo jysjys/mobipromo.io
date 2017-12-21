@@ -10,36 +10,48 @@ $('.top_banner').css({
         });
       new WOW().init();
       var mySwiper = new Swiper('.swiper-container-carousel',{
-        initialSlide :1,
-        slidesPerView : 'auto',
+        initialSlide :0,
+        slidesPerView : 1,
         spaceBetween : 100,
-        centeredSlides:true,
+        grabCursor : true,
+        freeMode : true,
+        // centeredSlides:true,
         //spaceBetween : '10%',按container的百分比
       })
       var mySwiper = new Swiper('.swiper-container-people',{
         initialSlide :0,
         slidesPerView : 'auto',
         spaceBetween : 100,
-        centeredSlides:true
+        grabCursor : true,
+        freeMode : true,
+        centeredSlides:true,
+        prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next'
+        // autoplay : 5000
         //spaceBetween : '10%',按container的百分比
       })
       var mySwiper = new Swiper('.swiper-container-time',{
         initialSlide :0,
         slidesPerView : 'auto',
         spaceBetween : 100,
+        grabCursor : true,
+        freeMode : true,
         centeredSlides:true,
+        prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+        autoplay : 5000
         //spaceBetween : '10%',按container的百分比
       })
       $('.can_people_btn .left').click( function (e) {
         console.log(this)
         $(this).css({
+          background: '#68C9F5',
+          color: '#ffffff',
+        });
+        $('.right').css({
           background: "#ffffff",
           color: '#68C9F5',
           border: '1px solid #68C9F5'
-        });
-        $('.right').css({
-          background: '#68C9F5',
-          color: '#ffffff',
         })
         $(".slide_project").css({
           display: 'block'
@@ -50,19 +62,22 @@ $('.top_banner').css({
       })
       $('.can_people_btn .right').click( function (e) {
         $(this).css({
+          background: '#68C9F5',
+          color: '#ffffff',
+        });
+        $('.left').css({
           background: "#ffffff",
           color: '#68C9F5',
           border: '1px solid #68C9F5'
-        });
-        $('.left').css({
-          background: '#68C9F5',
-          color: '#ffffff',
         })
         $(".slide_project").css({
           display: 'none'
         })
         $('.slide_advisor').css({
-          display: 'block'
+          'display': 'block'
+        })
+        $('.project').css({
+          'transform':'translate3d(0px, 0px, 0px)'
         })
       })
 

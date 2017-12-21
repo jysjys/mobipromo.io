@@ -11,7 +11,7 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet" href="../assets/css/swiper-3.4.2.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/default.css"> -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/demo.css">
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="../assets/css/index.css">
@@ -41,9 +41,10 @@
         <li><a href="#Brief">简介</a></li>
         <li><a href="#News">新闻</a></li>
         <li><a href="#Team">团队</a></li>
-        <!-- <li><a href="#Roadma">发展路线图</a></li> -->
+        <li><a href="#Roadma">发展路线图</a></li>
         <li><a href="#Contact_Us">联系我们</a></li>
         <li><a href="../index.html">English</a></li>
+        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">登录</a></li> -->
       </ul>
     </div>
   </div>
@@ -62,15 +63,19 @@
     <div class='row can_info_btn'>
       <ul>
         <li class="info">Intro.</li>
-        <li class='pre_sale'>Pre-sale</li>
+        <!-- <li class='pre_sale'>Pre-sale</li> -->
       </ul>
+    </div>
+    <div class="row" id='sale_count' style='display:;'>
+      <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
+      <!-- <h2>已售出<span class='sale_amount'>0</span>台</h2> -->
     </div>
     <style>
       .text .type-time {
         margin-top: 40px;
       }
     </style>
-    <div class="countdown container can_pre_sale" style='height: 0; overflow: hidden; margin-bottom: 50px;'>
+    <div class="countdown container can_pre_sale" style='height: auto; overflow: hidden; margin-bottom: 50px;'>
       <div class="clock row">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
           <div class="wrap">
@@ -124,17 +129,21 @@
           </div><!-- /.wrap -->
         </div><!-- /.clock-item -->
       </div><!-- /.clock -->
+      <div class="join_btn" style='#666666'>立即参与</div>
+      <!-- <div class="join_btn" style='#666666'>立即参与</div> -->
     </div><!-- /.countdown-wrapper -->
-    <div class="row" id="Product" style='margin-bottom: 150px;'>
+    <div class="row" id="Product" style='margin-bottom: 150px; display: ;'>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">Pre-sale</h1>
       <div class="info_left col-md-6">
         <img src="../assets/images/can_box.png" alt="info_png" width='80%;'>
+        <img src="../assets/images/can_box_child.png" width="80%;" style="position: absolute; top: -16%; width: 52%;">
       </div>
       <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
         <h1 class="text-center">
           CAN星际宝盒
         </h1>
         <!-- <h2 class="text-center">CAN</h2> -->
-        <p class="text-left">CAN星际宝盒是融合了去中心化内容分布网络和广告交付节点，支持 Wi-Fi接入，路由和数字货币服务功能的全球第一款真正去中心化的区块 链应用设备。CAN不是简单的矿机、不是简单的Wi-Fi设备，而是融 合硬件，即插即用，是融合了去中心化应用、Wi-Fi接入和近场营销、区 块链数字创富的一体化硬件。</p>
+        <p class="text-left">CAN星际宝盒是融合了去中心化内容分布网络和广告交付节点，支持Wi-Fi接入，路由和数字货币服务功能的全球第一款真正去中心化的区块链应用设备。CAN不是简单的矿机、不是简单的Wi-Fi设备，而是融 合硬件，即插即用，是融合了去中心化应用、Wi-Fi接入和近场营销、区块链数字创富的一体化硬件。</p>
       </div>
     </div>
     <div class="row" id='Brief'>
@@ -146,7 +155,7 @@
           <img src="../assets/images/can_canlogo.png" width='50px' height='50px;' alt="">
         </h1>
         <h2 class="text-center">CAN</h2>
-        <p class="text-left">CAN（内容及广告分发网络）以MobiPromo的全球品牌形象及其分布于全球的 数万个节点为基础，将通过半年二代产品的开发、测试及试用，经过一年的推广， 达到一百万以上节点规模，从而吸引大型网站的内容分发业务以及全球品牌的广 告业务的加盟。</p>
+        <p class="text-left">CAN（内容及广告分发网络）以MobiPromo的全球品牌形象及其分布于全球的 数万个节点为基础，将通过半年二代产品的开发、测试及试用，经过一年的推广， 达到一百万以上节点规模，从而吸引大型网站的内容分发业务以及全球品牌的广告业务的加盟。</p>
       </div>
     </div>
   </div>
@@ -158,29 +167,29 @@
       <div class="swiper-container-carousel">
         <div class="swiper-wrapper">
           <div class="swiper-slide wow animate fadeInUpBig" data-wow-duration="1s" data-wow-delay="1s">
-            <h1 class="text-center">Congratulation!!! </h1>
-            <p class="text-center">CAN is listed on EXX.com</p>
-            <p class="text-center">QC、ETH are available now for trading</p>
+            <h1 class="text-center">特大新闻!!!</h1>
+            <p class="text-center">CAN于EXX网上线交易了</p>
+            <!-- <p class="text-center">QC、ETH are available now for trading</p> -->
             <div class='slide_btn text-center'>
               <img src="../assets/images/slide_btn.png" alt="slide_btn.png">
             </div>
           </div>
           <div class="swiper-slide wow animate flipInY" data-wow-duration="1.5s" data-wow-delay="0.5s">
+            <h1 class="text-center">特大新闻!!!</h1>
+            <p class="text-center">CAN于EXX网上线交易了</p>
+            <!-- <p class="text-center">QC、ETH are available now for trading</p> -->
+            <div class='slide_btn text-center'>
+              <img src="../assets/images/slide_btn.png" alt="slide_btn.png">
+            </div>
+          </div>
+        <!--   <div class="swiper-slide wow animate fadeInDownBig" data-wow-duration="1s" data-wow-delay="1.5s">
             <h1 class="text-center">Congratulation!!! </h1>
             <p class="text-center">CAN is listed on EXX.com</p>
             <p class="text-center">QC、ETH are available now for trading</p>
             <div class='slide_btn text-center'>
               <img src="../assets/images/slide_btn.png" alt="slide_btn.png">
             </div>
-          </div>
-          <div class="swiper-slide wow animate fadeInDownBig" data-wow-duration="1s" data-wow-delay="1.5s">
-            <h1 class="text-center">Congratulation!!! </h1>
-            <p class="text-center">CAN is listed on EXX.com</p>
-            <p class="text-center">QC、ETH are available now for trading</p>
-            <div class='slide_btn text-center'>
-              <img src="../assets/images/slide_btn.png" alt="slide_btn.png">
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -218,6 +227,12 @@
         </h1>
         <h1 class='right' style='float: left;'>ADVISOR TEAM</h1>
       </div>
+      <!-- <span class='right_btn'>
+        <img src="../assets/images/right_btn.svg" width='20px;' alt="">
+      </span>
+      <span class='left_btn'>
+        <img src="../assets/images/left_btn.svg" width='20px;' alt="">
+      </span> -->
       <div class='swiper-container-people'>
         <div class="swiper-wrapper project">
           <div class="swiper-slide slide_project">
@@ -289,81 +304,91 @@
           <div class="swiper-slide slide_advisor" style="display: none;">
             <ul>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Tang.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Tang.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">David Tang</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Early blockchain participant</span>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">David Tang</span><br>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Early blockchain participant</span>
                 </div>
                 
               </li>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Yeung.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Yeung.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Johnny Au Yeung</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span>
+                  <span class="" data-wow-duration="2s" data-wow-delay="1s">Johnny Au Yeung</span><br>
+                  <span class="" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span>
                 </div>
               </li>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Yu.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="../assets/images/Yu.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Blockchain Lawyer</span>
+                  <span class="" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span><br>
+                  <span class="" data-wow-duration="2s" data-wow-delay="1s">Blockchain Lawyer</span>
                 </div>
               </li>
             </ul>
           </div>
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
     </div>
 </section>
-<section class='can_time_axis' id='Roadma' style='display: none;'>
+<section class='can_time_axis' id='Roadma' style='display: ;'>
+    <!--   <span class='right_btn'>
+        <img src="../assets/images/right_btn.svg" width='20px;' alt="">
+      </span>
+      <span class='left_btn'>
+        <img src="../assets/images/left_btn.svg" width='20px;' alt="">
+      </span> -->
   <div class='row' style='overflow: hidden;'>
     <h1 class='text-center'>Roadmap</h1>
-    <h2 class='line'></h2>
+    <!-- <h2 class='line'></h2> -->
     <div class="swiper-container-time">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <ul>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2017年11月</p>
+              <span>CAN API服务v1.0发布</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2017年12月</p>
+              <span>CAN 钱包v1.0发布</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年1月</p>
+              <span>CAN 节点浏览器研发完成</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年1月</p>
+              <span>CAN.DAN 原型系统展示</span>
             </li>
           </ul>
         </div>
         <div class="swiper-slide">
           <ul>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年3月</p>
+              <span>星际宝盒样机展示</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年6月</p>
+              <span>CAN v1.0发布</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年6月</p>
+              <span>星际宝盒 产品发布</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>2018年9月</p>
+              <span>CAN v2.0发布</span>
             </li>
           </ul>
         </div>
       </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </section>
@@ -389,15 +414,17 @@
       <div class='col-md-4'>
         <img src="../assets/images/logo.png" alt="logo.png" width='200px;'>
         <p style='margin-top: 32px;'>MobiPromo is focusing on info. delivery and value exchange</p>
-        <p style='margin-top: 30px; margin-bottom: 97px;'>Email:support@mobipromo.io</p>
+        <p style='margin-top: 30px; margin-bottom: 50px;'>Email:support@mobipromo.io</p>
         <span>Copyright © 2017 MobiPromo Ltd.</span>
       </div>
       <div class='col-md-4'>
-        <p style='margin-top: 68px;'>Need help?</p>
+        <i class="iconfont icon-shuoming" style='font-size: 56px;'></i>
+        <p style='margin-top: 20px;'>Need help?</p>
         <p>If any questions, please contact us</p>
         <p style='margin-top: 30px;'>MobiPromo System</p>
       </div>
       <div class='col-md-4' style="padding-top: 70px;">
+        <h1 style='font-size: 18px; line-height: 30px;'>5UToken</h1>
         <img src="../assets/images/footer_qr.png" alt="footer_qr.png" width='97px;'>
       </div>
     </div>
@@ -410,36 +437,98 @@
     <!--script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
+    <!-- // <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script> -->
+    <script type='text/javascript' src='../assets/js/wow.min.js'></script>
     <script type="text/javascript" src="../assets/js/swiper-3.4.2.min.js"></script>
     <script type='text/javascript' src='../assets/js/jquery-1.11.1.min.js'></script>
     <script type='text/javascript' src='../assets/js/jquery.particleground.min.js'></script>
-    <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script>
+    <!-- // <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script> -->
     <script type="text/javascript" src="../assets/js/kinetic.js"></script>
     <script type="text/javascript" src="../assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='../assets/js/index.js'></script>
     <script>
-    // $('.countdown').final_countdown({
-    //       'start': 0,
-    //       'end': 3600,
-    //       'now': 0        
-    //     });
-      // $(".pre_sale").click( function () {
-      //   $("#Product").css({
-      //     'display': 'none'
-      //   },300)
-      //   $(".can_pre_sale").css({
-      //     'height': 'auto'
-      //   })
-      // });
-      // $(".info").click( function () {
-      //   $("#Product").css({
-      //     'display': 'block'
-      //   },300);
-      //   $(".can_pre_sale").css({
-      //     'height': '0'
-      //   })
-      // })
+    var icoStartDate = new Date('2017-12-23 20:00:00');//-10-05 12:00:00');
+        var today = new Date();
+        var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+        $('.countdown').final_countdown({
+          'start': 0,
+          'end': toICO,
+          'now': 0        
+        });
+      $(".pre_sale").click( function () {
+        $(".pre_sale").css({
+          'color': '#ffffff'
+        })
+        $(".info").css({
+          'color': '#a0a0a0'
+        })
+        $("#Product").css({
+          'display': 'none'
+        },300);
+        $(".can_pre_sale").css({
+          'height': 'auto'
+        })
+      });
+      $(".info").click( function () {
+
+        $("#Product").css({
+          'display': 'block'
+        },300);
+        $(".can_pre_sale").css({
+          'height': '0'
+        });
+        $(".pre_sale").css({
+          'color': '#a0a0a0'
+        })
+        $(".info").css({
+          'color': '#ffffff'
+        })
+      })
+      var x = getCookieValue('Authorization');
+      $.ajax({
+        headers: {
+              Accept: "application/json; charset=utf-8",
+            Authorization: 'Bearer' + ' ' + x
+          },
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/promo/authed/user/account',
+        success: function (data) {
+          $("#login").html(data.phone);
+          $("#login").removeAttr("href");
+        },
+        error: function(data) {
+          console.log('fail')
+        }
+      })
+      // 已售出多少台设备
+      $.ajax({
+        headers: {
+              Accept: "application/json; charset=utf-8"
+          },
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/promo/public/buy/get/boxhadsell',
+        success: function (data) {
+          $(".sale_amount").html(data.data);
+        },
+        error: function(data) {
+          console.log('fail')
+        }
+      })
+      setInterval(function() {
+        var x = new Date();
+        if(x>=icoStartDate){
+          $('.clock').css({
+            'display': 'none'
+          });
+          // $(".join_btn").addClass("join_btn_in")
+          $(".join_btn").click(function() {
+            console.log('hl')
+            window.location.href="../presale.html"
+          })
+        }
+      },1000);
     </script>
 </body>
 
