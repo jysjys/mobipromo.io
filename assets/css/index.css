@@ -27,12 +27,11 @@
     color: #FF3B00 !important;
   }
   .nav>li>a {
-    padding: 10px 30px;
+    padding: 10px 40px;
   }
   .navbar-toggle {
     margin-top: 30px;
   }
-
 
 
 
@@ -59,10 +58,10 @@
     width: 100%;
   }
   .top_banner h1:nth-child(1) {
-    top: 30%;
+    top: 35%;
   }
   .top_banner h1:nth-child(2) {
-    top: 37%;
+    top: 42%;
   }
   .top_banner h6 {
     font-size: 16px;
@@ -74,7 +73,7 @@
     transform: translateX(-50%);
     letter-spacing: 1.5px;
     width: 100%;
-    top: 45%;
+    top: 50%;
   }
 
 
@@ -245,9 +244,10 @@
     margin: 0 auto 86px auto;
     border-radius: 2px;
     margin-right: 2px;
+    cursor: pointer;
     /*transition: all 0.5s;*/
   }
-  .can_people_btn h1:nth-child(1) {
+  .can_people_btn h1:nth-child(2) {
     background: #ffffff;
     border: 1px solid #68C9F5;
     color: #68C9F5;
@@ -323,31 +323,38 @@
   }
   .can_time_axis ul li {
     width: 169px;
-    height: 130px;
+    /*height: 130px;*/
     /*border: 1px solid #000000;*/
     float: left;
     margin-right: 65px;
     text-align: center;
+    margin-bottom: 20px;
   }
   .can_time_axis ul li:nth-child(4) {
     margin-right: 0;
   }
   .can_time_axis ul li p {
-    width: 67px;
-    height: 67px;
+    width: 82px;
+    height: 82px;
     border: 1px solid #00b9f9;
     border-radius: 50%;
-    font-size: 14px;
-    line-height: 67px;
+    font-size: 12px;
+    line-height: 82px;
     text-align: center;
     color: #303030;
     margin: 0 auto;
     margin-bottom: 12px;
     z-index: 99;
+    transition: all 0.5s;
+  }
+  .can_time_axis ul li p:hover {
+    background: #50BAF3;
+    color: #ffffff;
   }
   .can_time_axis ul li span {
     font-size: 14px;
     color: #303030;
+    line-height: 26px;
   }
 
 
@@ -366,14 +373,9 @@
     line-height: 21px;
   }
 
-  @media (max-width: 1366px) {
-    .navbar-nav>li>a {
-      padding: 10px 22px;
-    }
-  }
   @media (max-width: 992px) {
     .navbar-nav>li>a {
-      padding: 10px 10px;
+      padding: 10px 10px !important;
     }
   }
   @media screen and (max-width: 768px) {
@@ -415,7 +417,8 @@
         margin-right: auto;
       }
       .can_carousel .swiper-slide {
-        width: 300px;
+        width: 390px !important;
+        /*margin-left: 12px;*/
       }
       .swiper-container-people ul li {
         left: 50%;
@@ -434,7 +437,12 @@
       .can_time_axis ul li {
         margin: 0 40px;
       }
-
+      .slide_advisor ul {
+        padding-left: 0;
+      }
+      .swiper-container-people ul {
+        margin: 0 !important;
+      }
   }
   @media screen and (max-width: 1366px) {
       .child_list {
@@ -471,7 +479,7 @@
     margin-bottom: 50px;
     position: relative;
     left: 50%;
-    margin-left: -200px;
+    margin-left: -100px;
   }
   .can_info_btn ul li {
     float: left;
@@ -482,12 +490,12 @@
     text-align: center;
     cursor: pointer;
   }
-  .can_info_btn li:nth-child(1) {
+  /*.can_info_btn li:nth-child(1) {
     border-right: 2px solid #a0a0a0;
-  }
-  .can_info_btn li:nth-child(2) {
+  }*/
+  /*.can_info_btn li:nth-child(1) {
     color: #a0a0a0;
-  }
+  }*/
   .join_btn {
     width: 200px;
     height: 50px;
@@ -512,10 +520,39 @@
   #sale_count h1{
     text-align: center;
     font-size: 22px;
+    line-height: 24px;
   }
   #sale_count h2 {
     text-align: center;
     font-size: 26px;
     margin-top: 26px;
     margin-bottom: 40px;
+  }
+
+
+
+
+  .can_people, .can_time_axis {
+    position: relative;
+  }
+  .right_btn {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    cursor: pointer;
+  }
+  .right_btn img {
+    width: 50px;
+  }
+  .left_btn {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    cursor: pointer;
+  }
+  .left_btn img {
+    width: 50px;
+  }
+  .slide_advisor ul {
+    padding-left: 150px;
   }
