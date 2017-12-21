@@ -6,8 +6,16 @@
 <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <title>mobipromo</title>
 <link rel="stylesheet" href="assets/css/login.css" />
+<style>
+	.warn {
+		font-size: 12px;
+		color: #CC0001;
+		margin-top: 0;
+		height: 13px;
+		display: none;
+	}
+</style>
 <body>
-
 <div class="register-container">
 	<h1>欢迎注册Mobipromo</h1>
 	<div class="connect">
@@ -17,19 +25,34 @@
 			<input type="text" name="accountName" class="accountName" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
+			<input type="text" class="accountName_warn warn" value="您输入的用户名不合法！" disabled='disabled'>
+		</div>
+		<div>
 			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" class="password_warn warn" value="您输入的密码格式有误！" disabled='disabled'>
 		</div>
 		<div>
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
 		<div>
+			<input type="text" class="confirm_password_warn warn" value="输入密码不一致！" disabled='disabled'>
+		</div>
+		<div>
 			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+		</div>
+		<div>
+			<input type="text" class="phone_number_warn warn" value="您输入的手机号码不正确！" disabled='disabled'>
 		</div>
 		<div>
 			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
 		</div>
+		<div>
+			<input type="text" class="email_warn warn" value="您输入的邮箱不正确！" disabled='disabled'>
+		</div>
 		<button id="submit" type="submit">注 册</button>
-	<a href="index.html" style="display: block">
+	<a href="indexlogin.html" style="display: block">
 		<button type="button" class="register-tis">已经有账号？</button>
 	</a>
 
@@ -46,6 +69,7 @@
 <script>
 
 	$("#submit").click(function () {
+		$(".warn").css({'display':'none'})
 		var accountName = $("input[name='accountName']").val(),
 		password = $("input[name='password']").val(),
 		confirm_password = $("input[name='confirm_password']").val(),
@@ -55,66 +79,68 @@
 		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 		if(!accountName) {
 			console.log('accountName not empty')
+			$(".accountName_warn").css({'display':'inline-block'});
 		} else if(accountName.length < 6 || accountName.length > 20) {
 			console.log('accountName length error')
+			$(".accountName_warn").css({'display':'inline-block'});
 		} else if(!password) {
 			console.log('password not empty')
+			$(".password_warn").css({'display':'inline-block'});
 		} else if(password < 6 || password.length > 20) {
 			console.log('password length error')
+			$(".password_warn").css({'display':'inline-block'});
 		} else if(!confirm_password) {
 			console.log('password not empty')
+			$(".confirm_password_warn").css({'display':'inline-block'});
 		} else if(confirm_password != password) {
 			console.log('confirm_password not repeat')
+			$(".confirm_password_warn").css({'display':'inline-block'});
 		} else if(!phone_number) {
 			console.log('password not empty')
+			$(".phone_number_warn").css({'display':'inline-block'});
 		} else if(!phone_number_reg.test(phone_number)) {
 			console.log('phone_number error')
+			$(".phone_number_warn").css({'display':'inline-block'});
 		} else if(!email_reg) {
 			console.log('password not empty')
+			$(".email_warn").css({'display':'inline-block'});
 		} else if(!email_reg.test(email)) {
 			console.log('email error')
+			$(".email_warn").css({'display':'inline-block'});
+		}else {
+			var dataregister = {
+				"account": phone_number,
+				"accountName": accountName,
+				"accountType": 'email',
+				"country": "sdfa",
+				"email": email,
+				"firstName": "1",
+				"idCardNumber": "12345678",
+				"lastName": "7",
+				"password": password,
+				"phone": phone_number
+			   }
+			$.ajax({
+			   headers: {
+					  Accept: "application/json; charset=utf-8",
+					  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
+				  },
+				type: 'POST',
+			   url: '/promo/public/account',
+			   data: JSON.stringify(dataregister),
+			   contentType: "application/json; charset=utf-8",
+				success: function (data) {
+					console.log('');
+					location.href = '/indexlogin.html';
+				},
+				error: function (data) {
+					console.log(data)
+					$('#submit').after('<span style="color:red;"></span>');
+				}
+			})
 		}
-		// if(accountName && password && confirm_password && phone_number) {
-		// 	console.log("请填写完整信息")
-		// }
-		// if(!password == confirm_password) {
-		// 	console.log('两次输入密码不一致')
-		// }
-		// if(!phone_number_test.test(phone_number)) {
-		// 	console.log('手机号码不正确')
-		// }
 
-		var dataregister = {
-			"account": phone_number,
-			"accountName": accountName,
-			"accountType": 'email',
-			"country": "sdfa",
-			"email": email,
-			"firstName": "1",
-			"idCardNumber": "12345678",
-			"lastName": "7",
-			"password": password,
-			"phone": phone_number
-		   }
-		  console.log(dataregister)
-		  $.ajax({
-		   headers: {
-				  Accept: "application/json; charset=utf-8",
-				  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
-			  },
-			type: 'POST',
-		   url: '/promo/public/account',
-		   data: JSON.stringify(dataregister),
-		   contentType: "application/json; charset=utf-8",
-			success: function (data) {
-				console.log('');
-				location.href = '/indexlogin.html';
-			},
-			error: function (data) {
-				console.log(data)
-				$('#submit').after('<span style="color:red;"></span>');
-			}
-		})
+		  
 	});
 </script>
 </body>
