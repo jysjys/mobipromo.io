@@ -11,7 +11,8 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/swiper-3.4.2.min.css">
-    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/iconfont.css">
+    <!-- <link rel="stylesheet" href="assets/css/default.css"> -->
     <link rel="stylesheet" href="assets/css/demo.css">
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="assets/css/index.css">
@@ -41,10 +42,10 @@
         <li><a href="#Brief">Brief</a></li>
         <li><a href="#News">NEWS</a></li>
         <li><a href="#Team">Team</a></li>
-        <!-- <li><a href="#Roadma">Roadma</a></li> -->
+        <li><a href="#Roadma">Roadma</a></li>
         <li><a href="#Contact_Us">Contact Us</a></li>
         <li><a href="cn/index.html">中文</a></li>
-        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">登陆</a></li> -->
+        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">Sign in</a></li> -->
       </ul>
     </div>
   </div>
@@ -62,19 +63,19 @@
     <div class='row can_info_btn'>
       <ul>
         <li class="info">Intro.</li>
-        <li class='pre_sale'>Pre-sale</li>
+        <!-- <li class='pre_sale'>Pre-sale</li> -->
       </ul>
     </div>
-    <div class="row" id='sale_count' style='display: none'>
+    <div class="row" id='sale_count' style='display:;'>
       <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
-      <h2>已售出<span class='sale_amount'>0</span>台</h2>
+      <!-- <h2>已售出<span class='sale_amount'>0</span>台</h2> -->
     </div>
     <style>
       .text .type-time {
         margin-top: 40px;
       }
     </style>
-    <div class="countdown container can_pre_sale" style='height: auto; margin-bottom: 50px; overflow: hidden; display: none'>
+    <div class="countdown container can_pre_sale" style='height: auto; margin-bottom: 50px; margin-top: 50px; overflow: hidden; display: ;'>
       <div class="clock row">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
           <div class="wrap">
@@ -130,9 +131,11 @@
       </div><!-- /.clock -->
       <div class="join_btn" style='#666666'>立即参与</div>
     </div><!-- /.countdown-wrapper -->
-    <div class="row" id='Product' style='margin-bottom: 150px;'>
-      <div class="info_left col-md-6">
+    <div class="row" id='Product' style='margin-bottom: 150px; display: ;'>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">Pre-sale</h1>
+      <div class="info_left col-md-6" style='position: relative;'>
         <img src="assets/images/can_box.png" alt="info_png" width='80%;'>
+        <img src="assets/images/can_box_child.png" width="80%;" style="position: absolute; top: -16%; width: 52%;">
       </div>
       <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
         <h1 class="text-center">
@@ -164,29 +167,33 @@
       <div class="swiper-container-carousel">
         <div class="swiper-wrapper">
           <div class="swiper-slide wow animate fadeInUpBig" data-wow-duration="1s" data-wow-delay="1s">
-            <h1 class="text-center">CAN于EXX网上线交易了！</h1>
-            <p class="text-center">Congratulation!!! CAN is listed on EXX.com</p>
-            <p class="text-center">QC、ETH are available now for trading</p>
+            <h1 class="text-center">Congratulation!!! </h1>
+            <p class="text-center">CAN is listed on EXX.com</p>
+            <p class="text-center">QC、ETH are available now for trading.</p>
             <div class='slide_btn text-center'>
-              <img src="assets/images/slide_btn.png" alt="slide_btn.png">
+              <a href="http://www.exx.com">
+                <img src="assets/images/slide_btn.png" alt="slide_btn.png">
+              </a>
             </div>
           </div>
           <div class="swiper-slide wow animate flipInY" data-wow-duration="1.5s" data-wow-delay="0.5s">
+            <h1 class="text-center">Congratulation!!!</h1>
+            <p class="text-center">CAN was listed on chaoex.com</p>
+            <p class="text-center">CODE are available now for trading.</p>
+            <div class='slide_btn text-center'>
+              <a href="http://www.chaoex.com">
+                <img src="assets/images/slide_btn.png" alt="slide_btn.png">
+              </a>
+            </div>
+          </div>
+          <!-- <div class="swiper-slide wow animate fadeInDownBig" data-wow-duration="1s" data-wow-delay="1.5s">
             <h1 class="text-center">CAN于EXX网上线交易了！</h1>
             <p class="text-center">Congratulation!!! CAN is listed on EXX.com</p>
             <p class="text-center">QC、ETH are available now for trading</p>
             <div class='slide_btn text-center'>
               <img src="assets/images/slide_btn.png" alt="slide_btn.png">
             </div>
-          </div>
-          <div class="swiper-slide wow animate fadeInDownBig" data-wow-duration="1s" data-wow-delay="1.5s">
-            <h1 class="text-center">CAN于EXX网上线交易了！</h1>
-            <p class="text-center">Congratulation!!! CAN is listed on EXX.com</p>
-            <p class="text-center">QC、ETH are available now for trading</p>
-            <div class='slide_btn text-center'>
-              <img src="assets/images/slide_btn.png" alt="slide_btn.png">
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -237,6 +244,12 @@
         </h1>
         <h1 class='right' style='float: left;'>ADVISOR TEAM</h1>
       </div>
+     <!--  <span class='right_btn'>
+        <img src="assets/images/right_btn.svg" width='20px;' alt="">
+      </span>
+      <span class='left_btn'>
+        <img src="assets/images/left_btn.svg" width='20px;' alt="">
+      </span> -->
       <div class='swiper-container-people'>
         <div class="swiper-wrapper project">
           <div class="swiper-slide slide_project">
@@ -308,56 +321,64 @@
           <div class="swiper-slide slide_advisor" style="display: none;">
             <ul>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Tang.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Tang.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">David Tang</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Early blockchain participant</span>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">David Tang</span><br>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Early blockchain participant</span>
                 </div>
                 
               </li>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Yeung.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Yeung.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Johnny Au Yeung</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Johnny Au Yeung</span><br>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span>
                 </div>
               </li>
               <li>
-                <img class='wow animate flipInX' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Yu.png" alt="wu/CEO">
+                <img class='' data-wow-duration='2s' data-wow-delay='0.3s' src="assets/images/Yu.png" alt="wu/CEO">
                 <div>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span><br>
-                  <span class="wow animate fadeIn" data-wow-duration="2s" data-wow-delay="1s">Blockchain Lawyer</span>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Ethereum developer</span><br>
+                  <span class=" data-wow-duration="2s" data-wow-delay="1s">Blockchain Lawyer</span>
                 </div>
               </li>
             </ul>
           </div>
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
     </div>
 </section>
-<section class='can_time_axis' id="Roadma" style='display: none;'>
-  <div class='row' style='overflow: hidden;'>
+<section class='can_time_axis' id="Roadma" style='display: ;'>
+      <!-- <span class='right_btn'>
+        <img src="assets/images/right_btn.svg" width='20px;' alt="">
+      </span>
+      <span class='left_btn'>
+        <img src="assets/images/left_btn.svg" width='20px;' alt="">
+      </span> -->
+    <div class='row' style='overflow: hidden;'>
     <h1 class='text-center'>Roadmap</h1>
-    <h2 class='line'></h2>
+    <!-- <h2 class='line'></h2> -->
     <div class="swiper-container-time">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <ul>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>Nov. 2017</p>
+              <span>CAN API service version 1.0 official launching</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>Dec. 2017</p>
+              <span>CAN Wallet version 1.0 official launching</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>Jan. 2018</p>
+              <span>CAN Nodes browser development completion</span>
             </li>
             <li>
-              <p>Jan.2018</p>
+              <p>Jan. 2018</p>
               <span>CAN DAN Prototype showing</span>
             </li>
           </ul>
@@ -365,24 +386,26 @@
         <div class="swiper-slide">
           <ul>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>Jan. 2018</p>
+              <span>CAN DCAN Prototype showing</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>March 2018</p>
+              <span>CAN STARTBOX sample units showing</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>June 2018</p>
+              <span>CAN v.1.0 launching</span>
             </li>
             <li>
-              <p>Jan.2018</p>
-              <span>CAN DAN Prototype showing</span>
+              <p>Sept. 2018</p>
+              <span>CAN v.2.0 launchin</span>
             </li>
           </ul>
         </div>
       </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </section>
@@ -392,15 +415,17 @@
       <div class='col-md-4'>
         <img src="assets/images/logo.png" alt="logo.png" width='200px;'>
         <p style='margin-top: 32px;'>MobiPromo is focusing on info. delivery and value exchange</p>
-        <p style='margin-top: 30px; margin-bottom: 97px;'>Email:support@mobipromo.io</p>
+        <p style='margin-top: 30px; margin-bottom: 50px;'>Email:support@mobipromo.io</p>
         <span>Copyright © 2017 MobiPromo Ltd.</span>
       </div>
       <div class='col-md-4'>
-        <p style='margin-top: 68px;'>Need help?</p>
+        <i class="iconfont icon-shuoming" style='font-size: 56px;'></i>
+        <p style='margin-top: 20px;'>Need help?</p>
         <p>If any questions, please contact us</p>
         <p style='margin-top: 30px;'>MobiPromo System</p>
       </div>
       <div class='col-md-4' style="padding-top: 70px;">
+        <h1 style='font-size: 18px; line-height: 30px;'>5UToken</h1>
         <img src="assets/images/footer_qr.png" alt="footer_qr.png" width='97px;'>
       </div>
     </div>
@@ -414,95 +439,99 @@
     <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
     <!-- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
     <script src='assets/js/bootstrap.min.js'></script>
-    <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script>
+    <!-- // <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script> -->
+    <script type='text/javascript' src='assets/js/wow.min.js'></script>
     <script type="text/javascript" src="assets/js/swiper-3.4.2.min.js"></script>
-    <script type='text/javascript' src='assets/js/jquery-1.11.1.min.js'></script>
+    // <script type='text/javascript' src='assets/js/jquery-1.11.1.min.js'></script>
     <script type='text/javascript' src='assets/js/jquery.particleground.min.js'></script>
-    <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script>
+    <!-- // <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script> -->
     <script type="text/javascript" src="assets/js/kinetic.js"></script>
     <script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='assets/js/index.js'></script>
     <script>
-        // var icoStartDate = new Date('2017-12-22 12:00:00');//-10-05 12:00:00');
-        // var today = new Date();
-        // var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
-        // $('.countdown').final_countdown({
-        //   'start': 0,
-        //   'end': toICO,
-        //   'now': 0        
-        // });
-      // $(".pre_sale").click( function () {
-      //   $(".pre_sale").css({
-      //     'color': '#ffffff'
-      //   })
-      //   $(".info").css({
-      //     'color': '#a0a0a0'
-      //   })
-      //   $("#Product").css({
-      //     'display': 'none'
-      //   },300);
-      //   $(".can_pre_sale").css({
-      //     'height': 'auto'
-      //   })
-      // });
-      // $(".info").click( function () {
+        var icoStartDate = new Date('2017-12-23 20:00:00');//-10-05 12:00:00');
+        var today = new Date();
+        var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+        $('.countdown').final_countdown({
+          'start': 0,
+          'end': toICO,
+          'now': 0        
+        });
+      $(".pre_sale").click( function () {
+        $(".pre_sale").css({
+          'color': '#ffffff'
+        })
+        $(".info").css({
+          'color': '#a0a0a0'
+        })
+        $("#Product").css({
+          'display': 'none'
+        },300);
+        $(".can_pre_sale").css({
+          'height': 'auto'
+        })
+      });
+      $(".info").click( function () {
 
-      //   $("#Product").css({
-      //     'display': 'block'
-      //   },300);
-      //   $(".can_pre_sale").css({
-      //     'height': '0'
-      //   });
-      //   $(".pre_sale").css({
-      //     'color': '#a0a0a0'
-      //   })
-      //   $(".info").css({
-      //     'color': '#ffffff'
-      //   })
-      // })
-      $(".join_btn").click(function() {
-        window.location.href="presale.html"
+        $("#Product").css({
+          'display': 'block'
+        },300);
+        $(".can_pre_sale").css({
+          'height': '0'
+        });
+        $(".pre_sale").css({
+          'color': '#a0a0a0'
+        })
+        $(".info").css({
+          'color': '#ffffff'
+        })
       })
-      // var x = getCookieValue('Authorization');
-      // $.ajax({
-      //   headers: {
-      //         Accept: "application/json; charset=utf-8",
-      //       Authorization: 'Bearer' + ' ' + x
-      //     },
-      //   type: 'GET',
-      //   contentType: "application/json; charset=utf-8",
-      //   url: '/promo/authed/user/account',
-      //   success: function (data) {
-      //     $("#login").html(data.phone);
-      //     $("#login").removeAttr("href");
-      //   },
-      //   error: function(data) {
-      //     console.log('fail')
-      //   }
-      // })
+      var x = getCookieValue('Authorization');
+      $.ajax({
+        headers: {
+              Accept: "application/json; charset=utf-8",
+            Authorization: 'Bearer' + ' ' + x
+          },
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/promo/authed/user/account',
+        success: function (data) {
+          $("#login").html(data.phone);
+          $("#login").removeAttr("href");
+        },
+        error: function(data) {
+          console.log('fail')
+        }
+      })
       // 已售出多少台设备
-      // $.ajax({
-      //   headers: {
-      //         Accept: "application/json; charset=utf-8"
-      //     },
-      //   type: 'GET',
-      //   contentType: "application/json; charset=utf-8",
-      //   url: '/promo/public/buy/get/boxhadsell',
-      //   success: function (data) {
-      //     $(".sale_amount").html(data.data);
-      //   },
-      //   error: function(data) {
-      //     console.log('fail')
-      //   }
-      // })
-      // setInterval(function() {
-      //   var x = new Date();
-      //   if(x>=icoStartDate){
-      //     $('.clock').css({
-      //       'display': 'none'
-      //     })
-      //   }
-      // },2000)
+      $.ajax({
+        headers: {
+              Accept: "application/json; charset=utf-8"
+          },
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: '/promo/public/buy/get/boxhadsell',
+        success: function (data) {
+          $(".sale_amount").html(data.data);
+        },
+        error: function(data) {
+          console.log('fail')
+        }
+      })
+      setInterval(function() {
+        var x = new Date();
+        if(x>=icoStartDate){
+          $('.clock').css({
+            'display': 'none'
+          });
+          // $(".join_btn").addClass("join_btn_in")
+          $(".join_btn").click(function() {
+            console.log('hl')
+            window.location.href="./presale.html"
+          })
+        }
+      },1000);
+
     </script>
 </body>
 
