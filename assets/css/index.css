@@ -6,7 +6,7 @@
   
   .navbar {
     background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
     /*opacity:  0.5;*/
     border-bottom: none;
   }
@@ -17,7 +17,7 @@
   .navbar-brand img {
     height: 40px;
   }
-
+.can_carousel .swiper-slide
   .navbar-nav>li>a {
     font-size: 18px;
     line-height: 50px;
@@ -123,11 +123,15 @@
     margin: 77px 0;
   }
   .can_carousel .swiper-slide {
-    width: 649px;
-    height: 312px;
+    width: 525px;
+    height: 335px;
     border-radius: 4px;
     box-shadow: 1px 2px 6px 3px #DBF6FF;
     margin: 2px 0;
+    margin-right: 115px;
+  };
+  .can_carousel .swiper-slide:nth-child(2) {
+    margin-right: 0;
   }
   .can_carousel .swiper-slide h1 {
     font-size: 16px;
@@ -326,7 +330,7 @@
     /*height: 130px;*/
     /*border: 1px solid #000000;*/
     float: left;
-    margin-right: 65px;
+    margin-right: 62px;
     text-align: center;
     margin-bottom: 20px;
   }
@@ -443,6 +447,20 @@
       .swiper-container-people ul {
         margin: 0 !important;
       }
+      .can_carousel {
+        height: 1000px;
+      }
+      .can_carousel .swiper-container-carousel {
+        height: 1000px;
+        overflow: hidden;
+      }
+      .can_carousel .swiper-slide:nth-child(1) {
+        margin-top: 15px;
+      }
+      .can_carousel .swiper-slide:nth-child(2) {
+        position: absolute;
+        top: 40%;
+      }
   }
   @media screen and (max-width: 1366px) {
       .child_list {
@@ -461,6 +479,10 @@
       .navbar-nav>li>a {
         padding: 10px 15px;
       }
+      .can_carousel .swiper-slide {
+        width: 430px;
+        margin: 0 auto;
+      }
   }
   @media screen and (max-width: 992px) {
     .swiper-container-people ul {
@@ -472,6 +494,9 @@
     .can_people .can_people_btn {
       transform: translateX(-26%);
     }
+    .can_carousel .swiper-slide {
+        width: 320px;
+      }
   }
     .can_info_btn ul {
     overflow: hidden;

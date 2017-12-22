@@ -9,15 +9,15 @@ $('.top_banner').css({
           lineColor: '#5C5162'
         });
       new WOW().init();
-      var mySwiper = new Swiper('.swiper-container-carousel',{
-        initialSlide :0,
-        slidesPerView : 1,
-        spaceBetween : 100,
-        grabCursor : true,
-        freeMode : true,
-        // centeredSlides:true,
-        //spaceBetween : '10%',按container的百分比
-      })
+      // var mySwiper = new Swiper('.swiper-container-carousel',{
+      //   initialSlide :0,
+      //   slidesPerView : 1,
+      //   spaceBetween : 100,
+      //   grabCursor : true,
+      //   freeMode : true,
+      //   // centeredSlides:true,
+      //   //spaceBetween : '10%',按container的百分比
+      // })
       var mySwiper = new Swiper('.swiper-container-people',{
         initialSlide :0,
         slidesPerView : 'auto',
