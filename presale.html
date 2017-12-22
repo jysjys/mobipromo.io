@@ -38,7 +38,7 @@
 		color: #333333;
 		background: #ffff;
 		box-shadow: none;
-		border: 1px solid #F5F5F5;
+		border: 1px solid #D0D0D0;
 	}
 	#prov {
 		 margin-left: 100px;
@@ -52,9 +52,6 @@
 <body>
 	<div class="presale-container">
 		<h1>订单信息</h1>
-		<div class="connect">
-			<p>www.mobipromo.io</p>
-		</div>
 		<div>
 			<span>设备名称</span><input type="text" name="device_name" class="device_name" value="星际宝盒" disabled placeholder="设备名称">
 		</div>
@@ -199,6 +196,9 @@
 		.presale-container .warn:last-child {
 			padding-left: 0;
 		}
+		button {
+			margin-left: 0;
+		}
 	}
 	</style>
 	<!-- <button class="pay" style='background: none; display: none;'>
@@ -321,6 +321,20 @@
 	<!--表单验证-->
 	<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
 	<script>
+	var icoStartDate = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
+    var t = setInterval(function () {
+    	var today = new Date();
+    	var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+    	console.log(toICO)
+    	if(toICO<=0) {
+    		$("#submit").text('已经结束');
+    		$("#submit").css({
+    			'background': '#5C5162'
+    		})
+    		$("#submit").off('click');
+    		clearInterval(t);
+    	}
+    },1000);
 
 	function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
 		//用处理字符串的方式查找到key对应value
@@ -540,7 +554,7 @@
 			}
 		});
 	}
-	// getList();
+	getList();
 
 	var addrShow = $('#addr-show');
 	var prov = $('#prov');
