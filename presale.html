@@ -10,8 +10,39 @@
 	<link rel="stylesheet" href="assets/css/login.css" />
 	<link rel="stylesheet" href="assets/css/icons/icons.css" />
 	<style>
+	html {
+		background: #F5F5F5;
+
+	}
+	body {
+		background: #ffffff;
+		margin: 0 100px;
+		color: #333333;
+	}
 	.presale-container {
-		margin-top: 50px;
+		padding-top: 50px;
+	}
+	span {
+		display: inline-block;
+		width: 100px;
+		text-align: left;
+	}
+	input {
+		border: 1px solid #F5F5F5;
+		border-radius: 5px;
+		color: #333333;
+		background: #ffffff;
+		box-shadow: none;
+	}
+	select {
+		color: #333333;
+		background: #ffff;
+		box-shadow: none;
+		border: 1px solid #F5F5F5;
+	}
+	a {
+		text-decoration: none;
+		color: red;
 	}
 	</style>
 </head>
@@ -22,27 +53,27 @@
 			<p>www.mobipromo.io</p>
 		</div>
 		<div>
-			<input type="text" name="device_name" class="device_name" value="星际宝盒" disabled placeholder="设备名称">
+			<span>设备名称</span><input type="text" name="device_name" class="device_name" value="星际宝盒" disabled placeholder="设备名称">
 		</div>
 		<!-- <div>
 			<input type="text" class="warn" value="*请填写正确地址信息！" disabled="disabled"/>
 		</div> -->
 		<div>
-			<input type="text" name="username" class="username" placeholder="*姓名">
+			<a href="">*</a><span>姓名</span><input type="text" name="username" class="username" placeholder="">
 		</div>
 		<div>
-			<input type="text" name="phone_number" class="phone_number" placeholder="*电话">
+			<a href="">*</a><span>电话号码</span><input type="text" name="phone_number" class="phone_number" placeholder="">
 		</div>
 		<div>
-			<input type="text" name="mailbox" class="mailbox" placeholder="*邮箱">
+			<a href="">*</a><span>邮箱</span><input type="text" name="mailbox" class="mailbox" placeholder="">
 		</div>
 		<div>
-			<input type="text" name="zip_code" class="zip_code" placeholder="*邮编">
+			<a href="">*</a><span>邮编</span><input type="text" name="zip_code" class="zip_code" placeholder="">
 		</div>
 		<div>
 			<!--省份选择-->
-			<select id="prov" name="address-level1" style="width:98px;" onchange="showCity(this)">
-				<option value="">*请选择省份</option>
+			<select id="prov" name="address-level1" style="width:98px; margin-left: 100px;" onchange="showCity(this)">
+				<option value="">请选择省份</option>
 			</select>
 			<!--城市选择-->
 			<select id="city" name="address-level2" style="width:98px;" onchange="showCounty(this)">
@@ -50,11 +81,11 @@
 			</select>
 			<!--县区选择-->
 			<select id="country" name="address-level3" style="width:98px;">
-				<option value="">*请选择区县</option>
+				<option value="">请选择区县</option>
 			</select>
 		</div>
 		<div>
-			<input type="text" name="address-detail" class="address" placeholder="*详细地址">
+			<a href="">*</a><span>详细地址</span><input type="text" name="address-detail" class="address" placeholder="">
 		</div>
 		<!-- <div style="position: relative;">
 			<select name="buyAmount" style="width:302px;" class="buyAmount">
@@ -135,7 +166,7 @@
 	}
 
 	.list ul li {
-		border: 1px solid rgba(115, 191, 255, 0.71);
+		border: 1px solid #F5F5F5;
 		padding: 0 10px;
 		height: 50px;
 		line-height: 50px;
@@ -256,7 +287,7 @@
 	<!-- <script src="assets/js/common.js"></script> -->
 	<!--背景图片自动更换-->
 	<script src="assets/js/supersized.3.2.7.min.js"></script>
-	<script src="assets/js/supersized-init.js"></script>
+	<!-- // <script src="assets/js/supersized-init.js"></script> -->
 	<script src="assets/js/qrcode.js"></script>
 	<script src="assets/js/address.js"></script>
 	<!--表单验证-->

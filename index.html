@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="#" style="margin-left: 20px;">
         <img alt="MobiPromo" src="assets/images/logo.png">
       </a>
     </div>
@@ -62,12 +62,12 @@
   <div class='container' style='overflow: hidden;'>
     <div class='row can_info_btn'>
       <ul>
-        <li class="info">Intro.</li>
+        <li class="info">Pre-sale</li>
         <!-- <li class='pre_sale'>Pre-sale</li> -->
       </ul>
     </div>
     <div class="row" id='sale_count' style='display:;'>
-      <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
+      <h1>10,000 of CAN STARTBOX will be sold in advance</h1>
       <!-- <h2>已售出<span class='sale_amount'>0</span>台</h2> -->
     </div>
     <style>
@@ -84,7 +84,7 @@
 
               <div class="text">
                 <p class="val">0</p>
-                <p class="type-days type-time">天</p>
+                <p class="type-days type-time">Day</p>
               </div><!-- /.text -->
             </div><!-- /.inner -->
           </div><!-- /.wrap -->
@@ -97,7 +97,7 @@
 
               <div class="text">
                 <p class="val">0</p>
-                <p class="type-hours type-time">时</p>
+                <p class="type-hours type-time">Hr</p>
               </div><!-- /.text -->
             </div><!-- /.inner -->
           </div><!-- /.wrap -->
@@ -110,7 +110,7 @@
 
               <div class="text">
                 <p class="val">0</p>
-                <p class="type-minutes type-time">分</p>
+                <p class="type-minutes type-time">Min</p>
               </div><!-- /.text -->
             </div><!-- /.inner -->
           </div><!-- /.wrap -->
@@ -123,16 +123,16 @@
 
               <div class="text">
                 <p class="val">0</p>
-                <p class="type-seconds type-time">秒</p>
+                <p class="type-seconds type-time">Sec</p>
               </div><!-- /.text -->
             </div><!-- /.inner -->
           </div><!-- /.wrap -->
         </div><!-- /.clock-item -->
       </div><!-- /.clock -->
-      <div class="join_btn" style='#666666'>立即参与</div>
+      <div class="join_btn" style='#666666'>PARTICIPATE</div>
     </div><!-- /.countdown-wrapper -->
     <div class="row" id='Product' style='margin-bottom: 150px; display: ;'>
-      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">Pre-sale</h1>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">Intro.</h1>
       <div class="info_left col-md-6" style='position: relative;'>
         <img src="assets/images/can_box.png" alt="info_png" width='80%;'>
         <img src="assets/images/can_box_child.png" width="80%;" style="position: absolute; top: -16%; width: 52%;">
@@ -166,7 +166,7 @@
       <h1 class='text-center'>NEWS</h1>
       <div class="swiper-container-carousel">
         <div class="swiper-wrapper">
-          <div class="swiper-slide wow animate fadeInUpBig" data-wow-duration="1s" data-wow-delay="1s">
+          <div class="swiper-slide wow animate fadeInUpBig col-sm-6" data-wow-duration="1s" data-wow-delay="1s">
             <h1 class="text-center">Congratulation!!! </h1>
             <p class="text-center">CAN is listed on EXX.com</p>
             <p class="text-center">QC、ETH are available now for trading.</p>
@@ -176,7 +176,7 @@
               </a>
             </div>
           </div>
-          <div class="swiper-slide wow animate flipInY" data-wow-duration="1.5s" data-wow-delay="0.5s">
+          <div class="swiper-slide wow animate flipInY col-sm-6" data-wow-duration="1.5s" data-wow-delay="0.5s">
             <h1 class="text-center">Congratulation!!!</h1>
             <p class="text-center">CAN was listed on chaoex.com</p>
             <p class="text-center">CODE are available now for trading.</p>
@@ -404,8 +404,8 @@
           </ul>
         </div>
       </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev" style="margin-top: 10px;"></div>
+      <div class="swiper-button-next" style="margin-top: 10px;"></div>
     </div>
   </div>
 </section>
@@ -442,14 +442,14 @@
     <!-- // <script src="https://cdn.bootcss.com/wow/1.1.2/wow.js"></script> -->
     <script type='text/javascript' src='assets/js/wow.min.js'></script>
     <script type="text/javascript" src="assets/js/swiper-3.4.2.min.js"></script>
-    // <script type='text/javascript' src='assets/js/jquery-1.11.1.min.js'></script>
+    <script type='text/javascript' src='assets/js/jquery-1.11.1.min.js'></script>
     <script type='text/javascript' src='assets/js/jquery.particleground.min.js'></script>
     <!-- // <script type='text/javascript' src='http://www.yngod.com/script/wow/wow.min2.js'></script> -->
     <script type="text/javascript" src="assets/js/kinetic.js"></script>
     <script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='assets/js/index.js'></script>
     <script>
-        var icoStartDate = new Date('2017-12-23 20:00:00');//-10-05 12:00:00');
+        var icoStartDate = new Date('2017/12/23 20:00:00');//-10-05 12:00:00');
         var today = new Date();
         var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
         $('.countdown').final_countdown({
@@ -457,35 +457,8 @@
           'end': toICO,
           'now': 0        
         });
-      $(".pre_sale").click( function () {
-        $(".pre_sale").css({
-          'color': '#ffffff'
-        })
-        $(".info").css({
-          'color': '#a0a0a0'
-        })
-        $("#Product").css({
-          'display': 'none'
-        },300);
-        $(".can_pre_sale").css({
-          'height': 'auto'
-        })
-      });
-      $(".info").click( function () {
 
-        $("#Product").css({
-          'display': 'block'
-        },300);
-        $(".can_pre_sale").css({
-          'height': '0'
-        });
-        $(".pre_sale").css({
-          'color': '#a0a0a0'
-        })
-        $(".info").css({
-          'color': '#ffffff'
-        })
-      })
+
       var x = getCookieValue('Authorization');
       $.ajax({
         headers: {
@@ -526,7 +499,6 @@
           });
           // $(".join_btn").addClass("join_btn_in")
           $(".join_btn").click(function() {
-            console.log('hl')
             window.location.href="./presale.html"
           })
         }
