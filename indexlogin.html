@@ -51,11 +51,8 @@ function addCookie(name,value, exdays){
     	d.setTime(d.getTime() + (exdays*24*60*60*1000));  
     	var expires = "expires="+d.toUTCString();    /**添加设置cookie**/  
 	    var name = name;  
-	    var value = escape(value);  
-	    console.log(name);
-	    console.log(getCookieValue)
+	    var value = escape(value);
 	    document.cookie = name + "=" + value + "; " + expires; 
-	    console.log(document.cookie); 
 	}  
 function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取值**/  
     //用处理字符串的方式查找到key对应value  
@@ -77,14 +74,12 @@ function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取
     }  
 } 
 var x = getCookieValue('Authorization');
-console.log(x);
 	$("#submit").click(function () {
 		var datalogin = {
 			username: $("input[name='username']").val(),
 			password: $("input[name='password']").val(),
 			grant_type: "password"
 		}
-		console.log(datalogin)
 		$.ajax({
 		   headers: {
 		          Accept: "application/json; charset=utf-8",
@@ -95,12 +90,10 @@ console.log(x);
 		   data: datalogin,
 		   contentType: "application/x-www-form-urlencoded",
 			success: function (data) {
-				console.log(data.access_token);
         		addCookie('Authorization', data.access_token, 1);
         		window.location.href="./presale.html"
 			},
 			error: function (data) {
-				console.log(data)
 				$(".login_warn").css({
 					'display': 'inline-block'
 				})
