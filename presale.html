@@ -28,7 +28,7 @@
 		text-align: left;
 	}
 	input {
-		border: 1px solid #F5F5F5;
+		border: 1px solid #D0D0D0;
 		border-radius: 5px;
 		color: #333333;
 		background: #ffffff;
@@ -196,6 +196,9 @@
 		.list {
 			margin-left: 40px;
 		}
+		.presale-container .warn:last-child {
+			padding-left: 0;
+		}
 	}
 	</style>
 	<!-- <button class="pay" style='background: none; display: none;'>
@@ -362,14 +365,9 @@
 		var errorContent = $('<input>', {'class': 'warn'}),
 			errorWarp = $('<div/>').append(errorContent);
 
-		var icoStartDate = new Date('2017-12-21 12:00:00');
+		var icoStartDate = new Date('2017/12/22 15:57:50');
 		var currentdate = new Date();
-		if(currentdate<icoStartDate){
-			//未开始
-			errorWarp.appendTo($("input[name='device_name']").parent());
-			errorContent.val('请您稍等，抢购还未开启，将在规定时间内开启');
-			return;
-		}
+	
 		if (!boxName) {
 			errorWarp.appendTo($("input[name='device_name']").parent());
 			errorContent.val('设备名称不能为空');
@@ -409,8 +407,14 @@
 			errorContent.val('请选择省市');
 			return;
 		} else if (!addressDetail) {
+			
 			errorWarp.appendTo($("[name='address-detail']").parent());
 			errorContent.val('请输入详细地址');
+			return;
+		} else if (currentdate<icoStartDate) {
+			//未开始
+			errorWarp.appendTo($(".presale-container"));
+			errorContent.val('请您稍等，抢购将在20:00:00开启');
 			return;
 		}
 		var address = [
@@ -536,7 +540,7 @@
 			}
 		});
 	}
-	getList();
+	// getList();
 
 	var addrShow = $('#addr-show');
 	var prov = $('#prov');
