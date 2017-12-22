@@ -95,7 +95,7 @@
 			</select>
 			<button id='jiage' style='width: 50px; height: 50px; display: block; position: absolute; left: 70%; top: 0;'></button>
 		</div> -->
-		<button id="submit" type="submit">确认信息</button>
+		<button id="submit" type="submit" style='background: rgb(92, 81, 98)'>加载中。。。</button>
 	</div>
 	<style>
 	.pay_btn {
@@ -175,7 +175,7 @@
 
 	.list a {
 		cursor: pointer;
-		color: #fff;
+		color: #338CF6;
 	}
 	@media screen and (max-width: 768px) {
 		body {
@@ -213,21 +213,21 @@
 			<div tit="1y" class="price ac">
 				<div class="price-date">1 台</div>
 				<div class="price-text">¥
-					<label class="userprice">800</label>
+					<label class="userprice">899</label>
 				</div>
 				<span class="icons">&#xe658;</span>
 			</div>
 			<div tit="2y" class="price">
 				<div class="price-date">2 台</div>
 				<div class="price-text">¥
-					<label class="userprice">1600</label>
+					<label class="userprice">1798</label>
 				</div>
 				<span class="icons">&#xe658;</span>
 			</div>
 			<div tit="3y" class="price" alt="y3">
 				<div class="price-date">3 台</div>
 				<div class="price-text">¥
-					<label class="userprice">2400</label>
+					<label class="userprice">2697</label>
 				</div>
 				<span class="icons">&#xe658;</span>
 			</div>
@@ -236,7 +236,7 @@
 					<span style="font-size:30px;color:#19c105;" class="icons">&#xe655;</span>
 					<span class="icons ico">&#xe658;</span>
 				</div> -->
-				<div tit="alipay" class="price-paytype" style="padding:12px 5px 8px 5px;margin-left:12px;">
+				<div tit="alipay" class="price-paytype ac" style="padding:12px 5px 8px 5px;margin-left:12px;">
 					<span style="font-size:24px;color:#00aaee;" class="icons">&#xe654;</span>
 					<span class="icons ico">&#xe658;</span>
 				</div>
@@ -249,7 +249,7 @@
 	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="price_dlg">
 		<h2 class="dialog-title">订单信息</h2>
 		<div class="dlg-content">
-			<div class="price ac">
+			<div class="price ac" style="margin-right:0;">
 				<div class="price-date">1 台</div>
 				<div class="price-text">¥
 					<label class="userprice">800</label>
@@ -261,7 +261,7 @@
 					<span style="font-size:30px;color:#19c105;" class="icons">&#xe655;</span>
 					<span class="icons ico">&#xe658;</span>
 				</div> -->
-				<div tit="alipay" class="price-paytype" style="padding:12px 5px 8px 5px;margin-left:12px;">
+				<div tit="alipay" class="price-paytype ac" style="padding:12px 5px 8px 5px;">
 					<span style="font-size:24px;color:#00aaee;" class="icons">&#xe654;</span>
 					<span class="icons ico">&#xe658;</span>
 				</div>
@@ -329,21 +329,6 @@
 	<!--表单验证-->
 	<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
 	<script>
-	var icoStartDate = new Date('2017/12/22 20:38:00');//-10-05 12:00:00');
-    var t = setInterval(function () {
-    	var today = new Date();
-    	var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
-    	console.log(toICO)
-    	if(toICO<=0) {
-    		$("#submit").text('已经结束');
-    		$("#submit").css({
-    			'background': '#5C5162'
-    		})
-    		$("#submit").off('click');
-    		clearInterval(t);
-    	}
-    },1000);
-
 	function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
 		//用处理字符串的方式查找到key对应value
 		var name = escape(name);
@@ -364,13 +349,8 @@
 		}
 	}
 	var x = getCookieValue('Authorization');
-
-	$("[name='buyAmount']").on('change', function() {
-		$("#jiage")[0].innerHTML = 800 * $(this).val();
-	}).trigger('change');
-
-	var jsonDate = {};
-	$("#submit").on('click', function(){
+	console.log(x);
+	function btnPress(){
 		$('.warn').remove();
 		var boxName = $("input[name='device_name']").val().trim(),
 			userName = $("input[name='username']").val().trim(),
@@ -487,26 +467,11 @@
 				},
 				error: function(data) {
 					console.log(data)
+
 				}
 			});
 		});
-	});
-
-	// function createQrcode(url){
-	// 	$('#payimg').empty();
-	// 	$('#qr_dlg').dialog();
-	// 	var qrcode = new QRCode($('#payimg')[0], {
-	// 		text: '微信付款',
-	// 		width: 170,
-	// 		height: 170,
-	// 		colorDark: '#000000',
-	// 		colorLight: '#ffffff',
-	// 		correctLevel: QRCode.CorrectLevel.H
-	// 	});
-	// 	qrcode.clear();
-	// 	qrcode.makeCode('url');
-	// }
-
+	};
 	function getList() {
 		$.ajax({
 			headers: {
@@ -526,6 +491,13 @@
 				var list_phone = '';
 				var list_price = '';
 				var list_status = '';
+				if(data.length > 0) {
+					$("#submit").text('不能重复购买！');
+					$("#submit").css({
+						'background': '#5C5162'
+					});
+					$('#submit').off('click');
+				}
 				for (var i = 0; i < data.length; i++) {
 					listTradeNum += '<li>' + data[i].tradeNumber + '</li>';
 					listone += '<li>' + data[i].boxName + '</li>';
@@ -553,16 +525,106 @@
 					$('#price_dlg').find('.userprice').text(data[index].totalRmb);
 					$('#zhifu2').off('click').on('click', function(){
 						//完成未支付
+						$.ajax({
+							headers: {
+								Accept: "application/json; charset=utf-8",
+								Authorization: 'Bearer' + ' ' + x
+							},
+							url: '/promo/alipay/order/payagain',
+							data: JSON.stringify({tradeNumber:data[index].tradeNumber}),
+							type: 'POST',
+							contentType: "application/json; charset=utf-8",
+							success: function(data) {
+								console.log(data);
+								if(data.isSuccess){
+									location.href = data.httpurl;
+								}else{
+									//购买失败
+									globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+								}
+							},
+							error: function(data) {
+								globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+							}
+						});
 
 					}).find('label').text('¥ ' + data[index].totalRmb);
 				});
 			},
 			error: function(data) {
+				console.log(data)
+				// if(data.isSuccess){
+
+				// }else {
+
 				location.href = '/indexlogin.html';
+				// }
 			}
 		});
 	}
-	getList();
+	// getList();
+    
+    // 未开始
+    var delay = new Date('2017/12/23 20:00:00');
+    var d = setInterval(function () {
+    	var today = new Date();
+    	var toICO = Math.trunc((delay.getTime()-today.getTime())/1000);
+    	// console.log(toICO)
+    	if(toICO>=0) {
+    		$("#submit").text('抢购尚未开始');
+    		$("#submit").css({
+    			'background': '#5C5162'
+    		});
+    		$("#submit").off('click');
+    	}else {
+    		clearInterval(d)
+    		$("#submit").text('确认信息');
+    		$("#submit").css({
+    			'background': '#458DEF'
+    		});
+    		$("#submit").on('click', btnPress);
+    		getList();
+    	}
+    },1000);
+    // 结束
+	var icoStartDate = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
+    var t = setInterval(function () {
+    	var today = new Date();
+    	var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+    	// console.log(toICO)
+    	if(toICO<=0) {
+    		$("#submit").text('已经结束');
+    		$("#submit").css({
+    			'background': '#5C5162'
+    		});
+    		$("#submit").off('click');
+    		clearInterval(t);
+    	}
+    },1000);
+
+	$("[name='buyAmount']").on('change', function() {
+		$("#jiage")[0].innerHTML = 800 * $(this).val();
+	}).trigger('change');
+
+	var jsonDate = {};
+	$("#submit").on('click', btnPress);
+
+	// function createQrcode(url){
+	// 	$('#payimg').empty();
+	// 	$('#qr_dlg').dialog();
+	// 	var qrcode = new QRCode($('#payimg')[0], {
+	// 		text: '微信付款',
+	// 		width: 170,
+	// 		height: 170,
+	// 		colorDark: '#000000',
+	// 		colorLight: '#ffffff',
+	// 		correctLevel: QRCode.CorrectLevel.H
+	// 	});
+	// 	qrcode.clear();
+	// 	qrcode.makeCode('url');
+	// }
+
+
 
 	var addrShow = $('#addr-show');
 	var prov = $('#prov');
@@ -753,6 +815,34 @@
 			return !1
 		}),
 		this
+	}
+
+	globalTopTip = function(a, b, c, d, e) {
+	    if ("undefined" != typeof a) {
+	        null == c && (c = 5e3),
+	        null == b && (b = "top_success");
+	        var f = $("#global_top_dialog");
+	        f.length > 0 && f.remove(),
+	        f = $('<div id="global_top_dialog" class="global_top_dialog"><div class="left_arrow"></div>' + a + '<div class="right_arrow"></div></div>').appendTo("body"),
+	        f.addClass(b),
+	        e && (f.find(".left_arrow").remove(),
+	        f.find(".right_arrow").remove(),
+	        f.addClass("noarrow"));
+	        var g = f.outerWidth();
+	        d ? f.css("top", $(d).offset().top + "px") : 0 == $("#header").length && f.css("top", "0px"),
+	        f.css({
+	            "margin-left": -(.5 * g) + "px"
+	        }).show(),
+	        setTimeout(function() {
+	            f.addClass("show"),
+	            setTimeout(function() {
+	                f.removeClass("show"),
+	                setTimeout(function() {
+	                    f.fadeOut("slow").remove()
+	                }, 250)
+	            }, c)
+	        }, 50)
+	    }
 	}
 	</script>
 </body>
