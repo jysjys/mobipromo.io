@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container-fluid" style='position: relative;'>
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,7 +30,7 @@
         <img alt="MobiPromo" src="assets/images/logo.png">
       </a>
     </div>
-
+    <div class='chinese'><a href="cn/index.html" style="color: #ffffff; text-decoration: none !important;">中文</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
@@ -43,10 +43,11 @@
         <li><a href="#Team">Team</a></li>
         <li><a href="#Roadma">Roadmap</a></li>
         <li><a href="#Contact_Us">Contact Us</a></li>
-        <li><a href="cn/index.html">中文</a></li>
-        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">Sign in</a></li> -->
+        <!-- <li><a href="cn/index.html">中文</a></li> -->
+        <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">Sign in</a></li>
       </ul>
     </div>
+    <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
   </div>
 </nav>
 <section class="top_banner">
@@ -67,7 +68,7 @@
     </div>
     <div class="row" id='sale_count' style='display:;'>
       <h1>10,000 of CAN STARTBOX will be sold in advance</h1>
-      <!-- <h2>已售出<span class='sale_amount'>0</span>台</h2> -->
+      <h2>Sold out<span class='sale_amount'>0</span></h2>
     </div>
     <style>
       .text .type-time {
@@ -448,7 +449,7 @@
     <script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='assets/js/index.js'></script>
     <script>
-        var icoStartDate = new Date('2017/12/23 20:00:00');//-10-05 12:00:00');
+        var icoStartDate = new Date('2017/12/22 20:30:00');//-10-05 12:00:00');
         var today = new Date();
         var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
         $('.countdown').final_countdown({
@@ -496,7 +497,6 @@
           $('.clock').css({
             'display': 'none'
           });
-          // $(".join_btn").addClass("join_btn_in")
           $(".join_btn").click(function() {
             window.location.href="./presale.html"
           })
