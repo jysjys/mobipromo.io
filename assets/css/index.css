@@ -461,6 +461,9 @@
         position: absolute;
         top: 40%;
       }
+        .slide_advisor ul {
+          padding-left: 0px !important;
+        }
   }
   @media screen and (max-width: 1366px) {
       .child_list {
