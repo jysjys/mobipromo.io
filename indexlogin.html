@@ -33,7 +33,7 @@
 		</div>
 		<button id="submit" type="submit" style="margin-left: 0;">登 录</button>
 	<a href="register.html" style='display: block;'>
-		<button type="button" class="register-tis">还有没有账号？</button>
+		<button type="button" class="register-tis">还没有账号？</button>
 	</a>
 </div>
 
@@ -46,12 +46,15 @@
 <!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
 <script>
 
-function addCookie(name,value){   /**添加设置cookie**/  
+function addCookie(name,value, exdays){ 
+		var d = new Date();  
+    	d.setTime(d.getTime() + (exdays*24*60*60*1000));  
+    	var expires = "expires="+d.toUTCString();    /**添加设置cookie**/  
 	    var name = name;  
 	    var value = escape(value);  
 	    console.log(name);
 	    console.log(getCookieValue)
-	    document.cookie = name + "=" + value; 
+	    document.cookie = name + "=" + value + "; " + expires; 
 	    console.log(document.cookie); 
 	}  
 function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取值**/  
@@ -93,7 +96,7 @@ console.log(x);
 		   contentType: "application/x-www-form-urlencoded",
 			success: function (data) {
 				console.log(data.access_token);
-        		addCookie('Authorization', data.access_token);
+        		addCookie('Authorization', data.access_token, 1);
         		window.location.href="./presale.html"
 			},
 			error: function (data) {
