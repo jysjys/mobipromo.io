@@ -9,6 +9,7 @@
     /*background-color: rgba(0, 0, 0, 0.5);*/
     /*opacity:  0.5;*/
     border-bottom: none;
+    /*position: relative;*/
   }
   .navbar-brand {
     height: 70px;
@@ -32,7 +33,11 @@
   .navbar-toggle {
     margin-top: 30px;
   }
-
+  .chinese {
+    position: absolute;
+    top: 25px;
+    left: 18%;
+  }
 
 
   .top_banner {
@@ -464,6 +469,10 @@
         .slide_advisor ul {
           padding-left: 0px !important;
         }
+        .chinese {
+          left: 42% !important;
+          top: 20px;
+        }
   }
   @media screen and (max-width: 1366px) {
       .child_list {
@@ -485,6 +494,9 @@
       .can_carousel .swiper-slide {
         width: 430px;
         margin: 0 auto;
+      }
+      .chinese {
+        left: 22%;
       }
   }
   @media screen and (max-width: 992px) {

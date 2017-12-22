@@ -30,7 +30,7 @@
         <img alt="MobiPromo" src="../assets/images/logo.png">
       </a>
     </div>
-
+    <div class='chinese'><a href="../index.html" style="color: #ffffff; text-decoration: none !important;">English</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
@@ -43,8 +43,8 @@
         <li><a href="#Team">团队</a></li>
         <li><a href="#Roadma">发展路线图</a></li>
         <li><a href="#Contact_Us">联系我们</a></li>
-        <li><a href="../index.html">English</a></li>
-        <!-- <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">登录</a></li> -->
+        <!-- <li><a href="../index.html">English</a></li> -->
+        <li><a id="login" href="indexlogin.html" style="background: #193859; border-radius: 5px; line-height: 20px; margin-top: 15px;">登录</a></li>
       </ul>
     </div>
   </div>
@@ -68,7 +68,7 @@
     </div>
     <div class="row" id='sale_count' style='display:;'>
       <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
-      <!-- <h2>已售出<span class='sale_amount'>0</span>台</h2> -->
+      <h2>已售出<span class='sale_amount'>0</span>台</h2>
     </div>
     <style>
       .text .type-time {
@@ -451,7 +451,7 @@
     <script type="text/javascript" src="../assets/js/jquery.final-countdown.min.js"></script>
     <script language="javascript" src='../assets/js/index.js'></script>
     <script>
-    var icoStartDate = new Date('2017/12/23 20:00:00');//-10-05 12:00:00');
+    var icoStartDate = new Date('2017/12/22 20:30:00');//-10-05 12:00:00');
         var today = new Date();
         var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
         $('.countdown').final_countdown({
@@ -498,7 +498,6 @@
           $('.clock').css({
             'display': 'none'
           });
-          // $(".join_btn").addClass("join_btn_in")
           $(".join_btn").click(function() {
             window.location.href="../presale.html"
           })
