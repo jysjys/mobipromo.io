@@ -51,7 +51,7 @@
 		<div>
 			<input type="text" class="email_warn warn" value="您输入的邮箱不正确！" disabled='disabled'>
 		</div>
-		<button id="submit" type="submit">注 册</button>
+		<button id="submit" type="submit" style="margin-left: 0;">注 册</button>
 	<a href="indexlogin.html" style="display: block">
 		<button type="button" class="register-tis">已经有账号？</button>
 	</a>
@@ -125,7 +125,7 @@
 					  Accept: "application/json; charset=utf-8",
 					  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
 				  },
-				type: 'POST',
+			   type: 'POST',
 			   url: '/promo/public/account',
 			   data: JSON.stringify(dataregister),
 			   contentType: "application/json; charset=utf-8",
