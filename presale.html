@@ -40,6 +40,9 @@
 		box-shadow: none;
 		border: 1px solid #F5F5F5;
 	}
+	#prov {
+		 margin-left: 100px;
+	}
 	a {
 		text-decoration: none;
 		color: red;
@@ -72,16 +75,16 @@
 		</div>
 		<div>
 			<!--省份选择-->
-			<select id="prov" name="address-level1" style="width:98px; margin-left: 100px;" onchange="showCity(this)">
-				<option value="">请选择省份</option>
+			<select id="prov" name="address-level1" style="width:98px;" onchange="showCity(this)">
+				<option value="">*省份</option>
 			</select>
 			<!--城市选择-->
 			<select id="city" name="address-level2" style="width:98px;" onchange="showCounty(this)">
-				<option value="">*请选择城市</option>
+				<option value="">*城市</option>
 			</select>
 			<!--县区选择-->
 			<select id="country" name="address-level3" style="width:98px;">
-				<option value="">请选择区县</option>
+				<option value="">*区县</option>
 			</select>
 		</div>
 		<div>
@@ -176,6 +179,23 @@
 	.list a {
 		cursor: pointer;
 		color: #fff;
+	}
+	@media screen and (max-width: 768px) {
+		body {
+			margin: 0 auto;
+		}
+		.presale-container div {
+			padding: 20px;
+		}
+		.presale-container div>input {
+			margin-top: 5px;
+		}
+		#prov {
+			margin-left: 0;
+		}
+		.list {
+			margin-left: 40px;
+		}
 	}
 	</style>
 	<!-- <button class="pay" style='background: none; display: none;'>
@@ -286,7 +306,7 @@
 	
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
-		<span style="text-align: center;font-size: 12px;margin-top: 20px;">抢购时间内请及时付款，付款之后不要重复付款，订单号生成即代表抢购成功（如若没有付款，点击未确认可继续付款），由于交易状态变化缓慢，交易成功后状态依然是未确认的状态，数据会有一定的延迟。</span>
+		<span style="text-align: center;font-size: 12px;margin-top: 20px; width: auto; display: block; text-align: center;">抢购时间内请及时付款，付款之后不要重复付款，订单号生成即代表抢购成功（如若没有付款，点击未确认可继续付款），由于交易状态变化缓慢，交易成功后状态依然是未确认的状态，数据会有一定的延迟。</span>
 	</div>
 	<script src="assets/js/jquery.min.js"></script>
 	<!-- <script src="assets/js/common.js"></script> -->
