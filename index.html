@@ -16,6 +16,7 @@
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
+<body>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid" style='position: relative;'>
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -432,8 +433,6 @@
     </div>
   </div>
 </footer>
-<body>
-    
     <!-- Wrapper-->
     <!-- Jquery and Js Plugins -->
     <!--script type="text/javascript" src="assets/js/jquery-2.1.1.js"></script -->
@@ -458,9 +457,7 @@
           'end': toICO,
           'now': 0        
         });
-
       var x = getCookieValue('Authorization');
-      // console.log(x);
       $.ajax({
         headers: {
               Accept: "application/json; charset=utf-8",
@@ -470,12 +467,10 @@
         contentType: "application/json; charset=utf-8",
         url: '/promo/authed/user/account',
         success: function (data) {
-          $("#login").html(data.phone);
+          $("#login").html(data.accountName);
           $("#login").attr("href",'presale.html');
         },
         error: function(data) {
-          console.log(x);
-          console.log('fail')
         }
       })
       // 已售出多少台设备
@@ -490,7 +485,6 @@
           $(".sale_amount").html(data.data);
         },
         error: function(data) {
-          console.log('fail')
         }
       })
       setInterval(function() {
@@ -501,16 +495,16 @@
           });
         }
       },1000);
-          $(".join_btn").click(function() {
-            window.location.href="./presale.html"
-          })
+      $(".join_btn").click(function() {
+        window.location.href="./presale.html"
+      })
       function setCookie(cname, cvalue, exdays) {  
           var d = new Date();  
           d.setTime(d.getTime() + (exdays*24*60*60*1000));  
           var expires = "expires="+d.toUTCString();  
           document.cookie = cname + "=" + cvalue + "; ";  
       } 
-      $(".login_out").on('click', setCookie('Authorization','', -1))
+      $(".login_out").on('click', function(){setCookie('Authorization','', -1)})
     </script>
 </body>
 

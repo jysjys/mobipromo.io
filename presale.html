@@ -242,7 +242,7 @@
 				</div>
 			</div>
 			<div class="dlg-item" style="text-align:right;margin-bottom:0;">
-				<button id="zhifu" class="button">去支付 <label>¥ 800</label></button>
+				<button id="zhifu" class="button">去支付 <label>¥ 899</label></button>
 			</div>
 		</div>
 	</div>
@@ -252,7 +252,7 @@
 			<div class="price ac" style="margin-right:0;">
 				<div class="price-date">1 台</div>
 				<div class="price-text">¥
-					<label class="userprice">800</label>
+					<label class="userprice">899</label>
 				</div>
 				<span class="icons">&#xe658;</span>
 			</div>
@@ -267,7 +267,7 @@
 				</div>
 			</div>
 			<div class="dlg-item" style="text-align:right;margin-bottom:0;">
-				<button id="zhifu2" class="button">去支付 <label>¥ 800</label></button>
+				<button id="zhifu2" class="button">去支付 <label>¥ 899</label></button>
 			</div>
 		</div>
 	</div>
@@ -349,7 +349,6 @@
 		}
 	}
 	var x = getCookieValue('Authorization');
-	console.log(x);
 	function btnPress(){
 		$('.warn').remove();
 		var boxName = $("input[name='device_name']").val().trim(),
@@ -367,7 +366,7 @@
 		var errorContent = $('<input>', {'class': 'warn'}),
 			errorWarp = $('<div/>').append(errorContent);
 
-		var icoStartDate = new Date('2017/12/22 15:57:50');
+		// var icoStartDate = new Date('2017/12/22 15:57:50');
 		var currentdate = new Date();
 	
 		if (!boxName) {
@@ -412,11 +411,6 @@
 			
 			errorWarp.appendTo($("[name='address-detail']").parent());
 			errorContent.val('请输入详细地址');
-			return;
-		} else if (currentdate<icoStartDate) {
-			//未开始
-			errorWarp.appendTo($(".presale-container"));
-			errorContent.val('请您稍等，抢购将在20:00:00开启');
 			return;
 		}
 		var address = [
@@ -482,6 +476,7 @@
 			contentType: "application/json; charset=utf-8",
 			url: '/promo/authed/account/get/selllist',
 			success: function(result) {
+				console.log(result)
 				var data = result.data;
 				var listTradeNum = '';
 				var listone = '';
@@ -562,35 +557,61 @@
 			}
 		});
 	}
-	// getList();
-    
+	getList();
     // 未开始
-    var delay = new Date('2017/12/23 20:00:00');
-    var d = setInterval(function () {
-    	var today = new Date();
-    	var toICO = Math.trunc((delay.getTime()-today.getTime())/1000);
-    	// console.log(toICO)
-    	if(toICO>=0) {
-    		$("#submit").text('抢购尚未开始');
-    		$("#submit").css({
-    			'background': '#5C5162'
-    		});
-    		$("#submit").off('click');
-    	}else {
-    		clearInterval(d)
-    		$("#submit").text('确认信息');
-    		$("#submit").css({
-    			'background': '#458DEF'
-    		});
-    		$("#submit").on('click', btnPress);
-    		getList();
-    	}
-    },1000);
+    var startTime = new Date('2017/12/23 20:00:00');
+	var today = new Date();
+	var toICO = Math.trunc((startTime.getTime()-today.getTime())/1000);
+	// console.log(toICO)
+	if(toICO>=0) {
+		$("#submit").text('抢购尚未开始');
+		$("#submit").css({
+			'background': '#5C5162'
+		});
+		$("#submit").off('click');
+	}else {
+		$("#submit").text('确认信息');
+		$("#submit").css({
+			'background': '#458DEF'
+		});
+		$("#submit").on('click', function (){
+			btnPress();
+		});
+		getList();
+	}
+
+    function countDown(){
+        // var startTime = new Date("2017/12/23,01:18:30");//开始时间
+        var curTime = new Date();//当前时间
+        var leftTime = parseInt((startTime.getTime() - curTime.getTime())/1000);//获得时间差
+        //小时、分、秒需要取模运算
+        var d = parseInt(leftTime/(60*60*24));
+        var h = parseInt(leftTime/(60*60)%24);
+        var m = parseInt(leftTime/60%60);
+        var s = parseInt(leftTime%60);
+        var ms = parseInt(((startTime.getTime() - curTime.getTime())/100)%10);
+        if(m > 10) {
+         clearInterval(set);
+         return;
+        }
+        m = (m + '').length == 1 ? ('0' + m) : m;
+        s = (s + '').length == 1 ? ('0' + s) : s;
+        ms = (ms + '').length == 1 ? ('0' + ms) : ms;
+        var txt = "抢购即将开始："+m+":"+s+":"+ms;
+        $("#submit").text(txt);
+        if(leftTime<0){ 
+        	$("#submit").text("确认信息").css({
+				'background': '#458DEF'
+			});
+        	$("#submit").off('click').on('click', btnPress);
+        	clearInterval(set);}
+    };
+    var set = setInterval(countDown,100);
     // 结束
-	var icoStartDate = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
+	var endTime = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
     var t = setInterval(function () {
     	var today = new Date();
-    	var toICO = Math.trunc((icoStartDate.getTime()-today.getTime())/1000);
+    	var toICO = Math.trunc((endTime.getTime()-today.getTime())/1000);
     	// console.log(toICO)
     	if(toICO<=0) {
     		$("#submit").text('已经结束');
@@ -600,37 +621,21 @@
     		$("#submit").off('click');
     		clearInterval(t);
     	}
-    },1000);
+    }, 1000);
 
 	$("[name='buyAmount']").on('change', function() {
-		$("#jiage")[0].innerHTML = 800 * $(this).val();
+		$("#jiage")[0].innerHTML = 899 * $(this).val();
 	}).trigger('change');
 
 	var jsonDate = {};
-	$("#submit").on('click', btnPress);
-
-	// function createQrcode(url){
-	// 	$('#payimg').empty();
-	// 	$('#qr_dlg').dialog();
-	// 	var qrcode = new QRCode($('#payimg')[0], {
-	// 		text: '微信付款',
-	// 		width: 170,
-	// 		height: 170,
-	// 		colorDark: '#000000',
-	// 		colorLight: '#ffffff',
-	// 		correctLevel: QRCode.CorrectLevel.H
-	// 	});
-	// 	qrcode.clear();
-	// 	qrcode.makeCode('url');
-	// }
-
-
+	// $("#submit").on('click', function () {
+	// 	btnPress();
+	// });
 
 	var addrShow = $('#addr-show');
 	var prov = $('#prov');
 	var city = $('#city');
 	var country = $('#country');
-
 
 	/*用于保存当前所选的省市区*/
 	var current = {
