@@ -583,7 +583,14 @@
 		});
 		getList();
 	}
-
+	// $("#submit").text('确认信息');
+	// 	$("#submit").css({
+	// 		'background': '#458DEF'
+	// 	});
+	// 	$("#submit").on('click', function (){
+	// 		btnPress();
+	// 	});
+	// 	getList();
     function countDown(){
         // var startTime = new Date("2017/12/23,01:18:30");//开始时间
         var curTime = new Date();//当前时间
@@ -610,7 +617,8 @@
         	$("#submit").off('click').on('click', btnPress);
         	clearInterval(set);}
     };
-    var set = setInterval(countDown,100);
+	var set = setInterval(countDown,100);
+	
     // 结束
 	var endTime = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
     var t = setInterval(function () {
@@ -626,7 +634,11 @@
     		clearInterval(t);
     	}
     }, 1000);
-
+	// $("#submit").text('已经结束');
+    // $("#submit").css({
+    // 	'background': '#5C5162'
+    // });
+    // $("#submit").off('click');
 	$("[name='buyAmount']").on('change', function() {
 		$("#jiage")[0].innerHTML = 899 * $(this).val();
 	}).trigger('change');
