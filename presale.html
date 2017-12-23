@@ -590,7 +590,7 @@
         var m = parseInt(leftTime/60%60);
         var s = parseInt(leftTime%60);
         var ms = parseInt(((startTime.getTime() - curTime.getTime())/100)%10);
-        if(m > 10 && h==0 && d == 0) {
+        if( d > 0 || h>0 || m  >10) {
          clearInterval(set);
          return;
         }
