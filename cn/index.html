@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid" style='posiion: relative'>
+  <div class="container-fluid" style="position: relative;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -77,7 +77,8 @@
         margin-top: 40px;
       }
     </style>
-    <div class="countdown container can_pre_sale" style='height: auto; overflow: hidden; margin-bottom: 50px;' style='none;'>
+
+    <div class="countdown container can_pre_sale" style='height: auto; overflow: hidden; margin-bottom: 50px; display: none;'>
       <div class="clock row">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
           <div class="wrap">
@@ -509,7 +510,7 @@
           var expires = "expires="+d.toUTCString();  
           document.cookie = cname + "=" + cvalue + "; ";  
       } 
-      $(".login_out").on('click', function(){setCookie('Authorization','', -1)})
+      $("#login_out").on('click', function(){setCookie('Authorization','', -1)})
     </script>
 </body>
 

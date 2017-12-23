@@ -11,7 +11,9 @@
 		font-size: 12px;
 		color: #CC0001;
 		margin-top: 0;
+		padding-left: 0;
 		height: 13px;
+		line-height:15px;
 		display: none;
 	}
 </style>
@@ -25,7 +27,7 @@
 			<input type="text" name="accountName" class="accountName" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="text" class="accountName_warn warn" value="您输入的用户名不合法！" disabled='disabled'>
+			<input type="text" class="accountName_warn warn" value="请输入6-20位的用户名" disabled='disabled'>
 		</div>
 		<div>
 			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
@@ -70,12 +72,12 @@
 
 	$("#submit").click(function () {
 		$(".warn").css({'display':'none'})
-		var accountName = $("input[name='accountName']").val(),
-		password = $("input[name='password']").val(),
-		confirm_password = $("input[name='confirm_password']").val(),
-		phone_number = $("input[name='phone_number']").val(),
-		email = $("input[name='email']").val(),
-		phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+		var accountName = $("input[name='accountName']").val().trim(),
+		password = $("input[name='password']").val().trim(),
+		confirm_password = $("input[name='confirm_password']").val().trim(),
+		phone_number = $("input[name='phone_number']").val().trim(),
+		email = $("input[name='email']").val().trim(),
+		phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 		if(!accountName) {
 			console.log('accountName not empty')

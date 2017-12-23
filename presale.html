@@ -192,6 +192,10 @@
 		.list {
 			margin-left: 40px;
 		}
+		.warn {
+			line-height:15px;
+			margin-left:100px;
+		}
 		.presale-container .warn:last-child {
 			padding-left: 0;
 		}
@@ -360,7 +364,7 @@
 			addressCounty = $('[name=address-level3]').val().trim(),
 			addressDetail = $("input[name='address-detail']").val().trim();
 			// buyAmount = $("[name='buyAmount']").val().trim() * 1;
-		var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+		var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
 			email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 		var errorContent = $('<input>', {'class': 'warn'}),
 			errorWarp = $('<div/>').append(errorContent);
@@ -578,7 +582,14 @@
 		});
 		getList();
 	}
-
+	// $("#submit").text('确认信息');
+	// 	$("#submit").css({
+	// 		'background': '#458DEF'
+	// 	});
+	// 	$("#submit").on('click', function (){
+	// 		btnPress();
+	// 	});
+	// 	getList();
     function countDown(){
         // var startTime = new Date("2017/12/23,01:18:30");//开始时间
         var curTime = new Date();//当前时间
@@ -589,7 +600,7 @@
         var m = parseInt(leftTime/60%60);
         var s = parseInt(leftTime%60);
         var ms = parseInt(((startTime.getTime() - curTime.getTime())/100)%10);
-        if(m > 10 || h > 0) {
+        if( d > 0 || h>0 || m  >10) {
          clearInterval(set);
          return;
         }
@@ -605,7 +616,8 @@
         	$("#submit").off('click').on('click', btnPress);
         	clearInterval(set);}
     };
-    var set = setInterval(countDown,100);
+	var set = setInterval(countDown,100);
+	
     // 结束
 	var endTime = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
     var t = setInterval(function () {
@@ -621,7 +633,11 @@
     		clearInterval(t);
     	}
     }, 1000);
-
+	// $("#submit").text('已经结束');
+    // $("#submit").css({
+    // 	'background': '#5C5162'
+    // });
+    // $("#submit").off('click');
 	$("[name='buyAmount']").on('change', function() {
 		$("#jiage")[0].innerHTML = 899 * $(this).val();
 	}).trigger('change');
