@@ -77,8 +77,8 @@ function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取
 var x = getCookieValue('Authorization');
 	$("#submit").click(function () {
 		var datalogin = {
-			username: $("input[name='username']").val(),
-			password: $("input[name='password']").val(),
+			username: $("input[name='username']").val().trim(),
+			password: $("input[name='password']").val().trim(),
 			grant_type: "password"
 		}
 		$.ajax({
