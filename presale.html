@@ -443,7 +443,7 @@
 		});
 		$('#zhifu').off('click').on('click', function(){
 			jsonData.buyAmount = $('.price.ac').index() + 1;
-			jsonData.totalRmb = jsonData.buyAmount * 0.01;
+			jsonData.totalRmb = jsonData.buyAmount * 899;
 			jsonData.paymentType = $('.price-paytype.ac').attr('tit');
 			$.ajax({
 				headers: {
