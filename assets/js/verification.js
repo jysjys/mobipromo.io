@@ -30,8 +30,12 @@ function getList() {
 		},
 		type: 'GET',
 		contentType: "application/json; charset=utf-8",
-		url: '/promo/authed/account/get/selllist',
+		url: '/promo/authed/activity/selllist',
 		success: function(result) {
+			if(result.notOrdered) {
+				location.href = '../presale.html';
+				return;
+			}
 			console.log(result)
 			var data = result.data;
 			var listTradeNum = '';
@@ -108,7 +112,7 @@ function getList() {
 
 			// }else {
 
-			location.href = '/indexlogin.html';
+			// location.href = '/indexlogin.html';
 			// }
 		}
 	});
@@ -186,11 +190,11 @@ function btnPress(){
 		addressDetail
 	].join(' ');
 	jsonData = {
-		boxName: $("input[name='device_name']").val(),
-		userName: $("input[name='username']").val(),
-		userTel: $("input[name='phone_number']").val(),
-		userEmail: $("input[name='mailbox']").val(),
-		userZipCode: $("input[name='zip_code']").val(),
+		boxName: $("input[name='device_name']").val().trim(),
+		userName: $("input[name='username']").val().trim(),
+		userTel: $("input[name='phone_number']").val().trim(),
+		userEmail: $("input[name='mailbox']").val().trim(),
+		userZipCode: $("input[name='zip_code']").val().trim(),
 		receivingAddress: address
 	}
 	$('#upgrade_dlg').dialog();
@@ -210,7 +214,7 @@ function btnPress(){
 				Accept: "application/json; charset=utf-8",
 				Authorization: 'Bearer' + ' ' + x
 			},
-			url: '/promo/authed/account/post/sell/msg',
+			url: '/promo/authed/activity/sell/msg',
 			data: JSON.stringify(jsonData),
 			type: 'POST',
 			contentType: "application/json; charset=utf-8",
@@ -225,7 +229,7 @@ function btnPress(){
 			},
 			error: function(data) {
 				console.log(data)
-
+				globalTopTip(data.responseJSON.reason, "top_error", 2000, $("#upgrade_dlg"), !0);
 			}
 		});
 	});
@@ -236,12 +240,12 @@ $('#submit').on('click', btnPress);
 // 购买数量 select选中事件
 var amount = $("#amount").on('change', function(){
  	 $(".userprice").html( $(this).val() * 899 );
-	 $("#zhifu label").html( '¥' + $(this).val() * 899 );
+	 $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 });
 
 var x = getCookieValue('Authorization');
 
-getList();	
+getList();
 
 
 var jsonDate = {};
