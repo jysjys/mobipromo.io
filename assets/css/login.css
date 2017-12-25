@@ -243,7 +243,7 @@ label.error{display: block; -webkit-transition: border-color .15s ease-in-out,bo
     height: 77px;
     border-radius: 5px;
     text-align: center;
-    margin-right: 12px;
+    /*margin-right: 12px;*/
     margin-top: 16px;
 }
 .price-date {
@@ -255,14 +255,14 @@ label.error{display: block; -webkit-transition: border-color .15s ease-in-out,bo
     margin-top: 4px;
     font-weight: 700;
 }
-.price.ac:before {
+/*.price.ac:before {
     position: absolute;
     content: "";
     border: 30px solid transparent;
     border-right: 30px solid #4386f5;
     right: 0;
     top: -31px;
-}
+}*/
 .price.ac .icons, .product-item.ac .item-ico {
     display: block;
     width: 12px;
