@@ -1,5 +1,3 @@
-
-
 function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
 	//用处理字符串的方式查找到key对应value
 	var name = escape(name);
@@ -19,9 +17,124 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 		return "";
 	}
 }
+var x = getCookieValue('Authorization');
+function btnPress(){
+	$('.warn').remove();
+	var boxName = $("input[name='device_name']").val().trim(),
+		userName = $("input[name='username']").val().trim(),
+		userTel = $("input[name='phone_number']").val().trim(),
+		userEmail = $("input[name='mailbox']").val().trim(),
+		userZipCode = $("input[name='zip_code']").val().trim(),
+		addressProv = $('[name=address-level1]').val().trim(),
+		addressCity = $('[name=address-level2]').val().trim(),
+		addressCounty = $('[name=address-level3]').val().trim(),
+		addressDetail = $("input[name='address-detail']").val().trim();
+		// buyAmount = $("[name='buyAmount']").val().trim() * 1;
+	var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	var errorContent = $('<input>', {'class': 'warn'}),
+		errorWarp = $('<div/>').append(errorContent);
 
+	// var icoStartDate = new Date('2017/12/22 15:57:50');
+	var currentdate = new Date();
 
-// 获取用户订购商品列表
+	if (!boxName) {
+		errorWarp.appendTo($("input[name='device_name']").parent());
+		errorContent.val('设备名称不能为空');
+		return;
+	} else if (!userName) {
+		errorWarp.appendTo($("input[name='username']").parent());
+		errorContent.val('姓名不能为空');
+		return;
+	} else if (userName.length < 2 || userName.length > 20) {
+		errorWarp.appendTo($("input[name='username']").parent());
+		errorContent.val('姓名长度不合适');
+		return;
+	} else if (!userTel) {
+		errorWarp.appendTo($("input[name='phone_number']").parent());
+		errorContent.val('电话不能为空');
+		return;
+	} else if (!phone_number_reg.test(userTel)) {
+		console.log('phone_number error');
+		errorWarp.appendTo($("input[name='phone_number']").parent());
+		errorContent.val('不是合法的手机号码');
+		return;
+	} else if (!userEmail) {
+		errorWarp.appendTo($("input[name='mailbox']").parent());
+		errorContent.val('邮箱不能为空');
+		return;
+	} else if (!email_reg.test(userEmail)) {
+		console.log('email error');
+		errorWarp.appendTo($("input[name='mailbox']").parent());
+		errorContent.val('不是合法的邮箱');
+		return;
+	} else if (!userZipCode) {
+		errorWarp.appendTo($("input[name='zip_code']").parent());
+		errorContent.val('邮编不能为空');
+		return;
+	} else if (!addressProv || !addressCity || !addressCounty) {
+		errorWarp.appendTo($("[name='address-level1']").parent());
+		errorContent.val('请选择省市');
+		return;
+	} else if (!addressDetail) {
+		
+		errorWarp.appendTo($("[name='address-detail']").parent());
+		errorContent.val('请输入详细地址');
+		return;
+	}
+	var address = [
+		provice[addressProv].name,
+		provice[addressProv]["city"][addressCity].name,
+		provice[addressProv]["city"][addressCity].districtAndCounty[addressCounty],
+		addressDetail
+	].join(' ');
+	jsonData = {
+		boxName: $("input[name='device_name']").val(),
+		userName: $("input[name='username']").val(),
+		userTel: $("input[name='phone_number']").val(),
+		userEmail: $("input[name='mailbox']").val(),
+		userZipCode: $("input[name='zip_code']").val(),
+		receivingAddress: address
+		// buyAmount: buyAmount,
+		// totalRmb: 800 * buyAmount
+	}
+	$('#upgrade_dlg').dialog();
+	$('#upgrade_dlg').find('.price').off('click').on('click', function(){
+	$(this).addClass('ac').siblings('.price').removeClass('ac');
+		$('#zhifu label').text('¥ ' + $(this).find('.userprice').text());
+	});
+	$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
+		$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
+	});
+	$('#zhifu').off('click').on('click', function(){
+		jsonData.buyAmount = $('.price.ac').index() + 1;
+		jsonData.totalRmb = jsonData.buyAmount * 899;
+		jsonData.paymentType = $('.price-paytype.ac').attr('tit');
+		$.ajax({
+			headers: {
+				Accept: "application/json; charset=utf-8",
+				Authorization: 'Bearer' + ' ' + x
+			},
+			url: '/promo/authed/account/post/sell/msg',
+			data: JSON.stringify(jsonData),
+			type: 'POST',
+			contentType: "application/json; charset=utf-8",
+			success: function(data) {
+				console.log(data);
+				if(data.isSuccess){
+					location.href = data.httpurl;
+				}else{
+					//购买失败
+					getList();
+				}
+			},
+			error: function(data) {
+				console.log(data)
+
+			}
+		});
+	});
+};
 function getList() {
 	$.ajax({
 		headers: {
@@ -108,141 +221,79 @@ function getList() {
 
 			// }else {
 
-			location.href = '/indexlogin.html';
+			location.href = '/login.html';
 			// }
 		}
 	});
 }
-
-
-
-function btnPress(){
-	$('.warn').remove();
-	var boxName = $("input[name='device_name']").val().trim(),
-		userName = $("input[name='username']").val().trim(),
-		userTel = $("input[name='phone_number']").val().trim(),
-		userEmail = $("input[name='mailbox']").val().trim(),
-		userZipCode = $("input[name='zip_code']").val().trim(),
-		addressProv = $('[name=address-level1]').val().trim(),
-		addressCity = $('[name=address-level2]').val().trim(),
-		addressCounty = $('[name=address-level3]').val().trim(),
-		addressDetail = $("input[name='address-detail']").val().trim();
-		// buyAmount = $("[name='buyAmount']").val().trim() * 1;
-	var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
-		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-	var errorContent = $('<input>', {'class': 'warn'}),
-		errorWarp = $('<div/>').append(errorContent);
-	// var icoStartDate = new Date('2017/12/22 15:57:50');
-	var currentdate = new Date();
-
-	if (!boxName) {
-		errorWarp.appendTo($("input[name='device_name']").parent());
-		errorContent.val('设备名称不能为空');
-		return;
-	} else if (!userName) {
-		errorWarp.appendTo($("input[name='username']").parent());
-		errorContent.val('姓名不能为空');
-		return;
-	} else if (userName.length < 2 || userName.length > 20) {
-		errorWarp.appendTo($("input[name='username']").parent());
-		errorContent.val('姓名长度不合适');
-		return;
-	} else if (!userTel) {
-		errorWarp.appendTo($("input[name='phone_number']").parent());
-		errorContent.val('电话不能为空');
-		return;
-	} else if (!phone_number_reg.test(userTel)) {
-		console.log('phone_number error');
-		errorWarp.appendTo($("input[name='phone_number']").parent());
-		errorContent.val('不是合法的手机号码');
-		return;
-	} else if (!userEmail) {
-		errorWarp.appendTo($("input[name='mailbox']").parent());
-		errorContent.val('邮箱不能为空');
-		return;
-	} else if (!email_reg.test(userEmail)) {
-		console.log('email error');
-		errorWarp.appendTo($("input[name='mailbox']").parent());
-		errorContent.val('不是合法的邮箱');
-		return;
-	} else if (!userZipCode) {
-		errorWarp.appendTo($("input[name='zip_code']").parent());
-		errorContent.val('邮编不能为空');
-		return;
-	} else if (!addressProv || !addressCity || !addressCounty) {
-		errorWarp.appendTo($("[name='address-level1']").parent());
-		errorContent.val('请选择省市');
-		return;
-	} else if (!addressDetail) {
-		
-		errorWarp.appendTo($("[name='address-detail']").parent());
-		errorContent.val('请输入详细地址');
-		return;
-	}
-	var address = [
-		provice[addressProv].name,
-		provice[addressProv]["city"][addressCity].name,
-		provice[addressProv]["city"][addressCity].districtAndCounty[addressCounty],
-		addressDetail
-	].join(' ');
-	jsonData = {
-		boxName: $("input[name='device_name']").val(),
-		userName: $("input[name='username']").val(),
-		userTel: $("input[name='phone_number']").val(),
-		userEmail: $("input[name='mailbox']").val(),
-		userZipCode: $("input[name='zip_code']").val(),
-		receivingAddress: address
-	}
-	$('#upgrade_dlg').dialog();
-	// $('#upgrade_dlg').find('.price').off('click').on('click', function(){
-	// $(this).addClass('ac').siblings('.price').removeClass('ac');
-	// 	$('#zhifu label').text('¥ ' + $(this).find('.userprice').text());
-	// });
-	$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
-		$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
+getList();
+// 未开始
+var startTime = new Date('2017/12/23 20:00:00');
+var today = new Date();
+var toICO = Math.trunc((startTime.getTime()-today.getTime())/1000);
+// console.log(toICO)
+if(toICO>=0) {
+	$("#submit").text('抢购尚未开始');
+	$("#submit").css({
+		'background': '#5C5162'
 	});
-	$('#zhifu').off('click').on('click', function(){
-		jsonData.buyAmount = amount.val();
-		jsonData.totalRmb = jsonData.buyAmount * 899;
-		jsonData.paymentType = $('.price-paytype.ac').attr('tit');
-		$.ajax({
-			headers: {
-				Accept: "application/json; charset=utf-8",
-				Authorization: 'Bearer' + ' ' + x
-			},
-			url: '/promo/authed/account/post/sell/msg',
-			data: JSON.stringify(jsonData),
-			type: 'POST',
-			contentType: "application/json; charset=utf-8",
-			success: function(data) {
-				console.log(data);
-				if(data.isSuccess){
-					location.href = data.httpurl;
-				}else{
-					//购买失败
-					getList();
-				}
-			},
-			error: function(data) {
-				console.log(data)
-
-			}
+	$("#submit").off('click');
+}else {
+	$("#submit").text('确认信息');
+	$("#submit").css({
+		'background': '#458DEF'
+	});
+	$("#submit").on('click', function (){
+		btnPress();
+	});
+	getList();
+}
+function countDown(){
+    // var startTime = new Date("2017/12/23,01:18:30");//开始时间
+    var curTime = new Date();//当前时间
+    var leftTime = parseInt((startTime.getTime() - curTime.getTime())/1000);//获得时间差
+    //小时、分、秒需要取模运算
+    var d = parseInt(leftTime/(60*60*24));
+    var h = parseInt(leftTime/(60*60)%24);
+    var m = parseInt(leftTime/60%60);
+    var s = parseInt(leftTime%60);
+    var ms = parseInt(((startTime.getTime() - curTime.getTime())/100)%10);
+    if( d > 0 || h>0 || m  >10) {
+     clearInterval(set);
+     return;
+    }
+    m = (m + '').length == 1 ? ('0' + m) : m;
+    s = (s + '').length == 1 ? ('0' + s) : s;
+    ms = (ms + '').length == 1 ? ('0' + ms) : ms;
+    var txt = "抢购即将开始："+m+":"+s+":"+ms;
+    $("#submit").text(txt);
+    if(leftTime<0){ 
+    	$("#submit").text("确认信息").css({
+			'background': '#458DEF'
 		});
-	});
+    	$("#submit").off('click').on('click', btnPress);
+    	clearInterval(set);}
 };
+var set = setInterval(countDown,100);
 
-$('#submit').on('click', btnPress);
-
-// 购买数量 select选中事件
-var amount = $("#amount").on('change', function(){
- 	 $(".userprice").html( $(this).val() * 899 );
-	 $("#zhifu label").html( '¥' + $(this).val() * 899 );
-});
-
-var x = getCookieValue('Authorization');
-
-getList();	
-
+// 结束
+var endTime = new Date('2017/12/23 20:08:00');//-10-05 12:00:00');
+var t = setInterval(function () {
+	var today = new Date();
+	var toICO = Math.trunc((endTime.getTime()-today.getTime())/1000);
+	// console.log(toICO)
+	if(toICO<=0) {
+		$("#submit").text('已经结束');
+		$("#submit").css({
+			'background': '#5C5162'
+		});
+		$("#submit").off('click');
+		clearInterval(t);
+	}
+}, 1000);
+$("[name='buyAmount']").on('change', function() {
+	$("#jiage")[0].innerHTML = 899 * $(this).val();
+}).trigger('change');
 
 var jsonDate = {};
 

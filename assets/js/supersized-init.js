@@ -18,16 +18,11 @@ jQuery(function($){
         fit_landscape      : 0,    // 景观的图像将不超过宽度的浏览器
 
         // 组件
-        slide_links        : 'blank',    // 个别环节为每张幻灯片（选项：假的，'民'，'名'，'空'）
+        slide_links        : 'blank',
         slides             : [    // 幻灯片影像
-                                 {image : './assets/images/can_banner_new.jpg'}
+                                 {image : '../assets/images/can_banner_new.jpg'}
                        ]
 
     });
 
 });
-/*
-本代码由js代码收集并编辑整理;
-尊重他人劳动成果;
-转载请保留js代码链接 - www.jsdaima.com
-*/
