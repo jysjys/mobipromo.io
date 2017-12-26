@@ -68,7 +68,7 @@
         <table class="table table-hover user_list">
 		  <thead>
 		    <tr>
-		      <th>优惠码</th>
+		      <th id="coupon_title">优惠码 (<label></label>) 个</th>
 		      <th>使用时间</th>
 		      <th>是否使用</th>
 		      <th>是否过期</th>
@@ -150,30 +150,35 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 				}
 			})
  	$("#example button").on('click', function(){
-		var proxylist = ''
+		var proxylist = {};
  		$('#myModal').modal('toggle');
  		var proxyId = $(this).data('id');
  		$('#myModal').data('id', proxyId);
-		$.ajax({
-			type: 'POST',
-			async: false,
-			data: {
-				proxyId: proxyId,
-			},
-			url: '/promo/manage/index/getCoupons',
-			success: function (data) {
-				console.log(data);
-				proxylist=data
-			},
-		});
+		proxylist = getCoupon(proxyId);
 		proxylist_model.list = proxylist.list;
-		$(".btn-default").off('click.clear').on('click.clear', function () {
-			proxylist_model.list = ''
-		})
-		$(".close").off('click.clear').on('click.claer', function () {
-			proxylist_model.list = ''
-		})
+		// $(".btn-default").off('click.clear').on('click.clear', function () {
+		// 	proxylist_model.list = {};
+		// })
+		// $(".close").off('click.clear').on('click.claer', function () {
+		// 	proxylist_model.list = {};
+		// })
  	})
+
+ 	function getCoupon(proxyId) {
+ 		$.ajax({
+ 			type: 'POST',
+ 			async: false,
+ 			data: {
+ 				proxyId: proxyId
+ 			},
+ 			url: '/promo/manage/index/getCoupons',
+ 			success: function (data) {
+ 				proxylist = data;
+ 				$('#coupon_title label').text(data.list.length);
+ 			},
+ 		});
+ 		return proxylist;
+ 	}
 
 
  	$(".add_pro_btn").on('click', function () {
@@ -184,10 +189,12 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 			async: false,
 			data: {
 				proxyId: proxyId,
+				count: add_pro_int
 			},
 			url: '/promo/manage/index/generateCode',
 			success: function (data) {
-				console.log(data);
+				var proxylist = getCoupon(proxyId);
+				proxylist_model.list = proxylist.list;
 			},
 		});
  	})
