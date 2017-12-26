@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>mobipromo</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../assets/css/login.css" />
+<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+<style>
+	.login_warn {
+		display: none;
+		line-height: 15px;
+		padding-left: 10px;
+	}
+</style>
+<body>
+
+<div class="login-container">
+	<h1>管理员登陆入口</h1>
+	
+		<div>
+			<input type="text" name="username" class="username" placeholder="手机号/邮箱" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" class="login_warn warn" value="用户名或密码不正确！" disabled='disabled'>
+		</div>
+		<button id="submit" type="submit" style="margin-left: 0;">登 录</button>
+</div>
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/supersized.3.2.7.min.js"></script>
+<script src="../assets/js/supersized-init.js"></script>
+<script>
+function addCookie(name,value, exdays){ 
+	var d = new Date();  
+	d.setTime(d.getTime() + (exdays*60*1000));  
+	var expires = "expires="+d.toUTCString();   
+    var name = name;  
+    var value = escape(value);
+    document.cookie = name + "=" + value + "; " + expires; 
+} 
+$("#submit").on('click', function () {
+
+	var data = {
+		username: $("input[name='username']").val(),
+		password: $("input[name='password']").val()
+	}
+	$.ajax({
+			type: 'POST',
+			async: false,
+			data: data,
+			url: '/promo/manage/login',
+			success: function (data) {
+				console.log(data)
+				if(data.login) {
+					addCookie('manage', data.passMD5, 30)
+					window.location.href = './index.html'
+
+				}else {
+					$(".login_warn").css({'display':'inline-block'})
+				}
+			},
+		});
+})
+</script>
+</body>
+</html>

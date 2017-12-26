@@ -8,6 +8,12 @@
 <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 <title>mobipromo</title>
+<style type="text/css" media="screen">
+	.user_list tbody tr td:nth-child(2), .user_list tbody tr td:nth-child(3), .user_list tbody tr td:nth-child(4){
+		
+		-webkit-user-select: none;
+	}
+</style>
 <body>
 <div class="container">
 	<div class="panel panel-primary">
@@ -23,96 +29,12 @@
 		      <th>操作</th>
 		    </tr>
 		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="myModal" onclick="$('#test').tableExport({ type: 'excel', separator: ';', escape: 'false' });">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
-		    </tr>
-		    <tr>
-		      <td>Tanmay</td>
-		      <td>Tanmay</td>
-		      <td>Bangalore</td>
-		      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">危险按钮</button></td>
+		  <tbody id="example">
+		    <tr v-for='item in list'>
+		      <td>{{ item.name }}</td>
+		      <td>{{ item.area }}</td>
+		      <td>{{ item.phone }}</td>
+		      <td><button type="button" class="btn btn-success" v-bind:data-id="item.id" data-toggle="modal">操作</button></td>
 		    </tr>
 		    
 		  </tbody>
@@ -123,9 +45,6 @@
 
 
 
-       <table class="table table-hover" id="test">
-		  
-	  	</table>
 
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -133,29 +52,34 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">姓名+地区</h4>
+        <div class="panel panel-default" style="margin-top: 30px;">
+		  <div class="row">
+			  <div class="col-lg-6">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default add_pro_btn" type="button">Go!</button>
+			      </span>
+			      <input type="text" class="form-control add_pro_int" placeholder="添加优惠码">
+			    </div><!-- /input-group -->
+			  </div><!-- /.col-lg-6 -->
+		</div>
       </div>
       <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
-        <table class="table table-hover">
+        <table class="table table-hover user_list">
 		  <thead>
 		    <tr>
-		      <th>购买码</th>
+		      <th>优惠码</th>
 		      <th>使用时间</th>
 		      <th>是否使用</th>
 		      <th>是否过期</th>
 		    </tr>
 		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>TanmayTanmay</td>
-		      <td>12:00</td>
-		      <td>true</td>
-		      <td>true</td>
-		    </tr>
-		    <tr>
-		      <td>TanmayTanmay</td>
-		      <td>12:00</td>
-		      <td>true</td>
-		      <td>true</td>
+		  <tbody id="proxylist">
+		    <tr v-for="item in list">
+		      <td>{{ item.code }}</td>
+		      <td>{{ item.usedAt}}</td>
+		      <td>{{ item.used }}</td>
+		      <td>{{ item.expiredAt }}</td>
 		    </tr>
 		  </tbody>
 	  	</table>
@@ -169,7 +93,143 @@
 </div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src='../assets/js/bootstrap.min.js'></script>
-<script src='../assets/js/tableExport.min.js'></script>
-<script src="../assets/js/jquery.base64.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
+	//用处理字符串的方式查找到key对应value
+	var name = escape(name);
+	//读cookie属性，这将返回文档的所有cookie
+	var allcookies = document.cookie;
+	//查找名为name的cookie的开始位置
+	name += "=";
+	var pos = allcookies.indexOf(name);
+	//如果找到了具有该名字的cookie，那么提取并使用它的值
+	if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
+		var start = pos + name.length; //cookie值开始的位置
+		var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+		if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
+		var value = allcookies.substring(start, end); //提取cookie的值
+		return (value); //对它解码
+	} else { //搜索失败，返回空字符串
+		return "";
+	}
+}
+	
+	var ID = getCookieValue('manage')
+	if(ID == '') {
+		window.location.href = './login.html'
+	}
+	var userlist = ''
+	$.ajax({
+		type: 'POST',
+		async: false,
+		url: '/promo/manage/index/loadUsers',
+		data: {
+			passMD5: ID
+		},
+		success: function (data) {
+			if(data.fail) {
+				window.location.href = './login.html';
+				return;
+			}
+			console.log(data);
+			userlist = data;
+		},
+	})
+	var userList = new Vue({
+	  el: '#example',
+	  data: userlist
+	})
+	function getProxy () {
+		
+	}
+	var proxylist_model = new Vue({
+				el: '#proxylist',
+				data: {
+					list:''
+				}
+			})
+ 	$("#example button").on('click', function(){
+		var proxylist = ''
+ 		$('#myModal').modal('toggle');
+ 		var proxyId = $(this).data('id');
+ 		$('#myModal').data('id', proxyId);
+		$.ajax({
+			type: 'POST',
+			async: false,
+			data: {
+				proxyId: proxyId,
+			},
+			url: '/promo/manage/index/getCoupons',
+			success: function (data) {
+				console.log(data);
+				proxylist=data
+			},
+		});
+		proxylist_model.list = proxylist.list;
+		$(".btn-default").off('click.clear').on('click.clear', function () {
+			proxylist_model.list = ''
+		})
+		$(".close").off('click.clear').on('click.claer', function () {
+			proxylist_model.list = ''
+		})
+ 	})
+
+
+ 	$(".add_pro_btn").on('click', function () {
+ 		var add_pro_int = $(".add_pro_int").val();
+ 		var proxyId = $("#myModal").data('id');
+ 		$.ajax({
+			type: 'POST',
+			async: false,
+			data: {
+				proxyId: proxyId,
+			},
+			url: '/promo/manage/index/generateCode',
+			success: function (data) {
+				console.log(data);
+			},
+		});
+ 	})
+
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
