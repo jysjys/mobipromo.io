@@ -145,6 +145,11 @@ function getList() {
 		contentType: "application/json; charset=utf-8",
 		url: '/promo/authed/account/get/selllist',
 		success: function(result) {
+			if(result.isOrdered) {
+				$(".btn_ver").css({
+					'display': 'block'
+				}).attr('href', '../activity/1.html')
+			}
 			console.log(result)
 			var data = result.data;
 			var listTradeNum = '';

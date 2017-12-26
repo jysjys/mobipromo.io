@@ -28,6 +28,22 @@ select {
 	box-shadow: none;
 	border: 1px solid #D0D0D0;
 }
+.btn_ver {
+	display: block;
+	font-size: 20px;
+	line-height: 50px;
+	text-decoration: none;
+	position: relative;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 400px;
+	border-radius: 6px;
+	background: #DB4533;
+	color: #FFFFFF;
+	box-shadow: 0 3px 0 #f49811;
+	display: none;
+}
 #prov {
 	 margin-left: 100px;
 }
