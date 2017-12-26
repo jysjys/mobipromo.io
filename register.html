@@ -82,9 +82,6 @@
 		if(!accountName) {
 			console.log('accountName not empty')
 			$(".accountName_warn").css({'display':'inline-block'});
-		} else if(accountName.length < 6 || accountName.length > 20) {
-			console.log('accountName length error')
-			$(".accountName_warn").css({'display':'inline-block'});
 		} else if(!password) {
 			console.log('password not empty')
 			$(".password_warn").css({'display':'inline-block'});
