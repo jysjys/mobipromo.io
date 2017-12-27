@@ -26,7 +26,14 @@
 	         /* placeholder位置  */
 	         text-align: center;
 	     }
-		
+		.dialog_warn, .dialog_warn2 {
+			display: none;
+			text-align: center;
+			color: #CE584A;
+			width: auto;
+			font-size: 14px;
+		}
+
 	</style>
 </head>
 <body>
@@ -71,6 +78,7 @@
 	</div>
 	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="upgrade_dlg">
 		<h2 class="dialog-title">订单信息</h2>
+		<span class='dialog_warn'>只能填写数字！</span>
 		<div class="dlg-content">
 			<div tit="1y" class="price" style="border: 1px solid #458DEF">
 				<div class="price-date" style="margin-top: 0;">
@@ -81,7 +89,7 @@
 						<option value="4">4 台</option>
 						<option value="5">5 台</option>
 					</select> -->
-					<input type="text" name='amount' id='amount' placeholder="该优惠码最多限购100台" value="1">
+					<input type="text" name='amount' id='amount' placeholder="该优惠码最多限购100台">
 				</div>
 				<div class="price-text">¥
 					<label class="userprice">899</label>
@@ -101,6 +109,7 @@
 	</div>
 	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="price_dlg">
 		<h2 class="dialog-title">订单信息</h2>
+		<span class='dialog_warn2'></span>
 		<div class="dlg-content">
 			<div class="price ac" style="margin-right:0;">
 				<div class="price-date">1 台</div>

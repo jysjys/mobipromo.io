@@ -20,7 +20,16 @@
 		}
 	}
 
-
+	// $("input[name='username']").val('sgwe'),
+	// $("input[name='phone_number']").val('18219273817'),
+	// $("input[name='mailbox']").val('123@qq.com'),
+	// $("input[name='zip_code']").val(100000),
+	// $("input[name='address-detail']").val('wgwwgew'),
+	// $("input[name='coupon']").val('h5QzWHa');
+	// $("input[name='device_name']").val(''),
+	// addressProv = $('[name=address-level1]').val(),
+	// addressCity = $('[name=address-level2]').val(),
+	// addressCounty = $('[name=address-level3]').val(),
 
 
 	// 获取用户订购商品列表
@@ -44,13 +53,6 @@
 				var list_phone = '';
 				var list_price = '';
 				var list_status = '';
-				if(data.length > 0) {
-					$("#submit").text('不能重复购买！');
-					$("#submit").css({
-						'background': '#5C5162'
-					});
-					$('#submit').off('click');
-				}
 				for (var i = 0; i < data.length; i++) {
 					listTradeNum += '<li>' + data[i].tradeNumber + '</li>';
 					listone += '<li>' + data[i].boxName + '</li>';
@@ -78,16 +80,45 @@
 					$('#price_dlg').find('.userprice').text(data[index].totalRmb);
 					$('#zhifu2').off('click').on('click', function(){
 						//完成未支付
+						var isLoading = $(this).data('isLoading');
+						if(isLoading) {
+							return;
+						}
+						$(this).data('isLoading', true);
 						$.ajax({
 							headers: {
 								Accept: "application/json; charset=utf-8",
 								Authorization: 'Bearer' + ' ' + x
 							},
 							url: '/promo/alipay/coupon/order/payagain',
-							data: JSON.stringify({tradeNumber:data[index].tradeNumber}),
+							data: {tradeNumber:data[index].tradeNumber},
 							type: 'POST',
 							contentType: "application/json; charset=utf-8",
 							success: function(data) {
+								$(".dialog_warn2").css('display', 'none');
+								if(data.not) {
+									$(".dialog_warn2").css('display', 'block');
+									$(".dialog_warn2").html('您填写的优惠码不存在')
+									
+								}else if(data.isUsed) {
+									$(".dialog_warn2").css('display', 'block');
+									$(".dialog_warn2").html('您填写的优惠码已使用过')
+								}else if(data.isLocked) {
+									$(".dialog_warn2").css('display', 'block');
+									$(".dialog_warn2").html('您填写的优惠码已锁定')
+								}
+								else if(data.isFull) {
+									$(".dialog_warn2").css('display', 'block');
+									$(".dialog_warn2").html('您的代理商限购额度已满');
+								}else if(data.isOut) {
+									$(".dialog_warn2").css('display', 'block');
+									$(".dialog_warn2").html('您的代理商限购额度已满');
+								}
+
+
+
+
+								$(this).data('isLoading', false);
 								console.log(data);
 								if(data.isSuccess){
 									location.href = data.httpurl;
@@ -97,6 +128,7 @@
 								}
 							},
 							error: function(data) {
+								$(this).data('isLoading', false);
 								globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
 							}
 						});
@@ -182,11 +214,18 @@
 			return true;
 		}
 	}
-	function btnPress(){
+	function btnPress(data){
+		// console.log(data)
 		$('.warn').remove();
+		$('#amount').attr('placeholder','该优惠码最多限购' + data.remark + '台');
+		$(".dialog_warn").css('display','none')
 		warn_chouse();
 		// var icoStartDate = new Date('2017/12/22 15:57:50');
 		var currentdate = new Date();
+		var addressProv = $('[name=address-level1]').val().trim(),
+			addressCity = $('[name=address-level2]').val().trim(),
+			addressCounty = $('[name=address-level3]').val().trim(),
+			addressDetail = $("input[name='address-detail']").val().trim();
 
 		
 		var address = [
@@ -214,11 +253,18 @@
 		});
 		$("#amount").focus()
 		$('#zhifu').off('click').on('click', function(){
-			var amountNum = $("#amount").val();
-			if(amountNum == paseInt(amountNum) && amountNum>0 && amountNum <=100) {
+			var amountNum = parseInt($("#amount").val());
+			if(amountNum+'' != 'NaN') {
+				if(amountNum > parseInt(data.remark)) {
+					$(".dialog_warn").css({'display':'block'})
+					$(".dialog_warn").html('超过最大限购数量！')
+					return false;
+				}
 				jsonData.buyAmount = $("#amount").val();
 				jsonData.totalRmb = jsonData.buyAmount * 899;
 				jsonData.paymentType = $('.price-paytype.ac').attr('tit');
+				jsonData.couponCode = data.code;
+				console.log(jsonData)
 				$.ajax({
 					headers: {
 						Accept: "application/json; charset=utf-8",
@@ -229,7 +275,7 @@
 					type: 'POST',
 					contentType: "application/json; charset=utf-8",
 					success: function(data) {
-						console.log(data);
+						console.log(data);	
 						if(data.isSuccess){
 							location.href = data.httpurl;
 						}else{
@@ -242,51 +288,70 @@
 						globalTopTip(data.responseJSON.reason, "top_error", 2000, $("#upgrade_dlg"), !0);
 					}
 				});
+			}else if (!amountNum) {
+				$(".dialog_warn").css({'display':'block'})
+				$(".dialog_warn").html('购买数量不能为空')
 			}else {
+				$(".dialog_warn").css({'display':'block'})
+				$(".dialog_warn").html('只能输入数字')
 				console.log('err_amountNum')
+
 			}
 		});
 	};
 
 	$('#submit').on('click', function () {
+		var isLoading = $(this).data('isLoading');
+		if(isLoading) {
+			return;
+		}
+		$(this).data('isLoading', true);
 		$(".warn").remove();
 		if(!warn_chouse()){
 			return false;
 		}
 		$.ajax({
-	 			type: 'POST',
-	 			async: false,
-	 			data: {
-	 				coupon: $("input[name='coupon']").val().trim(),
-	 			},
-	 			url: '/promo/authed/coupon/check',
-	 			success: function (data) {
-	 				var errorContent = $('<input>', {'class': 'warn'}),
-					errorWarp = $('<div/>').append(errorContent);
-					$(".warn").remove();
-					if(data.not) {
-						errorWarp.appendTo($("input[name='device_name']").parent());
-						errorContent.val('您填写的优惠码不存在!');
-					}else if(data.isUsed) {
-						errorWarp.appendTo($("input[name='device_name']").parent());
-						errorContent.val('您填写的优惠码已使用过!');
-					}else if(data.isLocked) {
-						errorWarp.appendTo($("input[name='device_name']").parent());
-						errorContent.val('您填写的优惠码已锁定!');
-					}else if(data.Full) {
-						errorWarp.appendTo($("input[name='device_name']").parent());
-						errorContent.val('您填写的优惠码过多!');
-					}else if(isOut) {
-						errorWarp.appendTo($("input[name='device_name']").parent());
-						errorContent.val('您所拥有的优惠码已满!');
-					}else {
-						btnPress();
-					}
-	 				
-	 			},
-	 			error: function (data) {
-	 				console.log('coupon_err')
-	 			}
+ 			type: 'POST',
+ 			async: false,
+ 			headers: {
+				Accept: "application/json; charset=utf-8",
+				Authorization: 'Bearer' + ' ' + x
+			},
+ 			data: {
+ 				coupon: $("input[name='coupon']").val().trim(),
+ 			},
+ 			url: '/promo/authed/coupon/check',
+ 			success: function (data) {
+ 				var errorContent = $('<input>', {'class': 'warn'}),
+				errorWarp = $('<div/>').append(errorContent);
+				$(".warn").remove();
+				if(data.not) {
+					errorWarp.appendTo($("input[name='coupon']").parent());
+					errorContent.val('您填写的优惠码不存在!');
+				}else if(data.isUsed) {
+					errorWarp.appendTo($("input[name='coupon']").parent());
+					errorContent.val('您填写的优惠码已使用过!');
+				}else if(data.isLocked) {
+					errorWarp.appendTo($("input[name='coupon']").parent());
+					errorContent.val('您填写的优惠码已锁定!');
+				}
+				// else if(data.isFull) {
+				// 	errorWarp.appendTo($("input[name='coupon']").parent());
+				// 	errorContent.val('您填写的优惠码过多!');
+				// }else if(data.isOut) {
+				// 	errorWarp.appendTo($("input[name='coupon']").parent());
+				// 	errorContent.val('您所拥有的优惠码已满!');
+				// }
+				else {
+					btnPress(data);
+				}
+				$(this).data('isLoading', false);
+ 				
+ 			},
+ 			error: function (data) {
+ 				console.log('coupon_err');
+ 				$(this).data('isLoading', false);
+ 			}
 	 	});
 	});
 

@@ -7,7 +7,7 @@
 <meta name="description" content="" />
 <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/cdd/bootstrap-select.min.css">
+<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
 <title>mobipromo</title>
 <style type="text/css" media="screen">
 	.user_list tbody tr td:nth-child(2), .user_list tbody tr td:nth-child(3), .user_list tbody tr td:nth-child(4){
@@ -57,10 +57,11 @@
 		  <div class="row">
 			  <div class="col-lg-6">
 			    <div class="input-group">
-			      <span class="input-group-btn">
+			      <input type="text" style="width: 40%; margin-right: 40px;" class="form-control add_pro_int" placeholder="个数">
+			      <input type="text" style="width: 40%" class="form-control add_pro_count" placeholder="台数">
+			      <span class="input-group-btn" style="left: 0;">
 			        <button class="btn btn-default add_pro_btn" type="button">Go!</button>
 			      </span>
-			      <input type="text" class="form-control add_pro_int" placeholder="添加优惠码">
 			      	<!-- <select class="selectpicker">
 					  <option>Mustard</option>
 					  <option>Ketchup</option>
@@ -85,7 +86,8 @@
 		    <tr v-for="item in list">
 		      <td>{{ item.code }}</td>
 		      <td>{{ item.usedAt}}</td>
-		      <td>{{ item.used }}</td>
+		      <td>
+		      	<span class="btn" :class="item.used ? 'btn-danger' : item.locked ? 'btn-warning' : 'btn-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
 		      <td>{{ item.expiredAt }}</td>
 		      <td>{{ item.createdAt }}</td>
 		    </tr>
@@ -94,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
@@ -141,7 +143,6 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 				window.location.href = './login.html';
 				return;
 			}
-			console.log(data);
 			userlist = data;
 		},
 	})
@@ -161,6 +162,7 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
  	$("#example button").on('click', function(){
 		var proxylist = {};
  		$('#myModal').modal('toggle');
+ 		$(".add_pro_int").val('');
  		var proxyId = $(this).data('id');
  		$('#myModal').data('id', proxyId);
 		proxylist = getCoupon(proxyId);
