@@ -7,6 +7,7 @@
 <meta name="description" content="" />
 <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/cdd/bootstrap-select.min.css">
 <title>mobipromo</title>
 <style type="text/css" media="screen">
 	.user_list tbody tr td:nth-child(2), .user_list tbody tr td:nth-child(3), .user_list tbody tr td:nth-child(4){
@@ -60,6 +61,11 @@
 			        <button class="btn btn-default add_pro_btn" type="button">Go!</button>
 			      </span>
 			      <input type="text" class="form-control add_pro_int" placeholder="添加优惠码">
+			      	<!-- <select class="selectpicker">
+					  <option>Mustard</option>
+					  <option>Ketchup</option>
+					  <option>Relish</option>
+					</select> -->
 			    </div><!-- /input-group -->
 			  </div><!-- /.col-lg-6 -->
 		</div>
@@ -72,6 +78,7 @@
 		      <th>使用时间</th>
 		      <th>是否使用</th>
 		      <th>是否过期</th>
+		      <th>创建时间</th>
 		    </tr>
 		  </thead>
 		  <tbody id="proxylist">
@@ -80,6 +87,7 @@
 		      <td>{{ item.usedAt}}</td>
 		      <td>{{ item.used }}</td>
 		      <td>{{ item.expiredAt }}</td>
+		      <td>{{ item.createdAt }}</td>
 		    </tr>
 		  </tbody>
 	  	</table>
@@ -93,6 +101,7 @@
 </div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src='../assets/js/bootstrap.min.js'></script>
+<script src='../assets/js/bootstrap-select.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
 function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
@@ -144,11 +153,11 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 		
 	}
 	var proxylist_model = new Vue({
-				el: '#proxylist',
-				data: {
-					list:''
-				}
-			})
+		el: '#proxylist',
+		data: {
+			list:''
+		}
+	})
  	$("#example button").on('click', function(){
 		var proxylist = {};
  		$('#myModal').modal('toggle');

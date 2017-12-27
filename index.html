@@ -31,7 +31,7 @@
         <img alt="MobiPromo" src="assets/images/logo.png">
       </a>
     </div>
-    <div class='chinese'><a href="cn/index.html" style="color: #ffffff; text-decoration: none !important;">中文</a></div>
+    <div class='chinese' style="z-index: 99"><a href="cn/index.html" style="color: #ffffff; text-decoration: none !important;">中文</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
@@ -45,15 +45,15 @@
         <li><a href="#Roadma">Roadmap</a></li>
         <li><a href="#Contact_Us">Contact Us</a></li>
         <!-- <li><a href="cn/index.html">中文</a></li> -->
-        <li><a id="login" href="indexlogin.html" style="background: #193859; opacity: 0.8; border-radius: 5px; line-height: 20px; margin-top: 15px;">Sign in</a></li>
-        <li><a id="login_out" href="indexlogin.html" style="background: #193859; opacity: 0.8; border-radius: 5px; line-height: 20px; margin-top: 15px;">Sign out</a></li>
+        <li><a id="login" href="indexlogin.html">Sign in</a></li>
+        <li><a id="login_out" href="indexlogin.html">Sign out</a></li>
       </ul>
     </div>
     <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
   </div>
 </nav>
 <section class="top_banner">
-  <div class="container wow animate fadeInUp"  data-wow-duration="1.5s" data-wow-delay='0.2s' style='margin: 0; padding: 0; width: 100%;' >
+  <div class="container wow animate fadeInUp"  data-wow-duration="1.5s" data-wow-delay='0.2s' style='margin: 0; padding: 0; width: 100%;'>
     <!-- <img src="assets/images/can_banner.jpeg" width="100%;" height="100%" alt="assets/images/can_banner.jpeg"> -->
     <h1 class="text-center">The MobiPromo is one of the most</h1>
     <h1 class="text-center">advanced Network marketing system all over the world</h1>
@@ -62,16 +62,13 @@
 </section>
 <section class="can_info">
   <div class='container' style='overflow: hidden;'>
-    <div class='row can_info_btn'>
+    <!-- <div class='row can_info_btn'>
       <ul>
         <li class="info">Pre-sale</li>
-        <!-- <li class='pre_sale'>Pre-sale</li> -->
+        <li class='pre_sale'>Pre-sale</li>
       </ul>
-    </div>
-    <div class="row" id='sale_count' style='display:;'>
-      <h1>10,000 of CAN STARTBOX will be sold in advance</h1>
-      <h2>Sold out <span class='sale_amount' style="font-size: 45px;"></span></h2>
-    </div>
+    </div> -->
+    
     <style>
       .text .type-time {
         margin-top: 40px;
@@ -133,10 +130,14 @@
       </div><!-- /.clock -->
       <div class="join_btn" style='#666666'>PARTICIPATE</div>
     </div>
-    <div class="row" id='Product' style='padding-top: 150px; display: ;'>
-      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">Intro.</h1>
+    <div class="row" id='Product' style=' display: ;'>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-top: 70px;">Intro.</h1>
+      <div class="row" id='sale_count' style='display:;'>
+        <!-- <h1>10,000 of CAN STARTBOX will be sold in advance</h1> -->
+        <h2>Sold out <span class='sale_amount' style="font-size: 45px;"></span></h2>
+      </div>
       <div class="info_left col-md-6" style='position: relative;'>
-        <img src="assets/images/can_box.png" alt="info_png" width='80%;'>
+        <img src="assets/images/can_box.png" alt="info_png" width='80%;' style="opacity: 0.7">
         <img src="assets/images/can_box_child.png" width="80%;" style="position: absolute; top: -16%; width: 52%;">
       </div>
       <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
@@ -241,10 +242,10 @@
     <div class="row" style='overflow: hidden;'>
       <div class="can_people_btn">
         
-        <h1 class='left' style='float: left;'>
+        <h1 class='left' style='float: left; border-radius: 2px 0 0 2px;'>
           PROJECT TEAM
         </h1>
-        <h1 class='right' style='float: left;'>ADVISOR TEAM</h1>
+        <h1 class='right' style='float: left; border-radius: 0 2px 2px 0;'>ADVISOR TEAM</h1>
       </div>
      <!--  <span class='right_btn'>
         <img src="assets/images/right_btn.svg" width='20px;' alt="">
@@ -469,8 +470,12 @@
         success: function (data) {
           $("#login").html(data.accountName);
           $("#login").attr("href",'presale.html');
+          $("#login_out").parent().css({'display': 'block'});
+          $(".nav>li>a").css({"padding": '10px 40px'})
         },
         error: function(data) {
+          $("#login_out").parent().css({'display': 'none'})
+          $(".nav>li>a").css({"padding": '10px 45px'})
         }
       })
       // 已售出多少台设备

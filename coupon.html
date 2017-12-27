@@ -7,9 +7,27 @@
 	<title>mobipromo</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link rel="stylesheet" href="../assets/css/login.css" />
-	<link rel="stylesheet" href="../assets/css/icons/icons.css" />
-	<link rel="stylesheet" href="../assets/css/verification.css">
+	<link rel="stylesheet" href="assets/css/login.css" />
+	<link rel="stylesheet" href="assets/css/icons/icons.css" />
+	<link rel="stylesheet" href="assets/css/verification.css">
+	<style>
+		#amount {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			border-bottom: 1px solid #458DEF;
+			text-align: center;
+		}
+		#amount::-webkit-input-placeholder {
+	          /* placeholder颜色  */
+	         color: #aab2bd;
+	         /* placeholder字体大小  */
+	         font-size: 12px;
+	         /* placeholder位置  */
+	         text-align: center;
+	     }
+		
+	</style>
 </head>
 <body>
 	<div class="presale-container">
@@ -46,6 +64,9 @@
 		<div>
 			<i>*</i><span>详细地址</span><input type="text" name="address-detail" class="address" placeholder="">
 		</div>
+		<div>
+			<i>*</i><span>优惠码</span><input type="text" name="coupon" class="coupon" placeholder="">
+		</div>
 		<button id="submit" type="submit" style='background: #458DEF'>确认信息</button>
 	</div>
 	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="upgrade_dlg">
@@ -53,13 +74,14 @@
 		<div class="dlg-content">
 			<div tit="1y" class="price" style="border: 1px solid #458DEF">
 				<div class="price-date" style="margin-top: 0;">
-					<select name="amount" id="amount" style="width: 100%; margin-top: 0; border-bottom: 1px solid #458DEF;">
+					<!-- <select name="amount" id="amount" style="width: 100%; margin-top: 0; border-bottom: 1px solid #458DEF;">
 						<option value="1">1 台</option>
 						<option value="2">2 台</option>
 						<option value="3">3 台</option>
 						<option value="4">4 台</option>
 						<option value="5">5 台</option>
-					</select>
+					</select> -->
+					<input type="text" name='amount' id='amount' placeholder="该优惠码最多限购100台" value="1">
 				</div>
 				<div class="price-text">¥
 					<label class="userprice">899</label>
@@ -128,16 +150,14 @@
 	
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
-		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1.订单只能提交一次，请仔细核对购买数量之后确认!!!；</span>
-		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">&nbsp;2.每人最多限购5台CAN星际宝盒。</span>
-		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">&nbsp;3.您预先订购CAN星际宝盒需提前支付全款；</span>
-		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*4.本次活动截止到2018-01-01 00:00:00!!!；</span>
+		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1. 请仔细核对购买信息之后确认!!!；</span>
+		
 	</div>
-	<script src="../assets/js/jquery.min.js"></script>
+	<script src="./assets/js/jquery.min.js"></script>
 	<!--背景图片自动更换-->
-	<script src="../assets/js/supersized.3.2.7.min.js"></script>
-	<script src="../assets/js/address.js"></script>
-	<script src='../assets/js/verification.js'></script>
+	<script src="./assets/js/supersized.3.2.7.min.js"></script>
+	<script src="./assets/js/address.js"></script>
+	<script src='./assets/js/coupon.js'></script>
 </body>
 
 </html>

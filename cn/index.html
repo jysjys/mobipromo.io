@@ -45,8 +45,8 @@
         <li><a href="#Roadma">发展路线图</a></li>
         <li><a href="#Contact_Us">联系我们</a></li>
         <!-- <li><a href="../index.html">English</a></li> -->
-        <li><a id="login" href="../indexlogin.html" style="background: #193859; opacity: 0.8; border-radius: 5px; line-height: 20px; margin-top: 15px;">登录</a></li>
-        <li><a id="login_out" href="../indexlogin.html" style="background: #193859; opacity: 0.8; border-radius: 5px; line-height: 20px; margin-top: 15px;">退出</a></li>
+        <li><a id="login" href="../indexlogin.html">登录</a></li>
+        <li><a id="login_out" href="../indexlogin.html">退出</a></li>
       </ul>
     </div>
   </div>
@@ -62,16 +62,13 @@
 <section class="can_info">
   <div class='container' style='overflow: hidden'>
 
-    <div class='row can_info_btn'>
+    <!-- <div class='row can_info_btn'>
       <ul>
         <li class="info">预售</li>
-        <!-- <li class='pre_sale'>Pre-sale</li> -->
+        <li class='pre_sale'>Pre-sale</li>
       </ul>
-    </div>
-    <div class="row" id='sale_count' style='display:;'>
-      <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1>
-      <h2>已售出<span class='sale_amount' style="font-size: 45px;"></span>台</h2>
-    </div>
+    </div> -->
+    
     <style>
       .text .type-time {
         margin-top: 40px;
@@ -135,10 +132,14 @@
       <div class="join_btn" style='#666666'>立即参与</div>
       <!-- <div class="join_btn" style='#666666'>立即参与</div> -->
     </div><!-- /.countdown-wrapper -->
-    <div class="row" id="Product" style='padding-top: 150px; display: ;'>
-      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-bottom: 100px;">介绍</h1>
+    <div class="row" id="Product" style=' display: ;'>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-top: 70px;">介绍</h1>
+        <div class="row" id='sale_count' style='display:;'>
+        <!-- <h1>本次预售将开放10000台CAN星际宝盒，先到先得</h1> -->
+        <h2>已售出<span class='sale_amount' style="font-size: 45px;"></span>台</h2>
+      </div>
       <div class="info_left col-md-6">
-        <img src="../assets/images/can_box.png" alt="info_png" width='80%;'>
+        <img src="../assets/images/can_box.png" alt="info_png" width='80%;' style="opacity: 0.7">
         <img src="../assets/images/can_box_child.png" width="80%;" style="position: absolute; top: -16%; width: 52%;">
       </div>
       <div class="info_right col-md-6 wow animate flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
@@ -229,10 +230,10 @@
     <div class="row" style='overflow: hidden;'>
       <div class="can_people_btn">
         
-        <h1 class='left' style='float: left;'>
+        <h1 class='left' style='float: left;' style='float: left; border-radius: 2px 0 0 2px;'>
           项目团队
         </h1>
-        <h1 class='right' style='float: left;'>顾问团队</h1>
+        <h1 class='right' style='float: left;' style='float: left; border-radius: 0 2px 2px 0;'>顾问团队</h1>
       </div>
       <!-- <span class='right_btn'>
         <img src="../assets/images/right_btn.svg" width='20px;' alt="">
@@ -414,6 +415,11 @@
     font-size: 18px;
     line-height: 21px;
   }
+  .chinese {
+    position: absolute;
+    top: 25px;
+    left: 18%;
+  }
 </style>
 <footer class='can_footer' id="Contact_Us">
   <div class='container'>
@@ -474,9 +480,13 @@
         success: function (data) {
           $("#login").html(data.accountName);
           $("#login").attr("href",'../presale.html');
+          $("#login_out").parent().css({'display': 'block'});
+          $(".nav>li>a").css({"padding": '10px 40px'})
         },
         error: function(data) {
           console.log(data)
+          $("#login_out").parent().css({'display': 'none'});
+          $(".nav li a").css({"padding": '10px 50px'})
         }
       })
       // 已售出多少台设备

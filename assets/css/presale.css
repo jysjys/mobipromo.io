@@ -8,7 +8,7 @@ body {
 	color: #333333;
 }
 .presale-container {
-	padding-top: 50px;
+	padding-top: 100px;
 }
 span {
 	display: inline-block;
@@ -43,6 +43,17 @@ select {
 	color: #FFFFFF;
 	box-shadow: 0 3px 0 #f49811;
 	display: none;
+}
+.btn_coupon {
+	display: block;
+	position: relative;
+	top: 10px;
+	left: 100%;
+	margin-left: -100px;
+	width: 90px;
+	font-size: 16px;
+	color: #6D6D6D;
+	text-decoration: none;
 }
 #prov {
 	 margin-left: 100px;

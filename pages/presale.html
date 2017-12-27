@@ -15,45 +15,10 @@
 	</style>
 </head>
 <body>
+	<a class="btn_coupon" href="./coupon.html">优惠码通道</a>
 	<a class="btn_ver" href="">
 		您是订购用户，点击此处前去付款!
 	</a>
-	<div class="presale-container">
-		<h1>订单信息</h1>
-		<div>
-			<span>设备名称</span><input type="text" name="device_name" class="device_name" value="星际宝盒" disabled placeholder="设备名称">
-		</div>
-		<div>
-			<i>*</i><span>姓名</span><input type="text" name="username" class="username" placeholder="">
-		</div>
-		<div>
-			<i>*</i><span>电话号码</span><input type="text" name="phone_number" class="phone_number" placeholder="">
-		</div>
-		<div>
-			<i>*</i><span>邮箱</span><input type="text" name="mailbox" class="mailbox" placeholder="">
-		</div>
-		<div>
-			<i>*</i><span>邮编</span><input type="text" name="zip_code" class="zip_code" placeholder="">
-		</div>
-		<div>
-			<!--省份选择-->
-			<select id="prov" name="address-level1" style="width:98px;" onchange="showCity(this)">
-				<option value="">*省份</option>
-			</select>
-			<!--城市选择-->
-			<select id="city" name="address-level2" style="width:98px;" onchange="showCounty(this)">
-				<option value="">*城市</option>
-			</select>
-			<!--县区选择-->
-			<select id="country" name="address-level3" style="width:98px;">
-				<option value="">*区县</option>
-			</select>
-		</div>
-		<div>
-			<i>*</i><span>详细地址</span><input type="text" name="address-detail" class="address" placeholder="">
-		</div>
-		<button id="submit" type="submit" style='background: rgb(92, 81, 98)'>加载中。。。</button>
-	</div>
 	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="upgrade_dlg">
 		<h2 class="dialog-title">订单信息</h2>
 		<div class="dlg-content">
@@ -110,7 +75,7 @@
 			</div>
 		</div>
 	</div>
-	<div class='list'>
+	<div class='list' style="margin-top: 100px;">
 		<ul class='list_tradeNum'>
 			<li>订单编号</li>
 		</ul>

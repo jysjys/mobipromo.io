@@ -1,3 +1,5 @@
+$(window).load(function() {
+
 $('.top_banner').css({
           'height': $('.top_banner').width() / 1.7
         });
@@ -8,6 +10,7 @@ $('.top_banner').css({
           dotColor: '#2F425E',
           lineColor: '#5C5162'
         });
+})
       new WOW().init();
       // var mySwiper = new Swiper('.swiper-container-carousel',{
       //   initialSlide :0,
