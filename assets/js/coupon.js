@@ -261,8 +261,28 @@
 	 			},
 	 			url: '/promo/authed/coupon/check',
 	 			success: function (data) {
-	 				console.log('hello')
-	 				btnPress();
+	 				var errorContent = $('<input>', {'class': 'warn'}),
+					errorWarp = $('<div/>').append(errorContent);
+					$(".warn").remove();
+					if(data.not) {
+						errorWarp.appendTo($("input[name='device_name']").parent());
+						errorContent.val('您填写的优惠码不存在!');
+					}else if(data.isUsed) {
+						errorWarp.appendTo($("input[name='device_name']").parent());
+						errorContent.val('您填写的优惠码已使用过!');
+					}else if(data.isLocked) {
+						errorWarp.appendTo($("input[name='device_name']").parent());
+						errorContent.val('您填写的优惠码已锁定!');
+					}else if(data.Full) {
+						errorWarp.appendTo($("input[name='device_name']").parent());
+						errorContent.val('您填写的优惠码过多!');
+					}else if(isOut) {
+						errorWarp.appendTo($("input[name='device_name']").parent());
+						errorContent.val('您所拥有的优惠码已满!');
+					}else {
+						btnPress();
+					}
+	 				
 	 			},
 	 			error: function (data) {
 	 				console.log('coupon_err')
