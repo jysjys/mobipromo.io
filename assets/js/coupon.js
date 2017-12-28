@@ -246,20 +246,29 @@
 		$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
 			$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
 		});
-		$("#amount").focus()
-		$('#zhifu').off('click').on('click', function(){
-			var isLoading = $(this).data('isLoading');
-			if(isLoading) {
-				return;
+		$("#amount").on('keyup', function(){
+			var val = parseInt($(this).val().trim());
+			if(val+'' != 'NaN' || val < 1) {
+				$(this).val(1);
+			}else if(val > parseInt(data.remark)) {
+				$(this).val(data.remark);
 			}
-			$(this).data('isLoading', true);
-			var amountNum = parseInt($("#amount").val());
+		}).focus()
+		$('#zhifu').off('click').on('click', function(){
+			var amountNum = parseInt($("#amount").val().trim());
 			if(amountNum+'' != 'NaN') {
 				if(amountNum > parseInt(data.remark)) {
-					$(this).data('isLoading', false);
 					globalTopTip('超过最大限购数量', "top_error", 2000, $("#upgrade_dlg"), !0);
 					return false;
+				}else if(amountNum <= 0) {
+					globalTopTip('购买数量不能小于1', "top_error", 2000, $("#upgrade_dlg"), !0);
+					return false;
 				}
+				var isLoading = $(this).data('isLoading');
+				if(isLoading) {
+					return;
+				}
+				$(this).data('isLoading', true);
 				jsonData.buyAmount = $("#amount").val();
 				jsonData.totalRmb = jsonData.buyAmount * 899;
 				jsonData.paymentType = $('.price-paytype.ac').attr('tit');
@@ -297,10 +306,8 @@
 					}
 				});
 			}else if (!amountNum) {
-				$(this).data('isLoading', false);
 				globalTopTip('购买数量不能为空', "top_error", 2000, $("#upgrade_dlg"), !0);
 			}else {
-				$(this).data('isLoading', false);
 				globalTopTip('只能输入数字', "top_error", 2000, $("#upgrade_dlg"), !0);
 				console.log('err_amountNum')
 
