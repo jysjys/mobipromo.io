@@ -79,6 +79,11 @@ function getList() {
 				$('#price_dlg').find('.price-date').text(data[index].buyAmount + ' 台');
 				$('#price_dlg').find('.userprice').text(data[index].totalRmb);
 				$('#zhifu2').off('click').on('click', function(){
+					var isLoading = $(this).data('isLoading');
+					if(isLoading) {
+						return;
+					}
+					$(this).data('isLoading', true);
 					//完成未支付
 					$.ajax({
 						headers: {
@@ -91,6 +96,7 @@ function getList() {
 						contentType: "application/json; charset=utf-8",
 						success: function(data) {
 							console.log(data);
+							$(this).data('isLoading', false);
 							if(data.isSuccess){
 								location.href = data.httpurl;
 							}else{
@@ -99,6 +105,7 @@ function getList() {
 							}
 						},
 						error: function(data) {
+							$(this).data('isLoading', false);
 							globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
 						}
 					});
@@ -206,6 +213,11 @@ function btnPress(){
 		$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
 	});
 	$('#zhifu').off('click').on('click', function(){
+		var isLoading = $(this).data('isLoading');
+		if(isLoading) {
+			return;
+		}
+		$(this).data('isLoading', true);
 		jsonData.buyAmount = amount.val();
 		jsonData.totalRmb = jsonData.buyAmount * 899;
 		jsonData.paymentType = $('.price-paytype.ac').attr('tit');
@@ -220,6 +232,7 @@ function btnPress(){
 			contentType: "application/json; charset=utf-8",
 			success: function(data) {
 				console.log(data);
+				$(this).data('isLoading', false);
 				if(data.isSuccess){
 					location.href = data.httpurl;
 				}else{
@@ -229,13 +242,16 @@ function btnPress(){
 			},
 			error: function(data) {
 				console.log(data)
+				$(this).data('isLoading', false);
 				globalTopTip(data.responseJSON.reason, "top_error", 2000, $("#upgrade_dlg"), !0);
 			}
 		});
 	});
 };
 
-$('#submit').on('click', btnPress);
+$('#submit').on('click', function() {
+	btnPress();
+});
 
 // 购买数量 select选中事件
 var amount = $("#amount").on('change', function(){

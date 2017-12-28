@@ -91,7 +91,7 @@
 								Authorization: 'Bearer' + ' ' + x
 							},
 							url: '/promo/alipay/coupon/order/payagain',
-							data: {tradeNumber:data[index].tradeNumber},
+							data: JSON.stringify({tradeNumber:data[index].tradeNumber}),
 							type: 'POST',
 							contentType: "application/json; charset=utf-8",
 							success: function(data) {
