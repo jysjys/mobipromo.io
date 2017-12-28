@@ -246,17 +246,25 @@
 		$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
 			$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
 		});
-		$("#amount").on('keyup', function(){
-			var val = parseInt($(this).val().trim());
-			if(val+'' != 'NaN' || val < 1) {
-				$(this).val(1);
+		$("#amount").off('keyup').on('keyup', function(){
+			var val = $(this).val().trim();
+			if(val == '') {
+				return;
+			}
+			val = parseInt(val);
+			if(val + '' == 'NaN' || val < 1) {
+				// $(this).val(1);
 			}else if(val > parseInt(data.remark)) {
-				$(this).val(data.remark);
+				// $(this).val(data.remark);
+			}else {
+				$(this).val(val);
 			}
 		}).focus()
-		$('#zhifu').off('click').on('click', function(){
-			var amountNum = parseInt($("#amount").val().trim());
-			if(amountNum+'' != 'NaN') {
+		$('#zhifu').off('click').on('click', function() {
+			var amountNum = $("#amount").val().trim();
+
+			if(/^-?\d+$/.test(amountNum)) {
+				amountNum = parseInt(amountNum);
 				if(amountNum > parseInt(data.remark)) {
 					globalTopTip('超过最大限购数量', "top_error", 2000, $("#upgrade_dlg"), !0);
 					return false;
@@ -375,7 +383,7 @@
 	//  	 $(".userprice").html( $(this).val() * 899 );
 	// 	 $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 	// });
-	$('#amount').bind('input propertychange', function() {  
+	$('#amount').on('input propertychange', function() {  
 	    $('.userprice').html( $(this).val() * 899 );  
 	    $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 	}); 
