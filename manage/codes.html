@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+<title>mobipromo</title>
+<body>
+	<div id="div1" class="col-xs-6"></div>
+
+</body>
+<script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
+<script>
+	var number = location.href;
+	var num=number.indexOf("?") 
+   	var id=number.substr(num+1); 
+	$.ajax({
+		url:'/promo/manage/index/getCoupons',
+		type: 'POST',
+		data: {proxyId:id},
+		success: function(data) {
+			var str = '';
+			for(var i = 0, len = data.list.length; i < len; i++) {
+				str += data.list[i].code + '<br>';
+			}
+			$('#div1').html(str);
+		}
+	})
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

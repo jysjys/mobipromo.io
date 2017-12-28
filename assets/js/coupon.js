@@ -19,7 +19,6 @@
 			return "";
 		}
 	}
-
 	// $("input[name='username']").val('sgwe'),
 	// $("input[name='phone_number']").val('18219273817'),
 	// $("input[name='mailbox']").val('123@qq.com'),
@@ -61,7 +60,8 @@
 					list_adree += '<li>' + data[i].receivingAddress + '</li>';
 					list_phone += '<li>' + data[i].userTel + '</li>';
 					list_price += '<li>' + data[i].totalRmb + '</li>';
-					list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">未确认</a>') + '</li>';
+					list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
+					// list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
 				}
 				$(".list_tradeNum").html('<li>订单编号</li>' + listTradeNum);
 				$(".listone").html('<li>设备名称</li>' + listone);
@@ -212,7 +212,7 @@
 	function btnPress(data){
 		// console.log(data)
 		$('.warn').remove();
-		$('#amount').attr('placeholder','该优惠码最多限购' + data.remark + '台');
+		$('#amount').attr('placeholder','您要购买' + data.remark + '台');
 		$(".dialog_warn").css('display','none')
 		warn_chouse();
 		// var icoStartDate = new Date('2017/12/22 15:57:50');
@@ -262,7 +262,6 @@
 		}).focus()
 		$('#zhifu').off('click').on('click', function() {
 			var amountNum = $("#amount").val().trim();
-
 			if(/^-?\d+$/.test(amountNum)) {
 				amountNum = parseInt(amountNum);
 				if(amountNum > parseInt(data.remark)) {

@@ -96,9 +96,9 @@
 		  </tbody>
 	  	</table>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="proxylist">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-primary"><a target="_blank" style="color: #FFFFFF !important; text-decoration: none;">获取优惠码</a></button>
       </div>
     </div>
   </div>
@@ -166,6 +166,7 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
  		$('#myModal').modal('toggle');
  		$(".add_pro_int").val('');
  		var proxyId = $(this).data('id');
+ 		$(".btn-primary a").attr('href','./codes.html?' + proxyId);
  		$('#myModal').data('id', proxyId);
 		proxylist = getCoupon(proxyId);
 		proxylist_model.list = proxylist.list;
@@ -176,7 +177,6 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 		// 	proxylist_model.list = {};
 		// })
  	})
-
  	function getCoupon(proxyId) {
  		$.ajax({
  			type: 'POST',
