@@ -97,22 +97,17 @@
 							success: function(data) {
 								$(".dialog_warn2").css('display', 'none');
 								if(data.not) {
-									$(".dialog_warn2").css('display', 'block');
-									$(".dialog_warn2").html('您填写的优惠码不存在')
+									globalTopTip("您填写的优惠码不存在", "top_error", 2000, $("#price_dlg"), !0);
 									
 								}else if(data.isUsed) {
-									$(".dialog_warn2").css('display', 'block');
-									$(".dialog_warn2").html('您填写的优惠码已使用过')
+									globalTopTip("您填写的优惠码已使用过", "top_error", 2000, $("#price_dlg"), !0);
 								}else if(data.isLocked) {
-									$(".dialog_warn2").css('display', 'block');
-									$(".dialog_warn2").html('您填写的优惠码已锁定')
+									globalTopTip("您填写的优惠码已锁定", "top_error", 2000, $("#price_dlg"), !0);
 								}
 								else if(data.isFull) {
-									$(".dialog_warn2").css('display', 'block');
-									$(".dialog_warn2").html('您的代理商限购额度已满');
+									globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
 								}else if(data.isOut) {
-									$(".dialog_warn2").css('display', 'block');
-									$(".dialog_warn2").html('您的代理商限购额度已满');
+									globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
 								}
 
 
@@ -253,11 +248,16 @@
 		});
 		$("#amount").focus()
 		$('#zhifu').off('click').on('click', function(){
+			var isLoading = $(this).data('isLoading');
+			if(isLoading) {
+				return;
+			}
+			$(this).data('isLoading', true);
 			var amountNum = parseInt($("#amount").val());
 			if(amountNum+'' != 'NaN') {
 				if(amountNum > parseInt(data.remark)) {
-					$(".dialog_warn").css({'display':'block'})
-					$(".dialog_warn").html('超过最大限购数量！')
+					$(this).data('isLoading', false);
+					globalTopTip('超过最大限购数量', "top_error", 2000, $("#upgrade_dlg"), !0);
 					return false;
 				}
 				jsonData.buyAmount = $("#amount").val();
@@ -275,9 +275,16 @@
 					type: 'POST',
 					contentType: "application/json; charset=utf-8",
 					success: function(data) {
-						console.log(data);	
+						console.log(data);
+						$('#zhifu').data('isLoading', false);
 						if(data.isSuccess){
 							location.href = data.httpurl;
+						}else if(data.isFull) {
+							globalTopTip('您的代理商限购额度已满', "top_error", 2000, $("#upgrade_dlg"), !0);
+							return false;
+						}else if(data.isOut) {
+							globalTopTip('您的代理商限购额度仅剩' + data.isOut + '台', "top_error", 2000, $("#upgrade_dlg"), !0);
+							return false;
 						}else{
 							//购买失败
 							getList();
@@ -285,15 +292,16 @@
 					},
 					error: function(data) {
 						console.log(data)
+						$('#zhifu').data('isLoading', false);
 						globalTopTip(data.responseJSON.reason, "top_error", 2000, $("#upgrade_dlg"), !0);
 					}
 				});
 			}else if (!amountNum) {
-				$(".dialog_warn").css({'display':'block'})
-				$(".dialog_warn").html('购买数量不能为空')
+				$(this).data('isLoading', false);
+				globalTopTip('购买数量不能为空', "top_error", 2000, $("#upgrade_dlg"), !0);
 			}else {
-				$(".dialog_warn").css({'display':'block'})
-				$(".dialog_warn").html('只能输入数字')
+				$(this).data('isLoading', false);
+				globalTopTip('只能输入数字', "top_error", 2000, $("#upgrade_dlg"), !0);
 				console.log('err_amountNum')
 
 			}
@@ -301,15 +309,15 @@
 	};
 
 	$('#submit').on('click', function () {
+		$(".warn").remove();
+		if(!warn_chouse()){
+			return false;
+		}
 		var isLoading = $(this).data('isLoading');
 		if(isLoading) {
 			return;
 		}
 		$(this).data('isLoading', true);
-		$(".warn").remove();
-		if(!warn_chouse()){
-			return false;
-		}
 		$.ajax({
  			type: 'POST',
  			async: false,
@@ -345,12 +353,12 @@
 				else {
 					btnPress(data);
 				}
-				$(this).data('isLoading', false);
+				$('#submit').data('isLoading', false);
  				
  			},
  			error: function (data) {
  				console.log('coupon_err');
- 				$(this).data('isLoading', false);
+ 				$('#submit').data('isLoading', false);
  			}
 	 	});
 	});

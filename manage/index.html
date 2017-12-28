@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
 <title>mobipromo</title>
 <style type="text/css" media="screen">
-	.user_list tbody tr td:nth-child(2), .user_list tbody tr td:nth-child(3), .user_list tbody tr td:nth-child(4){
+	.user_list tbody tr td:not(:first-child) {
 		
 		-webkit-user-select: none;
 	}
@@ -80,6 +80,7 @@
 		      <th>是否使用</th>
 		      <th>是否过期</th>
 		      <th>创建时间</th>
+		      <th>限购数量</th>
 		    </tr>
 		  </thead>
 		  <tbody id="proxylist">
@@ -89,7 +90,8 @@
 		      <td>
 		      	<span class="btn" :class="item.used ? 'btn-danger' : item.locked ? 'btn-warning' : 'btn-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
 		      <td>{{ item.expiredAt }}</td>
-		      <td>{{ item.createdAt }}</td>
+		      <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
+		      <td class="text-center">{{ item.remark }}</td>
 		    </tr>
 		  </tbody>
 	  	</table>
@@ -200,7 +202,8 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 			async: false,
 			data: {
 				proxyId: proxyId,
-				count: add_pro_int
+				count: add_pro_int,
+				maxBuy: $(".add_pro_count").val()
 			},
 			url: '/promo/manage/index/generateCode',
 			success: function (data) {

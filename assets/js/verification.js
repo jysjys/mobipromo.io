@@ -96,7 +96,7 @@ function getList() {
 						contentType: "application/json; charset=utf-8",
 						success: function(data) {
 							console.log(data);
-							$(this).data('isLoading', false);
+							$('#zhifu2').data('isLoading', false);
 							if(data.isSuccess){
 								location.href = data.httpurl;
 							}else{
@@ -105,7 +105,7 @@ function getList() {
 							}
 						},
 						error: function(data) {
-							$(this).data('isLoading', false);
+							$('#zhifu2').data('isLoading', false);
 							globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
 						}
 					});
@@ -232,7 +232,7 @@ function btnPress(){
 			contentType: "application/json; charset=utf-8",
 			success: function(data) {
 				console.log(data);
-				$(this).data('isLoading', false);
+				$('#zhifu').data('isLoading', false);
 				if(data.isSuccess){
 					location.href = data.httpurl;
 				}else{
@@ -242,7 +242,7 @@ function btnPress(){
 			},
 			error: function(data) {
 				console.log(data)
-				$(this).data('isLoading', false);
+				$('#zhifu').data('isLoading', false);
 				globalTopTip(data.responseJSON.reason, "top_error", 2000, $("#upgrade_dlg"), !0);
 			}
 		});
