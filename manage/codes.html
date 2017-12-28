@@ -20,10 +20,11 @@
 	var num=number.indexOf("?") 
    	var id=number.substr(num+1); 
 	$.ajax({
-		url:'/promo/manage/index/getCoupons',
+		url:'/promo/manage/index/getAllCoupons',
 		type: 'POST',
 		data: {proxyId:id},
 		success: function(data) {
+			// console.log(data)
 			var str = '';
 			for(var i = 0, len = data.list.length; i < len; i++) {
 				str += data.list[i].code + '<br>';

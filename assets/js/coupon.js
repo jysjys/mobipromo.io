@@ -97,12 +97,12 @@
 							success: function(data) {
 								$(".dialog_warn2").css('display', 'none');
 								if(data.not) {
-									globalTopTip("您填写的优惠码不存在", "top_error", 2000, $("#price_dlg"), !0);
+									globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
 									
 								}else if(data.isUsed) {
-									globalTopTip("您填写的优惠码已使用过", "top_error", 2000, $("#price_dlg"), !0);
+									globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
 								}else if(data.isLocked) {
-									globalTopTip("您填写的优惠码已锁定", "top_error", 2000, $("#price_dlg"), !0);
+									globalTopTip("您填写的F码已锁定", "top_error", 2000, $("#price_dlg"), !0);
 								}
 								else if(data.isFull) {
 									globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
@@ -203,7 +203,7 @@
 			return false;
 		} else if (!coupon) {
 			errorWarp.appendTo($("[name='coupon']").parent());
-			errorContent.val('您填写的优惠码不正确！');
+			errorContent.val('您填写的F码不正确！');
 			return false;
 		} else {
 			return true;
@@ -349,20 +349,20 @@
 				$(".warn").remove();
 				if(data.not) {
 					errorWarp.appendTo($("input[name='coupon']").parent());
-					errorContent.val('您填写的优惠码不存在!');
+					errorContent.val('您填写的F码不存在!');
 				}else if(data.isUsed) {
 					errorWarp.appendTo($("input[name='coupon']").parent());
-					errorContent.val('您填写的优惠码已使用过!');
+					errorContent.val('您填写的F码已使用过!');
 				}else if(data.isLocked) {
 					errorWarp.appendTo($("input[name='coupon']").parent());
-					errorContent.val('您填写的优惠码已锁定!');
+					errorContent.val('您填写的F码已锁定!');
 				}
 				// else if(data.isFull) {
 				// 	errorWarp.appendTo($("input[name='coupon']").parent());
-				// 	errorContent.val('您填写的优惠码过多!');
+				// 	errorContent.val('您填写的F码过多!');
 				// }else if(data.isOut) {
 				// 	errorWarp.appendTo($("input[name='coupon']").parent());
-				// 	errorContent.val('您所拥有的优惠码已满!');
+				// 	errorContent.val('您所拥有的F码已满!');
 				// }
 				else {
 					btnPress(data);

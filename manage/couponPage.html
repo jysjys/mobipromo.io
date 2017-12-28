@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+<title>mobipromo</title>
+<style type="text/css" media="screen">
+	.user_list tbody tr td:not(:first-child) {
+		
+		-webkit-user-select: none;
+	}
+</style>
+<body>
+<div class="container">
+	<div class="panel panel-primary">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Panel heading</div>
+	  <!-- Table -->
+	  <table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th id="coupon_title">优惠码 (<label></label>) 个</th>
+		      <th>使用时间</th>
+		      <th>是否使用</th>
+		      <th>是否过期</th>
+		      <th>创建时间</th>
+		      <th>限购数量</th>
+		    </tr>
+		  </thead>
+		  <tbody id="proxylist">
+		    <tr v-for="item in list">
+		      <td>{{ item.code }}</td>
+		      <td>{{ item.usedAt}}</td>
+		      <td>
+		      	<span class="btn" :class="item.used ? 'btn-danger' : item.locked ? 'btn-warning' : 'btn-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
+		      <td>{{ item.expiredAt }}</td>
+		      <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
+		      <td class="text-center">{{ item.remark }}</td>
+		    </tr>
+		  </tbody>
+	  </table>
+	</div>
+	<div id="pager"></div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"><a target="_blank" style="color: #FFFFFF !important; text-decoration: none;">获取优惠码</a></button>
+    </div>
+</div>
+
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src='../assets/js/bootstrap.min.js'></script>
+<script src='../assets/js/bootstrap-select.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src='../assets/js/util.js'></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
