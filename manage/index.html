@@ -62,11 +62,6 @@
 			      <span class="input-group-btn" style="left: 0;">
 			        <button class="btn btn-default add_pro_btn" type="button">Go!</button>
 			      </span>
-			      	<!-- <select class="selectpicker">
-					  <option>Mustard</option>
-					  <option>Ketchup</option>
-					  <option>Relish</option>
-					</select> -->
 			    </div><!-- /input-group -->
 			  </div><!-- /.col-lg-6 -->
 		</div>
@@ -97,6 +92,7 @@
 	  	</table>
       </div>
       <div class="modal-footer" id="proxylist">
+        <div id="pager"></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary"><a target="_blank" style="color: #FFFFFF !important; text-decoration: none;">获取优惠码</a></button>
       </div>
@@ -107,6 +103,7 @@
 <script src='../assets/js/bootstrap.min.js'></script>
 <script src='../assets/js/bootstrap-select.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src='../assets/js/util.js'></script>
 <script>
 function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
 	//用处理字符串的方式查找到key对应value
@@ -168,8 +165,7 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
  		var proxyId = $(this).data('id');
  		$(".btn-primary a").attr('href','./codes.html?' + proxyId);
  		$('#myModal').data('id', proxyId);
-		proxylist = getCoupon(proxyId);
-		proxylist_model.list = proxylist.list;
+		proxylist = getCoupon(1);
 		// $(".btn-default").off('click.clear').on('click.clear', function () {
 		// 	proxylist_model.list = {};
 		// })
@@ -177,20 +173,22 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 		// 	proxylist_model.list = {};
 		// })
  	})
- 	function getCoupon(proxyId) {
+ 	function getCoupon(curPage) {
  		$.ajax({
  			type: 'POST',
  			async: false,
  			data: {
- 				proxyId: proxyId
+ 				curPage: curPage,
+ 				proxyId: $('#myModal').data('id')
  			},
  			url: '/promo/manage/index/getCoupons',
  			success: function (data) {
- 				proxylist = data;
+ 				console.log(data);
+				proxylist_model.list = data.list;
  				$('#coupon_title label').text(data.list.length);
+ 				$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
  			},
  		});
- 		return proxylist;
  	}
 
 
