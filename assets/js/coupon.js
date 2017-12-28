@@ -38,11 +38,17 @@
 				Accept: "application/json; charset=utf-8",
 				Authorization: 'Bearer' + ' ' + x
 			},
-			type: 'GET',
+			type: 'POST',
+			data: JSON.stringify({
+				curPage: curPage
+			}),
 			contentType: "application/json; charset=utf-8",
 			url: '/promo/authed/coupon/selllist',
 			success: function(result) {
-				console.log(result)
+				if(result.data.length == 0) {
+					$('.more_btn').text('没有更多订单了！').off('click');
+					return;
+				}
 				var data = result.data;
 				var listTradeNum = '';
 				var listone = '';
@@ -63,14 +69,14 @@
 					list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
 					// list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
 				}
-				$(".list_tradeNum").html('<li>订单编号</li>' + listTradeNum);
-				$(".listone").html('<li>设备名称</li>' + listone);
-				$(".listtwo").html('<li>用户名</li>' + listtwo);
-				$('.list_buyAmount').html('<li>数量</li>' + list_buyAmount);
-				$('.list_adree').html('<li>收件地址</li>' + list_adree);
-				$(".list_phone").html('<li>联系电话</li>' + list_phone);
-				$(".list_price").html('<li>总金额</li>' + list_price);
-				$(".list_status").html('<li>状态</li>' + list_status).find('a').off('click').on('click', function() {
+				$(".list_tradeNum").append(listTradeNum);
+				$(".listone").append(listone);
+				$(".listtwo").append(listtwo);
+				$('.list_buyAmount').append(list_buyAmount);
+				$('.list_adree').append(list_adree);
+				$(".list_phone").append(list_phone);
+				$(".list_price").append(list_price);
+				$(".list_status").append(list_status).find('a').off('click').on('click', function() {
 					var index = $(this).parent().index() - 1;
 					$('#price_dlg').dialog();
 					$('#price_dlg').find('.price-paytype').off('click').on('click', function(){
@@ -110,9 +116,6 @@
 									globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
 								}
 
-
-
-
 								$(this).data('isLoading', false);
 								console.log(data);
 								if(data.isSuccess){
@@ -130,6 +133,7 @@
 
 					}).find('label').text('¥ ' + data[index].totalRmb);
 				});
+				curPage++;
 			},
 			error: function(data) {
 				console.log(data)
@@ -209,6 +213,16 @@
 			return true;
 		}
 	}
+	var curPage = 1;
+	$(".more_btn").on('click', function() {
+		var isLoading = $(this).data('isLoading');
+		if(isLoading) {
+			return;
+		}
+		$(this).data('isLoading', true);
+		getList();
+		$(this).data('isLoading', false);
+	});
 	function btnPress(data){
 		// console.log(data)
 		$('.warn').remove();

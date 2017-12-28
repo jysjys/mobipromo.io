@@ -35,92 +35,33 @@
 		      <td>{{ item.name }}</td>
 		      <td>{{ item.area }}</td>
 		      <td>{{ item.phone }}</td>
-		      <td><button type="button" class="btn btn-success" v-bind:data-id="item.id" data-toggle="modal">操作</button></td>
+		      <td><button type="button" class="btn btn-success example_btn" v-bind:data-id="item.id"><a class="Page_btn" style="color: #FFFFFF; text-decoration: none;">操作</a></button></td>
 		    </tr>
 		    
 		  </tbody>
 	  </table>
+	  <div id="pager"></div>
 	</div>
 </div>
 
-
-
-
-
-<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">姓名+地区</h4>
-        <div class="panel panel-default" style="margin-top: 30px;">
-		  <div class="row">
-			  <div class="col-lg-6">
-			    <div class="input-group">
-			      <input type="text" style="width: 40%; margin-right: 40px;" class="form-control add_pro_int" placeholder="个数">
-			      <input type="text" style="width: 40%" class="form-control add_pro_count" placeholder="台数">
-			      <span class="input-group-btn" style="left: 0;">
-			        <button class="btn btn-default add_pro_btn" type="button">Go!</button>
-			      </span>
-			    </div><!-- /input-group -->
-			  </div><!-- /.col-lg-6 -->
-		</div>
-      </div>
-      <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
-        <table class="table table-hover user_list">
-		  <thead>
-		    <tr>
-		      <th id="coupon_title">F码 (<label></label>) 个</th>
-		      <th>使用时间</th>
-		      <th>是否使用</th>
-		      <th>是否过期</th>
-		      <th>创建时间</th>
-		      <th>限购数量</th>
-		    </tr>
-		  </thead>
-		  <tbody id="proxylist">
-		    <tr v-for="item in list">
-		      <td>{{ item.code }}</td>
-		      <td>{{ item.usedAt}}</td>
-		      <td>
-		      	<span class="btn" :class="item.used ? 'btn-danger' : item.locked ? 'btn-warning' : 'btn-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
-		      <td>{{ item.expiredAt }}</td>
-		      <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
-		      <td class="text-center">{{ item.remark }}</td>
-		    </tr>
-		  </tbody>
-	  	</table>
-      </div>
-      <div class="modal-footer" id="proxylist">
-        <div id="pager"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"><a target="_blank" style="color: #FFFFFF !important; text-decoration: none;">获取F码</a></button>
-      </div>
-    </div>
-  </div>
-</div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src='../assets/js/bootstrap.min.js'></script>
 <script src='../assets/js/bootstrap-select.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src='../assets/js/util.js'></script>
 <script>
-function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
-	//用处理字符串的方式查找到key对应value
+function getCookieValue(name) {
 	var name = escape(name);
-	//读cookie属性，这将返回文档的所有cookie
 	var allcookies = document.cookie;
-	//查找名为name的cookie的开始位置
 	name += "=";
 	var pos = allcookies.indexOf(name);
-	//如果找到了具有该名字的cookie，那么提取并使用它的值
-	if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
-		var start = pos + name.length; //cookie值开始的位置
-		var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
-		if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
-		var value = allcookies.substring(start, end); //提取cookie的值
-		return (value); //对它解码
-	} else { //搜索失败，返回空字符串
+	if (pos != -1) { 
+		var start = pos + name.length; 
+		var end = allcookies.indexOf(";", start); 
+		if (end == -1) end = allcookies.length; 
+		var value = allcookies.substring(start, end); 
+		return (value); 
+	} else { 
 		return "";
 	}
 }
@@ -129,87 +70,41 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 	if(ID == '') {
 		window.location.href = './login.html'
 	}
-	var userlist = ''
+	
+var userList = new Vue({
+  el: '#example',
+  data: {list:[]}
+})
+function getUserlist(curPage) {
 	$.ajax({
 		type: 'POST',
 		async: false,
 		url: '/promo/manage/index/loadUsers',
 		data: {
-			passMD5: ID
+			passMD5: ID,
+			curPage: curPage
 		},
 		success: function (data) {
+			console.log(data);
 			if(data.fail) {
 				window.location.href = './login.html';
 				return;
 			}
-			userlist = data;
+			userList.list = data.list;
+		$('#pager').empty().pagination(curPage, data.total, data.count, getUserlist);
 		},
 	})
-	var userList = new Vue({
-	  el: '#example',
-	  data: userlist
-	})
-	function getProxy () {
-		
-	}
-	var proxylist_model = new Vue({
-		el: '#proxylist',
-		data: {
-			list:''
-		}
-	})
- 	$("#example button").on('click', function(){
-		var proxylist = {};
- 		$('#myModal').modal('toggle');
- 		$(".add_pro_int").val('');
- 		var proxyId = $(this).data('id');
- 		$(".btn-primary a").attr('href','./codes.html?' + proxyId);
- 		$('#myModal').data('id', proxyId);
-		proxylist = getCoupon(1);
-		// $(".btn-default").off('click.clear').on('click.clear', function () {
-		// 	proxylist_model.list = {};
-		// })
-		// $(".close").off('click.clear').on('click.claer', function () {
-		// 	proxylist_model.list = {};
-		// })
- 	})
- 	function getCoupon(curPage) {
- 		$.ajax({
- 			type: 'POST',
- 			async: false,
- 			data: {
- 				curPage: curPage,
- 				proxyId: $('#myModal').data('id')
- 			},
- 			url: '/promo/manage/index/getCoupons',
- 			success: function (data) {
- 				console.log(data);
-				proxylist_model.list = data.list;
- 				$('#coupon_title label').text(data.list.length);
- 				$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
- 			},
- 		});
- 	}
+}
+getUserlist(1);
 
+$(function(){
+	$(".example_btn").on('click', function(){
+		var proxyId = $(this).data('id');
+		$(".Page_btn").attr('href','./couponPage.html?' + proxyId);
 
- 	$(".add_pro_btn").on('click', function () {
- 		var add_pro_int = $(".add_pro_int").val();
- 		var proxyId = $("#myModal").data('id');
- 		$.ajax({
-			type: 'POST',
-			async: false,
-			data: {
-				proxyId: proxyId,
-				count: add_pro_int,
-				maxBuy: $(".add_pro_count").val()
-			},
-			url: '/promo/manage/index/generateCode',
-			success: function (data) {
-				var proxylist = getCoupon(proxyId);
-				proxylist_model.list = proxylist.list;
-			},
-		});
- 	})
+	});
+})
+
 
 </script>
 </body>

@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
 <title>mobipromo</title>
@@ -14,12 +13,22 @@
 		
 		-webkit-user-select: none;
 	}
+	.panel-title > *{
+		float:left;
+	}
 </style>
 <body>
 <div class="container">
+    
 	<div class="panel panel-primary">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">Panel heading</div>
+	    <div class="panel-title" style="margin-top:30px;margin-bottom:30px;padding:0 10px;border:0;">
+	      <input type="text" style="width: 100px;margin-right: 20px;" class="form-control add_pro_int" placeholder="个数">
+	      <input type="text" style="width:100px;margin-right:20px;" class="form-control add_pro_count" placeholder="台数">
+	      <button class="btn btn-default add_pro_btn" type="button">Go!</button>
+	      <a target="_blank" class="btn btn-primary" style="color:#FFF!important;float:right;margin-left:50px;">获取优惠码</a>
+	      <button class="btn btn-default" type="button" style="float:right;">新增代理商</button>
+	      <div style="clear:both;float:none;"></div>
+		</div>
 	  <!-- Table -->
 	  <table class="table table-hover">
 		  <thead>
@@ -45,9 +54,8 @@
 		  </tbody>
 	  </table>
 	</div>
-	<div id="pager"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"><a target="_blank" style="color: #FFFFFF !important; text-decoration: none;">获取优惠码</a></button>
+		<div id="pager"></div>
+        
     </div>
 </div>
 
@@ -57,7 +65,103 @@
 <script src='../assets/js/bootstrap-select.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src='../assets/js/util.js'></script>
+<script>
+/**
+*	获取cookie
+*/
+function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
+	//用处理字符串的方式查找到key对应value
+	var name = escape(name);
+	//读cookie属性，这将返回文档的所有cookie
+	var allcookies = document.cookie;
+	//查找名为name的cookie的开始位置
+	name += "=";
+	var pos = allcookies.indexOf(name);
+	//如果找到了具有该名字的cookie，那么提取并使用它的值
+	if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
+		var start = pos + name.length; //cookie值开始的位置
+		var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+		if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
+		var value = allcookies.substring(start, end); //提取cookie的值
+		return (value); //对它解码
+	} else { //搜索失败，返回空字符串
+		return "";
+	}
+}
+var url = location.href;
+var num=url.indexOf("?");
+	var proxyId= url.substr(num+1); 
+	console.log(proxyId);
+var ID = getCookieValue('manage');
+if(ID == '' && proxyId == '') {
+	// window.location.href = './login.html'
+}
 
+
+
+
+
+
+
+/**
+*	创建VUE实例
+*/ 
+var proxylist_model = new Vue({
+	el: '#proxylist',
+	data: {
+		list:''
+	}
+});
+
+
+
+/**
+*	获取F码信息
+*/
+function getCoupon(curPage) {
+	$.ajax({
+		type: 'POST',
+		async: false,
+		data: {
+			curPage: curPage,
+			proxyId: proxyId
+		},
+		url: '/promo/manage/index/getCoupons',
+		success: function (data) {
+			console.log(data);
+		proxylist_model.list = data.list;
+		$('#coupon_title label').text(data.list.length);
+		$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
+		},
+	});
+}
+
+getCoupon(1);
+$(".btn-primary a").attr('href','./codes.html?' + proxyId);
+
+
+/**
+*添加F码
+*/  	
+$(".add_pro_btn").on('click', function () {
+	var add_pro_int = $(".add_pro_int").val();
+	var proxyId = $("#myModal").data('id');
+	$.ajax({
+		type: 'POST',
+		async: false,
+		data: {
+			proxyId: proxyId,
+			count: add_pro_int,
+			maxBuy: $(".add_pro_count").val()
+		},
+		url: '/promo/manage/index/generateCode',
+		success: function (data) {
+			var proxylist = getCoupon(proxyId);
+			proxylist_model.list = proxylist.list;
+		},
+	});
+})
+</script>
 </body>
 </html>
 

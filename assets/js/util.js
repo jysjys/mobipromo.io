@@ -62,7 +62,7 @@ $.fn.pagination = function(curPage, totalPage, records, clickHandler, barCount){
  if(clickHandler){
   tar.find("a[p]").on("click", function(){
    var page = $(this).attr("p");
-   clickHandler(page);
+   clickHandler(parseInt(page));
   });
  }
 };

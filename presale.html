@@ -9,6 +9,7 @@
 	<meta name="description" content="" />
 	<link rel="stylesheet" href="assets/css/login.css" />
 	<link rel="stylesheet" href="assets/css/icons/icons.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<style>
 	html {
 		background: #F5F5F5;
@@ -144,7 +145,7 @@
 		max-width: 100%;
 		display: inline-block;
 		margin-top: 20px;
-		margin-bottom: 40px;
+		/*margin-bottom: 40px;*/
 	}
 
 	.list ul {
@@ -276,6 +277,7 @@
 			<div>使用微信扫描二维码完成支付</div>
 		</div>
 	</div> -->
+
 	<div class='list'>
 		<ul class='list_tradeNum'>
 			<li>订单编号</li>
@@ -303,7 +305,64 @@
 		</ul>
 		<div style="clear:both;"></div>
 	</div>
-	
+	<style>
+		.more_btn {
+			width: 100%;
+			line-height: 50px;
+			font-size: 16px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+	</style>
+	<div class="more_btn">点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
+	<style type="text/css" media="screen">
+		#commodList {
+			margin: 0 50px;
+		}
+		#commodList ul {
+			margin:0;
+			border-bottom: 1px solid #d0d0d0;
+		}
+		#commodList ul li:first-child {
+			padding-left: 20px;
+			font-size: 16px;
+			line-height: 50px;
+			text-align: left;
+			background:rgba(247,247,247,1);
+			position:relative;
+		}
+		#commodList ul li:nth-child(2) {
+			display:none;
+			border: 1px solid #f5f5f5;
+			border-top:none;
+			padding-top:10px;
+		}
+		#commodList ul li div {
+			padding-left: 20px;
+			margin-bottom: 10px;
+			font-size: 12px;
+			line-height: 20px;
+			text-align: left;
+		}
+	</style>
+
+	<!-- <div id="commodList">
+		<ul v-for='item in list'>
+			<li @click="fade">
+				订单编号：{{ item.tradeNumber }} <span class="right">订单详情</span>
+			</li>
+			<li>
+				<div>设备名称：{{ item.boxName }}</div>
+				<div>用户名：{{ item.userName }}</div>
+				<div>数量：{{ item.buyAmount }}</div>
+				<div>收件地址：{{ item.receivingAddress }}</div>
+				<div>联系电话：{{ item.userTel }}</div>
+				<div>总金额：{{ item.totalRmb }}</div>
+				<div>状态：{{ item.status == 'ok' ? '已完成' : '待付款' }}</div>
+			</li>
+		</ul>
+	</div> -->
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
 		<span style="font-size: 12px; line-height: 16px; color: #6f6d6d; margin-top: 10px; width: auto; display: block; text-align: left;">1.每人仅限订购3台CAN星际宝盒。</span>
@@ -323,6 +382,9 @@
 	<!-- // <script src="assets/js/supersized-init.js"></script> -->
 	<script src="assets/js/qrcode.js"></script>
 	<script src="assets/js/address.js"></script>
+	<script src='assets/js/bootstrap.min.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script srx='assets/js/util.js'></script>
 	<!--表单验证-->
 	<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
 	<script>
@@ -347,6 +409,77 @@
 		}
 	}
 	var x = getCookieValue('Authorization');
+
+
+
+	// var commodList = new Vue({
+	// 	el: '#commodList',
+	// 	data: {list:{}},
+	// 	mounted: function() {
+	// 		var self = this;
+	// 		$.ajax({
+	// 			headers: {
+	// 				Accept: "application/json; charset=utf-8",
+	// 				Authorization: 'Bearer' + ' ' + x
+	// 			},
+	// 			type: 'GET',
+	// 			contentType: "application/json; charset=utf-8",
+	// 			url: '/promo/authed/account/get/selllist',
+	// 			success: function(data) {
+	// 				console.log(data.data);
+	// 				self.list = data.data;
+	// 			},
+	// 			error: function (data) {
+	// 				console.log(data);
+	// 				console.log('fail')
+	// 			}
+	// 		})
+	// 	},
+	// 	methods: {
+	// 		fade: function(e) {
+	// 			var obj = $(e.target);
+	// 			if(obj.is('li'))
+	// 				$(e.target).next().slideToggle();
+	// 			else
+	// 				$(e.target).parent().next().slideToggle();
+	// 		}
+	// 	}
+	// });
+	
+
+	// var ID = getCookieValue('manage')
+	// function getUserlist(curPage) {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		async: false,
+	// 		url: '/promo/manage/index/loadUsers',
+	// 		data: {
+	// 			passMD5: ID,
+	// 			curPage: curPage
+	// 		},
+	// 		success: function (data) {
+	// 			console.log(data);
+	// 			if(data.fail) {
+	// 				window.location.href = './login.html';
+	// 				return;
+	// 			}
+
+	// 		},
+	// 	})
+	// }
+	// getUserlist(1);
+
+	var curPage = 1;
+	$(".more_btn").on('click', function() {
+		var isLoading = $(this).data('isLoading');
+		if(isLoading) {
+			return;
+		}
+		$(this).data('isLoading', true);
+		getList();
+		$(this).data('isLoading', false);
+	});
+
 	function btnPress(){
 		$('.warn').remove();
 		var boxName = $("input[name='device_name']").val().trim(),
@@ -447,12 +580,11 @@
 				type: 'POST',
 				contentType: "application/json; charset=utf-8",
 				success: function(data) {
-					console.log(data);
 					if(data.isSuccess){
 						location.href = data.httpurl;
 					}else{
 						//购买失败
-						getList();
+						getList(curPage);
 					}
 				},
 				error: function(data) {
@@ -463,21 +595,28 @@
 		});
 	};
 	function getList() {
+		console.log(curPage)
 		$.ajax({
 			headers: {
 				Accept: "application/json; charset=utf-8",
 				Authorization: 'Bearer' + ' ' + x
 			},
-			type: 'GET',
+			data: JSON.stringify({
+				curPage: curPage,
+			}),
+			type: 'POST',
 			contentType: "application/json; charset=utf-8",
 			url: '/promo/authed/account/get/selllist',
 			success: function(result) {
+				if(result.data.length == 0) {
+					$('.more_btn').text('没有更多订单了！').off('click');
+					return;
+				}
 				if(result.isOrdered) {
 					$(".btn_ver").css({
 						'display': 'block'
 					}).attr('href', './activity/1.html')
 				}
-				console.log(result)
 				var data = result.data;
 				var listTradeNum = '';
 				var listone = '';
@@ -502,16 +641,16 @@
 					list_adree += '<li>' + data[i].receivingAddress + '</li>';
 					list_phone += '<li>' + data[i].userTel + '</li>';
 					list_price += '<li>' + data[i].totalRmb + '</li>';
-					list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">未确认</a>') + '</li>';
+					list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
 				}
-				$(".list_tradeNum").html('<li>订单编号</li>' + listTradeNum);
-				$(".listone").html('<li>设备名称</li>' + listone);
-				$(".listtwo").html('<li>用户名</li>' + listtwo);
-				$('.list_buyAmount').html('<li>数量</li>' + list_buyAmount);
-				$('.list_adree').html('<li>收件地址</li>' + list_adree);
-				$(".list_phone").html('<li>联系电话</li>' + list_phone);
-				$(".list_price").html('<li>总金额</li>' + list_price);
-				$(".list_status").html('<li>状态</li>' + list_status).find('a').off('click').on('click', function() {
+				$(".list_tradeNum").append('' + listTradeNum);
+				$(".listone").append('' + listone);
+				$(".listtwo").append('' + listtwo);
+				$('.list_buyAmount').append('' + list_buyAmount);
+				$('.list_adree').append('' + list_adree);
+				$(".list_phone").append('' + list_phone);
+				$(".list_price").append('' + list_price);
+				$(".list_status").append('' + list_status).find('a').off('click').on('click', function() {
 					var index = $(this).parent().index() - 1;
 					$('#price_dlg').dialog();
 					$('#price_dlg').find('.price-paytype').off('click').on('click', function(){
@@ -546,6 +685,7 @@
 
 					}).find('label').text('¥ ' + data[index].totalRmb);
 				});
+				curPage++;
 			},
 			error: function(data) {
 				console.log(data)
@@ -577,9 +717,9 @@
 		$("#submit").on('click', function (){
 			btnPress();
 		});
-		getList();
+		getList(1);
 	}
-		getList();
+		// getList();
     function countDown(){
         // var startTime = new Date("2017/12/23,01:18:30");//开始时间
         var curTime = new Date();//当前时间

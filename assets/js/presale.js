@@ -175,7 +175,7 @@ function getList() {
 				list_adree += '<li>' + data[i].receivingAddress + '</li>';
 				list_phone += '<li>' + data[i].userTel + '</li>';
 				list_price += '<li>' + data[i].totalRmb + '</li>';
-				list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">未确认</a>') + '</li>';
+				list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
 			}
 			$(".list_tradeNum").html('<li>订单编号</li>' + listTradeNum);
 			$(".listone").html('<li>设备名称</li>' + listone);
