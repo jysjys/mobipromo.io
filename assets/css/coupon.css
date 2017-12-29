@@ -1,0 +1,58 @@
+#amount {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #458DEF;
+	text-align: center;
+}
+#amount::-webkit-input-placeholder {
+      /* placeholder颜色  */
+     color: #aab2bd;
+     /* placeholder字体大小  */
+     font-size: 12px;
+     /* placeholder位置  */
+     text-align: center;
+ }
+.dialog_warn, .dialog_warn2 {
+	display: none;
+	text-align: center;
+	color: #CE584A;
+	width: auto;
+	font-size: 14px;
+}
+.more_btn {
+	width: 100%;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+}
+
+	#commodList {
+	margin: 0 50px;
+}
+#commodList ul {
+	margin:0;
+	border-bottom: 1px solid #d0d0d0;
+}
+#commodList ul li:first-child {
+	padding-left: 20px;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: left;
+	background:rgba(247,247,247,1);
+	position:relative;
+}
+#commodList ul li:nth-child(2) {
+	display:none;
+	border: 1px solid #f5f5f5;
+	border-top:none;
+	padding-top:10px;
+}
+#commodList ul li div {
+	padding-left: 20px;
+	margin-bottom: 10px;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: left;
+}
