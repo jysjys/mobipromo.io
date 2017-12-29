@@ -40,7 +40,7 @@ $.fn.pagination = function(curPage, totalPage, records, clickHandler, barCount){
  if(barCount){
   pageBarNum = barCount;
  }
- var pageToal = '<span style="font-size:14px;float:left;display:inline-block;padding-left:0;margin:25px 0;border-radius:4px;">共'+ records +'条记录 </span>';
+ var pageToal = '<span style="font-size:14px;position:absolute;left:0;float:left;display:inline-block;padding-left:0;margin:25px 0;border-radius:4px;">共'+ records +'条记录 </span>';
  $(pageToal).appendTo($(this));
  if(totalPage <= 1){
   return;
