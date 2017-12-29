@@ -34,39 +34,45 @@
 
 
 
-
+	var curPage = 1
 	// var commodList = new Vue({
 	// 	el: '#commodList',
-	// 	data: {list:{}},
+	// 	data: {
+	// 		list:{},
+	// 		curPage: 1
+	// 	},
 	// 	mounted: function() {
-			
+	// 		var self = this;
+	// 		console.log(self.curPage);
 	// 		$.ajax({
-	// 				headers: {
-	// 					Accept: "application/json; charset=utf-8",
-	// 					Authorization: 'Bearer' + ' ' + x
-	// 				},
-	// 				type: 'POST',
-	// 				data: JSON.stringify({
-	// 					curPage: curPage
-	// 				})
-	// 				contentType: "application/json; charset=utf-8",
-	// 				url: '/promo/authed/coupon/selllist',
-	// 				success: function(data) {
-	// 					if(result.data.length == 0) {
-	// 						$('.more_btn').text('没有更多订单了！').off('click');
-	// 						return;
-	// 					}
-	// 					console.log(data.data);
-	// 					this.list = data.data;
-	// 				},
-	// 				error: function (data) {
-	// 					console.log(data);
-	// 					console.log('fail')
+	// 			headers: {
+	// 				Accept: "application/json; charset=utf-8",
+	// 				Authorization: 'Bearer' + ' ' + x
+	// 			},
+	// 			type: 'POST',
+	// 			data: JSON.stringify({
+	// 				curPage: self.curPage
+	// 			}),
+	// 			contentType: "application/json; charset=utf-8",
+	// 			url: '/promo/authed/coupon/selllist',
+	// 			success: function(data) {
+	// 				if(data.data.length < 10) {
+	// 					$('.more_btn').text('没有更多订单了！').off('click');
+	// 					return;
 	// 				}
-	// 			})
+	// 				console.log(data);
+	// 				self.list = data.data;
+	// 				self.curPage++;
+	// 			},
+	// 			error: function (data) {
+	// 				console.log(data);
+	// 				console.log('fail')
+	// 			}
+	// 		});
 	// 	},
 	// 	methods: {
 	// 		getList: function () {
+	// 			console.log(this)
 	// 			$.ajax({
 	// 				headers: {
 	// 					Accept: "application/json; charset=utf-8",
@@ -75,7 +81,7 @@
 	// 				type: 'POST',
 	// 				data: JSON.stringify({
 	// 					curPage: curPage
-	// 				})
+	// 				}),
 	// 				contentType: "application/json; charset=utf-8",
 	// 				url: '/promo/authed/coupon/selllist',
 	// 				success: function(data) {
@@ -91,7 +97,7 @@
 	// 					console.log('fail')
 	// 				}
 	// 			})
-	// 		}
+	// 		},
 	// 		fade: function(e) {
 	// 			var obj = $(e.target);
 	// 			if(obj.is('li'))
@@ -143,6 +149,7 @@
 	// 					$(this).data('isLoading', false);
 	// 					globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
 	// 				}
+	// 			});
 	// 		}
 	// 	}
 	// });
@@ -253,6 +260,10 @@
 
 					}).find('label').text('¥ ' + data[index].totalRmb);
 				});
+				if(result.data.length < 10) {
+					$('.more_btn').text('没有更多订单了！').off('click');
+					return;
+				}
 				curPage++;
 			},
 			error: function(data) {
@@ -264,9 +275,8 @@
 		});
 	}
 
-
+	getList();
 	function warn_chouse () {
-
 		var boxName = $("input[name='device_name']").val().trim(),
 			userName = $("input[name='username']").val().trim(),
 			userTel = $("input[name='phone_number']").val().trim(),
@@ -332,6 +342,8 @@
 		} else {
 			return true;
 		}
+	}
+
 	$(".more_btn").on('click', function() {
 		var isLoading = $(this).data('isLoading');
 		if(isLoading) {
@@ -341,6 +353,7 @@
 		getList();
 		$(this).data('isLoading', false);
 	});
+
 	function btnPress(data){
 		// console.log(data)
 		$('.warn').remove();
@@ -501,7 +514,7 @@
 				}
 				$('#submit').data('isLoading', false);
  				
- 			},
+			},
  			error: function (data) {
  				console.log('coupon_err');
  				$('#submit').data('isLoading', false);
@@ -510,18 +523,14 @@
 	});
 
 	// 购买数量 select选中事件
-	// var amount = $("#amount").on('change', function(){
-	//  	 $(".userprice").html( $(this).val() * 899 );
-	// 	 $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
-	// });
+	var amount = $("#amount").on('change', function(){
+	 	 $(".userprice").html( $(this).val() * 899 );
+		 $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
+	});
 	$('#amount').on('input propertychange', function() {  
 	    $('.userprice').html( $(this).val() * 899 );  
 	    $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
-	}); 
-	
-
-	getList();
-
+	});
 
 	var jsonDate = {};
 
