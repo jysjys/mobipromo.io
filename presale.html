@@ -608,14 +608,14 @@
 			contentType: "application/json; charset=utf-8",
 			url: '/promo/authed/account/get/selllist',
 			success: function(result) {
-				if(result.data.length == 0) {
-					$('.more_btn').text('没有更多订单了！').off('click');
-					return;
-				}
 				if(result.isOrdered) {
 					$(".btn_ver").css({
 						'display': 'block'
 					}).attr('href', './activity/1.html')
+				}
+				if(result.data.length == 0) {
+					$('.more_btn').text('没有更多订单了！').off('click');
+					return;
 				}
 				var data = result.data;
 				var listTradeNum = '';
