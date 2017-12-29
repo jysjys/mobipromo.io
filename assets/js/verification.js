@@ -180,7 +180,7 @@ function btnPress(){
 		errorWarp.appendTo($("input[name='zip_code']").parent());
 		errorContent.val('邮编不能为空');
 		return;
-	} else if (!addressProv || !addressCity || !addressCounty) {
+	} else if (!addressProv || !addressCity) {
 		errorWarp.appendTo($("[name='address-level1']").parent());
 		errorContent.val('请选择省市');
 		return;
