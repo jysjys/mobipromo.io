@@ -41,29 +41,29 @@
 	// 	mounted: function() {
 			
 	// 		$.ajax({
-	// 			headers: {
-	// 				Accept: "application/json; charset=utf-8",
-	// 				Authorization: 'Bearer' + ' ' + x
-	// 			},
-	// 			type: 'POST',
-	// 			data: JSON.stringify({
-	// 				curPage: curPage
-	// 			})
-	// 			contentType: "application/json; charset=utf-8",
-	// 			url: '/promo/authed/coupon/selllist',
-	// 			success: function(data) {
-	// 				if(result.data.length == 0) {
-	// 					$('.more_btn').text('没有更多订单了！').off('click');
-	// 					return;
+	// 				headers: {
+	// 					Accept: "application/json; charset=utf-8",
+	// 					Authorization: 'Bearer' + ' ' + x
+	// 				},
+	// 				type: 'POST',
+	// 				data: JSON.stringify({
+	// 					curPage: curPage
+	// 				})
+	// 				contentType: "application/json; charset=utf-8",
+	// 				url: '/promo/authed/coupon/selllist',
+	// 				success: function(data) {
+	// 					if(result.data.length == 0) {
+	// 						$('.more_btn').text('没有更多订单了！').off('click');
+	// 						return;
+	// 					}
+	// 					console.log(data.data);
+	// 					this.list = data.data;
+	// 				},
+	// 				error: function (data) {
+	// 					console.log(data);
+	// 					console.log('fail')
 	// 				}
-	// 				console.log(data.data);
-	// 				this.list = data.data;
-	// 			},
-	// 			error: function (data) {
-	// 				console.log(data);
-	// 				console.log('fail')
-	// 			}
-	// 		})
+	// 			})
 	// 	},
 	// 	methods: {
 	// 		getList: function () {
@@ -332,8 +332,6 @@
 		} else {
 			return true;
 		}
-	}
-	var curPage = 1;
 	$(".more_btn").on('click', function() {
 		var isLoading = $(this).data('isLoading');
 		if(isLoading) {

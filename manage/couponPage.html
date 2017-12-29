@@ -130,8 +130,8 @@ function getCoupon(curPage) {
 		url: '/promo/manage/index/getCoupons',
 		success: function (data) {
 			console.log(data);
-		proxylist_model.list = data.list;
-		$('#coupon_title label').text(data.list.length);
+			proxylist_model.list = data.list;
+		$('#coupon_title label').text(data.count);
 		$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
 		},
 	});
@@ -156,8 +156,8 @@ $(".add_pro_btn").on('click', function () {
 		},
 		url: '/promo/manage/index/generateCode',
 		success: function (data) {
-			var proxylist = getCoupon(proxyId);
-			proxylist_model.list = proxylist.list;
+			var proxylist = getCoupon(1);
+
 		},
 	});
 })
