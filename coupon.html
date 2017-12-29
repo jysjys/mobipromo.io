@@ -10,31 +10,7 @@
 	<link rel="stylesheet" href="assets/css/login.css" />
 	<link rel="stylesheet" href="assets/css/icons/icons.css" />
 	<link rel="stylesheet" href="assets/css/verification.css">
-	<style>
-		#amount {
-			width: 100%;
-			padding: 0;
-			margin: 0;
-			border-bottom: 1px solid #458DEF;
-			text-align: center;
-		}
-		#amount::-webkit-input-placeholder {
-	          /* placeholder颜色  */
-	         color: #aab2bd;
-	         /* placeholder字体大小  */
-	         font-size: 12px;
-	         /* placeholder位置  */
-	         text-align: center;
-	     }
-		.dialog_warn, .dialog_warn2 {
-			display: none;
-			text-align: center;
-			color: #CE584A;
-			width: auto;
-			font-size: 14px;
-		}
-
-	</style>
+	<link rel="stylesheet" href="assets/css/coupon.css">
 </head>
 <body>
 	<div class="presale-container">
@@ -156,17 +132,27 @@
 		</ul>
 		<div style="clear:both;"></div>
 	</div>
-	<style>
-		.more_btn {
-			width: 100%;
-			line-height: 50px;
-			font-size: 16px;
-			text-align: center;
-			cursor: pointer;
-		}
 
-	</style>
-	<div class="more_btn">点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
+
+	<!-- <div id="commodList">
+		<ul v-for='item in list'>
+			<li @click="fade">
+				订单编号：{{ item.tradeNumber }} <span class="right">订单详情</span>
+			</li>
+			<li>
+				<div>设备名称：{{ item.boxName }}</div>
+				<div>用户名：{{ item.userName }}</div>
+				<div>数量：{{ item.buyAmount }}</div>
+				<div>收件地址：{{ item.receivingAddress }}</div>
+				<div>联系电话：{{ item.userTel }}</div>
+				<div>总金额：{{ item.totalRmb }}</div>
+				<div>状态：{{ item.status == 'ok' ? '已完成' : '待付款' }} <span @click='zhifu2'></span></div>
+			</li>
+		</ul>
+	</div> -->
+
+	
+	<div class="more_btn" id="#commodList" @chick='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
 		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1. 请仔细核对购买信息之后确认!!!；</span>
