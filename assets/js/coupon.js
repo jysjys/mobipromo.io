@@ -179,25 +179,26 @@
 					}
 				});
 			},
-			cancle: function() {
+			cancel: function(e) {
+				var isLoading = $(this).data('isLoading');
+				if(isLoading) {
+					return;
+				}
 				var self = this;
+				console.log(self.list[e.target.dataset.id].tradeNumber)
+				var item = self.list[e.target.dataset.id];
 				$.ajax({
 					headers: {
 						Accept: "application/json; charset=utf-8",
 						Authorization: 'Bearer' + ' ' + x
 					},
 					type: 'POST',
-					data: {tradeNumber:self.list[e.target.dataset.id].tradeNumber},
+					data: JSON.stringify({tradeNumber:item.tradeNumber}),
 					contentType: "application/json; charset=utf-8",
-					url: '/promo/authed/coupon/selllist',
+					url: '/promo/alipay/order/cancel',
 					success: function(data) {
-						if(data.data.length < 10) {
-							$('.more_btn').text('没有更多订单了！').off('click');
-							return;
-						}
-						console.log(data);
-						self.list = data.data;
-						self.curPage++;
+						console.log(data)
+						item.status = 'cancel';
 					},
 					error: function (data) {
 						console.log(data);

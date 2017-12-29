@@ -135,10 +135,10 @@
 				<div>联系电话：{{ item.userTel }}</div>
 				<div>总金额：{{ item.totalRmb }}</div>
 				<div>订单创建时间：{{ item.createdAt.substring(0,19).replace('T', ' ') }}</div>
-				<div>状态：<span style="color: #518EE8; cursor: pointer;">{{ item.status == 'ok' ? '已完成' : '待付款' }}</span></div>
-				<div class='status' style="height: 35px;" v-if="item.status == 'ok' ? 0:1">
+				<div>状态：<span style="color: #518EE8; cursor: pointer;">{{ item.status == 'ok' ? '已完成' : item.status == 'cancel' ? '已取消' : '待付款' }}</span></div>
+				<div class='status' style="height: 35px;" v-if="item.status == 'wait' ? 1:0">
 					<span @click='payagain' :data-id="key">去付款</span>
-					<span @click='cancle' :data-id='key'>取消</span>
+					<span @click='cancel' :data-id='key'>取消</span>
 				</div>
 			</li>
 		</ul>
