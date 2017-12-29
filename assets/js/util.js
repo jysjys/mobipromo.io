@@ -1,3 +1,33 @@
+var Util = {};
+
+Util.globalTopTip = function(a, b, c, d, e) {
+    if ("undefined" != typeof a) {
+        null == c && (c = 5e3),
+        null == b && (b = "top_success");
+        var f = $("#global_top_dialog");
+        f.length > 0 && f.remove(),
+        f = $('<div id="global_top_dialog" class="global_top_dialog"><div class="left_arrow"></div>' + a + '<div class="right_arrow"></div></div>').appendTo("body"),
+        f.addClass(b),
+        e && (f.find(".left_arrow").remove(),
+        f.find(".right_arrow").remove(),
+        f.addClass("noarrow"));
+        var g = f.outerWidth();
+        d ? f.css("top", $(d).offset().top + "px") : 0 == $("#header").length && f.css("top", "0px"),
+        f.css({
+            "margin-left": -(.5 * g) + "px"
+        }).show(),
+        setTimeout(function() {
+            f.addClass("show"),
+            setTimeout(function() {
+                f.removeClass("show"),
+                setTimeout(function() {
+                    f.fadeOut("slow").remove()
+                }, 250)
+            }, c)
+        }, 50)
+    }
+}
+
 /**
  * 说明： 在页面指定元素中构建分页条
  * @param curPage 当前第几页

@@ -1,0 +1,113 @@
+.global_top_dialog {
+    position: absolute;
+    top: 40px;
+    height: auto;
+    width: auto;
+    left: 50%;
+    padding: 0;
+    margin: 0;
+    display: none;
+    opacity: 0;
+    background: #5da206;
+    color: #fff;
+    line-height: 26px;
+    padding: 0 20px;
+    z-index: 9999;
+    -webkit-transition: all 80ms cubic-bezier(.7,0,.7,1) 0s;
+    -moz-transition: all 80ms cubic-bezier(.7,0,.7,1) 0s;
+    -o-transition: all 80ms cubic-bezier(.7,0,.7,1) 0s;
+    transition: all 80ms cubic-bezier(.7,0,.7,1) 0s;
+    -khtml-transition: all 80ms cubic-bezier(.7,0,.7,1) 0s;
+    -ms-transition: all 80ms cubic-bezier(.7,0,.7,1) 0s
+}
+
+.global_top_dialog.show {
+    opacity: 1;
+    -webkit-transition: all .25s cubic-bezier(.7,0,.7,1) 0s;
+    -moz-transition: all .25s cubic-bezier(.7,0,.7,1) 0s;
+    -o-transition: all .25s cubic-bezier(.7,0,.7,1) 0s;
+    transition: all .25s cubic-bezier(.7,0,.7,1) 0s;
+    -khtml-transition: all .25s cubic-bezier(.7,0,.7,1) 0s;
+    -ms-transition: all .25s cubic-bezier(.7,0,.7,1) 0s
+}
+
+.global_top_dialog.noarrow {
+    border-radius: 0 0 3px 3px;
+    box-shadow: 1px 1px 3px #ccc
+}
+
+.top_success {
+    background: #5da206;
+    color: #fff;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -ms-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    box-shadow: 0 0 2px rgba(0,0,0,.2)
+}
+
+.top_success .left_arrow {
+    position: absolute;
+    top: 0;
+    left: -26px;
+    border: 13px solid #5da206;
+    border-bottom-color: transparent;
+    border-left-color: transparent
+}
+
+.top_success .right_arrow {
+    position: absolute;
+    top: 0;
+    right: -26px;
+    border: 13px solid #5da206;
+    border-bottom-color: transparent;
+    border-right-color: transparent
+}
+
+.top_success .content {
+    position: relative;
+    white-space: nowrap;
+    line-height: 26px
+}
+
+.top_error {
+    background: #f60;
+    color: #fff;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -ms-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    box-shadow: 0 0 2px rgba(0,0,0,.2)
+}
+
+.top_error a {
+    text-decoration: underline;
+    color: #fff
+}
+
+.top_error .left_arrow {
+    position: absolute;
+    top: 0;
+    left: -26px;
+    border: 13px solid #f60;
+    border-bottom-color: transparent;
+    border-left-color: transparent
+}
+
+.top_error .right_arrow {
+    position: absolute;
+    top: 0;
+    right: -26px;
+    border: 13px solid #f60;
+    border-bottom-color: transparent;
+    border-right-color: transparent
+}
+
+.top_error .content {
+    position: relative;
+    white-space: nowrap;
+    line-height: 26px
+}
+
+.top_error a {
+    text-decoration: underline;
+    color: #fff
+}
