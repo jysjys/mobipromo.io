@@ -943,7 +943,7 @@ var provice = [
 			},
 			{
 				name: "中山市",
-				districtAndCounty: []
+				districtAndCounty: ["中山"]
 			},
 			{
 				name: "江门市",
