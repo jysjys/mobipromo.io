@@ -8,18 +8,25 @@
 <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="../assets/css/manage/manage.css">
 <title>mobipromo</title>
 <style type="text/css" media="screen">
 	.user_list tbody tr td:not(:first-child) {
 		
 		-webkit-user-select: none;
 	}
+	.panel-heading {
+		line-height:36px;
+	}
 </style>
 <body>
 <div class="container">
 	<div class="panel panel-primary">
 	  <!-- Default panel contents -->
-	  <div class="panel-heading">Panel heading</div>
+	  <div class="panel-heading">
+		  <span>代理商列表</span>
+		<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal" style="float:right;">新增代理商</button>
+	  </div>
 	  <!-- Table -->
 	  <table class="table table-hover">
 		  <thead>
@@ -35,12 +42,60 @@
 		      <td>{{ item.name }}</td>
 		      <td>{{ item.area }}</td>
 		      <td>{{ item.phone }}</td>
-		      <td><button type="button" class="btn btn-success example_btn" v-bind:data-id="item.id"><a class="Page_btn" style="color: #FFFFFF; text-decoration: none;">操作</a></button></td>
+		      <td>
+				  <a class="btn btn-success example_btn Page_btn" v-bind:data-id="item.id" target="_blank" style="color:#FFF;">查看F码详情</a>
+				  <button class="btn btn-success example_btn update_btn" v-bind:data-id="item.id" style="color:#FFF;">修改</button>
+				</td>
 		    </tr>
 		    
 		  </tbody>
 	  </table>
 	  <div id="pager"></div>
+	</div>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:450px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal col-xs-8" role="form">
+							<input type="hidden" name="id">
+						<div class="form-group">
+						  <label for="firstname" class="col-sm-4 control-label">姓名</label>
+						  <div class="col-sm-8">
+							<input type="text" class="form-control" name="name" placeholder="请输入姓名">
+						  </div>
+						</div>
+						<div class="form-group">
+						  <label for="lastname" class="col-sm-4 control-label">地区</label>
+						  <div class="col-sm-8">
+							<input type="text" class="form-control" name="area" placeholder="请输入地区">
+						  </div>
+						</div>
+						<div class="form-group">
+							<label for="lastname" class="col-sm-4 control-label">电话</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="phone" placeholder="请输入电话">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="lastname" class="col-sm-4 control-label">限购量</label>
+							<div class="col-sm-8">
+							  <input type="number" class="form-control" name="maxBuy" placeholder="请输入数量">
+							</div>
+						</div>
+					</form>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="add_proxy">提交更改</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
 	</div>
 </div>
 
@@ -95,15 +150,80 @@ function getUserlist(curPage) {
 		},
 	})
 }
-getUserlist(1);
+
 
 $(function(){
-	$(".example_btn").on('click', function(){
-		var proxyId = $(this).data('id');
-		$(".Page_btn").attr('href','./couponPage.html?' + proxyId);
 
+	getUserlist(1);
+
+	$(document).on('click', '.Page_btn', function(){
+		var proxyId = $(this).data('id');
+		$(this).attr('href','./couponPage.html?' + proxyId);
 	});
-})
+
+	$(document).on('click', '.update_btn', function(){
+		var proxyId = $(this).data('id');
+		getProxy(proxyId);
+	});
+
+	$('#add_proxy').on('click', function(){
+		$.ajax({
+			url:'/promo/manage/index/saveProxy',
+			type:'post',
+			async: false,
+			data: $("form").serialize(),
+			success: function(data) {
+				if(data.isSuccess) {
+					$('#myModal').modal('hide');
+					Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+					getUserlist(1);
+				}else {
+					console.log(data)
+					Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
+				}
+			}
+		});
+	});
+
+	function getProxy(id) {
+		$.ajax({
+			url:'/promo/manage/index/getProxy',
+			type:'post',
+			async: false,
+			data: {proxyId: id},
+			success: function(data) {
+				if(data.isSuccess) {
+					var proxy = data.proxy;
+					$('#myModal').modal('show');
+					$('form input[name=id]').val(proxy.id);
+					$('form input[name=name]').val(proxy.name);
+					$('form input[name=area]').val(proxy.area);
+					$('form input[name=phone]').val(proxy.phone);
+					$('form input[name=maxBuy]').val(proxy.maxBuy);
+				}else {
+					Util.globalTopTip("异常", "top_error", 2000, $('myModal'), !0);
+				}
+			}
+		});
+	}
+
+	function saveProxy() {
+		$.ajax({
+			url:'/promo/manage/index/addProxy',
+			type:'post',
+			async: false,
+			data: $("form").serialize(),
+			success: function(data) {
+				if(data.isSuccess) {
+					$('#myModal').modal('hide');
+					Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+				}else {
+					Util.globalTopTip("异常", "top_error", 2000, $('myModal'), !0);
+				}
+			}
+		});
+	}
+});
 
 
 </script>
