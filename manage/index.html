@@ -25,7 +25,7 @@
 	  <!-- Default panel contents -->
 	  <div class="panel-heading">
 		  <span>代理商列表</span>
-		<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal" style="float:right;">新增代理商</button>
+		<button class="btn btn-default" id="add_btn" type="button" style="float:right;">新增代理商</button>
 	  </div>
 	  <!-- Table -->
 	  <table class="table table-hover">
@@ -58,7 +58,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+					<h4 class="modal-title" id="myModalLabel"></h4>
 				</div>
 				<div class="modal-body">
 					<form class="form-horizontal col-xs-8" role="form">
@@ -92,7 +92,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary" id="add_proxy">提交更改</button>
+					<button type="button" class="btn btn-primary" id="save_proxy">提交更改</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
@@ -166,7 +166,13 @@ $(function(){
 		getProxy(proxyId);
 	});
 
-	$('#add_proxy').on('click', function(){
+	$('#add_btn').on('click', function(){
+		$('form input').val('');
+		$('#myModal').modal('toggle');
+		$('#myModalLabel').text('新增代理商');
+	})
+
+	$('#save_proxy').on('click', function(){
 		$.ajax({
 			url:'/promo/manage/index/saveProxy',
 			type:'post',
@@ -195,6 +201,7 @@ $(function(){
 				if(data.isSuccess) {
 					var proxy = data.proxy;
 					$('#myModal').modal('show');
+					$('#myModalLabel').text('修改代理商信息');
 					$('form input[name=id]').val(proxy.id);
 					$('form input[name=name]').val(proxy.name);
 					$('form input[name=area]').val(proxy.area);
