@@ -12,6 +12,21 @@
 	<link rel="stylesheet" href="assets/css/verification.css">
 	<link rel="stylesheet" href="assets/css/coupon.css">
 </head>
+<style>
+	.status span{
+		float: right;
+		padding: 10px 20px;
+		background: #518EE8;
+		color: #FFFFFF;
+		border-radius: 4px;
+		font-size: 14px;
+		line-height: 20px;
+		display: block;
+		margin-right: 10px;
+		text-align: center;
+		cursor: pointer;
+	}
+</style>
 <body>
 	<div class="presale-container">
 		<h1>订单信息</h1>
@@ -105,39 +120,12 @@
 			</div>
 		</div>
 	</div>
-	<div class='list'>
-		<ul class='list_tradeNum'>
-			<li>订单编号</li>
-		</ul>
-		<ul class='listone'>
-			<li>设备名称</li>
-		</ul>
-		<ul class='listtwo'>
-			<li>用户名</li>
-		</ul>
-		<ul class='list_buyAmount'>
-			<li>数量</li>
-		</ul>
-		<ul class='list_adree'>
-			<li>收件地址</li>
-		</ul>
-		<ul class='list_phone'>
-			<li>联系电话</li>
-		</ul>
-		<ul class='list_price'>
-			<li>总金额</li>
-		</ul>
-		<ul class='list_status'>
-			<li>状态</li>
-		</ul>
-		<div style="clear:both;"></div>
-	</div>
 
 
-	<!-- <div id="commodList">
-		<ul v-for='item in list'>
+	<div id="commodList">
+		<ul v-for='(item, key) in list'>
 			<li @click="fade">
-				订单编号：{{ item.tradeNumber }} <span class="right">订单详情</span>
+				订单编号：{{ item.tradeNumber }}<span class="right" style="float: right; color: #518EE8">订单详情<i class='icons' style="color: #5C5162">&nbsp;&#xe73a;</i></span>
 			</li>
 			<li>
 				<div>设备名称：{{ item.boxName }}</div>
@@ -146,13 +134,17 @@
 				<div>收件地址：{{ item.receivingAddress }}</div>
 				<div>联系电话：{{ item.userTel }}</div>
 				<div>总金额：{{ item.totalRmb }}</div>
-				<div>状态：{{ item.status == 'ok' ? '已完成' : '待付款' }} <span @click='zhifu2'></span></div>
+				<div>订单创建时间：{{ item.createdAt.substring(0,19).replace('T', ' ') }}</div>
+				<div>状态：<span style="color: #518EE8; cursor: pointer;">{{ item.status == 'ok' ? '已完成' : '待付款' }}</span></div>
+				<div class='status' style="height: 35px;" v-if="item.status == 'ok' ? 0:1">
+					<span @click='payagain' :data-id="key">去付款</span>
+					<span @click='cancle' :data-id='key'>取消</span>
+				</div>
 			</li>
 		</ul>
-	</div> -->
+			<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
+	</div>
 
-
-	<div class="more_btn" id="#commodList" @chick='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
 		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1. 请仔细核对购买信息之后确认!!!；</span>

@@ -42,6 +42,7 @@
 	text-align: left;
 	background:rgba(247,247,247,1);
 	position:relative;
+	cursor: pointer;
 }
 #commodList ul li:nth-child(2) {
 	display:none;
