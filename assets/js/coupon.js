@@ -357,7 +357,7 @@
 	function btnPress(data){
 		// console.log(data)
 		$('.warn').remove();
-		$('#amount').attr('placeholder','您要购买' + data.remark + '台');
+		$('#amount').attr('placeholder',data.remark == 1 ? '您可购买1台':'您可购买(1~' + data.remark + ')台');
 		$(".dialog_warn").css('display','none')
 		warn_chouse();
 		// var icoStartDate = new Date('2017/12/22 15:57:50');
