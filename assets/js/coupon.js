@@ -1,5 +1,3 @@
-
-
 	function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
 		//用处理字符串的方式查找到key对应value
 		var name = escape(name);
@@ -32,6 +30,7 @@
 	// addressCity = $('[name=address-level2]').val(),
 	// addressCounty = $('[name=address-level3]').val(),
 
+<<<<<<< HEAD
 
 
 	// var curPage = 1
@@ -208,10 +207,127 @@
 			}
 		}
 	});
+=======
+	var curPage = 1;
+	// var commodList = new Vue({
+	// 	el: '#commodList',
+	// 	data: {
+	// 		list:{},
+	// 		curPage: 1
+	// 	},
+	// 	mounted: function() {
+	// 		var self = this;
+	// 		console.log(self.curPage);
+	// 		$.ajax({
+	// 			headers: {
+	// 				Accept: "application/json; charset=utf-8",
+	// 				Authorization: 'Bearer' + ' ' + x
+	// 			},
+	// 			type: 'POST',
+	// 			data: JSON.stringify({
+	// 				curPage: self.curPage
+	// 			}),
+	// 			contentType: "application/json; charset=utf-8",
+	// 			url: '/promo/authed/coupon/selllist',
+	// 			success: function(data) {
+	// 				if(data.data.length < 10) {
+	// 					$('.more_btn').text('没有更多订单了！').off('click');
+	// 					return;
+	// 				}
+	// 				console.log(data);
+	// 				self.list = data.data;
+	// 				self.curPage++;
+	// 			},
+	// 			error: function (data) {
+	// 				console.log(data);
+	// 				console.log('fail')
+	// 			}
+	// 		});
+	// 	},
+	// 	methods: {
+	// 		getList: function () {
+	// 			console.log(this)
+	// 			$.ajax({
+	// 				headers: {
+	// 					Accept: "application/json; charset=utf-8",
+	// 					Authorization: 'Bearer' + ' ' + x
+	// 				},
+	// 				type: 'POST',
+	// 				data: JSON.stringify({
+	// 					curPage: curPage
+	// 				}),
+	// 				contentType: "application/json; charset=utf-8",
+	// 				url: '/promo/authed/coupon/selllist',
+	// 				success: function(data) {
+	// 					if(result.data.length == 0) {
+	// 						$('.more_btn').text('没有更多订单了！').off('click');
+	// 						return;
+	// 					}
+	// 					console.log(data.data);
+	// 					this.list = data.data;
+	// 				},
+	// 				error: function (data) {
+	// 					console.log(data);
+	// 					console.log('fail')
+	// 				}
+	// 			})
+	// 		},
+	// 		fade: function(e) {
+	// 			var obj = $(e.target);
+	// 			if(obj.is('li'))
+	// 				$(e.target).next().slideToggle();
+	// 			else
+	// 				$(e.target).parent().next().slideToggle();
+	// 		},
+	// 		zhifu2: function (e) {
+	// 			var isLoading = $(this).data('isLoading');
+	// 			if(isLoading) {
+	// 				return;
+	// 			}
+	// 			$(this).data('isLoading', true);
+	// 			$.ajax({
+	// 				headers: {
+	// 					Accept: "application/json; charset=utf-8",
+	// 					Authorization: 'Bearer' + ' ' + x
+	// 				},
+	// 				url: '/promo/alipay/coupon/order/payagain',
+	// 				data: JSON.stringify({tradeNumber:e.target.tradeNumber}),
+	// 				type: 'POST',
+	// 				contentType: "application/json; charset=utf-8",
+	// 				success: function(data) {
+	// 					$(".dialog_warn2").css('display', 'none');
+	// 					if(data.not) {
+	// 						globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
 
+	// 					}else if(data.isUsed) {
+	// 						globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
+	// 					}else if(data.isLocked) {
+	// 						globalTopTip("您填写的F码已锁定", "top_error", 2000, $("#price_dlg"), !0);
+	// 					}
+	// 					else if(data.isFull) {
+	// 						globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+	// 					}else if(data.isOut) {
+	// 						globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+	// 					}
 
-
-
+	// 					$(this).data('isLoading', false);
+	// 					console.log(data);
+	// 					if(data.isSuccess){
+	// 						location.href = data.httpurl;
+	// 					}else{
+	// 						//购买失败
+	// 						globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+	// 					}
+	// 				},
+	// 				error: function(data) {
+	// 					$(this).data('isLoading', false);
+	// 					globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+	// 				}
+	// 			});
+	// 		}
+	// 	}
+	// });
+>>>>>>> dcad94a86014256b2dd48e9945c87537b281211b
 
 	// 获取用户订购商品列表
 	function getList() {
@@ -259,13 +375,13 @@
 				$(".list_phone").append(list_phone);
 				$(".list_price").append(list_price);
 				$(".list_status").append(list_status).find('a').off('click').on('click', function() {
-					var index = $(this).parent().index() - 1;
+					var index = $(this).parent().index();
 					$('#price_dlg').dialog();
 					$('#price_dlg').find('.price-paytype').off('click').on('click', function(){
 						$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
 					});
-					$('#price_dlg').find('.price-date').text(data[index].buyAmount + ' 台');
-					$('#price_dlg').find('.userprice').text(data[index].totalRmb);
+					$('#price_dlg').find('.price-date').text($('.list_buyAmount li:eq(' + index + ')').text() + ' 台');
+					$('#price_dlg').find('.userprice').text($('.list_price li:eq(' + index + ')').text());
 					$('#zhifu2').off('click').on('click', function(){
 						//完成未支付
 						var isLoading = $(this).data('isLoading');
@@ -279,14 +395,13 @@
 								Authorization: 'Bearer' + ' ' + x
 							},
 							url: '/promo/alipay/coupon/order/payagain',
-							data: JSON.stringify({tradeNumber:data[index].tradeNumber}),
+							data: JSON.stringify({tradeNumber: $('.list_tradeNum li:eq(' + index + ')').text()}),
 							type: 'POST',
 							contentType: "application/json; charset=utf-8",
 							success: function(data) {
 								$(".dialog_warn2").css('display', 'none');
 								if(data.not) {
 									globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
-									
 								}else if(data.isUsed) {
 									globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
 								}else if(data.isLocked) {
@@ -313,7 +428,7 @@
 							}
 						});
 
-					}).find('label').text('¥ ' + data[index].totalRmb);
+					}).find('label').text('¥ ' + $('.list_price li:eq(' + index + ')').text());
 				});
 				if(result.data.length < 10) {
 					$('.more_btn').text('没有更多订单了！').off('click');
@@ -422,7 +537,6 @@
 			addressCounty = $('[name=address-level3]').val().trim(),
 			addressDetail = $("input[name='address-detail']").val().trim();
 
-		
 		var address = [
 			provice[addressProv].name,
 			provice[addressProv]["city"][addressCity].name,
@@ -459,7 +573,7 @@
 			}else {
 				$(this).val(val);
 			}
-		}).focus()
+		}).focus();
 		$('#zhifu').off('click').on('click', function() {
 			var amountNum = $("#amount").val().trim();
 			if(/^-?\d+$/.test(amountNum)) {
@@ -568,7 +682,6 @@
 					btnPress(data);
 				}
 				$('#submit').data('isLoading', false);
- 				
 			},
  			error: function (data) {
  				console.log('coupon_err');
@@ -579,11 +692,11 @@
 
 	// 购买数量 select选中事件
 	var amount = $("#amount").on('change', function(){
-	 	 $(".userprice").html( $(this).val() * 899 );
-		 $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
+	 	$(".userprice").html( $(this).val() * 899 );
+		$("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 	});
-	$('#amount').on('input propertychange', function() {  
-	    $('.userprice').html( $(this).val() * 899 );  
+	$('#amount').on('input propertychange', function() {
+	    $('.userprice').html( $(this).val() * 899 );
 	    $("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 	});
 
