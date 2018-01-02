@@ -21,6 +21,184 @@ function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取
 }
 
 
+
+
+    var commodList = new Vue({
+		el: '#commodList',
+		data: {
+			list:[],
+			curPage: 1
+		},
+		mounted: function() {
+			var self = this;
+			console.log(self.curPage);
+			$.ajax({
+				headers: {
+					Accept: "application/json; charset=utf-8",
+					Authorization: 'Bearer' + ' ' + x
+				},
+				type: 'POST',
+				data: JSON.stringify({
+					curPage: self.curPage
+				}),
+				contentType: "application/json; charset=utf-8",
+				url: '/promo/authed/coupon/selllist',
+				success: function(data) {
+					if(data.data.length < 10) {
+						$('.more_btn').text('没有更多订单了！').off('click');
+						return;
+					}
+					console.log(data);
+					self.list = data.data;
+					self.curPage++;
+				},
+				error: function (data) {
+					console.log(data);
+					console.log('fail')
+				}
+			});
+		},
+		methods: {
+			getList: function () {
+				var isLoading = $('.more_btn').data('isLoading');
+				if(isLoading) {
+					return;
+				}
+				$('.more_btn').data('isLoading', true);
+				var self = this;
+				$.ajax({
+					headers: {
+						Accept: "application/json; charset=utf-8",
+						Authorization: 'Bearer' + ' ' + x
+					},
+					type: 'POST',
+					data: JSON.stringify({
+						curPage: self.curPage
+					}),
+					contentType: "application/json; charset=utf-8",
+					url: '/promo/authed/coupon/selllist',
+					success: function(data) {
+						if(data.data.length == 0) {
+							$('.more_btn').text('没有更多订单了！');
+							return;
+						}
+						self.list = self.list.concat(data.data);
+						self.curPage++;
+						if(data.data.length < 10) {
+							$('.more_btn').text('没有更多订单了！');
+							return;
+						}
+						$('.more_btn').data('isLoading', false);
+					},
+					error: function (data) {
+						console.log(data);
+						console.log('fail')
+					}
+				});
+			},
+			fade: function(e) {
+				var obj = $(e.target);
+				if(obj.is('li'))
+					$(e.target).next().slideToggle();
+				else
+					$(e.target).parent().next().slideToggle();
+			},
+			payagain: function(e) {
+				var self = this
+				console.log(self.list);
+				console.log(e)
+				$('#price_dlg').dialog();
+				$('#price_dlg').find('.price-paytype').off('click').on('click', function(){
+					$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
+				});
+				$('#price_dlg').find('.price-date').text(self.list[e.target.dataset.id].buyAmount + ' 台');
+				$('#price_dlg').find('.userprice').text(self.list[e.target.dataset.id].totalRmb);
+				$("#zhifu2").off('click').on('click', function () {
+					// console.log(self.zhifu2)
+					self.zhifu2(e);
+				})
+			},
+			zhifu2: function (e) {
+				var isLoading = $(this).data('isLoading');
+				if(isLoading) {
+					return;
+				}
+				$(this).data('isLoading', true);
+				var self = this;
+				console.log(typeof self.list[e.target.dataset.id].tradeNumber)
+				console.log(x)
+				$.ajax({
+					headers: {
+						Accept: "application/json; charset=utf-8",
+						Authorization: 'Bearer' + ' ' + x
+					},
+					url: '/promo/alipay/coupon/order/payagain',
+					data: JSON.stringify({tradeNumber:self.list[e.target.dataset.id].tradeNumber}),
+					type: 'POST',
+					contentType: "application/json; charset=utf-8",
+					success: function(data) {
+						console.log(data);
+						$(".dialog_warn2").css('display', 'none');
+						if(data.not) {
+							globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
+						}else if(data.isUsed) {
+							globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
+						}else if(data.isLocked) {
+							globalTopTip("您填写的F码已锁定", "top_error", 2000, $("#price_dlg"), !0);
+						}
+						else if(data.isFull) {
+							globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+						}else if(data.isOut) {
+							globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+						}
+						
+						$(this).data('isLoading', false);
+						console.log(data);
+						if(data.isSuccess){
+							location.href = data.httpurl;
+						}else{
+							//购买失败
+							globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+						}
+					},
+					error: function(data) {
+						$(this).data('isLoading', false);
+						globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
+					}
+				});
+			},
+			cancel: function(e) {
+				var isLoading = $(this).data('isLoading');
+				if(isLoading) {
+					return;
+				}
+				var self = this;
+				console.log(self.list[e.target.dataset.id].tradeNumber)
+				var item = self.list[e.target.dataset.id];
+				$.ajax({
+					headers: {
+						Accept: "application/json; charset=utf-8",
+						Authorization: 'Bearer' + ' ' + x
+					},
+					type: 'POST',
+					data: JSON.stringify({tradeNumber:item.tradeNumber}),
+					contentType: "application/json; charset=utf-8",
+					url: '/promo/alipay/order/cancel',
+					success: function(data) {
+						console.log(data)
+						item.status = 'cancel';
+					},
+					error: function (data) {
+						console.log(data);
+						console.log('fail')
+					}
+				});
+			}
+		}
+	});
+
+
+
 // 获取用户订购商品列表
 function getList() {
 	$.ajax({

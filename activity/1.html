@@ -98,34 +98,68 @@
 			</div>
 		</div>
 	</div>
-	<div class='list'>
-		<ul class='list_tradeNum'>
-			<li>订单编号</li>
+	<style>
+	.more_btn {
+		width: 100%;
+		line-height: 50px;
+		font-size: 16px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	#commodList {
+		margin: 0 50px;
+	}
+	#commodList ul {
+		margin:0;
+		border-bottom: 1px solid #d0d0d0;
+	}
+	#commodList ul li:first-child {
+		padding-left: 20px;
+		font-size: 16px;
+		line-height: 50px;
+		text-align: left;
+		background:rgba(247,247,247,1);
+		position:relative;
+		cursor: pointer;
+	}
+	#commodList ul li:nth-child(2) {
+		display:none;
+		border: 1px solid #f5f5f5;
+		border-top:none;
+		padding-top:10px;
+	}
+	#commodList ul li div {
+		padding-left: 20px;
+		margin-bottom: 10px;
+		font-size: 12px;
+		line-height: 20px;
+		text-align: left;
+	}
+		
+	</style>
+	<div id="commodList">
+		<ul v-for='(item, key) in list'>
+			<li @click="fade">
+				订单编号：{{ item.tradeNumber }}<span class="right" style="float: right; color: #518EE8">订单详情<i class='icons' style="color: #5C5162">&nbsp;&#xe73a;</i></span>
+			</li>
+			<li>
+				<div>设备名称：{{ item.boxName }}</div>
+				<div>用户名：{{ item.userName }}</div>
+				<div>数量：{{ item.buyAmount }}</div>
+				<div>收件地址：{{ item.receivingAddress }}</div>
+				<div>联系电话：{{ item.userTel }}</div>
+				<div>总金额：{{ item.totalRmb }}</div>
+				<div>订单创建时间：{{ item.createdAt.substring(0,19).replace('T', ' ') }}</div>
+				<div>状态：<span style="color: #518EE8; cursor: pointer;">{{ item.status == 'ok' ? '已完成' : item.status == 'cancel' ? '已取消' : '待付款' }}</span></div>
+				<div class='status' style="height: 35px;" v-if="item.status == 'wait' ? 1:0">
+					<span @click='payagain' :data-id="key">去付款</span>
+					<span @click='cancel' :data-id='key'>取消</span>
+				</div>
+			</li>
 		</ul>
-		<ul class='listone'>
-			<li>设备名称</li>
-		</ul>
-		<ul class='listtwo'>
-			<li>用户名</li>
-		</ul>
-		<ul class='list_buyAmount'>
-			<li>数量</li>
-		</ul>
-		<ul class='list_adree'>
-			<li>收件地址</li>
-		</ul>
-		<ul class='list_phone'>
-			<li>联系电话</li>
-		</ul>
-		<ul class='list_price'>
-			<li>总金额</li>
-		</ul>
-		<ul class='list_status'>
-			<li>状态</li>
-		</ul>
-		<div style="clear:both;"></div>
+			<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
 	</div>
-	
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
 		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1.订单只能提交一次，请仔细核对购买数量之后确认!!!；</span>
