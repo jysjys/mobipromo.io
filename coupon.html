@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="assets/css/coupon.css">
 </head>
 <style>
-	.status span{
+	/*.status span{
 		float: right;
 		padding: 10px 20px;
 		background: #518EE8;
@@ -25,7 +25,7 @@
 		margin-right: 10px;
 		text-align: center;
 		cursor: pointer;
-	}
+	}*/
 </style>
 <body>
 	<div class="presale-container">
@@ -120,9 +120,37 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class='list'>
+		<ul class='list_tradeNum'>
+			<li>订单编号</li>
+		</ul>
+		<ul class='listone'>
+			<li>设备名称</li>
+		</ul>
+		<ul class='listtwo'>
+			<li>用户名</li>
+		</ul>
+		<ul class='list_buyAmount'>
+			<li>数量</li>
+		</ul>
+		<ul class='list_adree'>
+			<li>收件地址</li>
+		</ul>
+		<ul class='list_phone'>
+			<li>联系电话</li>
+		</ul>
+		<ul class='list_price'>
+			<li>总金额</li>
+		</ul>
+		<ul class='list_status'>
+			<li>状态</li>
+		</ul>
+		<div style="clear:both;"></div>
+	</div>
+	<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
 
-
-	<div id="commodList">
+	<!-- <div id="commodList">
 		<ul v-for='(item, key) in list'>
 			<li @click="fade">
 				订单编号：{{ item.tradeNumber }}<span class="right" style="float: right; color: #518EE8">订单详情<i class='icons' style="color: #5C5162">&nbsp;&#xe73a;</i></span>
@@ -143,7 +171,7 @@
 			</li>
 		</ul>
 			<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
-	</div>
+	</div> -->
 
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;">温馨提示：</span>
