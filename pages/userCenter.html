@@ -8,11 +8,15 @@
 	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/userCenter.css">
-	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_8w9v260a4jlnxw29.css">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_dwias27nyg69lik9.css
+">
 	<style type="text/css" media="screen">
-	html {
-		background-size: 
-	}
+	html,body {
+		background: #EEEEEE; 
+	}	
+		.container {
+			background: #FFFFFF;
+		}
 		.nav-pills>li {
 			float: right;
 		}
@@ -25,6 +29,37 @@
 		.jumbotron {
 			margin-top: 30px;
 			background: #ffffff;
+		}
+		.jumbotron .add_address {
+			position: relative;
+			border: 1px solid #bbb;
+			cursor: pointer;
+			color: #666;
+			width: 288px;
+			height: 170px;
+			margin-right: 0 10px 10px 0;
+			padding: 20px 16px 40px;
+			position: relative;
+			transition: all 1s;
+		}
+		.jumbotron .add_address:hover {
+			border: 1px solid #0069ff;
+			color: #0069ff;
+		}
+
+		.jumbotron span {
+			text-align: center;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.jumbotron span:nth-child(1) {
+			font-size: 73px;
+			top: -5px
+		}
+		.jumbotron span:nth-child(2) {
+			font-size: 16px;
+			top: 100px;
 		}
 	</style>
 </head>
@@ -59,10 +94,10 @@
 				<a href="#ios" data-toggle="tab">收货信息</a>
 			</li>
 			<li>
-				<a href="#ios" data-toggle="tab">我的F码</a>
+				<a href="#F" data-toggle="tab">我的F码</a>
 			</li>
 			<li>
-				<a href="#ios" data-toggle="tab">售后申请记录</a>
+				<a href="#apply" data-toggle="tab">售后申请记录</a>
 			</li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
@@ -72,15 +107,34 @@
 			<div class="tab-pane fade in active" id="ios">
 				<div class="jumbotron">
 					<div class="add_address">
-						<p class="iconfont icon-jiahao"></p>
-						<span>添加新地址</span>
+						<span class='iconfont icon-jiahao'></span>
+						<span class="text-center">添加新地址</span>
 					</div>
 				</div>
+
+				<ul class="list-group">
+				    <li class="list-group-item">免费域名注册</li>
+				    <li class="list-group-item">免费 Window 空间托管</li>
+				    <li class="list-group-item">图像的数量</li>
+				    <li class="list-group-item">
+				        <span class="badge">新</span>
+				        24*7 支持
+				    </li>
+				    <li class="list-group-item">每年更新成本</li>
+				    <li class="list-group-item">
+				        <span class="badge">新</span>
+				        折扣优惠
+				    </li>
+				</ul>
 			</div>
-			<div class="tab-pane fade" id="jmeter">
+			<div class="tab-pane fade" id="F">
+				<p style="margin-top: 100px;">jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+			</div>
+			<div class="tab-pane fade" id="apply">
 				<p style="margin-top: 100px;">jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
 			</div>
 		</div>	
+
 	</div>	
 
 <script src="../assets/js/jquery.min.js"></script>
