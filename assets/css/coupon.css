@@ -48,6 +48,7 @@
 	line-height: 40px;
 	text-align: left;
 	position:relative;
+	cursor: pointer;
 }
 .trade-list ul li:nth-child(2) {
 	/* display:none; */
