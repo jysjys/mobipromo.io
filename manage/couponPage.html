@@ -41,7 +41,7 @@
 					</div>
 					<div class="form-group">
 						<label for="member">所属人</label>
-						<input type="email" class="form-control" name="member" id="member">
+						<input type="text" class="form-control" name="member" id="member">
 					</div>
 					<div class="form-group">
 						<label for="used">状态</label>
@@ -84,7 +84,7 @@
 					  <td>
 						<span class="label" :class="item.used ? 'label-danger' : item.locked ? 'label-warning' : 'label-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
 					  <td>{{ item.expiredAt }}</td>
-					  <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
+					  <td>{{ item.createdAt }}</td>
 					  <td class="text-center">{{ item.remark }}</td>
 					</tr>
 				  </tbody>
@@ -171,7 +171,6 @@
 	var url = location.href;
 	var num=url.indexOf("?");
 		var proxyId= url.substr(num+1);
-		console.log(proxyId);
 	var ID = getCookieValue('manage');
 	if(ID == '' && proxyId == '') {
 		// window.location.href = './login.html'
@@ -200,7 +199,6 @@
 			},
 			url: '/promo/manage/index/getCoupons',
 			success: function (data) {
-				console.log(data);
 				couponList_model.list = data.list;
 			$('#coupon_title label').text(data.count);
 			$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);

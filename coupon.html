@@ -8,25 +8,9 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link rel="stylesheet" href="assets/css/login.css" />
-	<link rel="stylesheet" href="assets/css/icons/icons.css" />
-	<link rel="stylesheet" href="assets/css/verification.css">
-	<link rel="stylesheet" href="assets/css/coupon.css">
+	<link rel="stylesheet" href="assets/css/icons/icons.css">
+	<link rel="stylesheet" href="assets/css/presale.css">
 </head>
-<style>
-	/*.status span{
-		float: right;
-		padding: 10px 20px;
-		background: #518EE8;
-		color: #FFFFFF;
-		border-radius: 4px;
-		font-size: 14px;
-		line-height: 20px;
-		display: block;
-		margin-right: 10px;
-		text-align: center;
-		cursor: pointer;
-	}*/
-</style>
 <body>
 	<div class="presale-container">
 		<h1>订单信息</h1>
@@ -120,41 +104,17 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class='list'>
-		<ul class='list_tradeNum'>
-			<li>订单编号</li>
-		</ul>
-		<ul class='listone'>
-			<li>设备名称</li>
-		</ul>
-		<ul class='listtwo'>
-			<li>用户名</li>
-		</ul>
-		<ul class='list_buyAmount'>
-			<li>数量</li>
-		</ul>
-		<ul class='list_adree'>
-			<li>收件地址</li>
-		</ul>
-		<ul class='list_phone'>
-			<li>联系电话</li>
-		</ul>
-		<ul class='list_price'>
-			<li>总金额</li>
-		</ul>
-		<ul class='list_status'>
-			<li>状态</li>
-		</ul>
-		<div style="clear:both;"></div>
-	</div>
-	<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
 
-	<!-- <div id="commodList">
-		<ul v-for='(item, key) in list'>
-			<li @click="fade">
-				订单编号：{{ item.tradeNumber }}<span class="right" style="float: right; color: #518EE8">订单详情<i class='icons' style="color: #5C5162">&nbsp;&#xe73a;</i></span>
-			</li>
+	<div id="commodList" class="trade-list">
+		<ul v-for="(item, index) in list">
+			<li @click="fade" class="clearfix">
+				<label class="trade-time">{{ item.createdAt }}</label>
+				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
+				<label>¥ {{ item.totalRmb }}</label>
+				<span class="trade-open">
+					<label class="title-status">{{ item.status == 'ok' ? '已完成' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : '待付款' }}</label><i class='icons' style="color:#5C5162;font-size:12px;">&nbsp;&#xe73a;</i>
+				</span>
+  			</li>
 			<li>
 				<div>设备名称：{{ item.boxName }}</div>
 				<div>用户名：{{ item.userName }}</div>
@@ -171,7 +131,7 @@
 		</ul>
 		<div></div>
 		<div class="more_btn" @click='getList'>点击加载更多<i class="icons" style="color:#333; font-size: 12px;">&#xe73a;</i></div>
-	</div> -->
+	</div>
 
 	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%;">
 		<span style="text-align: left;display: inherit;">温馨提示：</span>

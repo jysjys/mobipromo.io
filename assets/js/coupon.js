@@ -360,16 +360,6 @@ function warn_chouse () {
 	}
 }
 
-// $(".more_btn").on('click', function() {
-// 	var isLoading = $(this).data('isLoading');
-// 	if(isLoading) {
-// 		return;
-// 	}
-// 	$(this).data('isLoading', true);
-// 	// getList();
-// 	$(this).data('isLoading', false);
-// });
-
 function btnPress(data){
 	// console.log(data)
 	$('.warn').remove();
@@ -440,7 +430,6 @@ function btnPress(data){
 			jsonData.totalRmb = jsonData.buyAmount * 899;
 			jsonData.paymentType = $('.price-paytype.ac').attr('tit');
 			jsonData.couponCode = data.code;
-			console.log(jsonData)
 			$.ajax({
 				headers: {
 					Accept: "application/json; charset=utf-8",
