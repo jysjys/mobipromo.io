@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../assets/css/manage/manage.css">
-    <title>后台管理中心</title>
-    <style type="text/css" media="screen">
-    .user_list tbody tr td:not(:first-child) {
-        -webkit-user-select: none;
-    }
-    </style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="../assets/css/manage/manage.css">
+	<title>后台管理中心</title>
+	<style type="text/css" media="screen">
+	.user_list tbody tr td:not(:first-child) {
+		-webkit-user-select: none;
+	}
+	</style>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-    	<div class="container">
-    		<ul class="nav navbar-nav navbar-left">
-    			<li class="active"><a href="/manage/index.html">代理商管理</a></li>
-    			<li><a href="/manage/order.html">订单管理</a></li>
-    			<li><a href="/manage/member.html">用户管理</a></li>
-    			<li><a href="/manage/coupon.html">F码管理</a></li>
-    			<li><a href="/manage/activity.html">抢购管理</a></li>
-    		</ul>
-    		<ul class="nav navbar-nav navbar-right">
-    			<li><a href="/">返回</a></li>
-    		</ul>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="/manage/index.html">代理商管理</a></li>
+				<li><a href="/manage/order.html">订单管理</a></li>
+				<li><a href="/manage/member.html">用户管理</a></li>
+				<li><a href="/manage/coupon.html">F码管理</a></li>
+				<li><a href="/manage/activity.html">抢购管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">返回</a></li>
+			</ul>
 		</div>
     </nav>
     <div class="container">
@@ -150,122 +150,120 @@
             return "";
         }
     }
+	var ID = getCookieValue('manage')
+	if (ID == '') {
+		window.location.href = './login.html'
+	}
 
-    var ID = getCookieValue('manage')
-    if (ID == '') {
-        window.location.href = './login.html'
-    }
+	var userList = new Vue({
+		el: '#example',
+		data: { list: [] }
+	});
 
-    var userList = new Vue({
-        el: '#example',
-        data: { list: [] }
-    });
+	var Manage = {
+		getUserlist: function(curPage) {
+			Manage.searchData.curPage = curPage;
+			$.ajax({
+				type: 'POST',
+				async: false,
+				url: '/promo/manage/index/loadUsers',
+				data: Manage.searchData,
+				success: function(data) {
+					userList.list = data.list;
+					$('#pager').empty().pagination(curPage, data.total, data.count, Manage.getUserlist);
+				},
+			});
+		},
+		searchData: {}
+	}
 
-    var Manage = {
-        getUserlist: function(curPage) {
-            Manage.searchData.curPage = curPage;
-            $.ajax({
-                type: 'POST',
-                async: false,
-                url: '/promo/manage/index/loadUsers',
-                data: Manage.searchData,
-                success: function(data) {
-                    userList.list = data.list;
-                    $('#pager').empty().pagination(curPage, data.total, data.count, Manage.getUserlist);
-                },
-            });
-        },
-        searchData: {}
-    }
+	$(function() {
 
-    $(function() {
+		$.ajax({
+			type: 'POST',
+			async: false,
+			url: '/promo/manage/outh',
+			data: {
+				passMD5: ID
+			},
+			success: function(data) {
+				if (data.fail) {
+					window.location.href = './login.html';
+					return;
+				}
+				Manage.getUserlist(1);
+			}
+		});
 
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: '/promo/manage/outh',
-            data: {
-                passMD5: ID
-            },
-            success: function(data) {
-                if (data.fail) {
-                    window.location.href = './login.html';
-                    return;
-                }
-                Manage.getUserlist(1);
-            }
-        });
+		$(document).on('click', '.Page_btn', function() {
+			var proxyId = $(this).data('id');
+			$(this).attr('href', './couponPage.html?' + proxyId);
+		});
 
-        $(document).on('click', '.Page_btn', function() {
-            var proxyId = $(this).data('id');
-            $(this).attr('href', './couponPage.html?' + proxyId);
-        });
+		$(document).on('click', '.update_btn', function() {
+			var proxyId = $(this).data('id');
+			getProxy(proxyId);
+		});
 
-        $(document).on('click', '.update_btn', function() {
-            var proxyId = $(this).data('id');
-            getProxy(proxyId);
-        });
+		$('#add_btn').on('click', function() {
+			$('#save_form input').val('');
+			$('#myModal').modal('toggle');
+			$('#myModalLabel').text('新增代理商');
+		})
 
-        $('#add_btn').on('click', function() {
-            $('#save_form input').val('');
-            $('#myModal').modal('toggle');
-            $('#myModalLabel').text('新增代理商');
-        })
+		$('#save_proxy').on('click', function() {
+			console.log($("#save_form").serialize());
+			$.ajax({
+				url: '/promo/manage/index/saveProxy',
+				type: 'post',
+				async: false,
+				data: $("#save_form").serialize(),
+				success: function(data) {
+					if (data.isSuccess) {
+						$('#myModal').modal('hide');
+						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+						Manage.searchData = {};
+						Manage.getUserlist(1);
+					} else {
+						console.log(data)
+						Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
+					}
+				}
+			});
+		});
 
-        $('#save_proxy').on('click', function() {
-            console.log($("#save_form").serialize());
-            $.ajax({
-                url: '/promo/manage/index/saveProxy',
-                type: 'post',
-                async: false,
-                data: $("#save_form").serialize(),
-                success: function(data) {
-                    if (data.isSuccess) {
-                        $('#myModal').modal('hide');
-                        Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
-                        Manage.searchData = {};
-                        Manage.getUserlist(1);
-                    } else {
-                        console.log(data)
-                        Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
-                    }
-                }
-            });
-        });
+		$('#search_btn').on('click', function() {
+			Manage.searchData.id = $('.search-form input[name=id]').val();
+			Manage.searchData.name = $('.search-form input[name=name]').val();
+			Manage.searchData.area = $('.search-form input[name=area]').val();
+			Manage.searchData.phone = $('.search-form input[name=phone]').val();
+			Manage.searchData.maxBuy = $('.search-form input[name=maxBuy]').val();
+			Manage.getUserlist(1);
+		});
 
-        $('#search_btn').on('click', function() {
-            Manage.searchData.id = $('.search-form input[name=id]').val();
-            Manage.searchData.name = $('.search-form input[name=name]').val();
-            Manage.searchData.area = $('.search-form input[name=area]').val();
-            Manage.searchData.phone = $('.search-form input[name=phone]').val();
-            Manage.searchData.maxBuy = $('.search-form input[name=maxBuy]').val();
-            Manage.getUserlist(1);
-        });
-
-        function getProxy(id) {
-            $.ajax({
-                url: '/promo/manage/index/getProxy',
-                type: 'post',
-                async: false,
-                data: { proxyId: id },
-                success: function(data) {
-                    if (data.isSuccess) {
-                        var proxy = data.proxy;
-                        $('#myModal').modal('show');
-                        $('#myModalLabel').text('修改代理商信息');
-                        $('#save_form input[name=id]').val(proxy.id);
-                        $('#save_form input[name=name]').val(proxy.name);
-                        $('#save_form input[name=area]').val(proxy.area);
-                        $('#save_form input[name=phone]').val(proxy.phone);
-                        $('#save_form input[name=maxBuy]').val(proxy.maxBuy);
-                    } else {
-                        Util.globalTopTip("异常", "top_error", 2000, $('myModal'), !0);
-                    }
-                }
-            });
-        }
-    });
-    </script>
+		function getProxy(id) {
+			$.ajax({
+				url: '/promo/manage/index/getProxy',
+				type: 'post',
+				async: false,
+				data: { proxyId: id },
+				success: function(data) {
+					if (data.isSuccess) {
+						var proxy = data.proxy;
+						$('#myModal').modal('show');
+						$('#myModalLabel').text('修改代理商信息');
+						$('#save_form input[name=id]').val(proxy.id);
+						$('#save_form input[name=name]').val(proxy.name);
+						$('#save_form input[name=area]').val(proxy.area);
+						$('#save_form input[name=phone]').val(proxy.phone);
+						$('#save_form input[name=maxBuy]').val(proxy.maxBuy);
+					} else {
+						Util.globalTopTip("异常", "top_error", 2000, $('myModal'), !0);
+					}
+				}
+			});
+		}
+	});
+	</script>
 </body>
-
 </html>

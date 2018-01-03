@@ -1,204 +1,235 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
-<title>mobipromo</title>
-<style type="text/css" media="screen">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="../assets/css/manage/manage.css">
+	<title>后台管理中心</title>
+	<style type="text/css" media="screen">
 	.user_list tbody tr td:not(:first-child) {
-		
 		-webkit-user-select: none;
 	}
-	.panel-title > *{
-		float:left;
-	}
-</style>
+	</style>
+</head>
 <body>
-<div class="container">
-    
-	<div class="panel panel-primary">
-	    <div class="panel-title" style="margin-top:30px;margin-bottom:30px;padding:0 10px;border:0;">
-	      <input type="text" style="width: 100px;margin-right: 20px;" class="form-control add_pro_int" placeholder="个数">
-	      <input type="text" style="width:100px;margin-right:20px;" class="form-control add_pro_count" placeholder="台数">
-	      <button class="btn btn-default add_pro_btn" type="button">Go!</button>
-	      <a target="_blank" class="btn btn-primary" style="color:#FFF!important;float:right;margin-left:50px;">获取F码</a>
-	      <button class="btn btn-default" type="button" style="float:right;">新增代理商</button>
-	      <div style="clear:both;float:none;"></div>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<ul class="nav navbar-nav navbar-left">
+				<li><a href="/manage/index.html">代理商管理</a></li>
+				<li><a href="/manage/order.html">订单管理</a></li>
+				<li><a href="/manage/member.html">用户管理</a></li>
+				<li class="active"><a href="/manage/coupon.html">F码管理</a></li>
+				<li><a href="/manage/activity.html">抢购管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">返回</a></li>
+			</ul>
 		</div>
-	  <!-- Table -->
-	  <table class="table table-hover">
-		  <thead>
-		    <tr>
-		      <th id="coupon_title">F码 (<label></label>) 个</th>
-		      <th>使用时间</th>
-		      <th>是否使用</th>
-		      <th>是否过期</th>
-		      <th>创建时间</th>
-		      <th>限购数量</th>
-		    </tr>
-		  </thead>
-		  <tbody id="proxylist">
-		    <tr v-for="item in list">
-		      <td>{{ item.code }}</td>
-		      <td>{{ item.usedAt}}</td>
-		      <td>
-		      	<span class="btn" :class="item.used ? 'btn-danger' : item.locked ? 'btn-warning' : 'btn-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
-		      <td>{{ item.expiredAt }}</td>
-		      <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
-		      <td class="text-center">{{ item.remark }}</td>
-		    </tr>
-		  </tbody>
-	  </table>
-	</div>
+	</nav>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel panel-default search-panel">
+				<form class="form-inline search-form">
+					<div class="form-group">
+						<label for="code">F码</label>
+						<input type="text" class="form-control" id="code" name="code">
+					</div>
+					<div class="form-group">
+						<label for="member">所属人</label>
+						<input type="email" class="form-control" name="member" id="member">
+					</div>
+					<div class="form-group">
+						<label for="used">状态</label>
+						<select class="form-control" name="used" id="used">
+							<option value="">全部</option>
+							<option value="0">未使用</option>
+							<option value="1">未锁定</option>
+							<option value="2">已使用</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="expired">过期</label>
+						<select class="form-control" name="expired" id="expired">
+							<option value="">全部</option>
+							<option value="0">未过期</option>
+							<option value="1">已过期</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary" type="button" id="search_btn">搜索</button>
+					</div>
+				</form>
+			</div>
+			<!-- Table -->
+			<table class="table table-hover">
+				  <thead>
+					<tr>
+					  <th id="coupon_title">F码 (<label></label>) 个</th>
+					  <th>使用时间</th>
+					  <th>是否使用</th>
+					  <th>是否过期</th>
+					  <th>创建时间</th>
+					  <th>限购数量</th>
+					</tr>
+				  </thead>
+				  <tbody id="couponList">
+					<tr v-for="item in list">
+					  <td>{{ item.code }}</td>
+					  <td>{{ item.usedAt}}</td>
+					  <td>
+						<span class="label" :class="item.used ? 'label-danger' : item.locked ? 'label-warning' : 'label-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span></td>
+					  <td>{{ item.expiredAt }}</td>
+					  <td>{{ item.createdAt.substring(0,19).replace('T', ' ') }}</td>
+					  <td class="text-center">{{ item.remark }}</td>
+					</tr>
+				  </tbody>
+			  </table>
+		</div>
 		<div id="pager"></div>
-        
-    </div>
-</div>
-
-
-<script src="../assets/js/jquery.min.js"></script>
-<script src='../assets/js/bootstrap.min.js'></script>
-<script src='../assets/js/bootstrap-select.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src='../assets/js/util.js'></script>
-<script>
-/**
-*	获取cookie
-*/
-function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
-	//用处理字符串的方式查找到key对应value
-	var name = escape(name);
-	//读cookie属性，这将返回文档的所有cookie
-	var allcookies = document.cookie;
-	//查找名为name的cookie的开始位置
-	name += "=";
-	var pos = allcookies.indexOf(name);
-	//如果找到了具有该名字的cookie，那么提取并使用它的值
-	if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
-		var start = pos + name.length; //cookie值开始的位置
-		var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
-		if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
-		var value = allcookies.substring(start, end); //提取cookie的值
-		return (value); //对它解码
-	} else { //搜索失败，返回空字符串
-		return "";
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width:450px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel"></h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal col-xs-8" id="save_form" role="form">
+							<input type="hidden" name="id">
+							<div class="form-group">
+								<label for="firstname" class="col-sm-4 control-label">姓名</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="name" placeholder="请输入姓名">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-sm-4 control-label">地区</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="area" placeholder="请输入地区">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-sm-4 control-label">电话</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="phone" placeholder="请输入电话">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-sm-4 control-label">限购量</label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" name="maxBuy" placeholder="请输入数量">
+								</div>
+							</div>
+						</form>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="save_proxy">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+	</div>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src='../assets/js/bootstrap.min.js'></script>
+	<script src='../assets/js/bootstrap-select.min.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src='../assets/js/util.js'></script>
+	<script>
+	/**
+	*	获取cookie
+	*/
+	function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
+		//用处理字符串的方式查找到key对应value
+		var name = escape(name);
+		//读cookie属性，这将返回文档的所有cookie
+		var allcookies = document.cookie;
+		//查找名为name的cookie的开始位置
+		name += "=";
+		var pos = allcookies.indexOf(name);
+		//如果找到了具有该名字的cookie，那么提取并使用它的值
+		if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
+			var start = pos + name.length; //cookie值开始的位置
+			var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+			if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
+			var value = allcookies.substring(start, end); //提取cookie的值
+			return (value); //对它解码
+		} else { //搜索失败，返回空字符串
+			return "";
+		}
 	}
-}
-var ID = getCookieValue("menage");
-var url = location.href;
-var num=url.indexOf("?");
-	var proxyId= url.substr(num+1); 
-	console.log(proxyId);
-var ID = getCookieValue('manage');
-if(ID == '' && proxyId == '') {
-	// window.location.href = './login.html'
-}
-
-
-
-
-
-
-
-/**
-*	创建VUE实例
-*/ 
-var proxylist_model = new Vue({
-	el: '#proxylist',
-	data: {
-		list:''
+	var ID = getCookieValue("menage");
+	var url = location.href;
+	var num=url.indexOf("?");
+		var proxyId= url.substr(num+1);
+		console.log(proxyId);
+	var ID = getCookieValue('manage');
+	if(ID == '' && proxyId == '') {
+		// window.location.href = './login.html'
 	}
-});
 
-
-
-/**
-*	获取F码信息
-*/
-function getCoupon(curPage) {
-	$.ajax({
-		type: 'POST',
-		async: false,
+	/**
+	*	创建VUE实例
+	*/
+	var couponList_model = new Vue({
+		el: '#couponList',
 		data: {
-			curPage: curPage,
-			proxyId: proxyId
-		},
-		url: '/promo/manage/index/getCoupons',
-		success: function (data) {
-			console.log(data);
-			proxylist_model.list = data.list;
-		$('#coupon_title label').text(data.count);
-		$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
-		},
+			list:''
+		}
 	});
-}
 
-getCoupon(1);
-$("a.btn-primary").attr('href','./codes.html?' + proxyId);
+	/**
+	*	获取F码信息
+	*/
+	function getCoupon(curPage) {
+		$.ajax({
+			type: 'POST',
+			async: false,
+			data: {
+				curPage: curPage,
+				proxyId: proxyId
+			},
+			url: '/promo/manage/index/getCoupons',
+			success: function (data) {
+				console.log(data);
+				couponList_model.list = data.list;
+			$('#coupon_title label').text(data.count);
+			$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
+			},
+		});
+	}
 
+	getCoupon(1);
+	$("a.btn-primary").attr('href','./codes.html?' + proxyId);
 
-/**
-*添加F码
-*/  	
-$(".add_pro_btn").on('click', function () {
-	var add_pro_int = $(".add_pro_int").val();
-	$.ajax({
-		type: 'POST',
-		async: false,
-		data: {
-			proxyId: proxyId,
-			count: add_pro_int,
-			maxBuy: $(".add_pro_count").val()
-		},
-		url: '/promo/manage/index/generateCode',
-		success: function (data) {
-			var proxylist = getCoupon(1);
-
-		},
+	/**
+	*添加F码
+	*/
+	$(".add_pro_btn").on('click', function () {
+		var add_pro_int = $(".add_pro_int").val();
+		$.ajax({
+			type: 'POST',
+			async: false,
+			data: {
+				proxyId: proxyId,
+				count: add_pro_int,
+				maxBuy: $(".add_pro_count").val()
+			},
+			url: '/promo/manage/index/generateCode',
+			success: function (data) {
+				getCoupon(1);
+			},
+		});
 	});
-})
-</script>
+	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -21,39 +21,73 @@
 	font-size: 14px;
 }
 .more_btn {
-	width: 100%;
 	line-height: 50px;
 	font-size: 16px;
 	text-align: center;
 	cursor: pointer;
+	display: inline-block;
+	padding: 0 20px;
 }
 
-	#commodList {
+.trade-list {
 	margin: 0 50px;
 }
-#commodList ul {
+.trade-list ul {
 	margin:0;
-	border-bottom: 1px solid #d0d0d0;
+	background:#fafafa;
 }
-#commodList ul li:first-child {
+/* .trade-list ul:nth-child(odd) {
+	background:#fafafa;
+} */
+.trade-list ul:hover {
+	background: #eee;
+}
+.trade-list ul li:first-child {
 	padding-left: 20px;
-	font-size: 16px;
-	line-height: 50px;
+	font-size: 14px;
+	line-height: 40px;
 	text-align: left;
-	background:rgba(247,247,247,1);
 	position:relative;
 	cursor: pointer;
 }
-#commodList ul li:nth-child(2) {
-	display:none;
+.trade-list ul li:nth-child(2) {
+	/* display:none; */
 	border: 1px solid #f5f5f5;
+	background:#fff;
 	border-top:none;
 	padding-top:10px;
+	/* border-bottom: 1px solid #f5f5f5; */
+	/* border-top: 1px solid #d0d0d0; */
 }
-#commodList ul li div {
+.trade-list ul li .trade-time {
+	font-size: 14px;
+	font-weight: 600;
+	width: 150px;
+	display: inline-block;
+}
+.trade-list ul li .trade-num {
+	font-size: 12px;
+	display: inline-block;
+	width: 250px;
+}
+.trade-list ul li div {
 	padding-left: 20px;
 	margin-bottom: 10px;
 	font-size: 12px;
 	line-height: 20px;
 	text-align: left;
+}
+.trade-list .trade-open {
+	float: right;
+	width: inherit;
+	padding: 0 20px;
+	cursor: pointer;
+}
+.trade-open .title-status {
+	display: inline-block;
+	padding: 0 10px;
+	margin-right: 10px;
+}
+.operate span{
+	float: right;
 }

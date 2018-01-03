@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,7 +19,7 @@
 
 <div class="login-container">
 	<h1>管理员登陆入口</h1>
-	
+
 		<div>
 			<input type="text" name="username" class="username" placeholder="手机号/邮箱" autocomplete="off"/>
 		</div>
@@ -36,14 +36,14 @@
 <script src="../assets/js/supersized.3.2.7.min.js"></script>
 <script src="../assets/js/supersized-init.js"></script>
 <script>
-function addCookie(name,value, exdays){ 
-	var d = new Date();  
-	d.setTime(d.getTime() + (exdays*60*1000));  
-	var expires = "expires="+d.toUTCString();   
-    var name = name;  
+function addCookie(name,value, exdays){
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays*60*1000));
+	var expires = "expires="+d.toUTCString();
+    var name = name;
     var value = escape(value);
-    document.cookie = name + "=" + value + "; " + expires; 
-} 
+    document.cookie = name + "=" + value + "; " + expires;
+}
 $("#submit").on('click', function () {
 
 	var data = {
