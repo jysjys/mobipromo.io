@@ -1,0 +1,243 @@
+html,body {
+		background: #EEEEEE; 
+	}	
+		body {
+			-webkit-font-smoothing: none;
+		}
+		.container {
+			background: #FFFFFF;
+			min-height: 600px;
+			margin-top: 70px;
+		}
+		.nav-pills>li {
+			float: right;
+		}
+		.nav-pills>li>a {
+			font-size: 21px;
+		}
+		.nav-tabs {
+			margin-top: 50px;
+		}
+		.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+			background: #000000;
+		}
+		.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+			background-color: #000000;
+		}
+		.nav-tabs>li>a {
+			color: #000;
+		}
+
+		
+		/*订单信息*/
+		#accordion {
+			margin-top: 50px;
+		}
+		.order_list ul{
+			list-style: none;
+			padding-left: 15px;
+			margin-bottom: 30px;
+		}
+		.order_list ul li {
+			margin-bottom: 15px;
+		}
+		.order_list ul li span {
+			display: inline-block;
+			width: 150px;
+		}
+		.status span{
+			float: right;
+			padding: 10px 20px;
+			background: #518EE8;
+			color: #FFFFFF;
+			border-radius: 4px;
+			font-size: 14px;
+			line-height: 20px;
+			display: block;
+			margin-right: 10px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+
+
+		
+		/*收货地址*/
+		.jumbotron {
+			margin-top: 30px;
+			background: #ffffff;
+		}
+		.jumbotron .add_address {
+			position: relative;
+			border: 1px solid #bbb;
+			cursor: pointer;
+			color: #666;
+			width: 288px;
+			height: 170px;
+			margin-right: 0 10px 10px 0;
+			padding: 20px 16px 40px;
+			position: relative;
+			transition: all 1s;
+		}
+		.jumbotron .add_address:hover {
+			border: 1px solid #0069ff;
+			color: #0069ff;
+		}
+
+		.jumbotron span {
+			text-align: center;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.jumbotron span:nth-child(1) {
+			font-size: 73px;
+			top: -5px
+		}
+		.jumbotron span:nth-child(2) {
+			font-size: 16px;
+			top: 100px;
+		}
+		form {
+			min-height: 500px;
+			display: none;
+		}
+		form h3 {
+			border-bottom: #d6d6d6 2px solid;
+			padding-bottom: 10px;
+			margin-bottom: 2px;
+			color: #666666;
+			padding-left: 15px;
+		}
+		.list-group-item {
+			border: none;
+			margin-bottom: 30px;
+		}
+		.list-group-item input {
+			width: 320px;
+			height: 40px;
+			line-height: 40px;
+			border-radius: 3px;
+			border: 1px solid #ddd;
+		}
+		.list-group-item span{
+			display: inline-block;
+			width: 150px;
+			font-size: 14px;
+		} 
+		.list-group-item select {
+			width: 140px;
+			height: 40px;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			margin-right: 10px;
+		}
+		.list-group-item textarea {
+			width: 320px;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			resize:none;
+			padding: 6px;
+		}
+		.form_btn {
+			overflow: hidden;
+			margin-left: 150px;
+
+		}
+		.form_btn button {
+			float: left;
+			width: 110px;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+			font-size: 18px;
+			background: #338CF6;
+			border-radius: 6px;
+			color: #ffffff;
+			margin-right: 10px;
+		}
+
+
+
+		/*F码*/
+		.F_code {
+			text-align: center;
+		}
+		.F_code h1 {
+			color: #333;
+			margin-bottom: 30px;
+			font-size: 40px;
+			font-weight: 300px
+		}
+		.F_code h2 {
+			margin-bottom: 30px;
+			font-size: 16px;
+			font-weight: 300;
+
+		}
+		.F_code input {
+			height: 40px;
+			line-height: 28px;
+			width: 360px;
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		.F_code button {
+			width: 110px;
+			height: 32px;
+			line-height: 32px;
+			text-align: center;
+			font-size: 18px;
+			background: #338CF6;
+			border-radius: 6px;
+			color: #ffffff;
+			font-weight: 300;
+		}
+
+		.list-group-item select {
+			width: 98px;
+		}
+		.details {
+			position: relative;
+			top: -60px;
+		}
+
+		.more_btn {
+			width: 100%;
+			line-height: 50px;
+			font-size: 16px;
+			text-align: center;
+			cursor: pointer;
+		}
+		@media (max-width: 768px) {
+		    .container {
+		    	margin-top: 50px;
+		    }
+			.nav-tabs {
+				margin-top: 3px;
+				border-bottom: none;
+			}
+			.nav-tabs>li {
+				float: none;
+				margin-bottom: 0;
+			}
+			.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+				border-bottom-color: #ddd;
+			}
+			.list-group-item select {
+				width: 90px;
+			}
+			.details {
+				top: 0;
+			}
+			.form_btn {
+				margin-left: 35px;
+			}
+			.F_code input {
+				width: 300px;
+			}
+		} 
