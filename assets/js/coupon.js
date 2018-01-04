@@ -122,7 +122,9 @@ var commodList = new Vue({
 						else if(data.isFull) {
 							Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
 						}else if(data.isOut) {
-							Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+							Util.globalTopTip('您的代理商限购额度仅剩' + data.isOut + '台', "top_error", 2000, $("#upgrade_dlg"), !0);
+						}else if(data.isClose) {
+							Util.globalTopTip('交易已关闭', "top_error", 2000, $("#upgrade_dlg"), !0);
 						}else if(data.isSuccess) {
 							location.href = data.httpurl;
 						}else if(data.isNull) {
@@ -175,123 +177,6 @@ var commodList = new Vue({
 	}
 });
 
-// 获取用户订购商品列表
-function getList() {
-	$.ajax({
-		headers: {
-			Accept: "application/json; charset=utf-8",
-			Authorization: 'Bearer' + ' ' + x
-		},
-		type: 'POST',
-		data: JSON.stringify({
-			curPage: curPage
-		}),
-		contentType: "application/json; charset=utf-8",
-		url: '/promo/authed/coupon/selllist',
-		success: function(result) {
-			if(result.data.length == 0) {
-				$('.more_btn').text('没有更多订单了！').off('click');
-				return;
-			}
-			var data = result.data;
-			var listTradeNum = '';
-			var listone = '';
-			var listtwo = '';
-			var list_buyAmount = '';
-			var list_adree = '';
-			var list_phone = '';
-			var list_price = '';
-			var list_status = '';
-			for (var i = 0; i < data.length; i++) {
-				listTradeNum += '<li>' + data[i].tradeNumber + '</li>';
-				listone += '<li>' + data[i].boxName + '</li>';
-				listtwo += '<li>' + data[i].userName + '</li>';
-				list_buyAmount += '<li>' + data[i].buyAmount + '</li>';
-				list_adree += '<li>' + data[i].receivingAddress + '</li>';
-				list_phone += '<li>' + data[i].userTel + '</li>';
-				list_price += '<li>' + data[i].totalRmb + '</li>';
-				list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
-				// list_status += '<li>' + (data[i].status == 'ok' ? '已付款' : '<a href="javascript:">待付款</a>') + '</li>';
-			}
-			$(".list_tradeNum").append(listTradeNum);
-			$(".listone").append(listone);
-			$(".listtwo").append(listtwo);
-			$('.list_buyAmount').append(list_buyAmount);
-			$('.list_adree').append(list_adree);
-			$(".list_phone").append(list_phone);
-			$(".list_price").append(list_price);
-			$(".list_status").append(list_status).find('a').off('click').on('click', function() {
-				var index = $(this).parent().index();
-				$('#price_dlg').dialog();
-				$('#price_dlg').find('.price-paytype').off('click').on('click', function(){
-					$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
-				});
-				$('#price_dlg').find('.price-date').text($('.list_buyAmount li:eq(' + index + ')').text() + ' 台');
-				$('#price_dlg').find('.userprice').text($('.list_price li:eq(' + index + ')').text());
-				$('#zhifu2').off('click').on('click', function(){
-					//完成未支付
-					var isLoading = $(this).data('isLoading');
-					if(isLoading) {
-						return;
-					}
-					$(this).data('isLoading', true);
-					$.ajax({
-						headers: {
-							Accept: "application/json; charset=utf-8",
-							Authorization: 'Bearer' + ' ' + x
-						},
-						url: '/promo/alipay/coupon/order/payagain',
-						data: JSON.stringify({tradeNumber: $('.list_tradeNum li:eq(' + index + ')').text()}),
-						type: 'POST',
-						contentType: "application/json; charset=utf-8",
-						success: function(data) {
-							$(".dialog_warn2").css('display', 'none');
-							if(data.not) {
-								Util.globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
-							}else if(data.isUsed) {
-								Util.globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
-							}else if(data.isLocked) {
-								Util.globalTopTip("您填写的F码已锁定", "top_error", 2000, $("#price_dlg"), !0);
-							}
-							else if(data.isFull) {
-								Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
-							}else if(data.isOut) {
-								Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
-							}
-
-							$(this).data('isLoading', false);
-							console.log(data);
-							if(data.isSuccess){
-								location.href = data.httpurl;
-							}else{
-								//购买失败
-								Util.globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
-							}
-						},
-						error: function(data) {
-							$(this).data('isLoading', false);
-							Util.globalTopTip("订单不存在", "top_error", 2000, $("#price_dlg"), !0);
-						}
-					});
-
-				}).find('label').text('¥ ' + $('.list_price li:eq(' + index + ')').text());
-			});
-			if(result.data.length < 10) {
-				$('.more_btn').text('没有更多订单了！').off('click');
-				return;
-			}
-			curPage++;
-		},
-		error: function(data) {
-			console.log(data)
-			if(!data.isSuccess){
-				location.href = '/indexlogin.html';
-			}
-		}
-	});
-}
-
-// getList();
 function warn_chouse () {
 	var boxName = $("input[name='device_name']").val().trim(),
 		userName = $("input[name='username']").val().trim(),
@@ -440,19 +325,23 @@ function btnPress(data){
 				type: 'POST',
 				contentType: "application/json; charset=utf-8",
 				success: function(data) {
-					console.log(data);
 					$('#zhifu').data('isLoading', false);
-					if(data.isSuccess){
+					if(data.not) {
+						Util.globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
+					}else if(data.isUsed) {
+						Util.globalTopTip("您填写的F码已使用过", "top_error", 2000, $("#price_dlg"), !0);
+					}else if(data.isLocked) {
+						Util.globalTopTip("您填写的F码已锁定", "top_error", 2000, $("#price_dlg"), !0);
+					}else if(data.isSuccess){
 						location.href = data.httpurl;
 					}else if(data.isFull) {
 						Util.globalTopTip('您的代理商限购额度已满', "top_error", 2000, $("#upgrade_dlg"), !0);
-						return false;
 					}else if(data.isOut) {
 						Util.globalTopTip('您的代理商限购额度仅剩' + data.isOut + '台', "top_error", 2000, $("#upgrade_dlg"), !0);
-						return false;
+					}else if(data.isClose) {
+						Util.globalTopTip('交易已关闭', "top_error", 2000, $("#upgrade_dlg"), !0);
 					}else{
 						//购买失败
-						// getList();
 					}
 				},
 				error: function(data) {
