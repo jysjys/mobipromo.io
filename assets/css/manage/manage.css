@@ -19,7 +19,7 @@ body {
     padding:0;
 }
 .container > .panel {
-    height:500px;
+    min-height:500px;
     position:relative;
     margin-bottom:0;
 }
@@ -29,7 +29,17 @@ body {
 .search-form {
     margin: 15px;
 }
-.search-form .form-group:not(:first-child) {
+.search-form .form-group {
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.row {
+    margin: 15px 0 0;
+}
+.form-group.btns > .btn{
+    margin-right: 15px;
+}
+.form-group.btns-right > .btn{
     margin-left: 15px;
 }
 .search-panel {
