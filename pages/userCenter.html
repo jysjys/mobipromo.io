@@ -8,140 +8,273 @@
 	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/userCenter.css">
-	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_dwias27nyg69lik9.css
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_sj0bqlg2iyg5jyvi.css
 ">
-	<style type="text/css" media="screen">
-	html,body {
-		background: #EEEEEE; 
-	}	
-		.container {
-			background: #FFFFFF;
-		}
-		.nav-pills>li {
-			float: right;
-		}
-		.nav-pills>li>a {
-			font-size: 21px;
-		}
-		.nav-tabs {
-			margin-top: 50px;
-		}
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/coupon.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/userCenter.css">
+	<style type="text/css">
 		.jumbotron {
-			margin-top: 30px;
-			background: #ffffff;
+			overflow: hidden;
 		}
 		.jumbotron .add_address {
-			position: relative;
-			border: 1px solid #bbb;
-			cursor: pointer;
-			color: #666;
-			width: 288px;
-			height: 170px;
-			margin-right: 0 10px 10px 0;
-			padding: 20px 16px 40px;
-			position: relative;
-			transition: all 1s;
+			float: left;
+			margin-right: 20px;
+			margin-bottom: 30px;
 		}
-		.jumbotron .add_address:hover {
-			border: 1px solid #0069ff;
-			color: #0069ff;
-		}
-
-		.jumbotron span {
+		.order_list {
 			text-align: center;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
+			color: #999;
 		}
-		.jumbotron span:nth-child(1) {
-			font-size: 73px;
-			top: -5px
-		}
-		.jumbotron span:nth-child(2) {
+		.order_list h2, .order_list h3 {
 			font-size: 16px;
-			top: 100px;
+			line-height: 30px;
+		}
+		.order_list p {
+			font-size: 14px;
+			color: #000;
+			line-height: 22px;
+			margin-top: 10px;
+		}
+		.order_list h4 {
+			font-size: 12px;
+			line-height: 25px;
+		}
+		.order_list h4 span {
+			display: inline-block;
+			padding: 5px;
+			background: blue;
+			color: #ffffff;
+			line-height: 10px;
+			margin-right: 15px;
+		}
+		.order_list button {
+			font-size: 16px;
+			color: #FFFFFF;
+			padding: 5px 25px;
+			border-radius: 3px;
+			background: #458DEF;
+			margin-top: 10px;
+		}
+		.row_sec {
+			width: 100%;
+			height: 300px;
+			background: #ddd;
+			padding-left: 400px;
+			padding-top: 50px;
+			text-align: left;
+			position: relative;
+			color: #FFFFFF;
+			margin-top: 30px;
+		}
+		.row_sec img {
+			width: 200px; 
+			height: 200px;
+			/*background: #000;*/
+			position: absolute;
+			top: 50%;
+			left: 15%;
+			transform: translateY(-50%);
+		}
+		.row_sec span {
+			display: block;
+			font-size: 18px;
+			line-height: 36px;
+			font-weight: 500;
+		}
+		.prompt {
+			margin: 30px auto 100px auto;
+			text-align: center;
+		}
+		@media (max-width: 768px) {
+			.row_sec {
+				padding-top: 45px;
+				padding-left: 100px;
+			}
+			.row_sec img {
+				width: 100px;
+				height: 100px;
+				left: 0;
+			}
+			.row_sec span {
+				font-size: 14px;
+			}
 		}
 	</style>
 </head>
 <body>
-	<div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
-    <ul class="nav nav-pills navbar-inverse text-right">
-	  <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="iconfont icon-ren" style="font-size: 21px;"></i><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">个人中心</a></li>
-          <li><a href="#">退出</a></li>
-        </ul>
-      </li>
-	  <li role="presentation" class=""><a href="#">服务</a></li>
-	  <li role="presentation" class=""><a href="#">产品</a></li>
-	  <li role="presentation" class=""><a href="#">首页</a></li>
-    </ul>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid" style='position: relative;'>
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="../index.html" style="margin-left: 20px;">
+	        <img alt="MobiPromo" src="../assets/images/logo.png">
+	      </a>
+	    </div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li><a href="../whitepaper.pdf">Whitepapper</a></li>
+	        <li class="dropdown">
+	        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-ren" style="color: #FFFFFF; font-size: 21px;"></i><span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li class="text-center"><a href="#">个人中心</a></li>
+	            <li class="text-center" id="login_out"><a href="../indexlogin.html">退出</a></li>
+	          </ul>
+      		</li>
+	        
+	      </ul>
+	    </div>
+	    <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
+	  </div>
+	</nav>
 	<div class="container">
 		<ul id="myTab" class="nav nav-tabs">
-			<li>
+			<li class="active">
 				<a href="#home" data-toggle="tab">我的订单</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="#ios" data-toggle="tab">收货信息</a>
 			</li>
 			<li>
 				<a href="#F" data-toggle="tab">我的F码</a>
 			</li>
-			<li>
-				<a href="#apply" data-toggle="tab">售后申请记录</a>
-			</li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade" id="home">
-				<p style="margin-top: 100px;">我的订单</p>
+			<!-- 订单列表 -->
+			<div class="tab-pane fade in active" id="home" >
+				<div class="row order_list" style="margin-top: 30px;">
+					
+					<h2>您已成功预约星际宝盒</h2>
+					<h3>售卖时间为 2018 年 01 月 09 日 10:30 <a href="" title="">前往抢购<i class="iconfont icon-jiantou" style="font-size: 12px;"></i></a></h3>
+					<p>订单编码：71964876525472</p>
+					<h4><span>预售</span>2017-12-19 10:18:34</h4>
+					<button type="button">申请售后</button>
+					<div class="row_sec">
+						<img src="../assets/images/can_box_child.png" alt="">
+						<div class="list_info">
+							<span>星际宝盒</span>
+							<span>张三</span>
+							<span>155****5555</span>
+							<span>发货开始时间：2018-03-15</span>
+							<span>河北省邢台市临城县临泉路吃不够羊汤</span>
+							<span>备货中</span>
+
+						</div>
+					</div>
+				</div>
+				<div class="prompt">
+					预售商品发货时间将在您选定发货时间内，按付款先后顺序发出，CAN保留提前发货的权利。
+				</div>
+
 			</div>
-			<div class="tab-pane fade in active" id="ios">
+			<!-- 添加收货地址 -->
+			<div class="tab-pane fade" id="ios">
 				<div class="jumbotron">
+					<div class="add_address">
+						<p>张三</p>
+						<p>131345345575</p>
+						<p>北京市海淀区</p>
+					</div>
 					<div class="add_address">
 						<span class='iconfont icon-jiahao'></span>
 						<span class="text-center">添加新地址</span>
 					</div>
 				</div>
 
-				<ul class="list-group">
-				    <li class="list-group-item">免费域名注册</li>
-				    <li class="list-group-item">免费 Window 空间托管</li>
-				    <li class="list-group-item">图像的数量</li>
-				    <li class="list-group-item">
-				        <span class="badge">新</span>
-				        24*7 支持
-				    </li>
-				    <li class="list-group-item">每年更新成本</li>
-				    <li class="list-group-item">
-				        <span class="badge">新</span>
-				        折扣优惠
-				    </li>
-				</ul>
+				<form>
+					
+					<h3>添加收货地址</h3>
+					<ul class="list-group" style="margin-top: 30px;">
+					    <li class="list-group-item">
+					    	<span>收件人</span>
+					    	<input type="text" name='userName'>
+					    </li>
+					    <li class="list-group-item">
+					    	<span>手机号</span>
+					    	<input type="text" name='phoneNumber'>
+					    </li>
+					    <li class="list-group-item">
+					    	<span>所在地区</span>
+					    	<div style="display: inline-block">
+								<!--省份选择-->
+								<select id="prov" name="address-level1" onchange="showCity(this)">
+									<option value="">*省份</option>
+								</select>
+								<!--城市选择-->
+								<select id="city" name="address-level2" onchange="showCounty(this)">
+									<option value="">*城市</option>
+								</select>
+								<!--县区选择-->
+								<select id="country" name="address-level3">
+									<option value="">*区县</option>
+								</select>
+							</div>
+					    </li>
+					    <li class="list-group-item">
+					    	<span class="details">详细信息</span> <textarea rows="6"></textarea>
+					    </li>
+					    <li class="list-group-item form_btn">
+					    	<button type="">保存</button>
+					    	<button type="">取消</button>
+					    </li>
+					</ul>
+				</form>
 			</div>
 			<div class="tab-pane fade" id="F">
-				<p style="margin-top: 100px;">jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
-			</div>
-			<div class="tab-pane fade" id="apply">
-				<p style="margin-top: 100px;">jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+				<div class="jumbotron F_code">
+				  <h1>您好,CAN客</h1>
+				  <h2>使用F码，可享受优先购买星际宝盒的特权</h2>
+				  <input type="text" name='F_code'>
+				  <button type="">使用F码</button>
+				</div>
 			</div>
 		</div>	
 
 	</div>	
 
+
+	<!-- dialog -->
+	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="price_dlg">
+		<h2 class="dialog-title">订单信息</h2>
+		<span class='dialog_warn2'></span>
+		<div class="dlg-content">
+			<div class="price ac" style="margin-right:0;">
+				<div class="price-date">1 台</div>
+				<div class="price-text">¥
+					<label class="userprice">899</label>
+				</div>
+				<span class="icons">&#xe658;</span>
+			</div>
+			<div class="dlg-item">
+				<div tit="alipay" class="price-paytype ac" style="padding:12px 5px 8px 5px;">
+					<span style="font-size:24px;color:#00aaee;" class="icons">&#xe654;</span>
+					<span class="icons ico">&#xe658;</span>
+				</div>
+			</div>
+			<div class="dlg-item" style="text-align:right;margin-bottom:0;">
+				<button id="zhifu2" class="button">去支付 <label>¥ 899</label></button>
+			</div>
+		</div>
+	</div>	
 <script src="../assets/js/jquery.min.js"></script>
 <script src='../assets/js/bootstrap.min.js'></script>
+<script src="../assets/js/address.js"></script>
+<script src="../assets/js/util.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-	
+<script src='../assets/js/userCenter.js'></script>
+<script type="text/javascript">
+	$(".jumbotron").on('click', function () {
+		$('form').slideDown()
+	})
+	$("#login_out").on('click', function(){setCookie('Authorization','', -1)})
+
 </script>
 </body>
 </html>
