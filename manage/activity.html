@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/datetimepicker.css">
+	<link rel="stylesheet" href="../assets/css/manage/manage.css">
+	<title>后台管理中心</title>
+	<style type="text/css" media="screen">
+	.user_list tbody tr td:not(:first-child) {
+		-webkit-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel panel-default search-panel">
+				<form class="form-inline search-form">
+					<div class="row">
+						<div class="form-group">
+							<label for="exampleInputName2">姓名</label>
+							<input type="text" class="form-control" name="name">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail2">地区</label>
+							<input type="email" class="form-control" name="area">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail2">电话</label>
+							<input type="email" class="form-control" name="phone">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group btns">
+							<button class="btn btn-primary" type="button" id="search_btn">搜索</button>
+							<button class="btn btn-info" id="add_btn" type="button" style="float:right;">新增活动</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Table -->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>活动名称</th>
+						<th>可购买数量</th>
+						<th>可购买次数</th>
+						<th>开始时间</th>
+						<th>结束时间</th>
+						<th>活动描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="example">
+					<tr v-for='item in list'>
+						<td>{{ item.name }}</td>
+						<td>{{ item.maxAmount }}</td>
+						<td>{{ item.maxCount }}</td>
+						<td>{{ item.startAt }}</td>
+						<td>{{ item.endAt }}</td>
+						<td>{{ item.remark }}</td>
+						<td>
+							<a class="btn btn-success btn-xs detail_btn" v-bind:data-id="item.id" target="_blank" style="color:#FFF;">查看参与人详情</a>
+							<button class="btn btn-success btn-xs update_btn" v-bind:data-id="item.id" style="color:#FFF;">修改</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="pager"></div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width:450px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">新增活动</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal col-xs-12" id="save_form" role="form">
+							<input type="hidden" name="id">
+							<div class="form-group">
+								<label for="name" class="col-sm-3 control-label">名称</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="name" placeholder="请输入名称">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="maxAmount" class="col-sm-3 control-label">限购量</label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" name="maxAmount" placeholder="请输入限购数量">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="maxCount" class="col-sm-3 control-label">限购次数</label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" name="maxCount" placeholder="请输入限购次数">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="time1" class="col-sm-3 control-label">开始时间</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="time1" name="startAt" placeholder="请输入开始时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="time2" class="col-sm-3 control-label">结束时间</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="time2" name="endAt" placeholder="请输入结束时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="remark" class="col-sm-3 control-label">描述</label>
+								<div class="col-sm-8">
+									<textarea class="form-control" name="remark"></textarea>
+									<!-- <input type="number" class="form-control" name="remaek" placeholder="请输入地点"> -->
+								</div>
+							</div>
+						</form>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary commit">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+	</div>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src='../assets/js/bootstrap.min.js'></script>
+	<script src='../assets/js/datetimepicker.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src='../assets/js/util.js'></script>
+	<script>
+	function getCookieValue(name) {
+		var name = escape(name);
+		var allcookies = document.cookie;
+		name += "=";
+		var pos = allcookies.indexOf(name);
+		if (pos != -1) {
+			var start = pos + name.length;
+			var end = allcookies.indexOf(";", start);
+			if (end == -1) end = allcookies.length;
+			var value = allcookies.substring(start, end);
+			return (value);
+		} else {
+			return "";
+		}
+	}
+	var ID = getCookieValue('manage')
+	if (ID == '') {
+		window.location.href = './login.html'
+	}
+
+	var activityList = new Vue({
+		el: '#example',
+		data: {
+			list: [],
+			searchData: {}
+		},
+		methods: {
+			getActivityList: function(curPage) {
+				var self = this;
+				self.searchData.curPage = curPage;
+				$.ajax({
+					type: 'POST',
+					async: false,
+					url: '/promo/manage/activity/loadActivities',
+					data: self.searchData,
+					success: function(data) {
+						activityList.list = data.list;
+						$('#pager').empty().pagination(curPage, data.total, data.count, self.getActivityList);
+					},
+				});
+			}
+		}
+	});
+
+	$(function() {
+
+		$.ajax({
+			type: 'POST',
+			async: false,
+			url: '/promo/manage/outh',
+			data: {
+				passMD5: ID
+			},
+			success: function(data) {
+				if (data.fail) {
+					window.location.href = './login.html';
+					return;
+				}
+				activityList.getActivityList(1);
+			}
+		});
+
+		$.get('./header.html', function(data) {
+			$('body').prepend(data);
+			$('.navbar li:eq(4)').addClass('active');
+		});
+
+		$('#add_btn').on('click', function() {
+			$('#save_form input').val('');
+			$('#myModal').modal('toggle');
+		});
+
+		$('#time1, #time2').datetimepicker({
+			format: 'yyyy-mm-dd 00:00:00'
+		}).on('changeDate', function(ev){
+			if($(this).is('#time1')){
+				$('#time2').datetimepicker('setStartDate', ev.date);
+			}else if($(this).is('#time2')){
+				$('#time1').datetimepicker('setEndDate', ev.date);
+				$(this).val(ev.date.format('yyyy-MM-dd') + " 23:59:59");
+			}
+		});
+
+		$('#myModal .commit').on('click', function() {
+			console.log($("#save_form").serialize())
+			$.ajax({
+				url: '/promo/manage/activity/saveActivity',
+				type: 'POST',
+				async: false,
+				data: $("#save_form").serialize(),
+				success: function(data) {
+					if (data.isSuccess) {
+						$('#myModal').modal('hide');
+						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+						activityList.searchData = {};
+						activityList.getActivityList(1);
+					} else {
+						console.log(data)
+						Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
+					}
+				}
+			});
+		});
+
+		$(document).on('click', '.detail_btn', function() {
+			var id = $(this).data('id');
+			$(this).attr('href', './activitymember.html?' + id);
+		});
+	});
+	</script>
+</body>
+</html>

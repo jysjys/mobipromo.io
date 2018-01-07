@@ -190,10 +190,11 @@
 					contentType: "application/json; charset=utf-8",
 					url: '/promo/authed/account/get/selllist',
 					success: function(data) {
-						if(data.isOrdered) {
+						if(data.isOrdered.count != null) {
 							$(".btn_ver").css({
 								'display': 'block'
 							}).attr('href', './activity/1.html')
+							.text('您拥有 ' + data.isOrdered.count + ' 次购买资格，' + '已使用 ' + data.isOrdered.used + ' 次，' + '点击查看')
 						}
 						if(data.data.length == 0) {
 							$('.more_btn').text('没有更多订单了！');
@@ -207,8 +208,8 @@
 						self.curPage++;
 						$('.more_btn').data('isLoading', false);
 					},
-					error: function (data) {
-						if(data.responseJSON.error == 'invalid_token') {
+					error: function (error) {
+						if(error.responseJSON.error) {
 							location.href = './indexlogin.html';
 						}
 					}

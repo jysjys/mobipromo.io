@@ -11,6 +11,18 @@ body {
 	padding-top: 50px;
 	margin-bottom: 100px;
 }
+.presale-container .finish {
+	display: inline-block;
+	color: red;
+	margin-top: 20px;
+	font-size: 16px;
+}
+.presale-container .remain {
+	display: inline-block;
+	color: #969696;
+	margin-top: 20px;
+	font-size: 16px;
+}
 .presale-container > div > span {
 	display: inline-block;
 	width: 100px;
@@ -39,7 +51,7 @@ i {
 
 .btn_ver {
 	display: block;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 50px;
 	text-decoration: none;
 	position: relative;

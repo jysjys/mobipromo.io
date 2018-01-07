@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/datetimepicker.css">
+	<link rel="stylesheet" href="../assets/css/manage/manage.css">
+	<title>后台管理中心</title>
+	<style type="text/css" media="screen">
+	.user_list tbody tr td:not(:first-child) {
+		-webkit-user-select: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel panel-default search-panel">
+				<form class="form-inline search-form">
+					<div class="row">
+						<div class="form-group">
+							<label for="name">活动名称</label>
+							<input type="text" style="width:120px;" class="form-control" name="name" id="name">
+						</div>
+						<div class="form-group">
+							<label for="account">参与人</label>
+							<input type="text" style="width:120px;" class="form-control" name="account" id="account">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group btns">
+							<button class="btn btn-primary" type="button" id="search_btn">搜索</button>
+						</div>
+						<div class="form-group btns-right pull-right">
+							<button class="btn btn-info" type="button" id="add_btn">新增参与人</button>
+							<button class="btn btn-info" type="button" id="marge_btn">合并旧数据</button>
+							<a class="btn btn-info" id="members_btn" href="javascript:" target="_blank">查看参与人列表</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Table -->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>活动名称</th>
+						<th>参与人</th>
+						<th>参与次数</th>
+						<th>购买量</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="example">
+					<tr v-for='item in list'>
+						<td>{{ item.activity.name }}</td>
+						<td>{{ item.account }}</td>
+						<td>{{ item.usedCount }}</td>
+						<td>{{ item.usedAmount }}</td>
+						<td>
+							<a class="btn btn-success btn-xs example_btn detail_btn" v-bind:data-id="item.id" target="_blank" style="color:#FFF;">查看参与人详情</a>
+							<button class="btn btn-success btn-xs example_btn update_btn" v-bind:data-id="item.id" style="color:#FFF;">修改</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="pager"></div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width:450px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">新增参与人</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal col-xs-12" id="save_form" role="form">
+							<input type="hidden" name="id">
+							<div class="form-group">
+								<label for="members" class="col-sm-5">批量添加（每行一个）</label>
+								<div class="col-sm-12">
+									<textarea class="form-control" name="members" style="height:300px;"></textarea>
+								</div>
+							</div>
+						</form>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary commit">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+	</div>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src='../assets/js/bootstrap.min.js'></script>
+	<script src='../assets/js/datetimepicker.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src='../assets/js/util.js'></script>
+	<script>
+	function getCookieValue(name) {
+		var name = escape(name);
+		var allcookies = document.cookie;
+		name += "=";
+		var pos = allcookies.indexOf(name);
+		if (pos != -1) {
+			var start = pos + name.length;
+			var end = allcookies.indexOf(";", start);
+			if (end == -1) end = allcookies.length;
+			var value = allcookies.substring(start, end);
+			return (value);
+		} else {
+			return "";
+		}
+	}
+	var ID = getCookieValue('manage')
+	if (ID == '') {
+		window.location.href = './login.html'
+	}
+
+	var url = location.href;
+	var num = url.indexOf("?");
+	var activityId = url.substr(num + 1);
+
+	var memberList = new Vue({
+		el: '#example',
+		data: {
+			list: [],
+			searchData: {}
+		},
+		methods: {
+			getMemberList: function(curPage) {
+				var self = this;
+				self.searchData.curPage = curPage;
+				$.ajax({
+					type: 'POST',
+					async: false,
+					url: '/promo/manage/activity/loadMembers',
+					data: {
+						curPage: curPage,
+						activityId: activityId
+					},
+					success: function(data) {
+						memberList.list = data.list;
+						$('#pager').empty().pagination(curPage, data.total, data.count, self.getMemberList);
+					},
+				});
+			}
+		}
+	});
+
+	$(function() {
+
+		$.ajax({
+			type: 'POST',
+			async: false,
+			url: '/promo/manage/outh',
+			data: {
+				passMD5: ID
+			},
+			success: function(data) {
+				if (data.fail) {
+					window.location.href = './login.html';
+					return;
+				}
+				memberList.getMemberList(1);
+			}
+		});
+
+		$.get('./header.html', function(data) {
+			$('body').prepend(data);
+			$('.navbar li:eq(4)').addClass('active');
+		});
+
+		$('#add_btn').on('click', function() {
+			$('#save_form input').val('');
+			$('#save_form input[name=id]').val(activityId);
+			$('#myModal').modal('toggle');
+		});
+
+		$('#marge_btn').on('click', function() {
+			$.ajax({
+				url: '/promo/manage/activity/margeMemberData',
+				type: 'POST',
+				async: false,
+				data: {id: activityId},
+				success: function(data) {
+					memberList.getMemberList(1);
+				}
+			});
+		});
+
+		$('#time1, #time2').datetimepicker({
+			format: 'yyyy-mm-dd 00:00:00'
+		}).on('changeDate', function(ev){
+			if($(this).is('#time1')){
+				$('#time2').datetimepicker('setStartDate', ev.date);
+			}else if($(this).is('#time2')){
+				$('#time1').datetimepicker('setEndDate', ev.date);
+				$(this).val(ev.date.format('yyyy-MM-dd') + " 23:59:59");
+			}
+		});
+
+		$('#myModal .commit').on('click', function() {
+			console.log($("#save_form").serialize())
+			$.ajax({
+				url: '/promo/manage/activity/addMembers',
+				type: 'POST',
+				async: false,
+				data: $("#save_form").serialize(),
+				success: function(data) {
+					if (data.isSuccess) {
+						$('#myModal').modal('hide');
+						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+						memberList.searchData = {};
+						memberList.getMemberList(1);
+					} else {
+						console.log(data)
+						Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
+					}
+				}
+			});
+		});
+	});
+	</script>
+</body>
+</html>

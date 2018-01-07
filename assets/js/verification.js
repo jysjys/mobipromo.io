@@ -49,6 +49,12 @@ var commodList = new Vue({
 				contentType: "application/json; charset=utf-8",
 				url: '/promo/authed/activity/selllist',
 				success: function(data) {
+					if(data.isOrdered.count != null && parseInt(data.isOrdered.count) - parseInt(data.isOrdered.used) <= 0) {
+						$('.presale-container h1').siblings().remove();
+						$('.presale-container h1').after('<span class="finish">您的购买机会已经用完</span>');
+					}else {
+						$('.presale-container h1').after('<span class="remain">您还有 ' + (parseInt(data.isOrdered.count) - parseInt(data.isOrdered.used)) + ' 次购买机会</span>');
+					}
 					if(data.data.length == 0) {
 						$('.more_btn').text('没有更多订单了！');
 						return;
@@ -64,7 +70,7 @@ var commodList = new Vue({
 				error: function (data) {
 					console.log(data)
 					if(data.responseJSON.error == 'invalid_token') {
-						// location.href = '../indexlogin.html';
+						location.href = '../indexlogin.html';
 					}
 				}
 			})
@@ -100,7 +106,6 @@ var commodList = new Vue({
 					type: 'POST',
 					contentType: "application/json; charset=utf-8",
 					success: function(data) {
-						console.log(data)
 						$(".dialog_warn2").css('display', 'none');
 						if(data.not) {
 							Util.globalTopTip("您填写的F码不存在", "top_error", 2000, $("#price_dlg"), !0);
@@ -113,6 +118,8 @@ var commodList = new Vue({
 							Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
 						}else if(data.isOut) {
 							Util.globalTopTip("您的代理商限购额度已满", "top_error", 2000, $("#price_dlg"), !0);
+						}else if(data.isClose) {
+							Util.globalTopTip('交易已关闭', "top_error", 2000, $("#upgrade_dlg"), !0);
 						}else if(data.isSuccess) {
 							location.href = data.httpurl;
 						}else if(data.isNull) {

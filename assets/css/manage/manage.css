@@ -27,14 +27,14 @@ body {
     line-height:36px;
 }
 .search-form {
-    margin: 15px;
+    margin: 15px 15px 0;
 }
 .search-form .form-group {
     margin-right: 15px;
     margin-bottom: 15px;
 }
 .row {
-    margin: 15px 0 0;
+    margin: 0;
 }
 .form-group.btns > .btn{
     margin-right: 15px;

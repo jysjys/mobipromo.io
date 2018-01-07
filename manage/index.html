@@ -7,7 +7,8 @@
 	<meta name="description" content="" />
 	<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/datetimepicker.css">
 	<link rel="stylesheet" href="../assets/css/manage/manage.css">
 	<title>后台管理中心</title>
 	<style type="text/css" media="screen">
@@ -17,20 +18,6 @@
 	</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="/manage/index.html">代理商管理</a></li>
-				<li><a href="/manage/order.html">订单管理</a></li>
-				<li><a href="/manage/member.html">用户管理</a></li>
-				<li><a href="/manage/coupon.html">F码管理</a></li>
-				<li><a href="/manage/activity.html">抢购管理</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">返回</a></li>
-			</ul>
-		</div>
-    </nav>
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel panel-default search-panel">
@@ -135,7 +122,7 @@
     </div>
     <script src="../assets/js/jquery.min.js"></script>
     <script src='../assets/js/bootstrap.min.js'></script>
-    <script src='../assets/js/bootstrap-select.min.js'></script>
+    <script src='../assets/js/datetimepicker.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src='../assets/js/util.js'></script>
     <script>
@@ -199,6 +186,11 @@
 			}
 		});
 
+		$.get('./header.html', function(data) {
+			$('body').prepend(data);
+			$('.navbar li:eq(0)').addClass('active');
+		});
+
 		$(document).on('click', '.Page_btn', function() {
 			var proxyId = $(this).data('id');
 			$(this).attr('href', './couponPage.html?' + proxyId);
@@ -216,7 +208,6 @@
 		})
 
 		$('#save_proxy').on('click', function() {
-			console.log($("#save_form").serialize());
 			$.ajax({
 				url: '/promo/manage/index/saveProxy',
 				type: 'post',
