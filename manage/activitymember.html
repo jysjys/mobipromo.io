@@ -38,7 +38,6 @@
 						</div>
 						<div class="form-group btns-right pull-right">
 							<button class="btn btn-info" type="button" id="add_btn">新增参与人</button>
-							<button class="btn btn-info" type="button" id="marge_btn">合并旧数据</button>
 							<a class="btn btn-info" id="members_btn" href="javascript:" target="_blank">查看参与人列表</a>
 						</div>
 					</div>
@@ -86,6 +85,7 @@
 								<div class="col-sm-12">
 									<textarea class="form-control" name="members" style="height:300px;"></textarea>
 								</div>
+								<label class="col-sm-12 repeat"></label>
 							</div>
 						</form>
 						<div style="clear:both;"></div>
@@ -186,18 +186,6 @@
 			$('#myModal').modal('toggle');
 		});
 
-		$('#marge_btn').on('click', function() {
-			$.ajax({
-				url: '/promo/manage/activity/margeMemberData',
-				type: 'POST',
-				async: false,
-				data: {id: activityId},
-				success: function(data) {
-					memberList.getMemberList(1);
-				}
-			});
-		});
-
 		$('#time1, #time2').datetimepicker({
 			format: 'yyyy-mm-dd 00:00:00'
 		}).on('changeDate', function(ev){
@@ -218,12 +206,16 @@
 				data: $("#save_form").serialize(),
 				success: function(data) {
 					if (data.isSuccess) {
+						if(data.repeat.length > 0) {
+							Util.globalTopTip('添加成功' + data.success.length + '人', "top_success", 2000, $('body'), !0);
+							$("#save_form .repeat").html('重复了<br>' + data.repeat.join('<br>'));
+							return;
+						}
 						$('#myModal').modal('hide');
 						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
 						memberList.searchData = {};
 						memberList.getMemberList(1);
 					} else {
-						console.log(data)
 						Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
 					}
 				}
