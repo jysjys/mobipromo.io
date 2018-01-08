@@ -112,7 +112,7 @@
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
 				<label>¥ {{ item.totalRmb }}</label>
 				<span class="trade-open">
-					<label class="title-status">{{ item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : '待付款' }}</label><i class='icons' style="color:#5C5162;font-size:12px;">&nbsp;&#xe73a;</i>
+					<label class="title-status">{{ item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : item.status == 'refund' ? '已退款' : '待付款' }}</label><i class='icons' style="color:#5C5162;font-size:12px;">&nbsp;&#xe73a;</i>
 				</span>
   			</li>
 			<li>
@@ -122,7 +122,7 @@
 				<div>收件地址：{{ item.receivingAddress }}</div>
 				<div>联系电话：{{ item.userTel }}</div>
 				<div>金额：{{ item.totalRmb }}</div>
-				<div>状态：<a href="javascript:" class="link">{{ item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : '待付款' }}</a></div>
+				<div>状态：<a href="javascript:" class="link">{{ item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : item.status == 'refund' ? '已退款' : '待付款' }}</a></div>
 				<div class="operate" style="height: 35px;" v-if="item.status == 'wait'">
 					<span style="margin-right:40px;" class="button default" @click="payagain(item, $event)">去付款</span>
 					<span style="margin-right:10px;" class="button" @click="cancel(item, $event)">取&nbsp;&nbsp;&nbsp;&nbsp;消</span>
