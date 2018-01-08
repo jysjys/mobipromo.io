@@ -192,7 +192,7 @@
 					type: 'POST',
 					async: false,
 					url: '/promo/manage/trade/refund',
-					data: self.searchData,
+					data: {tradeNumber: tradeNo},
 					success: function(data) {
 						if(data.isSuccess) {
 							Util.globalTopTip("退款成功", "top_success", 2000, $('body'), !0);
