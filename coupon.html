@@ -104,9 +104,51 @@
 			</div>
 		</div>
 	</div>
-
+	<style type="text/css" media="screen">
+		.loadding li {
+			text-align: center !important;
+		}
+		.loadding li span {
+			display: inline-block;
+			width: 30px; 
+			height: 30px;
+			animation: bounce_waiting 1.2s linear infinite;
+			transform: scale(0);
+			border-radius: 50%;
+			margin-top: 15px
+		}
+		.loadding li span:nth-child(2) {
+			left: 15px;
+			animation-delay: .48s;
+		}
+		.loadding li span:nth-child(3) {
+			left: 30px;
+			animation-delay: 0.6s;
+		}
+		.loadding li span:last-child {
+			left: 45px;
+			animation-delay: 0.72s;
+		}
+		@keyframes bounce_waiting {
+			0% {
+				transform: scale(1);
+				background-color: #458DEF;
+			}
+			100% {
+				transform: scale(0);
+				background-color: #ffffff;
+			}
+		}
+	</style>
 	<div id="commodList" class="trade-list">
-		<ul v-for="(item, index) in list">
+		<ul class="loadding" v-show="loadding">
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</ul>
+		<ul v-for="(item, index) in list" v-show="!loadding">
 			<li @click="fade" class="clearfix">
 				<label class="trade-time">{{ item.createdAt }}</label>
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>

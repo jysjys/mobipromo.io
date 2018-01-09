@@ -7,100 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/css/userCenter.css">
-	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_sj0bqlg2iyg5jyvi.css
-">
+	<link rel="stylesheet" href="../assets/css/icons/icons.css">
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_527532_sj0bqlg2iyg5jyvi.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/coupon.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/userCenter.css">
-	<style type="text/css">
-		.jumbotron {
-			overflow: hidden;
-		}
-		.jumbotron .add_address {
-			float: left;
-			margin-right: 20px;
-			margin-bottom: 30px;
-		}
-		.order_list {
-			text-align: center;
-			color: #999;
-		}
-		.order_list h2, .order_list h3 {
-			font-size: 16px;
-			line-height: 30px;
-		}
-		.order_list p {
-			font-size: 14px;
-			color: #000;
-			line-height: 22px;
-			margin-top: 10px;
-		}
-		.order_list h4 {
-			font-size: 12px;
-			line-height: 25px;
-		}
-		.order_list h4 span {
-			display: inline-block;
-			padding: 5px;
-			background: blue;
-			color: #ffffff;
-			line-height: 10px;
-			margin-right: 15px;
-		}
-		.order_list button {
-			font-size: 16px;
-			color: #FFFFFF;
-			padding: 5px 25px;
-			border-radius: 3px;
-			background: #458DEF;
-			margin-top: 10px;
-		}
-		.row_sec {
-			width: 100%;
-			height: 300px;
-			background: #ddd;
-			padding-left: 400px;
-			padding-top: 50px;
-			text-align: left;
-			position: relative;
-			color: #FFFFFF;
-			margin-top: 30px;
-		}
-		.row_sec img {
-			width: 200px; 
-			height: 200px;
-			/*background: #000;*/
-			position: absolute;
-			top: 50%;
-			left: 15%;
-			transform: translateY(-50%);
-		}
-		.row_sec span {
-			display: block;
-			font-size: 18px;
-			line-height: 36px;
-			font-weight: 500;
-		}
-		.prompt {
-			margin: 30px auto 100px auto;
-			text-align: center;
-		}
-		@media (max-width: 768px) {
-			.row_sec {
-				padding-top: 45px;
-				padding-left: 100px;
-			}
-			.row_sec img {
-				width: 100px;
-				height: 100px;
-				left: 0;
-			}
-			.row_sec span {
-				font-size: 14px;
-			}
-		}
-	</style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -128,7 +39,6 @@
 	            <li class="text-center" id="login_out"><a href="../indexlogin.html">退出</a></li>
 	          </ul>
       		</li>
-	        
 	      </ul>
 	    </div>
 	    <!-- <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
@@ -147,32 +57,51 @@
 			</li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
-			<!-- 订单列表 -->
+			<!-- 我的订单 -->
 			<div class="tab-pane fade in active" id="home" >
-				<div class="row order_list" style="margin-top: 30px;">
-					
-					<h2>您已成功预约星际宝盒</h2>
-					<h3>售卖时间为 2018 年 01 月 09 日 10:30 <a href="" title="">前往抢购<i class="iconfont icon-jiantou" style="font-size: 12px;"></i></a></h3>
-					<p>订单编码：71964876525472</p>
-					<h4><span>预售</span>2017-12-19 10:18:34</h4>
-					<button type="button">申请售后</button>
-					<div class="row_sec">
-						<img src="../assets/images/can_box_child.png" alt="">
-						<div class="list_info">
-							<span>星际宝盒</span>
-							<span>张三</span>
-							<span>155****5555</span>
-							<span>发货开始时间：2018-03-15</span>
-							<span>河北省邢台市临城县临泉路吃不够羊汤</span>
-							<span>备货中</span>
-
-						</div>
+				<div class="order_list" style="margin-top: 30px;">
+					<div class="order_headding">
+						<span>全部有效订单</span>
+						<span>已付款</span>
+						<span>待付款</span>
+						<span>已关闭</span>
+						<div class="input-group">
+				            <input type="text" class="form-control" placeholder="输入订单号">
+				            <span class="input-group-addon">搜索</span>
+				        </div>
+					</div>
+					<ul class="order_body">
+						<li>
+							<div class="list_headding">
+								<span>
+									2017年12月19日 08:32&nbsp;&nbsp;|&nbsp;&nbsp;订单号:67284365928762
+								</span>
+								<span>待付款</span>
+							</div>
+							<div class="list_body">
+								<span>设备名称：</span>
+								<span>{{ item.buyAmount }} * 899</span>
+								<span>收件地址</span>
+								<span>联系电话：</span>
+								<span>金额：</span>
+								<span>状态：
+									<a href="javascript:" class="link">
+										{{ 
+											item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : '待付款' 
+										}}
+									</a>
+								</span>
+								<div class="operate" style="height: 35px;" v-if="item.status == 'wait'">
+									<span style="" class="button default" @click="payagain(item, $event)">去付款</span>
+									<span style="margin-right:10px;" class="button" @click="cancel(item, $event)">取&nbsp;&nbsp;&nbsp;&nbsp;消</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="prompt">
+						预售商品发货时间将在您选定发货时间内，按付款先后顺序发出，CAN保留提前发货的权利。
 					</div>
 				</div>
-				<div class="prompt">
-					预售商品发货时间将在您选定发货时间内，按付款先后顺序发出，CAN保留提前发货的权利。
-				</div>
-
 			</div>
 			<!-- 添加收货地址 -->
 			<div class="tab-pane fade" id="ios">
@@ -181,6 +110,10 @@
 						<p>张三</p>
 						<p>131345345575</p>
 						<p>北京市海淀区</p>
+						<span>
+							<a title="">修改</a>
+							<a title="">删除</a>
+						</span>
 					</div>
 					<div class="add_address">
 						<span class='iconfont icon-jiahao'></span>
@@ -227,6 +160,7 @@
 					</ul>
 				</form>
 			</div>
+			<!-- 我的F码 -->
 			<div class="tab-pane fade" id="F">
 				<div class="jumbotron F_code">
 				  <h1>您好,CAN客</h1>
@@ -239,9 +173,49 @@
 
 	</div>	
 
-
+	<style type="text/css">
+		.dlg_form {
+			padding-top: 30px;
+			padding-left: 20px;
+		}
+		.dlg_form span {
+			font-size: 16px;
+			margin-right: 20px;
+		}
+		.dlg_form input {
+			margin-bottom: 25px;
+			border-radius: 5px;
+			border-style: none;
+			border: 1px solid #d0d0d0;
+			width: 190px;
+			height: 33px;
+		}
+		
+	</style>
 	<!-- dialog -->
-	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="price_dlg">
+	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="address_dlg">
+		<h2 class="dialog-title">收货地址</h2>
+		<span class='dialog_warn2'></span>
+		<div class="dlg-content">
+			<div class="dlg_form">
+				<span>姓名</span>
+				<input type="text" name="dlg_userName" value="" placeholder="">
+				<br>	
+				<span>电话</span>
+				<input type="text" name="dlg_phone" value="" placeholder="">
+				<br>
+				<span>地址</span>
+				<input type="text" name="dlg_address" value="" placeholder="">
+			</div>
+			<div class="dlg_btn">
+				<div class="operate" style="height: 35px;" v-if="item.status == 'wait'">
+					<span style="" class="button default" @click="payagain(item, $event)">去付款</span>
+					<span style="margin-right:10px;" class="button" @click="cancel(item, $event)">取&nbsp;&nbsp;&nbsp;&nbsp;消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dialog dialog-box" style="top:200px;left:300px;display: none;" id="price_dlg">
 		<h2 class="dialog-title">订单信息</h2>
 		<span class='dialog_warn2'></span>
 		<div class="dlg-content">
@@ -259,10 +233,10 @@
 				</div>
 			</div>
 			<div class="dlg-item" style="text-align:right;margin-bottom:0;">
-				<button id="zhifu2" class="button">去支付 <label>¥ 899</label></button>
+				<span id="zhifu2" class="button default">去支付 <label>¥ 899</label></span>
 			</div>
 		</div>
-	</div>	
+	</div>
 <script src="../assets/js/jquery.min.js"></script>
 <script src='../assets/js/bootstrap.min.js'></script>
 <script src="../assets/js/address.js"></script>
@@ -270,11 +244,41 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src='../assets/js/userCenter.js'></script>
 <script type="text/javascript">
-	$(".jumbotron").on('click', function () {
+	// $('#price_dlg').dialog();
+	$(".add_address:last").on('click', function () {
 		$('form').slideDown()
 	})
 	$("#login_out").on('click', function(){setCookie('Authorization','', -1)})
+	$('.add_address span a:eq(0)').on('click', function (e) {
+		$('#address_dlg').dialog();
+		$("#window-mask").css('display','block');
+		if($("#address_dlg").css("display") == 'block') {
+			$(".operate span:last-child").on('click', function () {
+				console.log('operate span')
+				$("#address_dlg").hide();
+				$("#window-mask").css('display','none');
+			})
+		}
+	});
+	
 
+	// 订单列表
+	// var row_sec_list = new Vue({
+	// 	el: '.row_sec',
+	// 	data: {
+	// 		list:''
+	// 	},
+	// 	mounted: function () {
+	// 		$.ajax({
+	// 			type: 'GET',
+	// 			url: '',
+	// 			contentType: 'application/json; charset=utf-8',
+	// 			success: function(data) {
+	// 				console.log(data);
+	// 			}
+	// 		})
+	// 	}
+	// })
 </script>
 </body>
 </html>
