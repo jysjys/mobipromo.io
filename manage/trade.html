@@ -105,7 +105,7 @@
 						<td>
 							<button class="btn btn-success btn-xs" @click="detail(index)">详情</button>
 							<button v-if="item.status == 'wait' || item.status == 'cancel' || item.status == 'close'" class="btn btn-success btn-xs" @click="gathering(item.tradeNumber)">确认收款</button>
-							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber, item.buyAmount)">退款</button>
+							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber, item.totalRmb)">退款</button>
 						</td>
 					</tr>
 				</tbody>
