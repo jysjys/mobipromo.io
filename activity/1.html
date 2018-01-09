@@ -107,7 +107,7 @@
 				<span></span>
 			</li>
 		</ul>
-		<ul v-for="(item, index) in list" v-show="!loading">
+		<ul v-for="(item, index) in list" v-show="!loading" style="display: none;">
 			<li @click="fade" class="clearfix">
 				<label class="trade-time">{{ item.createdAt }}</label>
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
