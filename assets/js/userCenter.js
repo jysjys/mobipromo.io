@@ -271,58 +271,8 @@
 
 
 
-	$.fn.dialog = function(option) {
-		var dlgWin = $(this);
-		if ("string" == typeof option)
-			"close" == option && (dlgWin.find(".dialog-close").trigger("click"),
-			null != $("#window-mask") && $("#window-mask").hide());
-		else {
-			var defaults = {
-				fixed: !0,
-				closable: !0,
-				mask: !0
-			};
-			option = $.extend(defaults, option),
-			option || (option = {});
-			var title = "";
-			option.title ? title = option.title : dlgWin.attr("title") && (title = dlgWin.attr("title"),
-			dlgWin.attr("title", "")),
-			dlgWin.addClass("dialog-box").show();
-			var closeBtn = $("<div class='dialog-close'>&times;</div>").appendTo(dlgWin);
-			closeBtn.bind("click", function() {
-				if (!option.onClose || 0 != option.onClose()) {
-					// $.mask("close"),
-					dlgWin.hide(),
-					dlgWin.removeClass("dialog-box").find(".dialog-close").remove();
-					var title = dlgWin.find(".dialog-title");
-					dlgWin.attr("title", title.text()),
-					title.remove(),
-					$(window).unbind("resize.dialog")
-				}
-			}),
-			dlgWin.find(".close").on("click", function() {
-				closeBtn.click()
-			}),
-			option.closable && closeBtn.show(),
-			"" != title && dlgWin.prepend("<h2 class='dialog-title'>" + title + "</h2>"),
-			// option.mask && $.mask(),
-			$(window).bind("resize.dialog", function() {
-				var outerWidth = dlgWin.outerWidth()
-				  , outerHeight = dlgWin.outerHeight()
-				  , top = 0;
-				option.fixed ? (dlgWin.css("position", "fixed"),
-				top = ($(window).height() - outerHeight) / 2 + "px") : (dlgWin.css("position", "absolute"),
-				top = ($(window).height() - outerHeight) / 2 + $(document).scrollTop() + "px");
-				var left = ($(window).width() - outerWidth) / 2 + "px";
-				dlgWin.css({
-					top: top,
-					left: left
-				})
-			}),
-			$(window).trigger("resize.dialog"),
-			dlgWin.find(".dialog-title").draggable({
-				target: dlgWin
-			});
-		}
-		return dlgWin
-	}
+
+
+
+
+	

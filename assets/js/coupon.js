@@ -35,7 +35,8 @@ var commodList = new Vue({
 	el: '#commodList',
 	data: {
 		list:[],
-		curPage: 1
+		curPage: 1,
+		loadding: true
 	},
 	mounted: function() {
 		this.getList();
@@ -65,6 +66,7 @@ var commodList = new Vue({
 						return;
 					}
 					self.list = self.list.concat(data.data);
+					self.loadding = false;
 					if(data.data.length < 10) {
 						$('.more_btn').text('没有更多订单了！');
 						return;

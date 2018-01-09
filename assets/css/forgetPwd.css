@@ -1,0 +1,42 @@
+	.login-container {
+		display: inline-block;
+		padding: 30px;
+		background: #fff;
+		border-radius: 6px;
+	}
+	.login-container h1 {
+		color: #333;
+		font-weight: 400;
+		text-shadow: none;
+	}
+	button {
+		width: 270px;
+	}
+	input {
+		background: #fff;
+		border: 1px solid #ccc;
+		color: #333;
+	}
+	input::-webkit-input-placeholder {
+		color: #333;
+	}
+	.warn {
+		display: none;
+		line-height: 15px;
+		padding-left: 10px;
+	}
+	input[name='epid'] {
+		width: 180px;
+		border-radius: 6px 0 0 6px;
+	}
+	.btn_epid {
+		width: 90px;
+		margin-left: 0;
+		border-radius: 0 6px 6px 0;
+		height: 42px;
+	}
+	@media (max-width: 768px) {
+		.login-container {
+			margin-top: 30%;
+		}
+	}
