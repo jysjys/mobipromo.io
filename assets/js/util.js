@@ -28,26 +28,41 @@ Util.globalTopTip = function(a, b, c, d, e) {
     }
 }
 
-$.confirm = function(a) {
-  var b = $("#global_confirm_window")
-    , c = "确定";
-  a.okval && (c = a.okval),
-  b.length ? (b.find(".dlg-content").html(a.content),
-  b.find(".okbtn").html(c)) : b = $("<div id='global_confirm_window' tabindex='-1' class='confirm-box' title='请确认'><div class='dlg-content'>" + a.content + "</div><div class='dlg-buttons'><span class='button default okbtn'>" + c + "</span>&nbsp;&nbsp;<span class='button cancelbtn close'>取消</span></div></div>").appendTo("body"),
-  a.width && b.css("width", a.width),
-  a.height && b.css("height", a.height),
-  b.dialog(),
-  $(document).off("keyup.confirm").on("keyup.confirm", function(a) {
-      13 == a.keyCode && b.find(".okbtn").trigger("click")
-  }),
-  b.find(".okbtn").off().on("click", function() {
-      b.dialog("close"),
-      a.onConfirm && a.onConfirm()
-  }),
-  b.find(".cancelbtn").off("click.cancel").on("click.cancel", function() {
-      a.onCancel && a.onCancel()
+$.confirm = function(options){
+  var confirmWin = $("#global_confirm_window");
+  var okval = "确定";
+  if(options.okval){
+    okval = options.okval;
+  }
+  if(!confirmWin.length){
+    confirmWin = $("<div id='global_confirm_window' tabindex='-1' class='confirm-box' title='请确认'><div class='dlg-content'>"+options.content+"</div><div class='dlg-buttons'><span class='pro-btn default okbtn'>" + okval + "</span>&nbsp;&nbsp;<span class='pro-btn cancelbtn close'>取消</span></div></div>").appendTo("body");
+  }else{
+    confirmWin.find(".dlg-content").html(options.content);
+    confirmWin.find(".okbtn").html(okval);
+  }
+  if(options.width){
+    confirmWin.css("width", options.width);
+  }
+  if(options.height){
+    confirmWin.css("height", options.height);
+  }
+  confirmWin.dialog();
+  $(document).off('keyup.confirm').on('keyup.confirm', function(e){
+    if(e.keyCode == 13)
+      confirmWin.find(".okbtn").trigger('click');
   })
-}
+  confirmWin.find(".okbtn").off().on("click", function(){
+    confirmWin.dialog("close");
+    if(options.onConfirm){
+      options.onConfirm();
+    }
+  });
+  confirmWin.find(".cancelbtn").off("click.cancel").on("click.cancel", function(){
+    if(options.onCancel){
+      options.onCancel();
+    }
+  });
+};
 /**
  * 说明： 在页面指定元素中构建分页条
  * @param curPage 当前第几页
@@ -56,91 +71,98 @@ $.confirm = function(a) {
  * @param barCount 分页条共显示多少个按钮
  */
 $.fn.pagination = function(curPage, totalPage, records, clickHandler, barCount){
- var pageBarNum = 5;
- if(barCount){
-  pageBarNum = barCount;
- }
- var pageToal = '<span style="font-size:14px;position:absolute;left:0;float:left;display:inline-block;padding-left:0;margin:25px 0;border-radius:4px;">共'+ records +'条记录 </span>';
- $(pageToal).appendTo($(this));
- if(totalPage <= 1){
-  return;
- }
- var pager = $('<ul></ul>').appendTo($(this));
- var tar = pager.addClass("pagination");
- var start = 1;
- var end = totalPage;
- if(totalPage > pageBarNum){
-  var index = Math.floor(pageBarNum/2);
-  var start = (curPage-index) > 0 ? (curPage-index) : 1;
-  if(totalPage - start < pageBarNum){
-   start = totalPage - pageBarNum + 1;
+  var pageBarNum = 5;
+  if(barCount){
+   pageBarNum = barCount;
   }
-  var end = start + pageBarNum - 1;
- }
- var pageHtml = "";
- if(curPage > 1){
-  pageHtml += "<li><a p='" + (curPage - 1) + "'>«</a ></li>";
- }else{
-  pageHtml += "<li class='disabled'><a>«</a ></li>";
- }
- if(start >= 2){
-  pageHtml += "<li><a p='1'>1</a ></li>";
- }
- if(start >= 3){
-  pageHtml += "<li class='disabled ellipsis'><a>...</a ></li>";
- }
- for (var i = start; i <= end; i++) {
-  if (i > totalPage)
-   break;
-  if (i == curPage) {
-   pageHtml += '<li class="disabled"><a>' + i + '</a ></li>';
-  } else {
-   pageHtml += "<li><a p='" + i + "'>" + i + "</a ></li>";
+  var pageToal = '<span style="font-size:14px;position:absolute;left:0;float:left;display:inline-block;padding-left:0;margin:25px 0;border-radius:4px;">共'+ records +'条记录 </span>';
+  $(pageToal).appendTo($(this));
+  if(totalPage <= 1){
+    return;
   }
- }
- if(end <= totalPage - 2){
-  pageHtml += "<li class='disabled ellipsis'><a>...</a ></li><li><a p='"+totalPage+"'>"+totalPage+"</a ></li>";
- }else if(end <= totalPage - 1){
-  pageHtml += "<li><a p='"+ totalPage +"'>"+totalPage+"</a ></li>";
- }
- if(curPage < totalPage){
-  pageHtml += "<li><a p='" + (curPage + 1) + "'>»</a ></li>";
- }else{
-  pageHtml += "<li class='disabled'><a>»</a ></li>";
- }
- tar.html(pageHtml);
- if(clickHandler){
-  tar.find("a[p]").on("click", function(){
-   var page = $(this).attr("p");
-   clickHandler(parseInt(page));
-  });
- }
+  var pager = $('<ul></ul>').appendTo($(this));
+  var tar = pager.addClass("pagination");
+  var start = 1;
+  var end = totalPage;
+  if(totalPage > pageBarNum){
+    var index = Math.floor(pageBarNum/2);
+    var start = (curPage-index) > 0 ? (curPage-index) : 1;
+    if(totalPage - start < pageBarNum){
+      start = totalPage - pageBarNum + 1;
+    }
+    var end = start + pageBarNum - 1;
+  }
+  var pageHtml = "";
+  if(curPage > 1){
+    pageHtml += "<li><a p='" + (curPage - 1) + "'>«</a ></li>";
+  }else{
+    pageHtml += "<li class='disabled'><a>«</a ></li>";
+  }
+  if(start >= 2){
+    pageHtml += "<li><a p='1'>1</a ></li>";
+  }
+  if(start >= 3){
+    pageHtml += "<li class='disabled ellipsis'><a>...</a ></li>";
+  }
+  for (var i = start; i <= end; i++) {
+    if (i > totalPage)
+      break;
+    if (i == curPage) {
+      pageHtml += '<li class="disabled"><a>' + i + '</a ></li>';
+    } else {
+      pageHtml += "<li><a p='" + i + "'>" + i + "</a ></li>";
+    }
+  }
+  if(end <= totalPage - 2){
+    pageHtml += "<li class='disabled ellipsis'><a>...</a ></li><li><a p='"+totalPage+"'>"+totalPage+"</a ></li>";
+  }else if(end <= totalPage - 1){
+    pageHtml += "<li><a p='"+ totalPage +"'>"+totalPage+"</a ></li>";
+  }
+  if(curPage < totalPage){
+    pageHtml += "<li><a p='" + (curPage + 1) + "'>»</a ></li>";
+  }else{
+    pageHtml += "<li class='disabled'><a>»</a ></li>";
+  }
+  tar.html(pageHtml);
+  if(clickHandler){
+    tar.find("a[p]").on("click", function(){
+      var page = $(this).attr("p");
+      clickHandler(parseInt(page));
+    });
+  }
 };
 
 var maskStackCount = 0;
-$.mask = function(a) {
-    if ("undefined" == typeof a && (a = "open"),
-    "open" == a) {
-        if (0 == maskStackCount) {
-            var b = $("<div id='window-mask' class='window-mask' style='display:none'></div>").appendTo("body");
-            b.css({
-                width: $(window).width() + "px",
-                height: $(window).height() + "px",
-                filter: "alpha(opacity=60)"
-            }).show(),
-            $(window).bind("resize.mask", function() {
-                b.css({
-                    width: $(window).width() + "px",
-                    height: $(window).height() + "px"
-                })
-            })
-        }
-        maskStackCount++
-    } else
-        "close" == a && (maskStackCount--,
-        0 == maskStackCount && ($("#window-mask").remove(),
-        $(window).unbind("resize.mask")))
-}
+$.mask = function(method){
+  if(typeof method == "undefined"){
+    method="open";
+  }
+  if (method == "open") {
+    if (maskStackCount == 0) {
+      var mask = $("<div id='window-mask' class='window-mask' style='display:none'></div>").appendTo("body");
+      mask.css({
+        width: $(window).width() + "px",
+        height: $(window).height() + "px",
+        filter: "alpha(opacity=60)"
+      }).show();
+      $(window).bind("resize.mask", function(){
+        mask.css({
+          width: $(window).width() + "px",
+          height: $(window).height() + "px"
+        });
+      });
+    }
+    maskStackCount++;
+  }
+  else if(method == "close"){
+    maskStackCount--;
+    if(maskStackCount == 0){
+      $("#window-mask").remove();
+      $(window).unbind("resize.mask");
+    }
+  }
+
+};
 
 $.fn.dialog = function(option) {
   var dlgWin = $(this);
@@ -198,75 +220,93 @@ $.fn.dialog = function(option) {
   return dlgWin
 }
 
-$.fn.draggable = function(a) {
-  var b = {
+$.fn.draggable = function(options){
+  var defaults = {
     target: "default",
-    clone: !1,
+    clone: false,
     undrag: "",
-    scroll: !0,
-    start: function() {},
-    drag: function() {},
-    end: function() {}
-  }
-    , c = $.extend(b, a);
-  return $(this).off("mousedown.drag").on("mousedown.drag", function(a) {
-    $(document).on("selectstart.drag dragstart", function() {
-      return !1
-    });
-    var b = $(this)
-      , d = "string" == typeof c.target && "default" == c.target ? b : c.target
-      , e = a.pageX
-      , f = a.pageY
-      , g = d.offset().left
-      , h = d.offset().top;
-    c.clone && (d = b.clone().removeAttr("id").css("position", "absolute").offset({
-      left: g,
-      top: h
-    }),
-    "function" == typeof c.clone && (c.clone.call(d, a),
-    g = 1 * d.css("left").replace("px", ""),
-    h = 1 * d.css("top").replace("px", "")),
-    c.opacity && d.css("opacity", c.opacity)),
-    $(document).on("mousemove.drag", function(a) {
-      b.hasClass("ondrag") || (b.addClass("ondrag"),
-      c.clone && d.appendTo(b.parent()),
-      c.start.call(b[0], a));
-      var i = a.pageX - e + g
-        , j = a.pageY - f + h;
-      if (c.bounding) {
-        var k = c.bounding.offset().left
-          , l = c.bounding.offset().top;
-        i > k && j > l && i < k + c.bounding.outerWidth() - d.outerWidth() && j < l + c.bounding.outerHeight() - d.outerHeight() && d.offset({
-          left: i,
-          top: j
-        })
-      } else
-        d.offset({
-          left: i,
-          top: j
+    scroll: true,
+    //callback
+    start: function(){},
+    drag: function(){},
+    end: function(){}
+  };
+  var opt = $.extend(defaults, options);
+  $(this).off("mousedown.drag").on("mousedown.drag", function(e){
+    $(document).on("selectstart.drag dragstart", function(){return false;});
+    var $this = $(this);
+    var target = typeof opt.target == "string" && opt.target == "default" ? $this : opt.target;
+    var downX = e.pageX;
+    var downY = e.pageY;
+    var downLeft = target.offset().left;
+    var downTop = target.offset().top;
+    if(opt.clone){
+      target = $this.clone().removeAttr("id").css("position", "absolute")
+      .offset({
+        left: downLeft,
+        top: downTop
+      });
+      if(typeof opt.clone == "function"){
+        opt.clone.call(target, e);
+        downLeft = target.css("left").replace("px", "") * 1;
+        downTop = target.css("top").replace("px", "") * 1;
+      }
+      if(opt.opacity){
+        target.css("opacity", opt.opacity);
+      }
+    }
+    $(document).on("mousemove.drag", function(e){
+      if(!$this.hasClass("ondrag")){
+        $this.addClass("ondrag");
+        if(opt.clone)
+          target.appendTo($this.parent());
+        opt.start.call($this[0], e);
+      }
+      var left = e.pageX - downX + downLeft;
+      var top = e.pageY - downY + downTop;
+      if(opt.bounding){
+        var boundingleft = opt.bounding.offset().left;
+        var boundingtop = opt.bounding.offset().top;
+        if(left > boundingleft && top > boundingtop
+          && left < boundingleft + opt.bounding.outerWidth() - target.outerWidth()
+          && top < boundingtop + opt.bounding.outerHeight() - target.outerHeight()){
+          target.offset({
+            left: left,
+            top: top
+          });
+        }
+      }else{
+        target.offset({
+          left: left,
+          top: top
         });
-      c.drag.call(b[0], a)
-    }),
-    $(document).on("mouseup.drag", function(a) {
-      c.end.call(b[0], a),
-      c.clone && d.remove(),
-      $(document).off("selectstart.drag dragstart"),
-      $(document).off("mousemove.drag"),
-      $(document).off("mouseup.drag"),
-      $(".drop-hover").length || b.removeClass("ondrag")
-    }),
-    $(this).on("mouseup.drag", function(a) {
-      $(document).trigger("mouseup.drag"),
-      $(this).off("mouseup.drag")
-    })
-  }),
-  c.undrag && $(this).find(c.undrag).off("mousemove.drag").on("mousemove.drag", function(a) {
-    a.stopPropagation()
-  }).on("dragstart", function() {
-    return !1
-  }),
-  this
-}
+      }
+      opt.drag.call($this[0], e);
+    });
+    $(document).on("mouseup.drag", function(e){
+      opt.end.call($this[0], e);
+      if(opt.clone){
+        target.remove();
+      }
+      $(document).off("selectstart.drag dragstart");
+      $(document).off("mousemove.drag");
+      $(document).off("mouseup.drag");
+      if(!$(".drop-hover").length){
+        $this.removeClass("ondrag");
+      }
+    });
+    $(this).on("mouseup.drag", function(e){
+      $(document).trigger("mouseup.drag");
+      $(this).off("mouseup.drag");
+    });
+  });
+  if(!!opt.undrag){
+    $(this).find(opt.undrag).off("mousemove.drag").on("mousemove.drag", function(e){
+      e.stopPropagation();
+    }).on("dragstart", function(){return false});
+  }
+  return this;
+};
 
 Date.prototype.format = function(fmt) {
   var o = {
@@ -290,7 +330,7 @@ Date.prototype.format = function(fmt) {
 }
 
 $(function() {
-  $(document).on('mouseenter', "[data-toggle='popover']", function() {
+  $(document).on('mouseenter', "[data-toggle='tooltip']", function() {
     $(this).tooltip('show');
   });
   if($.fn.datetimepicker) {

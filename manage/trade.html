@@ -93,7 +93,7 @@
 						<td>{{ item.tradeNumber }}</td>
 						<td>{{ item.account }}</td>
 						<td>{{ item.userName }}</td>
-						<td><div data-toggle="popover" :title="item.receivingAddress">{{ item.receivingAddress }}</div></td>
+						<td><div data-toggle="tooltip" :title="item.receivingAddress" :data-original-title="item.receivingAddress">{{ item.receivingAddress }}</div></td>
 						<td>{{ item.buyAmount }}</td>
 						<td>{{ item.totalRmb }}</td>
 						<td>
