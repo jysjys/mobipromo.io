@@ -208,19 +208,20 @@
 		})
 
 		$('#save_proxy').on('click', function() {
+			$(this).button('loading');
 			$.ajax({
 				url: '/promo/manage/index/saveProxy',
 				type: 'post',
 				async: false,
 				data: $("#save_form").serialize(),
 				success: function(data) {
+					$(this).button('reset');
 					if (data.isSuccess) {
 						$('#myModal').modal('hide');
 						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
 						Manage.searchData = {};
 						Manage.getUserlist(1);
 					} else {
-						console.log(data)
 						Util.globalTopTip("异常", "top_error", 2000, $('#myModal'), !0);
 					}
 				}
