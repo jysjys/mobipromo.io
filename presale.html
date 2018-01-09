@@ -89,14 +89,14 @@
 	</div>
 
 	<div id="commodList" class="trade-list">
-		<ul class="loadding" v-show="loadding">
+		<ul class="loading" v-show="loading">
 			<li>
 				<span></span>
 				<span></span>
 				<span></span>
 			</li>
 		</ul>
-		<ul v-for="(item, index) in list" v-show="!loadding">
+		<ul v-for="(item, index) in list" v-show="!loading">
 			<li @click="fade" class="clearfix">
 				<label class="trade-time">{{ item.createdAt }}</label>
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
@@ -141,7 +141,7 @@
 	<!-- // <script src="assets/js/supersized-init.js"></script> -->
 	<script src="assets/js/qrcode.js"></script>
 	<script src="assets/js/address.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="assets/js/vue.min.js"></script>
 	<script srx='assets/js/util.js'></script>
 	<!--表单验证-->
 	<!-- <script src="assets/js/jquery.validate.min.js?var1.14.0"></script> -->
@@ -173,7 +173,7 @@
 		data: {
 			list:[],
 			curPage: 1,
-			loadding: true
+			loading: true
 		},
 		mounted: function() {
 			this.getList();
@@ -198,6 +198,7 @@
 					contentType: "application/json; charset=utf-8",
 					url: '/promo/authed/account/get/selllist',
 					success: function(data) {
+						self.loading = false;
 						if(data.isOrdered.count != null) {
 							$(".btn_ver").css({
 								'display': 'block'
@@ -209,7 +210,6 @@
 							return;
 						}
 						self.list = self.list.concat(data.data);
-						self.loadding = false;
 						if(data.data.length < 10) {
 							$('.more_btn').text('没有更多订单了！');
 							return;

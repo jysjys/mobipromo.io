@@ -105,14 +105,14 @@
 		</div>
 	</div>
 	<div id="commodList" class="trade-list">
-		<ul class="loadding" v-show="loadding">
+		<ul class="loading" v-show="loading">
 			<li>
 				<span></span>
 				<span></span>
 				<span></span>
 			</li>
 		</ul>
-		<ul v-for="(item, index) in list" v-show="!loadding">
+		<ul v-for="(item, index) in list" v-show="!loading">
 			<li @click="fade" class="clearfix">
 				<label class="trade-time">{{ item.createdAt }}</label>
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
@@ -148,7 +148,7 @@
 	<script src="./assets/js/jquery.min.js"></script>
 	<!--背景图片自动更换-->
 	<!-- <script src="./assets/js/supersized.3.2.7.min.js"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="assets/js/vue.min.js"></script>
 	<script src="./assets/js/address.js"></script>
 	<script src="./assets/js/util.js"></script>
 	<script src='./assets/js/coupon.js'></script>

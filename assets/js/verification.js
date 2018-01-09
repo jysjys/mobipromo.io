@@ -25,7 +25,7 @@ var commodList = new Vue({
 	data: {
 		list:[],
 		curPage: 1,
-		loadding: true
+		loading: true
 	},
 	mounted: function() {
 		this.getList();
@@ -50,6 +50,7 @@ var commodList = new Vue({
 				contentType: "application/json; charset=utf-8",
 				url: '/promo/authed/activity/selllist',
 				success: function(data) {
+					self.loading = false;
 					if(data.isOrdered.count != null && parseInt(data.isOrdered.count) - parseInt(data.isOrdered.used) <= 0) {
 						$('.presale-container h1').siblings().remove();
 						$('.presale-container h1').after('<span class="finish">您的购买机会已经用完</span>');
@@ -61,7 +62,6 @@ var commodList = new Vue({
 						return;
 					}
 					self.list = self.list.concat(data.data);
-					self.loadding = false;
 					if(data.data.length < 10) {
 						$('.more_btn').text('没有更多订单了！');
 						return;
