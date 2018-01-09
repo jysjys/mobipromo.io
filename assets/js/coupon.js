@@ -36,7 +36,7 @@ var commodList = new Vue({
 	data: {
 		list:[],
 		curPage: 1,
-		loadding: true
+		loading: true
 	},
 	mounted: function() {
 		this.getList();
@@ -61,12 +61,12 @@ var commodList = new Vue({
 				contentType: "application/json; charset=utf-8",
 				url: '/promo/authed/coupon/selllist',
 				success: function(data) {
+					self.loading = false;
 					if(data.data.length == 0) {
 						$('.more_btn').text('没有更多订单了！');
 						return;
 					}
 					self.list = self.list.concat(data.data);
-					self.loadding = false;
 					if(data.data.length < 10) {
 						$('.more_btn').text('没有更多订单了！');
 						return;
