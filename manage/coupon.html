@@ -19,19 +19,19 @@
 				<form class="form-inline search-form clearfix">
 					<div class="row">
 						<div class="form-group">
-							<label for="code">F码</label>
+							<label for="code">F码：</label>
 							<input type="text" style="width:120px;" class="form-control" id="code" name="code">
 						</div>
 						<div class="form-group">
-							<label for="member">所属人</label>
+							<label for="member">所属人：</label>
 							<input type="text" style="width:120px;" class="form-control" name="member" id="member">
 						</div>
 						<div class="form-group">
-							<label for="area">地区</label>
+							<label for="area">地区：</label>
 							<input type="text" style="width:120px;" class="form-control" name="area" id="area">
 						</div>
 						<div class="form-group">
-							<label for="used">状态</label>
+							<label for="used">状态：</label>
 							<select class="form-control" name="used" id="used">
 								<option value="">全部</option>
 								<option value="0">未使用</option>
@@ -40,7 +40,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="expired">过期</label>
+							<label for="expired">过期：</label>
 							<select class="form-control" name="expired" id="expired">
 								<option value="">全部</option>
 								<option value="0">未过期</option>
@@ -50,13 +50,13 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
-							<label for="time1">生成时间</label>
+							<label for="time1">生成时间：</label>
 							<input type="text" style="width:120px;" class="form-control" id="time1" name="time1">
 							<label for="time2">-</label>
 							<input type="text" style="width:120px;" class="form-control" id="time2" name="time2">
 						</div>
 						<div class="form-group">
-							<label for="time3">使用时间</label>
+							<label for="time3">使用时间：</label>
 							<input type="text" style="width:120px;" class="form-control" id="time3" name="time3">
 							<label for="time4">-</label>
 							<input type="text" style="width:120px;" class="form-control" id="time4" name="time4">
@@ -168,7 +168,7 @@
 	var ID = getCookieValue("menage");
 	var url = location.href;
 	var num = url.indexOf("?");
-	var proxyId = url.substr(num + 1);
+	var proxyId = num < 0 ? '' : url.substr(num + 1);
 	var ID = getCookieValue('manage');
 	if(ID == '' && proxyId == '') {
 		// window.location.href = './login.html'
@@ -210,19 +210,19 @@
 		*	获取F码信息
 		*/
 		function getCoupon(curPage) {
-			$.ajax({
-				type: 'POST',
-				async: false,
-				data: {
-					curPage: curPage,
-					proxyId: proxyId
-				},
-				url: '/promo/manage/coupon/getCoupons',
-				success: function (data) {
-					couponList_model.list = data.list;
-					$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
-				},
-			});
+			// $.ajax({
+			// 	type: 'POST',
+			// 	async: false,
+			// 	data: {
+			// 		curPage: curPage,
+			// 		proxyId: proxyId
+			// 	},
+			// 	url: '/promo/manage/coupon/getCoupons',
+			// 	success: function (data) {
+			// 		couponList_model.list = data.list;
+			// 		$('#pager').empty().pagination(curPage, data.total, data.count, getCoupon);
+			// 	},
+			// });
 		}
 
 		getCoupon(1);

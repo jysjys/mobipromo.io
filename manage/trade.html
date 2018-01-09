@@ -12,9 +12,18 @@
 	<link rel="stylesheet" href="../assets/css/manage/manage.css">
 	<title>后台管理中心</title>
 	<style type="text/css" media="screen">
-	.user_list tbody tr td:not(:first-child) {
-		-webkit-user-select: none;
-	}
+		.table tr th:nth-child(4), .table tr td:nth-child(4) {
+		    max-width: 300px;
+		}
+		.table tr td:nth-child(4) {
+			padding: 0;
+		}
+		.table tr td:nth-child(4) [data-toggle=popover] {
+			padding: 10px 8px;
+		}
+		.table tr th:nth-child(3), .table tr td:nth-child(3) {
+		    max-width: 100px;
+		}
 	</style>
 </head>
 <body>
@@ -24,16 +33,31 @@
 				<form class="form-inline search-form">
 					<div class="row">
 						<div class="form-group">
-							<label for="trade_number">订单号</label>
+							<label for="trade_number">订单号：</label>
 							<input type="text" class="form-control" id="trade_number" style="width:240px;" name="trade_number">
 						</div>
 						<div class="form-group">
-							<label for="account">用户</label>
+							<label for="account">用户：</label>
 							<input type="email" class="form-control" id="account" name="account">
 						</div>
 						<div class="form-group">
-							<label for="user_name">收货人</label>
-							<input type="email" class="form-control" id="user_name" name="user_name">
+							<label for="status">状态：</label>
+							<select class="form-control" name="status" id="status">
+								<option value="">全部</option>
+								<option value="wait">待付款</option>
+								<option value="ok">已付款</option>
+								<option value="cancel">已取消</option>
+								<option value="close">已关闭</option>
+								<option value="refund">已退款</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<label for="time1">创建时间：</label>
+							<input type="text" style="width:120px;" class="form-control" id="time1" name="time1">
+							<label for="time2">-</label>
+							<input type="text" style="width:120px;" class="form-control" id="time2" name="time2">
 						</div>
 					</div>
 					<div class="row">
@@ -50,7 +74,7 @@
 						<th>订单号</th>
 						<th>用户</th>
 						<th>收货人</th>
-						<th>收获地址</th>
+						<th>收货地址</th>
 						<th>购买台数</th>
 						<th>金额</th>
 						<th>状态</th>
@@ -62,7 +86,7 @@
 						<td>{{ item.tradeNumber }}</td>
 						<td>{{ item.account }}</td>
 						<td>{{ item.userName }}</td>
-						<td>{{ item.receivingAddress }}</td>
+						<td><div data-toggle="popover" :title="item.receivingAddress">{{ item.receivingAddress }}</div></td>
 						<td>{{ item.buyAmount }}</td>
 						<td>{{ item.totalRmb }}</td>
 						<td>
@@ -73,7 +97,7 @@
 						<td>
 							<a class="btn btn-success btn-xs detail_btn" v-bind:data-id="item.id" target="_blank">详情</a>
 							<button v-if="item.status == 'wait' || item.status == 'cancel' || item.status == 'close'" class="btn btn-success btn-xs" @click="gathering(item.tradeNumber)">确认收款</button>
-							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber)">退款</button>
+							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber, item.buyAmount)">退款</button>
 						</td>
 					</tr>
 				</tbody>
@@ -187,23 +211,28 @@
 					},
 				});
 			},
-			refund: function(tradeNo) {
+			refund: function(tradeNo, buyAmount) {
 				var self = this;
-				$.ajax({
-					type: 'POST',
-					async: false,
-					url: '/promo/manage/trade/refund',
-					data: {tradeNumber: tradeNo},
-					success: function(data) {
-						if(data.isSuccess) {
-							Util.globalTopTip("退款成功", "top_success", 2000, $('body'), !0);
-							self.getTradeList(1);
-						}else if(data.isFail) {
-							Util.globalTopTip("退款失败", "top_error", 2000, $('body'), !0);
-						}else if(data.reqError) {
-							Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
-						}
-					},
+				$.confirm({
+					content: "确定退款<b>" + buyAmount + "</b>元？",
+					onConfirm: function() {
+						$.ajax({
+							type: 'POST',
+							async: false,
+							url: '/promo/manage/trade/refund',
+							data: {tradeNumber: tradeNo},
+							success: function(data) {
+								if(data.isSuccess) {
+									Util.globalTopTip("退款成功", "top_success", 2000, $('body'), !0);
+									self.getTradeList(1);
+								}else if(data.isFail) {
+									Util.globalTopTip("退款失败", "top_error", 2000, $('body'), !0);
+								}else if(data.reqError) {
+									Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
+								}
+							},
+						});
+					}
 				});
 			},
 			gathering: function(tradeNo) {
@@ -247,7 +276,7 @@
 		$('#search_btn').on('click', function() {
 			tradeList.searchData.tradeNumber = $('.search-form input[name=trade_number]').val();
 			tradeList.searchData.account = $('.search-form input[name=account]').val();
-			tradeList.searchData.userName = $('.search-form input[name=user_name]').val();
+			tradeList.searchData.status = $('.search-form [name=status]').val();
 			tradeList.getTradeList(1);
 		});
 

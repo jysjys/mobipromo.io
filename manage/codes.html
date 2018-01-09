@@ -17,7 +17,7 @@
 <script>
 	var number = location.href;
 	var num = number.indexOf("?")
-   	var id = number.substr(num + 1);
+   	var id = num < 0 ? '' : url.substr(num + 1);
 	$.ajax({
 		url:'/promo/manage/coupon/getAllCoupons',
 		type: 'POST',

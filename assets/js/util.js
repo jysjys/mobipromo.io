@@ -290,6 +290,9 @@ Date.prototype.format = function(fmt) {
 }
 
 $(function() {
+  $(document).on('mouseenter', "[data-toggle='popover']", function() {
+    $(this).tooltip('show');
+  });
   if($.fn.datetimepicker) {
     $.fn.datetimepicker.defaults = {
       language: 'zh-CN',

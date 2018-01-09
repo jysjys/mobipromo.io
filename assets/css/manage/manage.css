@@ -45,8 +45,12 @@ body {
 .search-panel {
     margin-bottom:0;
 }
+
 .table th, .table td {
     text-align:center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .global_top_dialog {
