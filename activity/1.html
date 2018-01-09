@@ -100,7 +100,14 @@
 	</div>
 
 	<div id="commodList" class="trade-list">
-		<ul v-for="(item, index) in list">
+		<ul class="loadding" v-show="loadding">
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</ul>
+		<ul v-for="(item, index) in list" v-show="!loadding">
 			<li @click="fade" class="clearfix">
 				<label class="trade-time">{{ item.createdAt }}</label>
 				<label class="trade-num">订单编号：{{ item.tradeNumber }}</label>
