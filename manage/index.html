@@ -215,10 +215,10 @@
 				async: false,
 				data: $("#save_form").serialize(),
 				success: function(data) {
-					$(this).button('reset');
+					$('#save_proxy').button('reset');
 					if (data.isSuccess) {
 						$('#myModal').modal('hide');
-						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+						Util.globalTopTip(data.created ? "添加成功" : '修改成功', "top_success", 2000, $('body'), !0);
 						Manage.searchData = {};
 						Manage.getUserlist(1);
 					} else {
