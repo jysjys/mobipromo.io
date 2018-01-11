@@ -59,8 +59,8 @@
 		
 	</div>
 	<h3> <span style="color: #cb0000; font-size: 34px;"></span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/qrcode.min.js"></script>
 <script type="text/javascript">
 
 	var qrCode = new QRCode('qrCode', {
@@ -72,7 +72,7 @@
 	})
 	function createQr (url) {
 		qrCode.clear(); 
-		qrCode.makeCode('http://www.mobipromo.io/index.html?' + url + '&4');
+		qrCode.makeCode('http://www.mobipromo.io/activity/act_info.html?' + url + '&4');
 	}
 	var time_out = 60;
 	var clock = setInterval(function() {
