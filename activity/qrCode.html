@@ -1,0 +1,111 @@
+<!Doctype html>
+<html>
+<head>
+	<title></title>
+	<meta name="name" charset="utf-8">	
+	<style type="text/css" media="screen">
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background: linear-gradient(#7a8bf1,#69bded);
+			text-align: center;
+			color: #fff;
+		}
+		h1 {
+			margin: 0;
+			font-weight: 300;
+			position: fixed;
+			top: 13%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 38px;
+		}
+		h2 {
+			font-weight: 900;
+			position: fixed;
+			top: 18%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 20px;
+			color: #cb0000;
+		}
+		h3 {
+			font-weight: 400;
+			font-size: 26px;
+			position: fixed;
+			top: 75%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		#qrCode {
+			background: #fff;
+			position: fixed; 
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+			border: 10px solid #fff;
+			
+		}
+	</style>
+</head>
+<body>
+	<h1>CAN星际宝盒扫码预约</h1>
+	<h2>一个手机号只能预约一次！</h2>
+	<div id="qrCode">
+		
+	</div>
+	<h3> <span style="color: #cb0000; font-size: 34px;"></span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript">
+
+	var qrCode = new QRCode('qrCode', {
+		width: 400,
+		height: 400,
+		colorDark: '#333',
+		colorLight: '#fff',
+		correctLevel: QRCode.CorrectLevel.H
+	})
+	function createQr (url) {
+		qrCode.clear(); 
+		qrCode.makeCode('http://www.mobipromo.io/index.html?' + url + '&4');
+	}
+	var time_out = 60;
+	var clock = setInterval(function() {
+		if(time_out>1) {
+			time_out --;
+			$('h3 span').html(time_out);
+		}else {
+			time_out = 60;
+		}
+	},1000)
+
+
+	var QR = setInterval(function() {
+		var now = new Date().getTime().toString()
+		,a = now.substr(0,4) * 5 + 1314
+		,b = now.substr(4,9) * 3
+		,c = now.substr(9,13) * 5
+		now = a+'&'+b+'&'+c;
+		console.log(now)
+		createQr(now);
+		$("#qrCode").removeAttr("title");
+	},60000);
+
+	
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
