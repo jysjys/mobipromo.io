@@ -1,7 +1,7 @@
 
 
-var str_url = window.location.href;
-var time_ago ='www.mobipromo.io/index.html?8889&1921343163&38605&4';
+var time_ago = window.location.href;
+// var time_ago ='www.mobipromo.io/index.html?8889&1921343163&38605&4';
 time_ago= time_ago.split('?')[1].toString().split('&');
 var activityId = time_ago[3];
 time_ago =  Number('' + (time_ago[0] - 1314)/5+time_ago[1]/3+time_ago[2]/5);
@@ -53,64 +53,64 @@ if(activityId != 4) {
 
 
 // 提交表单
-// $(".button").on('click', function () {
-//     var isLoading = $(this).data('isLoading');
-//     if(isLoading) {
-//         return;
-//     }
-//     $(this).data('isLoading', true)
-//     $(".warn").css('display', 'none');
-//     var name = $("input[name='consignee']").val().trim(),
-//     phone = $("input[name='telephone']").val().trim(),
-//     address = $('#location').val(),
-//     count = $('.item_l a').val(),
-//     address_d = $('textarea').val(),
-//     phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-//     console.log($('.item_l a').val())
-//     if(!name) {
-//         $(".userName_warn").css('display', 'block');
-//         return;
-//     }else if(!phone_number_reg.test(phone)) {
-//         console.log('h')
-//         $('.phone_warn').css('display', 'block')
-//         return;
-//     }else if(!address) {
-//         $('.adr_warn').css('display', 'block');
-//         return;
-//     } else if(!address_d) {
-//         $('.address_d_warn').css('display', 'block')
-//     } else{
-//         var data = {
-//             name: name,
-//             phone: phone,
-//             address: address + ' ' + address_d,
-//             count: count,
-//             activityId: activityId
+$(".button").on('click', function () {
+    var isLoading = $(this).data('isLoading');
+    if(isLoading) {
+        return;
+    }
+    $(this).data('isLoading', true)
+    $(".warn").css('display', 'none');
+    var name = $("input[name='consignee']").val().trim(),
+    phone = $("input[name='telephone']").val().trim(),
+    address = $('#location').val(),
+    count = $('.item_l a').val(),
+    address_d = $('textarea').val(),
+    phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    console.log($('.item_l a').val())
+    if(!name) {
+        $(".userName_warn").css('display', 'block');
+        return;
+    }else if(!phone_number_reg.test(phone)) {
+        console.log('h')
+        $('.phone_warn').css('display', 'block')
+        return;
+    }else if(!address) {
+        $('.adr_warn').css('display', 'block');
+        return;
+    } else if(!address_d) {
+        $('.address_d_warn').css('display', 'block')
+    } else{
+        var data = {
+            name: name,
+            phone: phone,
+            address: address + ' ' + address_d,
+            count: count,
+            activityId: activityId
 
-//         }
-//         console.log(data);
-//         $.ajax({
-//             type: 'POST',
-//             url: '/promo/manage/activity/addMember',
-//             data: data,
-//             success: function(data) {
-//                     $(this).data('isLoading', false);
-//                 if(data.isSuccess) {
-//                     $('.page_two').css('display', 'block')
-//                     $('.page_one,.page_three').css('display', 'none')
-//                 } else if(data.isFail) {
-//                     $('.page_three').css('display', 'block')
-//                     $('.page_one, .page_two').css('display', 'none')
-//                     $('.page_three .yuyue_s p').html('请重新扫码预约');
-//                 }
-//             },
-//             error: function() {
-//                 $('.page_three').css('display', 'block')
-//                 $('.page_one, .page_two').css('display', 'none')
-//             }
-//         })
-//     }
-// })
+        }
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url: '/promo/manage/activity/addMember',
+            data: data,
+            success: function(data) {
+                    $(this).data('isLoading', false);
+                if(data.isSuccess) {
+                    $('.page_two').css('display', 'block')
+                    $('.page_one,.page_three').css('display', 'none')
+                } else if(data.isFail) {
+                    $('.page_three').css('display', 'block')
+                    $('.page_one, .page_two').css('display', 'none')
+                    $('.page_three .yuyue_s p').html('请重新扫码预约');
+                }
+            },
+            error: function() {
+                $('.page_three').css('display', 'block')
+                $('.page_one, .page_two').css('display', 'none')
+            }
+        })
+    }
+})
 
 
 

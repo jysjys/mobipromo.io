@@ -74,13 +74,13 @@
 		qrCode.clear(); 
 		qrCode.makeCode('http://www.mobipromo.io/index.html?' + url + '&4');
 	}
-	var time_out = 5;
+	var time_out = 60;
 	var clock = setInterval(function() {
 		if(time_out>1) {
 			time_out --;
 			$('h3 span').html(time_out);
 		}else {
-			time_out = 5;
+			time_out = 60;
 		}
 	},1000)
 
@@ -94,7 +94,7 @@
 		console.log(now)
 		createQr(now);
 		$("#qrCode").removeAttr("title");
-	},5000);
+	},60000);
 
 	
 </script>
