@@ -330,9 +330,11 @@ Date.prototype.format = function(fmt) {
 }
 
 $(function() {
-  $(document).on('mouseenter', "[data-toggle='tooltip']", function() {
-    $(this).tooltip('show');
-  });
+  if($.fn.tooltip) {
+    $(document).on('mouseenter', "[data-toggle='tooltip']", function() {
+      $(this).tooltip('show');
+    });
+  }
   if($.fn.datetimepicker) {
     $.fn.datetimepicker.defaults = {
       language: 'zh-CN',
