@@ -99,7 +99,6 @@ function init() {
             return;
         }
         $(this).data('isLoading', true);
-        console.log(data);
         $.ajax({
             type: 'POST',
             url: '/promo/manage/activity/addMember',
