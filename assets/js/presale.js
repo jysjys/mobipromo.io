@@ -77,7 +77,6 @@ function btnPress(){
 		errorContent.val('请选择省市');
 		return;
 	} else if (!addressDetail) {
-		
 		errorWarp.appendTo($("[name='address-detail']").parent());
 		errorContent.val('请输入详细地址');
 		return;

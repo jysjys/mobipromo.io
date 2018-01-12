@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<meta name="name" charset="utf-8">	
+	<meta name="name" charset="utf-8">
 	<style type="text/css" media="screen">
 		html, body {
 			height: 100%;
@@ -42,13 +42,12 @@
 		}
 		#qrCode {
 			background: #fff;
-			position: fixed; 
+			position: fixed;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			z-index: 2;
 			border: 10px solid #fff;
-			
 		}
 	</style>
 </head>
@@ -56,9 +55,8 @@
 	<h1>CAN星际宝盒扫码预约</h1>
 	<h2>一个手机号只能预约一次！</h2>
 	<div id="qrCode">
-		
 	</div>
-	<h3> <span style="color: #cb0000; font-size: 34px;"></span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3>
+	<h3><span style="color: #cb0000; font-size: 34px;"></span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3>
 <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/js/qrcode.min.js"></script>
 <script type="text/javascript">
@@ -71,7 +69,7 @@
 		correctLevel: QRCode.CorrectLevel.H
 	})
 	function createQr (url) {
-		qrCode.clear(); 
+		qrCode.clear();
 		qrCode.makeCode('http://www.mobipromo.io/activity/act_info.html?' + url + '&4');
 	}
 	var time_out = 60;
@@ -82,7 +80,7 @@
 		}else {
 			time_out = 60;
 		}
-	},1000)
+	}, 1000)
 
 
 	var QR = setInterval(function() {
@@ -94,9 +92,9 @@
 		console.log(now)
 		createQr(now);
 		$("#qrCode").removeAttr("title");
-	},60000);
+	}, 60000);
 
-	
+
 </script>
 
 </body>

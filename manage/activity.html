@@ -232,7 +232,7 @@
 				success: function(data) {
 					if (data.isSuccess) {
 						$('#myModal').modal('hide');
-						Util.globalTopTip("添加成功", "top_success", 2000, $('body'), !0);
+						Util.globalTopTip(data.created ? "添加成功" : '修改成功', "top_success", 2000, $('body'), !0);
 						activityList.searchData = {};
 						activityList.getActivityList(1);
 					} else {
@@ -245,7 +245,8 @@
 
 		$(document).on('click', '.detail_btn', function() {
 			var id = $(this).data('id');
-			$(this).attr('href', './activitymember.html?' + id);
+			window.open('activitymember.html?' + id);
+			// $(this).attr('href', './activitymember.html?' + id);
 		});
 
 		$(document).on('click', '.update_btn', function() {

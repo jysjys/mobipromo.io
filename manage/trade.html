@@ -30,6 +30,9 @@
 		.table tr th:nth-child(4), .table tr td:nth-child(4) {
 		    max-width: 150px;
 		}
+		.tooltip-inner {
+			max-width: 500px;
+		}
 	</style>
 </head>
 <body>
@@ -70,6 +73,9 @@
 						<div class="form-group btns">
 							<button class="btn btn-primary" type="button" id="search_btn">搜索</button>
 						</div>
+						<div class="form-group btns-right pull-right">
+							<button class="btn btn-default" type="button" id="export_btn" data-toggle="tooltip" title="下载订单列表"><i class="fa fa-download"></i></button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -99,10 +105,10 @@
 						<td>{{ item.totalRmb }}</td>
 						<td>
 							<span class="label" :class="item.status == 'ok' ? 'label-success' : item.status == 'cancel' ? 'label-default' : item.status == 'close' ? 'label-default' : item.status == 'refund' ? 'label-info' : 'label-warning'">
-								{{ item.status == 'ok' ? '已付款' : item.status == 'cancel' ? '已取消' : item.status == 'close' ? '已关闭' : item.status == 'refund' ? '已退款' : '待付款' }}
+								{{ item.status_ }}
 							</span>
 						</td>
-						<td>{{ item.status == 'ok' ? item.paymentType == 'alipay' ? '支付宝' : '' : '' }}</td>
+						<td>{{ (item.status == 'ok' || item.status == 'refund') ? item.paymentType_ : '' }}</td>
 						<td>{{ item.createdAt }}</td>
 						<td>
 							<button class="btn btn-success btn-xs" @click="detail(index)">详情</button>
@@ -353,6 +359,26 @@
 			tradeList.getTradeList(1);
 		});
 
+		//导出
+		$('#export_btn').on('click', function() {
+			$.ajax({
+				type: 'POST',
+				async: false,
+				url: '/promo/manage/trade/export',
+				data: $('.search-form').serialize(),
+				success: function(data) {
+					if(data.isSuccess) {
+						let down = document.createElement('a');
+						down.href = '/download/' + data.file;
+						document.body.appendChild(down);
+						down.click();
+						document.body.removeChild(down);
+					}else {
+						Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
+					}
+				}
+			});
+		});
 	});
 	</script>
 </body>
