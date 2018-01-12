@@ -33,6 +33,9 @@
 		.tooltip-inner {
 			max-width: 500px;
 		}
+		.clearfix .col-sm-3 {
+			padding-right: 0;
+		}
 	</style>
 </head>
 <body>
@@ -108,12 +111,12 @@
 								{{ item.status_ }}
 							</span>
 						</td>
-						<td>{{ (item.status == 'ok' || item.status == 'refund') ? item.paymentType_ : '' }}</td>
+						<td>{{ (item.status == 'refund') ? item.paymentType_ : '' }}</td>
 						<td>{{ item.createdAt }}</td>
 						<td>
 							<button class="btn btn-success btn-xs" @click="detail(index)">详情</button>
-							<button v-if="item.status == 'wait' || item.status == 'cancel' || item.status == 'close'" class="btn btn-success btn-xs" @click="gathering(item.tradeNumber)">确认收款</button>
-							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber, item.totalRmb)">退款</button>
+							<button v-if="item.status == 'wait' || item.status == 'cancel' || item.status == 'close'" class="btn btn-success btn-xs" @click="gathering(item.tradeNumber, index)">确认收款</button>
+							<button v-if="item.status == 'ok'" class="btn btn-success btn-xs" @click="refund(item.tradeNumber, item.totalRmb, index)">退款</button>
 						</td>
 					</tr>
 				</tbody>
@@ -155,6 +158,12 @@
 						</div>
 						<div class="clearfix" data-tp="paymentType">
 							<span class="col-sm-3">支付方式</span>
+							<div class="col-sm-9">
+								<span></span>
+							</div>
+						</div>
+						<div class="clearfix" data-tp="tradeNo">
+							<span class="col-sm-3">第三方订单号</span>
 							<div class="col-sm-9">
 								<span></span>
 							</div>
@@ -226,8 +235,7 @@
 		el: '#example',
 		data: {
 			list: [],
-			searchData: {},
-			msg: 'hello'
+			searchData: {}
 		},
 		methods: {
 			getTradeList: function(curPage) {
@@ -239,7 +247,7 @@
 					url: '/promo/manage/trade/loadTrades',
 					data: self.searchData,
 					success: function(data) {
-						tradeList.list = data.list;
+						self.list = data.list;
 						$('#pager').empty().pagination(curPage, data.total, data.count, self.getTradeList);
 					},
 				});
@@ -253,11 +261,11 @@
 					if(type == 'paymentType') {
 						value = value == 'alipay' ? '支付宝' : '其他';
 					}
-					$(this).find('div span').text(value);
+					$(this).find('div span').text(value || '无');
 				})
 				$('#myModal').modal('toggle');
 			},
-			refund: function(tradeNo, price) {
+			refund: function(tradeNo, price, index) {
 				var self = this;
 				bootbox.confirm({
 					buttons: {
@@ -281,20 +289,22 @@
 								success: function(data) {
 									if(data.isSuccess) {
 										Util.globalTopTip("退款成功", "top_success", 2000, $('body'), !0);
-										self.getTradeList(1);
+										Vue.set(self.list, index, data.trade);
+										// self.getTradeList(1);
 									}else if(data.isFail) {
 										Util.globalTopTip("退款失败", "top_error", 2000, $('body'), !0);
 									}else if(data.reqError) {
 										Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
 									}
-								},
+								}
 							});
 						}
 					},
 					title: "请确认"
 				});
 			},
-			gathering: function(tradeNo) {
+			gathering: function(tradeNo, index) {
+				var self = this;
 				bootbox.confirm({
 					buttons: {
 					   confirm: {
@@ -306,24 +316,26 @@
 					       className: 'btn-default'
 					   }
 					},
-					message: '确定退款<b>' + 233 + '</b>元？',
+					message: '确定收到款项？',
 					callback: function(result) {
-						console.log(result)
-					},
-					title: "请确认"
-					// content: "确认已收到货款",
-					// onConfirm: function() {
-					// 	$.ajax({
-					// 		type: 'POST',
-					// 		async: false,
-					// 		url: '/promo/manage/trade/gathering',
-					// 		data: self.searchData,
-					// 		success: function(data) {
-					// 			tradeList.list = data.list;
-					// 			$('#pager').empty().pagination(curPage, data.total, data.count, self.getTradeList);
-					// 		},
-					// 	});
-					// }
+						if(result) {
+							$.ajax({
+								type: 'POST',
+								async: false,
+								url: '/promo/manage/trade/gathering',
+								data: {tradeNumber: tradeNo},
+								success: function(data) {
+									if(data.isSuccess) {
+										Vue.set(self.list, index, data.trade);
+									}else if(data.isFail) {
+										Util.globalTopTip("失败", "top_error", 2000, $('body'), !0);
+									}else if(data.reqError) {
+										Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
+									}
+								}
+							});
+						}
+					}
 				});
 			}
 		}
