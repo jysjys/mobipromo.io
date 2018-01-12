@@ -4,6 +4,7 @@
 	<title></title>
 	<meta name="name" charset="utf-8">
 	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<style type="text/css" media="screen">
 		html, body {
 			height: 100%;
@@ -11,6 +12,8 @@
 			padding: 0;
 		}
 		body {
+			background: -webkit-linear-gradient(#7a8bf1,#69bded);
+			background: -moz-linear-gradient(#7a8bf1,#69bded);
 			background: linear-gradient(#7a8bf1,#69bded);
 			text-align: center;
 			color: #fff;
@@ -50,6 +53,14 @@
 			z-index: 2;
 			border: 10px solid #fff;
 		}
+		@media(max-width: 768px) {
+			h1 {
+				font-size: 18px;
+			}
+			h2 {
+				font-size: 15px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -57,48 +68,70 @@
 	<h2>一个手机号只能预约一次！</h2>
 	<div id="qrCode">
 	</div>
-	<h3><span style="color: #cb0000; font-size: 34px;"></span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3>
+	<!-- <h3><span style="color: #cb0000; font-size: 34px;">60</span>&nbsp;<i style="position: relative; top: -3px; font-style: normal;">秒之后刷新</i></h3> -->
+</body>
 <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/js/qrcode.min.js"></script>
 <script type="text/javascript">
+	var width_Client =  document.body.clientWidth;
+	if(width_Client < 768) {
+		var qrCode = new QRCode('qrCode', {
+			width: 200,
+			height: 200,
+			colorDark: '#333',
+			colorLight: '#fff',
+			correctLevel: QRCode.CorrectLevel.H
+		})
+	}else {
+		var qrCode = new QRCode('qrCode', {
+			width: 400,
+			height: 400,
+			colorDark: '#333',
+			colorLight: '#fff',
+			correctLevel: QRCode.CorrectLevel.H
+		})
+	}
 
-	var qrCode = new QRCode('qrCode', {
-		width: 400,
-		height: 400,
-		colorDark: '#333',
-		colorLight: '#fff',
-		correctLevel: QRCode.CorrectLevel.H
-	})
+	var url = window.location.href;
+	var num = url.indexOf("?");
+	var activityId = num < 0 ? '' : url.substr(num + 1);
+	if (activityId == '') {
+		window.location.href = '..';
+	}
+
 	function createQr (url) {
 		qrCode.clear();
-		qrCode.makeCode('https://www.mobipromo.io/activity/act_info.html?' + url + '&4');
+		qrCode.makeCode('https://www.mobipromo.io/activity/act_info.html?' + url + '&' + activityId);
 	}
-	var time_out = 60;
-	var clock = setInterval(function() {
-		if(time_out > 1) {
-			time_out--;
-			$('h3 span').html(time_out);
-		}else {
-			time_out = 60;
-		}
-	}, 1000);
 
+	// var time_out = 59;
+	// var clock = setInterval(function() {
+	// 	if(time_out > 0) {
+	// 		// time_out--;
+	// 		$('h3 span').html(time_out--);
+	// 	}else {
+	// 		time_out = 60;
+	// 	}
+	// }, 1000);
 
-	var QR = setInterval(function() {
+	function showCode() {
 		var now = new Date().getTime().toString()
-		,a = now.substr(0,4) * 5 + 1314
-		,b = now.substr(4,9) * 3
-		,c = now.substr(9,13) * 5
-		now = a+'&'+b+'&'+c;
-		console.log(now)
+		,a = now.substring(0,4) * 5 + 1314
+		,b = now.substring(4,9) * 3
+		,c = now.substring(9,13) * 5
+		now = a + '&' + b + '&' + c;
 		createQr(now);
-		$("#qrCode").removeAttr("title");
-	}, 60000);
+		console.log('http://localhost:9002/activity/act_info.html?' + now + '&' + activityId);
+		// $("#qrCode").removeAttr("title");
+	};
+
+	showCode();
+
+	var QR = setInterval(showCode, 60 * 1000);
+
 
 
 </script>
-
-</body>
 </html>
 
 

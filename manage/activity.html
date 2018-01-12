@@ -66,7 +66,8 @@
 						<td>{{ item.endAt }}</td>
 						<td>{{ item.remark }}</td>
 						<td>
-							<a class="btn btn-success btn-xs detail_btn" v-bind:data-id="item.id" target="_blank" style="color:#FFF;">参与人详情</a>
+							<a class="btn btn-success btn-xs" @click="detail(item.id)" style="color:#FFF;">参与人详情</a>
+							<a class="btn btn-success btn-xs" @click="appoint(item.id)" style="color:#FFF;">开始预约</a>
 							<button class="btn btn-success btn-xs update_btn" v-bind:data-index="index" style="color:#FFF;">修改</button>
 						</td>
 					</tr>
@@ -180,6 +181,12 @@
 						$('#pager').empty().pagination(curPage, data.total, data.count, self.getActivityList);
 					},
 				});
+			},
+			detail: function(id) {
+				window.open('activitymember.html?' + id);
+			},
+			appoint: function(id) {
+				window.open('/activity/qrCode.html?' + id);
 			}
 		}
 	});
@@ -241,12 +248,6 @@
 					}
 				}
 			});
-		});
-
-		$(document).on('click', '.detail_btn', function() {
-			var id = $(this).data('id');
-			window.open('activitymember.html?' + id);
-			// $(this).attr('href', './activitymember.html?' + id);
 		});
 
 		$(document).on('click', '.update_btn', function() {
