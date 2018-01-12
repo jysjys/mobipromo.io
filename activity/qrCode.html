@@ -3,6 +3,7 @@
 <head>
 	<title></title>
 	<meta name="name" charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<style type="text/css" media="screen">
 		html, body {
 			height: 100%;
@@ -10,6 +11,8 @@
 			padding: 0;
 		}
 		body {
+			background: -webkit-linear-gradient(#7a8bf1,#69bded);
+			background: -moz-linear-gradient(#7a8bf1,#69bded);
 			background: linear-gradient(#7a8bf1,#69bded);
 			text-align: center;
 			color: #fff;
@@ -49,6 +52,14 @@
 			z-index: 2;
 			border: 10px solid #fff;
 		}
+		@media(max-width: 768px) {
+			h1 {
+				font-size: 18px;
+			}
+			h2 {
+				font-size: 15px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -60,14 +71,26 @@
 <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../assets/js/qrcode.min.js"></script>
 <script type="text/javascript">
+	var width_Client =  document.body.clientWidth;
+	console.log(width_Client)
+	if(width_Client < 768) {
 
-	var qrCode = new QRCode('qrCode', {
-		width: 400,
-		height: 400,
-		colorDark: '#333',
-		colorLight: '#fff',
-		correctLevel: QRCode.CorrectLevel.H
-	})
+		var qrCode = new QRCode('qrCode', {
+			width: 200,
+			height: 200,
+			colorDark: '#333',
+			colorLight: '#fff',
+			correctLevel: QRCode.CorrectLevel.H
+		})
+	}else {
+		var qrCode = new QRCode('qrCode', {
+			width: 400,
+			height: 400,
+			colorDark: '#333',
+			colorLight: '#fff',
+			correctLevel: QRCode.CorrectLevel.H
+		})
+	}
 	function createQr (url) {
 		qrCode.clear();
 		qrCode.makeCode('http://www.mobipromo.io/activity/act_info.html?' + url + '&4');
