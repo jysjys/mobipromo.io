@@ -17,9 +17,10 @@ function init() {
     time_ago = parseInt('' + (parseInt(time_ago[0]) - 1314) / 5 + parseInt(time_ago[1]) / 3 + parseInt(time_ago[2]) / 5);
     var time_now = new Date().getTime();
     var time_diff = (time_now - time_ago) / 1000 / 60;
-    if(activityId != '5') {
-        window.location.href = 'https://www.mobipromo.io';
-    }else if(time_ago + '' == 'NaN') {
+    // if(activityId != '5') {
+    //     window.location.href = 'https://www.mobipromo.io';
+    // }else
+    if(time_ago + '' == 'NaN') {
         window.location.href = 'https://www.mobipromo.io';
     }else if(time_diff > 0 && time_diff < 2) {
         $(".page_one").css('display', 'block');
