@@ -131,10 +131,10 @@
       <div class="join_btn" style='#666666'>PARTICIPATE</div>
     </div>
     <div class="row" id='Product' style=' display: ;'>
-      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-top: 70px;">Intro.</h1>
+      <h1 style="font-size: 36px; line-height: 100px; text-align: center; margin-top: 70px; margin-bottom: 100px;">Intro.</h1>
       <div class="row" id='sale_count' style='display:;'>
         <!-- <h1>10,000 of CAN STARTBOX will be sold in advance</h1> -->
-        <h2>Sold out <span class='sale_amount' style="font-size: 45px;"></span></h2>
+        <!-- <h2>Sold out <span class='sale_amount' style="font-size: 45px;"></span></h2> -->
       </div>
       <div class="info_left col-md-6" style='position: relative;'>
         <img src="assets/images/can_box.png" alt="info_png" width='80%;' style="opacity: 0.7">
@@ -479,19 +479,19 @@
         }
       })
       // 已售出多少台设备
-      $.ajax({
-        headers: {
-              Accept: "application/json; charset=utf-8"
-          },
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        url: '/promo/public/buy/get/boxhadsell',
-        success: function (data) {
-          $(".sale_amount").html(data.data);
-        },
-        error: function(data) {
-        }
-      })
+      // $.ajax({
+      //   headers: {
+      //         Accept: "application/json; charset=utf-8"
+      //     },
+      //   type: 'GET',
+      //   contentType: "application/json; charset=utf-8",
+      //   url: '/promo/public/buy/get/boxhadsell',
+      //   success: function (data) {
+      //     $(".sale_amount").html(data.data);
+      //   },
+      //   error: function(data) {
+      //   }
+      // })
       setInterval(function() {
         var x = new Date();
         if(x>=icoStartDate){
