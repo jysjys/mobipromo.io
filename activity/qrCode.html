@@ -92,11 +92,28 @@
 		})
 	}
 
+	// var pass = prompt('开启扫码预约');
+	// $.ajax({
+	// 	type: 'POST',
+	// 	url: '/promo/manage/activity/checkCode',
+	// 	data: {pass: pass},
+	// 	async: false,
+	// 	success: function(data) {
+	// 		if(data.isFail) {
+	// 			window.location.href = '..';
+	// 		}
+	// 	},
+	// 	error: function() {
+	// 		window.location.href = '..';
+	// 	}
+	// });
 	var url = window.location.href;
 	var num = url.indexOf("?");
 	var activityId = num < 0 ? '' : url.substr(num + 1);
 	if (activityId == '') {
 		window.location.href = '..';
+	}else {
+		init();
 	}
 
 	function createQr (url) {
@@ -117,19 +134,18 @@
 	function showCode() {
 		var now = new Date().getTime().toString()
 		,a = now.substring(0,4) * 5 + 1314
-		,b = now.substring(4,9) * 3
-		,c = now.substring(9,13) * 5
+		,b = now.substring(4,9) * 3 - 48732
+		,c = (now.substring(9,13) * 1 + 13782) * 5
 		now = a + '&' + b + '&' + c;
 		createQr(now);
-		console.log('https://www.mobipromo.io/activity/act_info.html?' + now + '&' + activityId);
+		console.log('http://localhost:9002/activity/act_info.html?' + now + '&' + activityId);
 		// $("#qrCode").removeAttr("title");
 	};
 
-	showCode();
-
-	var QR = setInterval(showCode, 60 * 1000);
-
-
+	function init() {
+		showCode();
+		var QR = setInterval(showCode, 20 * 1000);
+	}
 
 </script>
 </html>
