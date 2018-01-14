@@ -92,21 +92,21 @@
 		})
 	}
 
-	var pass = prompt('开启扫码预约');
-	$.ajax({
-		type: 'POST',
-		url: '/promo/manage/activity/checkCode',
-		data: {pass: pass},
-		async: false,
-		success: function(data) {
-			if(data.isFail) {
-				window.location.href = '..';
-			}
-		},
-		error: function() {
-			window.location.href = '..';
-		}
-	});
+	// var pass = prompt('开启扫码预约');
+	// $.ajax({
+	// 	type: 'POST',
+	// 	url: '/promo/manage/activity/checkCode',
+	// 	data: {pass: pass},
+	// 	async: false,
+	// 	success: function(data) {
+	// 		if(data.isFail) {
+	// 			window.location.href = '..';
+	// 		}
+	// 	},
+	// 	error: function() {
+	// 		window.location.href = '..';
+	// 	}
+	// });
 	var url = window.location.href;
 	var num = url.indexOf("?");
 	var activityId = num < 0 ? '' : url.substr(num + 1);

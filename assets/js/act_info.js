@@ -8,35 +8,49 @@ try{
     time_ago = time_ago.split('?')[1].toString().split('&');
     init();
 }catch(e) {
+    // console.err(e)
     window.location.href = 'https://www.mobipromo.io';
+}
+
+function time2No(num, len) {
+    num = num + '';
+    while(num.length < len)
+        num = '0' + num;
+    return num;
 }
 
 function init() {
     var activityId = time_ago[3];
-    $.ajax({
-        type: 'POST',
-        url: '/promo/manage/activity/checkCode',
-        data: {query: time_ago.join(',')},
-        async: false,
-        success: function(data) {
-            if(data.isFail) {
-                window.location.href = '..';
-                return;
-            }else {
-                time_ago = data.time;
-            }
-        },
-        error: function() {
-            window.location.href = '..';
-            return;
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/promo/manage/activity/checkCode',
+    //     data: {query: time_ago.join(',')},
+    //     async: false,
+    //     success: function(data) {
+    //         if(data.isFail) {
+    //             window.location.href = '..';
+    //             return;
+    //         }else {
+    //             time_ago = data.time;
+    //         }
+    //     },
+    //     error: function() {
+    //         window.location.href = '..';
+    //         return;
+    //     }
+    // });
+
+    let time1 =  (parseInt(time_ago[0]) - 1314) / 5;
+    let time2 = time2No((parseInt(time_ago[1]) + 48732) / 3, 5);
+    let time3 = time2No(parseInt(time_ago[2]) / 5 - 13782, 4);
+    time_ago = parseInt('' + time1 + time2 + time3);
+
     var time_now = new Date().getTime();
     var time_diff = (time_now - time_ago) / 1000 / 60;
     console.log(time_now, time_ago, time_diff);
     if(time_ago + '' == 'NaN') {
         window.location.href = 'https://www.mobipromo.io';
-    }else if(time_diff > 0 && time_diff < 2) {
+    }else if(time_diff < 1) {
         $(".page_one").css('display', 'block');
         $('.page_two, .page_three').css('display','none');
     }else {
