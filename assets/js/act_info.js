@@ -87,7 +87,7 @@ function init() {
 
     // 提交表单
     $(".button").on('click', function () {
-        if((Date.now() - time_ago) / 60 / 1000 >= 2) {
+        if((Date.now() - time_ago) / 60 / 1000 >= 5) {
             $('.page_three').css('display', 'block')
             $('.page_one, .page_two').remove();
             $('.page_three .yuyue_s p').html('页面已过期，请重新扫码预约');
@@ -110,7 +110,7 @@ function init() {
         }else if(!address) {
             $('.adr_warn').css('display', 'block');
             return;
-        } else if(!address_d) {
+        }else if(!address_d) {
             $('.address_d_warn').css('display', 'block');
             return;
         }
