@@ -54,6 +54,9 @@
 			<input type="text" class="email_warn warn" value="您输入的邮箱不正确！" disabled='disabled'>
 		</div>
 		<button id="submit" type="submit" style="margin-left: 0;">注 册</button>
+		<div>
+			<input type="text" class="repeat warn" value="手机号或邮箱已注册！" disabled='disabled'>
+		</div>
 	<a href="indexlogin.html" style="display: block">
 		<button type="button" class="register-tis">已经有账号？</button>
 	</a>
@@ -140,7 +143,7 @@
 				error: function (data) {
 					$('#submit').data('loading', false)
 					console.log(data)
-					$('#submit').after('<div style="color:red;">手机号或邮箱已注册！</div>');
+					$(".repeat").css({'display':'inline-block'});
 				}
 			})
 		}
