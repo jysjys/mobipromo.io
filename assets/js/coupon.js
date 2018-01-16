@@ -29,14 +29,14 @@ function clean_info () {
 }
 // 获取cookie填充表单
 (function () {
-	$("input[name='username']").val(Util.getCookie('userName')),
-	$("input[name='phone_number']").val(Util.getCookie('userTel')),
-	$("input[name='mailbox']").val(Util.getCookie('userEmail')),
-	$("input[name='zip_code']").val(Util.getCookie('userZipCode')),
+	$('input[name=username]').val(Util.getCookie('userName')),
+	$('input[name=phone_number]').val(Util.getCookie('userTel')),
+	$('input[name=mailbox]').val(Util.getCookie('userEmail')),
+	$('input[name=zip_code]').val(Util.getCookie('userZipCode')),
 	$('[name=address-level1]').val(Util.getCookie('addressProv')),
 	$('[name=address-level2]').val(Util.getCookie('addressCity')),
 	$('[name=address-level3]').val(Util.getCookie('addressCounty')),
-	$("input[name='address-detail']").val(Util.getCookie('addressDetail'));
+	$('input[name=address-detail]').val(Util.getCookie('addressDetail'));
 })()
 var x = Util.getCookie('Authorization');
 
