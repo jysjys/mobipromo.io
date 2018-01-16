@@ -53,7 +53,7 @@ Util.setCookie = function (cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";path=/;";
 }
 Util.removeCookie = function (cname) {
-    Util.setCookie(cname, '', -1); 
+    Util.setCookie(cname, '', -1);
 }
 
 $.confirm = function(options){
@@ -63,7 +63,7 @@ $.confirm = function(options){
     okval = options.okval;
   }
   if(!confirmWin.length){
-    confirmWin = $("<div id='global_confirm_window' tabindex='-1' class='confirm-box' title='请确认'><div class='dlg-content'>"+options.content+"</div><div class='dlg-buttons'><span class='pro-btn default okbtn'>" + okval + "</span>&nbsp;&nbsp;<span class='pro-btn cancelbtn close'>取消</span></div></div>").appendTo("body");
+    confirmWin = $("<div id='global_confirm_window' tabindex='-1' class='confirm-box' title='请确认'><div class='dlg-content'>"+options.content+"</div><div class='dlg-buttons'><span class='button default okbtn'>" + okval + "</span>&nbsp;&nbsp;<span class='button cancelbtn close'>取消</span></div></div>").appendTo("body");
   }else{
     confirmWin.find(".dlg-content").html(options.content);
     confirmWin.find(".okbtn").html(okval);
