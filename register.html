@@ -106,6 +106,11 @@
 			console.log('email error')
 			$(".email_warn").css({'display':'inline-block'});
 		}else {
+			var isloading = $(this).data('loading');
+			if(isloading) {
+				return;
+			}
+			$(this).data('loading', true);
 			var dataregister = {
 				"account": phone_number,
 				"accountName": accountName,
@@ -128,12 +133,14 @@
 			   data: JSON.stringify(dataregister),
 			   contentType: "application/json; charset=utf-8",
 				success: function (data) {
+					$('#submit').data('loading', false)
 					console.log('');
 					location.href = '/indexlogin.html';
 				},
 				error: function (data) {
+					$('#submit').data('loading', false)
 					console.log(data)
-					$('#submit').after('<div style="color:red;">手机号已注册！</div>');
+					$('#submit').after('<div style="color:red;">手机号或邮箱已注册！</div>');
 				}
 			})
 		}

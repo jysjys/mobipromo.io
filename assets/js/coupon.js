@@ -1,34 +1,44 @@
-function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
-	//用处理字符串的方式查找到key对应value
-	var name = escape(name);
-	//读cookie属性，这将返回文档的所有cookie
-	var allcookies = document.cookie;
-	//查找名为name的cookie的开始位置
-	name += "=";
-	var pos = allcookies.indexOf(name);
-	//如果找到了具有该名字的cookie，那么提取并使用它的值
-	if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
-		var start = pos + name.length; //cookie值开始的位置
-		var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
-		if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
-		var value = allcookies.substring(start, end); //提取cookie的值
-		return (value); //对它解码
-	} else { //搜索失败，返回空字符串
-		return "";
-	}
-}
 
-var x = getCookieValue('Authorization');
-// $("input[name='username']").val('sgwe'),
-// $("input[name='phone_number']").val('18219273817'),
-// $("input[name='mailbox']").val('123@qq.com'),
-// $("input[name='zip_code']").val(100000),
-// $("input[name='address-detail']").val('wgwwgew'),
-// $("input[name='coupon']").val('h5QzWHa');
-// $("input[name='device_name']").val(''),
-// addressProv = $('[name=address-level1]').val(),
-// addressCity = $('[name=address-level2]').val(),
-// addressCounty = $('[name=address-level3]').val(),
+function save_info () {
+	var userName = $("input[name='username']").val().trim(),
+	userTel = $("input[name='phone_number']").val().trim(),
+	userEmail = $("input[name='mailbox']").val().trim(),
+	userZipCode = $("input[name='zip_code']").val().trim(),
+	addressProv = $('[name=address-level1]').val().trim(),
+	addressCity = $('[name=address-level2]').val().trim(),
+	addressCounty = $('[name=address-level3]').val().trim(),
+	addressDetail = $("input[name='address-detail']").val().trim();
+	Util.setCookie('userName', userName, 1)
+	Util.setCookie('userTel', userTel, 1)
+	Util.setCookie('userEmail', userEmail, 1)
+	Util.setCookie('userZipCode', userZipCode, 1)
+	Util.setCookie('addressProv', addressProv, 1)
+	Util.setCookie('addressCity', addressCity, 1)
+	Util.setCookie('addressCounty', addressCounty, 1)
+	Util.setCookie('addressDetail', addressDetail, 1)
+}
+function clean_info () {
+	Util.removeCookie('userName')
+	Util.removeCookie('userTel')
+	Util.removeCookie('userEmail')
+	Util.removeCookie('userZipCode')
+	Util.removeCookie('addressProv')
+	Util.removeCookie('addressCity')
+	Util.removeCookie('addressCounty')
+	Util.removeCookie('addressDetail')
+}
+// 获取cookie填充表单
+(function () {
+	$("input[name='username']").val(Util.getCookie('userName')),
+	$("input[name='phone_number']").val(Util.getCookie('userTel')),
+	$("input[name='mailbox']").val(Util.getCookie('userEmail')),
+	$("input[name='zip_code']").val(Util.getCookie('userZipCode')),
+	$('[name=address-level1]').val(Util.getCookie('addressProv')),
+	$('[name=address-level2]').val(Util.getCookie('addressCity')),
+	$('[name=address-level3]').val(Util.getCookie('addressCounty')),
+	$("input[name='address-detail']").val(Util.getCookie('addressDetail'));
+})()
+var x = Util.getCookie('Authorization');
 
 // var curPage = 1;
 var commodList = new Vue({
@@ -248,6 +258,7 @@ function warn_chouse () {
 }
 
 function btnPress(data){
+
 	// console.log(data)
 	$('.warn').remove();
 	$('#amount').attr('placeholder',data.remark == 1 ? '您可购买1台':'您可购买(1~' + data.remark + ')台');
@@ -372,6 +383,12 @@ $('#submit').on('click', function () {
 		return;
 	}
 	$(this).data('isLoading', true);
+	var isSaveInfo = $("input[type='checkbox']").is(':checked');
+	if(isSaveInfo) {
+		save_info();
+	}else {
+		clean_info();
+	}
 	$.ajax({
 			type: 'POST',
 			async: false,
@@ -449,7 +466,20 @@ var current = {
 		provOpt.value = i;
 		prov.append(provOpt);
 	}
-})();
+}
+)();
+var provCookie = Util.getCookie('addressProv');
+var cityCookie = Util.getCookie('addressCity');
+var cryCookie = Util.getCookie('addressCounty');
+if(provCookie) {
+	$("#prov").val(provCookie).change();
+}
+if(cityCookie) {
+	$('#city').val(cityCookie).change();
+}
+if(cryCookie) {
+	$("#country").val(cryCookie).change();
+}
 
 /*根据所选的省份来显示城市列表*/
 function showCity(obj) {
