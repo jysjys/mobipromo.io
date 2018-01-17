@@ -98,10 +98,10 @@ $(function() {
 				if(data.isSuccess) {
 					var codes = $('#codes').val().split('\n');
 					var tempCodes = $('#codes').val().toUpperCase().split('\n');
-					var html = [];
 					for(var i = 0, len = data.coupons.length; i < len; i++) {
-						if(tempCodes.indexOf(data.coupons[i].code.toUpperCase()) >= 0)
-							codes.remove(data.coupons[i].code);
+						var code = data.coupons[i].code;
+						if(tempCodes.indexOf(code.toUpperCase()) >= 0)
+							codes.remove(code);
 					}
 					$('#div1').html('不存在' + codes.length + '个<br>' + codes.join('<br>'));
 				}else {
