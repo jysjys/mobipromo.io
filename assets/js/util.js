@@ -359,6 +359,7 @@ Date.prototype.format = function(fmt) {
 
 Array.prototype.remove = function(elem){
   var index = this.indexOf(elem);
+  console.log(this, elem, index)
   if(index > -1){
     this.splice(index, 1);
   }

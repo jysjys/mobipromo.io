@@ -100,8 +100,10 @@ $(function() {
 					var tempCodes = $('#codes').val().toUpperCase().split('\n');
 					for(var i = 0, len = data.coupons.length; i < len; i++) {
 						var code = data.coupons[i].code;
-						if(tempCodes.indexOf(code.toUpperCase()) >= 0)
-							codes.remove(code);
+						var index = tempCodes.indexOf(code.toUpperCase());
+						if(index >= 0) {
+							codes.splice(index, 1);
+						}
 					}
 					$('#div1').html('不存在' + codes.length + '个<br>' + codes.join('<br>'));
 				}else {
