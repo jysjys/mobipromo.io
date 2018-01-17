@@ -247,9 +247,15 @@
 			return "";
 		}
 	}
-	var ID = getCookieValue('manage')
+	var ID = getCookieValue('manage');
+	var url = location.href;
+	var num = url.indexOf("?");
+	var tradeNumber = num < 0 ? '' : url.substr(num + 1);
 	if (ID == '') {
 		window.location.href = './login.html'
+	}
+	if(tradeNumber) {
+		$('#trade_number').val(tradeNumber);
 	}
 
 	var tradeList = new Vue({
@@ -361,6 +367,16 @@
 
 	$(function() {
 
+		$('#search_btn').on('click', function() {
+			tradeList.searchData.tradeNumber = $('.search-form input[name=trade_number]').val();
+			tradeList.searchData.account = $('.search-form input[name=account]').val();
+			tradeList.searchData.status = $('.search-form [name=status]').val();
+			tradeList.searchData.coupon = $('.search-form [name=coupon]').val();
+			tradeList.searchData.time1 = $('.search-form input[name=time1]').val();
+			tradeList.searchData.time2 = $('.search-form [name=time2]').val();
+			tradeList.getTradeList(1);
+		});
+
 		$.ajax({
 			type: 'POST',
 			async: false,
@@ -373,7 +389,7 @@
 					window.location.href = './login.html';
 					return;
 				}
-				tradeList.getTradeList(1);
+				$('#search_btn').trigger('click');
 			}
 		});
 
@@ -382,15 +398,6 @@
 			$('.navbar li:eq(1)').addClass('active');
 		});
 
-		$('#search_btn').on('click', function() {
-			tradeList.searchData.tradeNumber = $('.search-form input[name=trade_number]').val();
-			tradeList.searchData.account = $('.search-form input[name=account]').val();
-			tradeList.searchData.status = $('.search-form [name=status]').val();
-			tradeList.searchData.coupon = $('.search-form [name=coupon]').val();
-			tradeList.searchData.time1 = $('.search-form input[name=time1]').val();
-			tradeList.searchData.time2 = $('.search-form [name=time2]').val();
-			tradeList.getTradeList(1);
-		});
 
 		$('#time1, #time2').datetimepicker({
 			format: 'yyyy-mm-dd 00:00:00'

@@ -70,7 +70,8 @@
 							<input type="text" class="form-control" id="code_count" style="width:80px;" placeholder="个">
 							<input type="text" class="form-control" id="single_amount" style="width:80px;" placeholder="台">
 							<button class="btn btn-info" type="button" id="add_btn">新增F码</button>
-							<a class="btn btn-info" id="codes_btn" href="javascript:" target="_blank">查看F码列表</a>
+							<button class="btn btn-info" id="codes_btn">查看F码列表</button>
+							<button class="btn btn-info" id="codes_search_btn">批量查找</button>
 						</div>
 					</div>
 				</form>
@@ -97,7 +98,7 @@
 							<span class="label" :class="item.used ? 'label-danger' : item.locked ? 'label-warning' : 'label-success'">{{ item.used ? '已使用' : item.locked ? '已锁定' : '未使用' }}</span>
 						</td>
 						<td>{{ item.usedAt || item.lockedAt}}</td>
-						<td>{{ item.usedId }}</td>
+						<td><a :href="'trade.html?' + item.usedId" target="_blank">{{ item.usedId }}</a></td>
 						<td>{{ item.createdAt }}</td>
 						<td>{{ item.remark }}</td>
 						<td>

@@ -1,72 +1,64 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link rel="icon" href="assets/images/title.png" type="image/png" sizes="16x16">
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap-select.min.css">
-<title>mobipromo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<title>mobipromo</title>
+</head>
 <body>
-	<div id="div1" class="col-xs-6"></div>
+	<div style="padding: 20px;">
+		<textarea id="codes" cols="30" rows="10" class="form-group"></textarea>
+		<div></div>
+		<button class="btn btn-default disable">禁用F码</button>
+		<button class="btn btn-default used">可用F码</button>
+		<div id="div1"></div>
+	</div>
 </body>
 <script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
+<script type="text/javascript" src='../assets/js/bootstrap.min.js'></script>
 <script src='../assets/js/util.js'></script>
 <script>
-	var number = location.href;
-	var num = number.indexOf("?")
-   	var id = num < 0 ? '' : url.substr(num + 1);
-	$.ajax({
-		url:'/promo/manage/coupon/getAllCoupons',
-		type: 'POST',
-		data: {proxyId:id},
-		success: function(data) {
-			var str = '';
-			for(var i = 0, len = data.list.length; i < len; i++) {
-				str += data.list[i].code + '<br>';
+$(function() {
+	$('.disable').on('click', function() {
+		var result = confirm('确定禁用?');
+		if(!result)
+			return;
+		$.ajax({
+			url: '/promo/manage/coupon/tempUsed',
+			type: 'POST',
+			data: {codes: $('#codes').val()},
+			success: function(data) {
+				if(data.isSuccess) {
+					alert('success ' + data.len + '个');
+				}else {
+					alert('fail');
+				}
 			}
-			$('#div1').html(str);
-		}
+		});
 	});
+
+	$('.used').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/coupon/checkCodes',
+			type: 'POST',
+			data: {codes: $('#codes').val()},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.coupons.length; i < len; i++) {
+						html.push(data.coupons.code);
+					}
+					$('#div1').html('可用' + data.coupons.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+});
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
