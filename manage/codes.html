@@ -50,7 +50,7 @@ $(function() {
 				if(data.isSuccess) {
 					var html = [];
 					for(var i = 0, len = data.coupons.length; i < len; i++) {
-						html.push(data.coupons.code);
+						html.push(data.coupons[i].code);
 					}
 					$('#div1').html('可用' + data.coupons.length + '个<br>' + html.join('<br>'));
 				}else {
