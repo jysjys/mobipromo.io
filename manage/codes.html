@@ -14,7 +14,8 @@
 		<textarea id="codes" cols="30" rows="10" class="form-group"></textarea>
 		<div></div>
 		<button class="btn btn-default disable">禁用F码</button>
-		<button class="btn btn-default used">可用F码</button>
+		<button class="btn btn-default used">查看可用F码</button>
+		<button class="btn btn-default disabled">查看不可用F码</button>
 		<div id="div1"></div>
 	</div>
 </body>
@@ -45,7 +46,32 @@ $(function() {
 		$.ajax({
 			url: '/promo/manage/coupon/checkCodes',
 			type: 'POST',
-			data: {codes: $('#codes').val()},
+			data: {
+				codes: $('#codes').val(),
+				used: true
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.coupons.length; i < len; i++) {
+						html.push(data.coupons[i].code);
+					}
+					$('#div1').html('可用' + data.coupons.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('.disabled').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/coupon/checkCodes',
+			type: 'POST',
+			data: {
+				codes: $('#codes').val(),
+				used: false
+			},
 			success: function(data) {
 				if(data.isSuccess) {
 					var html = [];
