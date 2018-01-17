@@ -103,6 +103,7 @@ $(function() {
 						var index = tempCodes.indexOf(code.toUpperCase());
 						if(index >= 0) {
 							codes.splice(index, 1);
+							tempCodes.splice(index, 1);
 						}
 					}
 					$('#div1').html('不存在' + codes.length + '个<br>' + codes.join('<br>'));
