@@ -357,6 +357,13 @@ Date.prototype.format = function(fmt) {
   return fmt;
 }
 
+Array.prototype.remove = function(elem){
+  var index = this.indexOf(elem);
+  if(index > -1){
+    this.splice(index, 1);
+  }
+};
+
 $(function() {
   if($.fn.tooltip) {
     $(document).on('mouseenter', "[data-toggle='tooltip']", function() {

@@ -14,8 +14,9 @@
 		<textarea id="codes" cols="30" rows="10" class="form-group"></textarea>
 		<div></div>
 		<button class="btn btn-default disable">禁用F码</button>
-		<button class="btn btn-default used">查看可用F码</button>
-		<button class="btn btn-default disabled">查看不可用F码</button>
+		<button class="btn btn-default used">可用F码</button>
+		<button class="btn btn-default" id="disabled">不可用F码</button>
+		<button class="btn btn-default" id="none">不存在F码</button>
 		<div id="div1"></div>
 	</div>
 </body>
@@ -64,7 +65,7 @@ $(function() {
 		});
 	});
 
-	$('.disabled').on('click', function() {
+	$('#disabled').on('click', function() {
 		$.ajax({
 			url: '/promo/manage/coupon/checkCodes',
 			type: 'POST',
@@ -78,7 +79,31 @@ $(function() {
 					for(var i = 0, len = data.coupons.length; i < len; i++) {
 						html.push(data.coupons[i].code);
 					}
-					$('#div1').html('可用' + data.coupons.length + '个<br>' + html.join('<br>'));
+					$('#div1').html('不可用' + data.coupons.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('#none').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/coupon/checkCodes',
+			type: 'POST',
+			data: {
+				codes: $('#codes').val()
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var codes = $('#codes').val().split('\n');
+					var tempCodes = $('#codes').val().toUpperCase().split('\n');
+					var html = [];
+					for(var i = 0, len = data.coupons.length; i < len; i++) {
+						if(tempCodes.indexOf(data.coupons[i].code.toUpperCase()) >= 0)
+							codes.remove(data.coupons[i].code);
+					}
+					$('#div1').html('不存在' + codes.length + '个<br>' + codes.join('<br>'));
 				}else {
 					alert('fail');
 				}
