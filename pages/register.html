@@ -1,69 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
-<title>mobipromo</title>
-<link rel="stylesheet" href="../assets/css/login.css" />
-<style>
-	.warn {
-		font-size: 12px;
-		color: #CC0001;
-		margin-top: 0;
-		padding-left: 0;
-		height: 13px;
-		line-height:15px;
-		display: none;
-	}
-</style>
+<title>register</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https:////at.alicdn.com/t/font_527532_hlv6ywjeio8t1emi.css">
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
 <body>
-<div class="register-container">
-	<h1>欢迎注册Mobipromo</h1>
-	<div class="connect">
-		<p>www.mobipromo.io</p>
-	</div>
-		<div>
-			<input type="text" name="accountName" class="accountName" placeholder="您的用户名" autocomplete="off"/>
+	<header>
+		<img src="../assets/images/logo.png">
+	</header>
+	<form class="register_form" style="display: none;">
+		<h1>注册</h1>
+		<div class="inp">
+			<input type="text" name="phone" class="phone" placeholder="手机号/邮箱">
+			<span class="phone_warn warn">用户已被注册</span>
+		</div>
+		<div class="inp">
+			<input type="text" name="pwd" class="pwd" placeholder="请输入密码">
+			<span class="phone_warn warn">用户已被注册</span>
+		</div>
+		<div style="overflow: hidden;">
+			<span>点击确认注册，即表示您已阅读并同意<a href=""> CAN用户协议</a></span>
 		</div>
 		<div>
-			<input type="text" class="accountName_warn warn" value="请输入用户名" disabled='disabled'>
+			<button type="button" class="btn btn-default">继续</button>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+			<span>已有账户？</span>
+			<span>立即登陆</span>
+		</div>
+	</form>
+	<form class="register_form_epid">
+		<h1>验证手机号</h1>
+		<div>
+			<span>验证码已发送至您的手机号码</span>
+			<span>15110277440</span>
+			<span><i>59</i>秒后可以重新发送</span>
+		</div>
+		<div class="inp">
+			<input type="text" name="phone" class="phone" placeholder="手机号/邮箱">
+			<span class="phone_warn warn">用户已被注册</span>
 		</div>
 		<div>
-			<input type="text" class="password_warn warn" value="您输入的密码格式有误！" disabled='disabled'>
+			<button type="button" class="btn btn-default">验证</button>
 		</div>
+	</form>
+	<footer>
 		<div>
-			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+			<span class="iconfont icon-ren"></span>
+			<span class="iconfont icon-ren"></span>
+			<span class="iconfont icon-ren"></span>
 		</div>
-		<div>
-			<input type="text" class="confirm_password_warn warn" value="输入密码不一致！" disabled='disabled'>
-		</div>
-		<div>
-			<input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
-		</div>
-		<div>
-			<input type="text" class="phone_number_warn warn" value="您输入的手机号码不正确！" disabled='disabled'>
-		</div>
-		<div>
-			<input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
-		</div>
-		<div>
-			<input type="text" class="email_warn warn" value="您输入的邮箱不正确！" disabled='disabled'>
-		</div>
-		<button id="submit" type="submit" style="margin-left: 0;">注 册</button>
-	<a href="login.html" style="display: block">
-		<button type="button" class="register-tis">已经有账号？</button>
-	</a>
-
-</div>
-
-
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/supersized.3.2.7.min.js"></script>
-<script src="../assets/js/supersized-init.js"></script>
-<script src="../assets/js/register.js"></script>
+		<p>Copyright © 2017 MobiPromo Ltd.</p>
+	</footer>
 </body>
 </html>

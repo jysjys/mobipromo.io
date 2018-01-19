@@ -1,46 +1,44 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
 <title>mobipromo</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="stylesheet" href="../assets/css/login.css" />
-<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
-<style>
-	.login_warn {
-		display: none;
-		line-height: 15px;
-		padding-left: 10px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https:////at.alicdn.com/t/font_527532_hlv6ywjeio8t1emi.css">
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
 <body>
+	<header>
+		<img src="../assets/images/logo.png">
+	</header>
+	<form class="login_form">
+		<h1>登陆</h1>
+		<input type="text" name="phone" class="phone inp" placeholder="手机号/邮箱">	
+		<input type="text" name="pwd" class="pwd" placeholder="请输入密码">
+		<div style="overflow: hidden;">
+			<input type="text" name="epid" class="epid" placeholder="请输入验证码">
+			<span></span>
+		</div>
+		<div>
+			<button type="button" class="btn btn-default">立即登陆</button>
+		</div>
+		<div>
+			<span>立即注册</span>
+			<span>忘记密码？</span>
+		</div>
 
-<div class="login-container">
-	<h1>欢迎登陆Mobipromo</h1>
-	
-	<div class="connect">
-		<p>www.mobipromo.io</p>
-	</div>
+	</form>
+	<footer>
 		<div>
-			<input type="text" name="username" class="username" placeholder="手机号/邮箱" autocomplete="off"/>
+			<span class="iconfont icon-ren"></span>
+			<span class="iconfont icon-ren"></span>
+			<span class="iconfont icon-ren"></span>
 		</div>
-		<div>
-			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
-		</div>
-		<div>
-			<input type="text" class="login_warn warn" value="用户名或密码不正确！" disabled='disabled'>
-		</div>
-		<button id="submit" type="submit" style="margin-left: 0;">登 录</button>
-	<a href="register.html" style='display: block;'>
-		<button type="button" class="register-tis">还没有账号？</button>
-	</a>
-</div>
-
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/supersized.3.2.7.min.js"></script>
-<script src="../assets/js/supersized-init.js"></script>
-<script src='../assets/js/login.js'></script>
+		<p>Copyright © 2017 MobiPromo Ltd.</p>
+	</footer>
 </body>
 </html>
