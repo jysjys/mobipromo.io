@@ -11,6 +11,13 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		border-radius: 4px;
 		-webkit-appearance: none;
     }
+    .btn {
+    	background: #1890FF;
+    }
+    .btn:hover {
+    	background: #1890FF;
+		color: #fff
+    }
     .btn:focus {
     	border: none;
     	outline: none;
@@ -24,13 +31,12 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
     	outline: none;
     }
     input[type=text]:focus {
-	    outline-color: #F08802;
+	    outline-color: #1890FF;
 	}
     header {
     	padding-top: 40px;
     }
 	header img {
-		width: 145px;
 		margin: 0 auto;
 		display: block;
 	}
@@ -98,6 +104,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 	.login_form input[name='epid'] {
 		width: 204px; 
 		height: 40px;
+		margin-top: 1px;
 	}
 	.login_form input[name='epid'] + span {
 		display: inline-block;
@@ -113,12 +120,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.login_form .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 	.login_form div:last-child {
 		margin-bottom: 22px;
@@ -126,7 +128,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 	}
 	.login_form div:last-child span{
 		font-size: 14px;
-		color: #F08802;
+		color: #1890FF;
 		float: left;
 		cursor: pointer;
 	}
@@ -183,7 +185,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		text-align: left;
 	}
 	.register_form>div:nth-child(4) span a {
-		color: #F08802;
+		color: #1890FF;
 	}
 	
 	.register_form .btn {
@@ -191,12 +193,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.register_form .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 	.register_form div:last-child {
 		margin-bottom: 22px;
@@ -207,8 +204,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		cursor: pointer;
 	}
 	.register_form div:last-child span:last-child {
-		color: rgba(0,0,0,0.38);
-		color: #F08802;
+		color: #1890FF;
 	}
 
 
@@ -259,12 +255,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.register_form_epid .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 
 
@@ -326,12 +317,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.forgetPwd_form .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 
 
@@ -381,12 +367,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.forgetPwd_form_epid .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 
 
@@ -428,12 +409,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		margin-bottom: 16px;
 		width: 100%;
 		height: 40px;
-		background: #F08802;
 		color: #fff;
-	}
-	.forgetPwd_form_set .btn:hover {
-		background: #F08802;
-		color: #fff
 	}
 
 
