@@ -69,9 +69,8 @@
 						<div class="form-group btns-right pull-right">
 							<input type="text" class="form-control" id="code_count" style="width:80px;" placeholder="个">
 							<input type="text" class="form-control" id="single_amount" style="width:80px;" placeholder="台">
-							<button class="btn btn-info" type="button" id="add_btn">新增F码</button>
-							<button class="btn btn-info" id="codes_btn">查看F码列表</button>
-							<button class="btn btn-info" id="codes_search_btn">批量查找</button>
+							<span class="btn btn-info" id="add_btn">新增F码</span>
+							<span class="btn btn-info" id="codes_btn">查看F码列表</span>
 						</div>
 					</div>
 				</form>
@@ -164,6 +163,8 @@
 	var url = location.href;
 	var num = url.indexOf("?");
 	var proxyId = num < 0 ? '' : url.substr(num + 1);
+	if(parseInt(proxyId) + '' == 'NaN')
+		proxyId = '';
 	var ID = getCookieValue('manage');
 	if(ID == '') {
 		window.location.href = './login.html'
