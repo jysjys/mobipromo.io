@@ -82,7 +82,7 @@
 							<span class="btn btn-primary" id="search_btn">搜索</span>
 						</div>
 						<div class="form-group btns-right pull-right">
-							<span class="btn btn-default" id="export_btn">添加订单</span>
+							<span class="btn btn-default" id="add_btn">添加订单</span>
 							<span class="btn btn-default" id="export_btn" data-toggle="tooltip" title="下载订单列表"><i class="fa fa-download"></i></span>
 						</div>
 					</div>
@@ -225,11 +225,17 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="addModalLabel">订单详情</h4>
+						<h4 class="modal-title" id="addModalLabel">添加订单</h4>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal col-xs-8" id="save_form" role="form">
 							<input type="hidden" name="id">
+							<div class="form-group">
+								<label for="boxName" class="col-sm-4 control-label">商品名称</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="boxName" value="星际宝盒" readonly>
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="account" class="col-sm-4 control-label">用户</label>
 								<div class="col-sm-8">
@@ -237,24 +243,65 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="lastname" class="col-sm-4 control-label">地区</label>
+								<label for="buyAmount" class="col-sm-4 control-label">数量</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" name="area" placeholder="请输入地区">
+									<input type="number" class="form-control" name="buyAmount" placeholder="请输入数量">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="lastname" class="col-sm-4 control-label">电话</label>
+								<label for="price" class="col-sm-4 control-label">单价</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" name="phone" placeholder="请输入电话">
+									<input type="text" class="form-control" name="price" placeholder="请输入单价">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="lastname" class="col-sm-4 control-label">限购量</label>
+								<label for="sellTerm" class="col-sm-4 control-label">活动编号</label>
 								<div class="col-sm-8">
-									<input type="number" class="form-control" name="maxBuy" value="0" placeholder="请输入数量">
+									<input type="number" class="form-control" name="sellTerm" placeholder="请输入活动编号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="paymentType" class="col-sm-4 control-label">支付方式</label>
+								<div class="col-sm-8">
+									<select class="form-control" name="paymentType">
+										<option value="">其他</option>
+										<option value="alipay">支付宝</option>
+										<option value="wxpay">微信</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="userName" class="col-sm-4 control-label">收货人</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="userName" placeholder="请输入收货人">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="userTel" class="col-sm-4 control-label">联系电话</label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" name="userTel" placeholder="请输入联系电话">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="userEmail" class="col-sm-4 control-label">邮箱</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="userEmail" placeholder="请输入联系邮箱">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="userZipCode" class="col-sm-4 control-label">邮编</label>
+								<div class="col-sm-8">
+									<input type="number" class="form-control" name="userZipCode" placeholder="请输入联系邮箱">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="receivingAddress" class="col-sm-4 control-label">收货地址</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" name="receivingAddress" placeholder="请输收货地址">
 								</div>
 							</div>
 						</form>
+						<div style="clear:both;"></div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -439,7 +486,6 @@
 			$('.navbar li:eq(1)').addClass('active');
 		});
 
-
 		$('#time1, #time2').datetimepicker({
 			format: 'yyyy-mm-dd 00:00:00'
 		}).on('changeDate', function(ev){
@@ -449,6 +495,42 @@
 				$('#time1').datetimepicker('setEndDate', ev.date);
 				$(this).val(ev.date.format('yyyy-MM-dd') + " 23:59:59");
 			}
+		});
+
+		//添加订单
+		$('#add_btn').on('click', function() {
+			$('#addModal').modal('toggle');
+		});
+
+		$('#addModal .commit').on('click', function() {
+			$('#save_form input').removeClass('has-error');
+			var texts = $('#save_form input[type!=hidden]');
+			for(var i = 0, len = texts.length; i < len; i++) {
+				if(texts.eq(i).val() == '') {
+					texts.eq(i).on('blur', function() {
+						if(texts.eq(i).val() != '') {
+							$(this).off('blur').parents('.form-group').removeClass('has-error');
+						}
+					}).parents('.form-group').addClass('has-error');
+					return;
+				}
+			}
+			$.ajax({
+				type: 'POST',
+				async: false,
+				url: '/promo/manage/trade/addTrade',
+				data: $('#save_form').serialize(),
+				success: function(data) {
+					if(data.isSuccess) {
+						$('#myModal').modal('hide');
+						Util.globalTopTip(data.created ? "添加成功" : '修改成功', "top_success", 2000, $('body'), !0);
+						Manage.searchData = {};
+						Manage.getUserlist(1);
+					}else {
+						Util.globalTopTip("异常", "top_error", 2000, $('body'), !0);
+					}
+				}
+			});
 		});
 
 		//导出
