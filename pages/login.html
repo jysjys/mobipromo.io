@@ -8,12 +8,11 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https:////at.alicdn.com/t/font_527532_hlv6ywjeio8t1emi.css">
-<link rel="stylesheet" type="text/css" href="login.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
 </head>
 <body>
 	<header>
-		<img src="../assets/images/logo.png">
+		<img src="../assets/css/icon/logo.svg">
 	</header>
 	<form class="login_form">
 		<h1>登陆</h1>
@@ -21,7 +20,7 @@
 		<input type="text" name="pwd" class="pwd" placeholder="请输入密码">
 		<div style="overflow: hidden;">
 			<input type="text" name="epid" class="epid" placeholder="请输入验证码">
-			<span></span>
+			<span id="v_container"></span>
 		</div>
 		<div>
 			<button type="button" class="btn btn-default">立即登陆</button>
@@ -34,11 +33,26 @@
 	</form>
 	<footer>
 		<div>
-			<span class="iconfont icon-ren"></span>
-			<span class="iconfont icon-ren"></span>
-			<span class="iconfont icon-ren"></span>
+			<span>
+				<img src="../assets/css/icon/ic_email_default.svg">
+			</span>
+			<span>
+				<img src="../assets/css/icon/ic_qq_default.svg">
+			</span>
+			<span>
+				<img src="../assets/css/icon/ic_wecaht_default.svg">
+			</span>
 		</div>
 		<p>Copyright © 2017 MobiPromo Ltd.</p>
 	</footer>
+	<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
+	<script type="text/javascript" src='../assets/js/gVerify.js'></script>
+	<script type="">
+		var verifyCode = new GVerify("v_container");
+		// 只传一个id的时候，默认类型为数字和字母混合：“blend”
+		// 也可传多个参数typ：number：纯数字类型，letter：纯字母类型
+		// verifyCode.refresh();刷新图形验证码
+		// verifyCode.validate(code);验证图形验证码，参数code为用户输入的验证码，返回值：正确：true,错误：false
+	</script>
 </body>
 </html>
