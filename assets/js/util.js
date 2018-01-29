@@ -41,7 +41,8 @@ Util.getCookie = function (name) {
     var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
     if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
     var value = allcookies.substring(start, end); //提取cookie的值
-    return (value); //对它解码
+    value = decodeURI(value); //对它解码
+    return (value);
   } else { //搜索失败，返回空字符串
     return "";
   }
@@ -50,7 +51,14 @@ Util.setCookie = function (cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   var expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";path=/;";
+  var cookie = cname + "=" + encodeURI(cvalue) + ";path=/;";
+  if(exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    cookie += expires;
+  }
+  document.cookie = cookie;
 }
 Util.removeCookie = function (cname) {
     Util.setCookie(cname, '', -1);

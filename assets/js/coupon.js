@@ -7,15 +7,16 @@ function save_info () {
 	addressProv = $('[name=address-level1]').val().trim(),
 	addressCity = $('[name=address-level2]').val().trim(),
 	addressCounty = $('[name=address-level3]').val().trim(),
-	addressDetail = $("input[name='address-detail']").val().trim();
-	Util.setCookie('userName', userName, 1)
-	Util.setCookie('userTel', userTel, 1)
-	Util.setCookie('userEmail', userEmail, 1)
-	Util.setCookie('userZipCode', userZipCode, 1)
-	Util.setCookie('addressProv', addressProv, 1)
-	Util.setCookie('addressCity', addressCity, 1)
-	Util.setCookie('addressCounty', addressCounty, 1)
-	Util.setCookie('addressDetail', addressDetail, 1)
+	addressDetail = $("input[name=address-detail]").val().trim();
+	Util.setCookie('userName', userName);
+	Util.setCookie('userTel', userTel);
+	Util.setCookie('userEmail', userEmail);
+	Util.setCookie('userZipCode', userZipCode);
+	Util.setCookie('addressProv', addressProv);
+	Util.setCookie('addressCity', addressCity);
+	Util.setCookie('addressCounty', addressCounty);
+	Util.setCookie('addressDetail', addressDetail);
+	console.log(addressDetail, Util.getCookie('addressDetail'));
 }
 function clean_info () {
 	Util.removeCookie('userName')
@@ -29,6 +30,7 @@ function clean_info () {
 }
 // 获取cookie填充表单
 (function () {
+	console.log(Util.getCookie('addressDetail'));
 	$('input[name=username]').val(Util.getCookie('userName')),
 	$('input[name=phone_number]').val(Util.getCookie('userTel')),
 	$('input[name=mailbox]').val(Util.getCookie('userEmail')),
