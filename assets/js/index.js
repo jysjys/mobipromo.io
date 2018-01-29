@@ -1,10 +1,10 @@
 $(window).load(function() {
 
-$('.top_banner').css({
-          'height': $('.top_banner').width() / 1.7
+        $('.top_banner').css({
+          'height': $(window).height()
         });
         $('.top_banner>.container').css({
-          'height': $('.top_banner>.container').width() / 1.7
+          'height': $(window).height()
         });
         $('.top_banner').particleground({
           dotColor: '#2F425E',

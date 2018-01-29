@@ -56,6 +56,22 @@ Util.removeCookie = function (cname) {
     Util.setCookie(cname, '', -1);
 }
 
+
+$.fn.loading = function(options) {
+    var isLoading = this.data('isLoading') 
+    if(!options || options == 'true') {
+        this.data('isLoading', true).attr('disabled', 'disabled')
+        
+    }else if(options == 'close') {
+        this.data('isLoading', false).removeAttr('disabled')
+    }
+    return this;
+}
+
+
+
+
+
 $.confirm = function(options){
   var confirmWin = $("#global_confirm_window");
   var okval = "确定";

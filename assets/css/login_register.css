@@ -5,7 +5,14 @@ html, body {
 html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 	margin: 0;
 	padding: 0;
-}
+}	
+	a {
+		color: #1890FF;
+	}
+	a:hover {
+		text-decoration: none;
+		color: #1890FF;
+	}
     input {
     	border: 1px solid rgba(0,0,0,0.15);
 		border-radius: 4px;
@@ -44,7 +51,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		background: #f2f2f2;
 		text-align: center;
 		overflow: hidden;
-		height: calc(100% - 438px);
+		height: calc(100% - 350px);
 		min-height: 160px;
 	}
 	footer div {
@@ -69,6 +76,9 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		font-size: 14px;
 		color: rgba(0,0,0,0.38);
 		line-height: 22px;
+	}
+	.warn {
+		display: none;
 	}
 
 
@@ -95,10 +105,20 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 		color: rgba(0,0,0,0.87);
 		margin: 0 auto 24px auto;
 	}
+	.login_form .inp {
+		margin-bottom:  16px;
+		padding: 2px;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+	.login_form .inp span {
+		float: left;
+		font-size: 14px;
+		color: #F5222D;
+	}
 	.login_form input {
 		width: 100%;
 		height: 40px;
-		margin-bottom: 16px;
 		padding-left: 1em;
 	}
 	.login_form input[name='epid'] {
@@ -134,20 +154,10 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
 	}
 	.login_form div:last-child span:last-child {
 		float: right;
+	}
+	.login_form div:last-child span:last-child a {
 		color: rgba(0,0,0,0.38);
 	}
-	
-
-
-
-
-
-
-
-
-
-
-
 
 
 	/*register.css*/
