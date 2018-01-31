@@ -50,7 +50,7 @@
 
 		/*footer*/
 		.footer {
-			background: #f2f2f2;
+			background: rgba(255,255,255,0.10);
 			text-align: center;
 			overflow: hidden;
 			/*height: calc(100% - 438px);*/
@@ -66,16 +66,94 @@
 		}
 		.footer div span {
 			padding: 0 15px;
-			border-right: 1px solid rgba(0,0,0,0.38);
+			/*border-right: 1px solid rgba(255,255,255,0.38);*/
 			font-size: 12px;
 			float: left;
 			cursor: pointer;
+			position: relative;
+		}
+		.footer div span::after {
+			content: '';
+			position: absolute;
+			top:50%;
+			transform: translateY(-50%);
+			right: 0;
+			height: 8px;
+			width: 1px;
+			background: rgba(255,255,255,0.38);
+		}
+		.footer div span:last-child::after {
+			width: 0;
 		}
 		.footer div span:last-child {
 			border-right: none;
 		}
 		.footer p {
 			font-size: 14px;
-			color: rgba(0,0,0,0.38);
+			color: rgba(255,255,255,0.38);
 			line-height: 22px;
 		}
+	.text-center {
+		text-align: center;
+	}
+	.font-size20 {
+		font-size:20px;
+	}
+	.font-size14 {
+		font-size: 14px;
+	}
+	.font-size16 {
+		font-size: 16px;
+	}
+	.fontcolor-opocity-87 {
+		color:rgba(255,255,255,255.87);
+	}
+
+	.fontcolor-opocity-38 {
+		color:rgba(255,255,255,0.38);
+	}
+
+	.fontcolor-opocity-54 {
+		color:rgba(255,255,255,0.54);
+	}
+	.flex {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.flex-v {
+		-webkit-box-orient: vertical;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.flex-1 {
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+
+	.flex-align-center {
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.flex-pack-center {
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+
+	.flex-pack-justify {
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
