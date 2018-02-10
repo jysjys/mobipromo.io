@@ -7,29 +7,31 @@
 <title>登录</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<link rel="stylesheet" href="../common/common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
 </head>
 <body>
 	<header>
-		<img src="../assets/css/icon/logo.svg">
+		<img src="/assets/css/icon/logo_white.svg">
 	</header>
 	<form class="login_form">
-		<h1>登陆</h1>
+		<h1 style="font-weight: 400;">登录</h1>
 		<div class="inp">
 			<input type="text" name="phone" class="phone" placeholder="手机号/邮箱">
 		</div>
 		<div class="inp">
 			<input type="password" name="pwd" class="pwd" placeholder="请输入密码">
 		</div>
-		<div class="inp" style="overflow: hidden;">
-			<input type="text" name="epid" class="epid" placeholder="请输入验证码">
+		<div class="inp flex flex-pack-justify" style="">
+			<input type="text" name="epid" class="epid" placeholder="请输入验证码" style="width: 198px;">
 			<span id="v_container"></span>
-			<span class="epid_warn warn">验证码错误</span>
-			<span class="login_warn warn">用户名或密码错误</span>
 		</div>
+		<span class="login_warn warn" style="float: left;color: #F5222D">用户名或密码错误</span>
+		<span class="epid_warn warn" style="float: left;color: #F5222D">验证码错误</span>
+
 		<div>
-			<button type="button" id="submit" class="btn">立即登陆</button>
+			<button type="button" id="submit" class="btn">立即登录</button>
 		</div>
 		<div>
 			<span><a href="./register.html">立即注册</a></span>
@@ -37,22 +39,10 @@
 		</div>
 
 	</form>
-	<footer>
-		<div>
-			<span>
-				<img src="../assets/css/icon/ic_email_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_qq_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_wecaht_default.svg">
-			</span>
-		</div>
-		<p>Copyright © 2017 MobiPromo Ltd.</p>
-	</footer>
+<div id="footer"></div>
 <script type="text/javascript" src='../assets/js/jquery.min.js'></script>
 <script type="text/javascript" src='../assets/js/util.js'></script>
+<script type="text/javascript" src="/common/load.js"></script>
 <script type="text/javascript" src='../assets/js/gVerify.js'></script>
 <script type="">
 	var verifyCode = new GVerify("v_container");
@@ -62,19 +52,13 @@
 	// verifyCode.validate(code);验证图形验证码，参数code为用户输入的验证码，返回值：正确：true,错误：false
 	$("#submit").click(function () {
 		$('.warn').css('display', 'none');
-		var isEpid = verifyCode.validate($("input[name='epid']").val().trim());
-		if(!isEpid) {
-			$('.epid_warn').css('display', 'inline-block')
-			return;
-		}
-
 		var datalogin = {
 			username: $("input[name='phone']").val().trim(),
 			password: $("input[name='pwd']").val().trim(),
 			grant_type: "password"
 		}
 		console.log(datalogin)
-		$(this).loading();
+		// $(this).loading();
 		var that = this;
 		$.ajax({
 		   headers: {
@@ -86,9 +70,14 @@
 		   data: datalogin,
 		   contentType: "application/x-www-form-urlencoded",
 			success: function (data) {
-				$(that).loading('close')
-	    		addCookie('Authorization', data.access_token, 1);
-				window.location.href='../presale.html'
+                var isEpid = verifyCode.validate($("input[name='epid']").val().trim());
+                if(!isEpid) {
+                    $('.epid_warn').css('display', 'inline-block')
+                    return false;
+                }
+				$(that).loading()
+                Util.setCookie('Authorization', data.access_token, 1);
+				window.location.href='/dist/index.html'
 			},
 			error: function (data) {
 				$(that).loading('close')

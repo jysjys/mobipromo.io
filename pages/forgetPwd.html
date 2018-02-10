@@ -7,23 +7,25 @@
 <title>找回密码</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<link rel="stylesheet" href="/common/common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
 </head>
 <body>
 	<header>
-		<img src="../assets/css/icon/logo.svg">
+		<img src="../assets/css/icon/logo_white.svg">
 	</header>
 	<form class="forgetPwd_form">
 		<h1>找回密码</h1>
 		<div>
-			<span>输入与您的 CAN 帐户相关联的手机号或邮箱</span>
+			<span>输入与您的 CAN 帐户相关联的手机号</span>
 		</div>
 		<div class="inp">
 			<input type="text" name="phone" class="phone" placeholder="手机号">
 			<span class="phone_warn warn">手机格式不正确</span>
 			<span class="phoneTwo_warn warn">用户没有注册</span>
 			<span class="phoneThree_warn warn">发送频率过快,请稍后重试</span>
+			<span class="phoneFour_warn warn">短信发送失败,请稍后重试</span>
 		</div>
 		<div>
 			<button type="button" id="submit" class="btn">确认</button>
@@ -41,41 +43,29 @@
 			<span class="epid_warn warn">验证码输入不正确</span>
 		</div>
 		<div>
-			<button type="button" id="vertication" disabled="disabled" class="btn">验证</button>
+			<button type="button" id="vertication"  class="btn" disabled="disabled">验证</button>
 		</div>
 	</form>
 	<form class="forgetPwd_form_set" style="display: none;">
 		<h1>设置新密码</h1>
 		<div class="inp">
-			<input type="text" name="new_pwd" class="new_pwd" placeholder="输入新密码">
+			<input type="password" name="new_pwd" class="new_pwd" placeholder="输入新密码">
 		</div>
 		<div class="inp">
-			<input type="text" name="confirm" class="confirm" placeholder="再次输入新密码">
+			<input type="password" name="confirm" class="confirm" placeholder="再次输入新密码">
 			<span class="confirm_warn warn">两次输入不一致</span>
 			<span class="confirmTwo_warn warn">请输入有效用账户信息</span>
-			<span class="confirmThree_warn warn">无效密码格式</span>
+			<span class="confirmThree_warn warn">密码长度必须是6到20位的字符，并且不能包含空格</span>
 			<span class="confirmFour_warn warn">请求出错,稍候重试</span>
 		</div>
 		<div>
 			<button type="button" id="new_pwd" class="btn">验证</button>
 		</div>
 	</form>
-	<footer>
-		<div>
-			<span>
-				<img src="../assets/css/icon/ic_email_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_qq_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_wecaht_default.svg">
-			</span>
-		</div>
-		<p>Copyright © 2017 MobiPromo Ltd.</p>
-	</footer>
+	<div id="footer"></div>
 	<script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
 	<script type="text/javascript" src='../assets/js/util.js'></script>
+	<script type="text/javascript" src="/common/load.js"></script>
 	<script type="text/javascript">
 		var data = {}
 		// 确认手机号
@@ -114,7 +104,7 @@
 		$("#new_pwd").on('click', function () {
 			$('.warn').css('display', 'none')
 			var new_pwd = $("input[name = 'new_pwd']").val().trim(),
-			confirm = $("input[name = new_pwd]").val().trim()
+			confirm = $("input[name = 'confirm']").val().trim()
 			if(new_pwd != confirm) {
 				$('.confirm_warn').css('display', 'inline-block');
 				return;
@@ -131,7 +121,7 @@
 				success: function (res) {
 					$('#new_pwd').loading('close')
 					if(!res.code) {
-						window.location.href = 'http://www.mobipromo.io/indexlogin.html'
+						window.location.href = './login.html'
 					} else if(res.code == '11000') {
 						$('.confirmTwo_warn').css('display', 'inline-block')
 					} else if(res.code == '11001') {
@@ -171,6 +161,7 @@
 					$('#submit').loading('close')
 					if(!res.code) {
 						$('.forgetPwd_form').remove();
+						console.log('23fsda2e')
 						$('.forgetPwd_form_epid').css('display', 'block');
 						$('.forgetPwd_form_epid div:eq(0) span:eq(1)').html(phone);
 						countDown()
@@ -180,7 +171,10 @@
 					} else if(res.code == '11002') {
 						$('.phoneThree_warn').css('display', 'inline-block')
 						return;
-					}
+					} else if(res.code == '11004') {
+                        $('.phoneFour_warn').css('display', 'inline-block')
+                        return;
+                    }
 				},
 				error: function (err, data) {
 					console.log(err, data);
@@ -191,9 +185,8 @@
 		}
 		// 倒计时
 		function countDown () {
-			var time = 5;
+			var time = 59;
 			var t =	setInterval( function() {
-				console.log('hello')
 				if(time>1) {
 					time -- ;
 					$('.forgetPwd_form_epid div:eq(0) span:eq(2)').loading().html(
@@ -201,10 +194,11 @@
 						).css({
 						'color': 'rgba(0,0,0,0.38)'
 					});
-					$('#vertication').attr('disabled', 'disabled');
-				}else {
+					// $('#vertication').attr('disabled', 'disabled');
+                    $('#vertication').removeAttr('disabled');
+                }else {
 					clearInterval(t);
-					time = 5;
+					time = 59;
 					$('.forgetPwd_form_epid div:eq(0) span:eq(2)').on('click', function() {
 							sms();
 							countDown();
@@ -213,7 +207,7 @@
 						'color': '#1890FF',
 						'cursor': 'pointer'
 					});
-					$('#vertication').removeAttr('disabled');
+					// $('#vertication').removeAttr('disabled');
 				}
 			}, 1000);
 		}

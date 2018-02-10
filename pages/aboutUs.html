@@ -15,33 +15,11 @@
 		background: #000;
 		color: rgba(255,255,255,0.87);
 	}
-
-	.margin-bottom40 {
-		margin-bottom: 40px;
-	}
-	.margin-top120 {
-		margin-top: 120px;
-	}
-	.margin-top130 {
-		margin-top: 130px;
-	}
-	.margin-top160 {
-		margin-top: 160px;
-	}
-	.margin-top64 {
-		margin-top: 64px;
-	}
-	.margin-top80 {
-		margin-top: 80px;
-	}
-	.margin-left48 {
-		margin-left: 48px;
-	}
-	.margin-top8 {
-		margin-top: 8px;
+	.header .aboutUs-page a {
+		color: rgba(255,255,255,.87)!important;
+		font-weight: 500;
 	}
 	.list-swiper li {
-		margin-right: 88px;
 		text-align: center;
 	}
 	.list-swiper li:last-child {
@@ -60,18 +38,17 @@
 		opacity: 0.5;
 	}
 	.circle-portrait {
-		width: 120px;
-		height: 120px;
+		width: 110px;
 		border-radius: 50%;
-		background: red;
 		overflow: hidden;
+		margin:0 auto;
 	}
 	.circle-portrait-guest {
 		width: 140px;
 		height: 140px;
 		border-radius: 50%;
-		background: red;
 		overflow: hidden;
+		/*margin:0 auto;*/
 	}
 	.circle-portrait img , .circle-portrait-guest img{
 		width: 100%;
@@ -90,16 +67,79 @@
 	.partner-img-list p {
 		width:20%;
 	}
+	.partner-img-list a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
 	.partner-img-list p img {
 		width: 100%;
 		height: 100%;
 	}
 	.swiper-button-prev {
-		background-image: url("../assets/images/u61.png");
+		background-image: url("../assets/css/icon/left.svg");
 		background-repeat: no-repeat;
 	}
 	.swiper-button-next{
-		background-image: url("../assets/images/u63.png");
+		background-image: url("../assets/css/icon/right.svg");
+	}
+	.list-swiper li {
+		list-style: none;
+		width: 200px;
+	}
+	.list-swiper li p:nth-child(2) {
+		color: rgba(255,255,255,.87);
+		font-size: 16px;
+		margin-top: 16px;
+	}
+	.list-swiper li p:nth-child(3) {
+		color: rgba(255,255,255,.54);
+		font-size: 14px;
+	}
+
+	.m-swiper-container, .m-swiper-container2 , .m-partner-img-list{
+		display: none;
+	}
+	@media screen and (max-width: 768px) {
+		.teamBg {
+			width: 100%;
+		}
+		.circle-portrait {
+			width: 10rem;
+		}
+		.circle-portrait-guest {
+			width: 10rem;
+			height: 10rem;
+		}
+		.web-swiper-container , .web-swiper-container2, .web-partner-img-list{
+			display: none;
+		}
+		.m-swiper-container, .m-swiper-container2, .m-partner-img-list {
+			display: block;
+		}
+		.guest-detailInfo {
+			width: 100%;
+		}
+		.margin-top40 {
+			margin-top: 0!important;
+		}
+		.margin-top160 {
+			margin-top: 80px;
+		}
+		.guest-detailInfo {
+			margin-left: 0;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.circle-portrait-guest {
+			margin: 0 auto;
+		}
+		.m-partner-img-list p {
+			width: 33.3%;
+		}
+		#footer {
+			margin-top: 80px!important;
+		}
 	}
 </style>
 </head>
@@ -107,14 +147,14 @@
 	<div id="header"></div>
 	<div class="container" style="padding-top: 64px; background: #000;">
 		<section class="teamBg text-center margin-auto margin-top120">
-			<p class="font-size20 margin-bottom40">团队背景</p>
+			<p class="font-size24 margin-bottom40 line-height28 fontcolor-opocity-54">团队背景</p>
 			<p class="font-size14 fontcolor-opocity-54">
 				MobiPromo公司创立于2010年，历经3年研究开发，成为市场上最先进的无线网络营销系统，主要业务遍布澳大利亚、美国、东南亚、南非、中国大陆、香港。从2017年开始，MobiPromo公司与国内外移动互联网精英结合组成CAN团队，致力于将移动互联网与区块链技术相结合，打造遍布于全球的内容分发与广告分发网络。
 			</p>
 		</section>
 		<div class="team-member margin-top160">
-			<p class="font-size20 text-center">主要成员</p>
-			<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal margin-top64">
+			<p class="font-size24 text-center fontcolor-opocity-54">主要成员</p>
+			<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal margin-top64 web-swiper-container">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide swiper-slide-active">
 						<ul class="flex flex-pack-center list-swiper">
@@ -129,22 +169,22 @@
 								<p class="circle-portrait">
 									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>James Lau</p>
+								<p>CTO</p>
 							</li>
 							<li>
 								<p class="circle-portrait">
 									<img src="../assets/images/_0000s_0002_Ola-Johannes-Lind.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>Ola Johannes Lind</p>
+								<p>CMO</p>
 							</li>
 							<li>
 								<p class="circle-portrait">
 									<img src="../assets/images/_0000s_0000_William-Morries-Tai.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>William Morris Tait</p>
+								<p>Product Director</p>
 							</li>
 						</ul>
 					</div>
@@ -152,31 +192,31 @@
 						<ul class="flex flex-pack-center list-swiper">
 							<li>
 								<p class="circle-portrait">
-									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
+									<img src="../assets/images/_0000s_0001_Richard-Sze.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>Richard Sze</p>
+								<p>Business Development Director</p>
 							</li>
 							<li>
 								<p class="circle-portrait">
-									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
+									<img src="../assets/images/_0000s_0003_Joey-NG.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>Joey Ng</p>
+								<p>Business Development Director</p>
 							</li>
 							<li>
 								<p class="circle-portrait">
-									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
+									<img src="../assets/images/_0000s_0005_Howard-Chen.png" alt="">
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<p>Howard Chan</p>
+								<p>Business Development Director</p>
 							</li>
 							<li>
 								<p class="circle-portrait">
-									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
+									<!--<img src="../assets/images/_0000s_0000_William-Morries-Tai.png" alt="">-->
 								</p>
-								<p>Jason Wu</p>
-								<p>CEO</p>
+								<!--<p>William Morris Tait</p>-->
+								<!--<p>Product Director</p>-->
 							</li>
 						</ul>
 					</div>
@@ -185,18 +225,103 @@
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
 			</div>
+			<div class="swiper-container swiper-container-horizontal swiper-container-wp8-horizontal margin-top64 m-swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swiper-slide-active">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0004_Jason-Wu.png" alt="">
+								</p>
+								<p>Jason Wu</p>
+								<p>CEO</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0006_jdl.png" alt="">
+								</p>
+								<p>James Lau</p>
+								<p>CTO</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0002_Ola-Johannes-Lind.png" alt="">
+								</p>
+								<p>Ola Johannes Lind</p>
+								<p>CMO</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0000_William-Morries-Tai.png" alt="">
+								</p>
+								<p>William Morris Tait</p>
+								<p>Product Director</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide ">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0001_Richard-Sze.png" alt="">
+								</p>
+								<p>Richard Sze</p>
+								<p>Business Development Director</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0003_Joey-NG.png" alt="">
+								</p>
+								<p>Joey Ng</p>
+								<p>Business Development Director</p>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">
+						<ul class="flex flex-pack-center list-swiper">
+							<li>
+								<p class="circle-portrait">
+									<img src="../assets/images/_0000s_0005_Howard-Chen.png" alt="">
+								</p>
+								<p>Howard Chan</p>
+								<p>Business Development Director</p>
+							</li>
+						</ul>
+					</div>
+					<!-- Add Arrows -->
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+
 		</div>
 		<section class="special-guest margin-top160" style="overflow: hidden">
-			<p class="text-center">特邀专家</p>
-			<div class="swiper-container2 swiper-container-horizontal swiper-container-wp8-horizontal margin-top80">
+			<p class="text-center font-size24 fontcolor-opocity-54">特邀专家</p>
+			<div class="web-swiper-container2 swiper-container2 swiper-container-horizontal swiper-container-wp8-horizontal margin-top80">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide swiper-slide-active">
 						<div class="flex flex-pack-center">
 							<p class="circle-portrait-guest">
 								<img src="../assets/images/_0000s_0004_Binsheng-Wang.png" alt="">
 							</p>
-							<div class="guest-detailInfo margin-left48">
-								<p class="fontcolor-opocity-87 font-size16">Binsheng Wang</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="fontcolor-opocity-87 font-size20">Binsheng Wang</p>
 								<p class="fontcolor-opocity-54 font-size14 margin-top8">The advisor of the organization of Blockchain Researching and Development.
 									The Executive member of Micro-finance 50's Forum.
 									The Angel Investor of Blockchain Industry</p>
@@ -205,52 +330,197 @@
 					</div>
 					<div class="swiper-slide">
 						<div class="flex flex-pack-center">
-							<p class="circle-portrait-guest"></p>
-							<div class="guest-detailInfo margin-left48">
-								<p class="font-size16">Binsheng Wang</p>
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0002_Haihui-Zhang.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Haihui Zhang</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									The Secretary General of the organization of Blockchain Researching and Development.
+									The Secretary General of Micro-finance 50's Forum.
+									He had been in charge of for many years at Central Bank and Alibaba.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="flex flex-pack-center">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0001_Henry-Yu.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Henry Yu</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Practising blockchain lawyer and early Bitcoin adopter. With over 15 years of legal experience in various international law firms and leading investment bank. Founded his own law firm, L&Y Law Office (www.lylawoffice.com), to provide legal services to the blockchain and cryptocurrency communities.
+									Appointed as the Hon. Legal Advisor to the Hong Kong Federation of Invention and Innovation and to the Institute of Financial Technologists of Asia. Member of the Technology Committee of the Hong Kong Law Society.
+		Graduated in King's College, University of London (LLB, AKC) and then the University of Hong Kong (PCLL). Has been interviewed by CNBC and other blockchain media.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="flex flex-pack-center">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0000_Johnny--Au-Yeung.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Johnny Au Yeung</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Ethereum developer. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.
+									Graduated in Northeastern University with Computer Engineering Major. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum. Has been interviewed by largest blockchain media in Taiwan.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="flex flex-pack-center">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0003_David-Tang.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">David Tang</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Early blockchain participant. Regional Champion of MasterCard Hackathon and competed on behalf of the Asia-Pacific region in the World MasterCard Hackathon Competition. He has been invited to join the team in MasterCard for payment gateway development. Tang is now focusing on blockchain business solution development.
+									serial entrepreneur. Former eBay project manager. Founded MEWS, an online news platform, and acquired by Share Economy Group Ltd (HK1178).
+							</div>
+						</div>
+					</div>
+					<!-- Add Arrows -->
+				</div>
+				<div class="swiper-pagination2 swiper-pagination-bullets text-center margin-top40">
+					<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+					<span class="swiper-pagination-bullet"></span>
+				</div>
+			</div>
+			<div class="m-swiper-container2 swiper-container2 swiper-container-horizontal swiper-container-wp8-horizontal margin-top80">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swiper-slide-active">
+						<div class="">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0004_Binsheng-Wang.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="fontcolor-opocity-87 font-size20">Binsheng Wang</p>
 								<p class="fontcolor-opocity-54 font-size14 margin-top8">The advisor of the organization of Blockchain Researching and Development.
 									The Executive member of Micro-finance 50's Forum.
 									The Angel Investor of Blockchain Industry</p>
 							</div>
 						</div>
 					</div>
+					<div class="swiper-slide">
+						<div class="">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0002_Haihui-Zhang.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Haihui Zhang</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									The Secretary General of the organization of Blockchain Researching and Development.
+									The Secretary General of Micro-finance 50's Forum.
+									He had been in charge of for many years at Central Bank and Alibaba.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0001_Henry-Yu.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Henry Yu</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Practising blockchain lawyer and early Bitcoin adopter. With over 15 years of legal experience in various international law firms and leading investment bank. Founded his own law firm, L&Y Law Office (www.lylawoffice.com), to provide legal services to the blockchain and cryptocurrency communities.
+									Appointed as the Hon. Legal Advisor to the Hong Kong Federation of Invention and Innovation and to the Institute of Financial Technologists of Asia. Member of the Technology Committee of the Hong Kong Law Society.
+									Graduated in King's College, University of London (LLB, AKC) and then the University of Hong Kong (PCLL). Has been interviewed by CNBC and other blockchain media.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0000_Johnny--Au-Yeung.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">Johnny Au Yeung</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Ethereum developer. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum and has developed several Ethereum business applications. Has interviewed by largest blockchain media in Taiwan.
+									Graduated in Northeastern University with Computer Engineering Major. Former Engineer participating in railway system development in SIEMENS. Now focus developing on Ethereum. Has been interviewed by largest blockchain media in Taiwan.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="">
+							<p class="circle-portrait-guest">
+								<img src="../assets/images/_0000s_0003_David-Tang.png" alt="">
+							</p>
+							<div class="guest-detailInfo margin-left40">
+								<p class="font-size20">David Tang</p>
+								<p class="fontcolor-opocity-54 font-size14 margin-top8">
+									Early blockchain participant. Regional Champion of MasterCard Hackathon and competed on behalf of the Asia-Pacific region in the World MasterCard Hackathon Competition. He has been invited to join the team in MasterCard for payment gateway development. Tang is now focusing on blockchain business solution development.
+									serial entrepreneur. Former eBay project manager. Founded MEWS, an online news platform, and acquired by Share Economy Group Ltd (HK1178).
+							</div>
+						</div>
+					</div>
 					<!-- Add Arrows -->
 				</div>
-				<div class="swiper-pagination2 swiper-pagination-bullets text-center margin-top130">
+				<div class="swiper-pagination2 swiper-pagination-bullets text-center margin-top40">
 					<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
 					<span class="swiper-pagination-bullet"></span>
 				</div>
 			</div>
+
 		</section>
 		<section class="map-container text-center margin-top160">
-			<p>战略布局</p>
+			<p class="font-size24 fontcolor-opocity-54">战略布局</p>
 			<p class="margin-top80">
 				<img src="../assets/images/map.png" alt="">
 			</p>
 		</section>
 		<section class="team-partner margin-top160 text-center">
-			<p>合作伙伴</p>
-			<div class="partner-img-list">
+			<p class="font-size24 fontcolor-opocity-54">合作伙伴</p>
+			<div class="partner-img-list web-partner-img-list">
 				<div class="top flex margin-top80">
-					<p><img src="../assets/images/logo_exx.png" alt=""></p>
-					<p><img src="../assets/images/logo_okex.png" alt=""></p>
-					<p><img src="../assets/images/logo_coinbene.png" alt=""></p>
-					<p><img src="../assets/images/logo_chaoex.png" alt=""></p>
-					<p><img src="../assets/images/logo_btc98.png" alt=""></p>
+					<p><a href="https://www.exx.com"><img src="../assets/images/logo_exx.png" alt=""></a></p>
+					<p><a href="https://www.okex.com"><img src="../assets/images/logo_okex.png" alt=""></a></p>
+					<p><a href="http://www.coinbene.com/#/"><img src="../assets/images/logo_coinbene.png" alt=""></a></p>
+					<p><a href="https://www.chaoex.com/home"><img src="../assets/images/logo_chaoex.png" alt=""></a></p>
+					<p><a href="https://www.btc98.com"><img src="../assets/images/logo_btc98.png" alt=""></a></p>
 				</div>
 				<div class="bottom flex">
-					<p><img src="../assets/images/logo_bitnoah.png" alt=""></p>
-					<p><img src="../assets/images/logo_bishijie.png" alt=""></p>
-					<p><img src="../assets/images/logo_chainfor.png" alt=""></p>
-					<p><img src="../assets/images/logo_jinse.png" alt=""></p>
+					<p><a href="https://www.bitnoah.com/bsc/index.jsp"><img src="../assets/images/logo_bitnoah.png" alt=""></a></p>
+					<p><a href="http://www.bishijie.com/kuaixun/"><img src="../assets/images/logo_bishijie.png" alt=""></a></p>
+					<p><a href="http://www.chainfor.com"><img src="../assets/images/logo_chainfor.png" alt=""></a></p>
+					<p><a href="http://www.jinse.com"><img src="../assets/images/logo_jinse.png" alt=""></a></p>
 				</div>
 			</div>
+			<div class="partner-img-list m-partner-img-list">
+				<div class="top flex margin-top80">
+					<p><a href="https://www.exx.com"><img src="../assets/images/logo_exx.png" alt=""></a></p>
+					<p><a href="https://www.okex.com"><img src="../assets/images/logo_okex.png" alt=""></a></p>
+					<p><a href="http://www.coinbene.com/#/"><img src="../assets/images/logo_coinbene.png" alt=""></a></p>
+				</div>
+				<div class="flex" >
+					<p><a href="https://www.chaoex.com/home"><img src="../assets/images/logo_chaoex.png" alt=""></a></p>
+					<p><a href="https://www.btc98.com"><img src="../assets/images/logo_btc98.png" alt=""></a></p>
+					<p><a href="https://www.bitnoah.com/bsc/index.jsp"><img src="../assets/images/logo_bitnoah.png" alt=""></a></p>
+				</div>
+				<div class="bottom flex">
+					<p><a href="http://www.bishijie.com/kuaixun/"><img src="../assets/images/logo_bishijie.png" alt=""></a></p>
+					<p><a href="http://www.chainfor.com"><img src="../assets/images/logo_chainfor.png" alt=""></a></p>
+					<p><a href="http://www.jinse.com"><img src="../assets/images/logo_jinse.png" alt=""></a></p>
+				</div>
+			</div>
+
 		</section>
 	</div>
-	<div id="footer" class="margin-top160"></div>
+	<div id="footer" class="margin-top120"></div>
 	<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
 	<script src="../assets/js/swiper-3.4.2.min.js"></script>
 	<script type="text/javascript" src='../assets/js/util.js'></script>
+	<script src="/common/load.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container', {
 			prevButton:'.swiper-button-prev',
@@ -259,11 +529,8 @@
 		var mySwiper2 = new Swiper('.swiper-container2', {
 			pagination : '.swiper-pagination2',
 			paginationClickable :true,
+			mousewheel: true
 		})
-	</script>
-	<script type="text/javascript">
-		$('#header').load('../common/Header.html .header');
-		$('#footer').load('../common/Footer.html .footer');
 	</script>
 </body>
 </html>

@@ -431,14 +431,14 @@ label.error{display: block; -webkit-transition: border-color .15s ease-in-out,bo
 .price-paytype.ac {
     border: 1px solid #4386f5;
 }
-.price-paytype.ac:before {
-    position: absolute;
-    content: "";
-    border: 30px solid transparent;
-    border-right: 30px solid #4386f5;
-    right: 0;
-    top: -31px;
-}
+/*.price-paytype.ac:before {*/
+    /*position: absolute;*/
+    /*content: "";*/
+    /*border: 30px solid transparent;*/
+    /*border-right: 30px solid #4386f5;*/
+    /*right: 0;*/
+    /*top: -31px;*/
+/*}*/
 
 .price-paytype {
     display: inline-block;

@@ -7,24 +7,26 @@
 <title>注册</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<link rel="stylesheet" href="/common/common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
 </head>
 <body>
 	<header>
-		<img src="../assets/css/icon/logo.svg">
+		<img src="../assets/css/icon/logo_white.svg">
 	</header>
 	<form class="register_form">
 		<h1>注册</h1>
 		<div class="inp">
 			<input type="text" name="phone" class="phone" placeholder="手机号">
 			<span class="phone_warn warn">格式不正确</span>
-			<span class="phoneTwo_warn warn">用户没有注册</span>
+			<span class="phoneTwo_warn warn">用户已经注册</span>
 			<span class="phoneThree_warn warn">发送频率过快,请稍后重试</span>
 		</div>
 		<div class="inp">
 			<input type="password" name="pwd" class="pwd" placeholder="请输入密码">
 			<span class="pwd_warn warn">密码不能为空</span>
+			<span class="pwd_warn_length warn">密码长度必须是6到20位的字符，并且不能包含空格</span>
 		</div>
 		<div style="overflow: hidden;">
 			<span>点击确认注册，即表示您已阅读并同意<a href=""> CAN用户协议</a></span>
@@ -52,23 +54,11 @@
 			<button type="button" id="verification" class="btn">验证</button>
 		</div>
 	</form>
-	<footer>
-		<div>
-			<span>
-				<img src="../assets/css/icon/ic_email_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_qq_default.svg">
-			</span>
-			<span>
-				<img src="../assets/css/icon/ic_wecaht_default.svg">
-			</span>
-		</div>
-		<p>Copyright © 2017 MobiPromo Ltd.</p>
-	</footer>
-<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="../assets/js/util.js"></script>
-<script type="text/javascript">
+	<div id="footer"></div>
+	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/js/util.js"></script>
+	<script type="text/javascript" src="/common/load.js"></script>
+	<script type="text/javascript">
 		var data = {};
 		// 点击确认
 		$("#submit").click(function () {
@@ -97,7 +87,7 @@
 						$('.epid_warn').css('display', 'inline-block')
 						return;
 					}
-					window.location.href="http://www.mobipromo.io/indexlogin.html"
+					window.location.href="./login.html"
 				},
 				error: function (res) {
 					$('#verification').loading('close')
@@ -110,6 +100,7 @@
 
 		// 表单验证
 		function warn () {
+            var isNullValidate = new RegExp("\\s")
 			$(".warn").css({'display':'none'})
 			var phone = $("input[name='phone']").val().trim(),
 			password = $("input[name='pwd']").val().trim(),
@@ -122,6 +113,9 @@
 				console.log('password not empty')
 				$(".pwd_warn").css({'display':'inline-block'});
 				return;
+			} else if(password.length < 6 || password.length > 20 || isNullValidate.test(password) === true) {
+                $(".pwd_warn_length").css({'display':'inline-block'});
+                return false;
 			}
 			data = {
 				phone: phone,
@@ -164,7 +158,7 @@
 
 		// 倒计时
 		function countDown () {
-			var time = 5;
+			var time = 59;
 			var t =	setInterval( function() {
 				console.log('hello')
 				if(time>1) {
@@ -177,7 +171,7 @@
 					$('#vertication').attr('disabled', 'disabled');
 				}else {
 					clearInterval(t);
-					time = 5;
+					time = 59;
 					$('.register_form_epid div:eq(0) span:eq(2)').on('click', function() {
 							sms();
 							countDown();

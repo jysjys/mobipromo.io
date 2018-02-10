@@ -1,0 +1,119 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<title>mobipromo</title>
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<!-- 引入组件库 -->
+	<link rel="stylesheet" href="/common/common.css">
+	<link rel="stylesheet" href="/assets/css/login.css" />
+	<link rel="stylesheet" href="/assets/css/icons/icons.css">
+	<link rel="stylesheet" href="/assets/css/presale.css">
+	<link rel="stylesheet" href="/assets/css/customOrderInfo.css">
+</head>
+<body>
+	<div id="header"></div>
+	<div class="presale-container" id="commodList" v-cloak>
+		<h1 class="order-Title fontcolor-FFFopocity-87">订购</h1>
+		<div class="" style="position: relative" v-show="amoutFDatas.length>0" v-for="(item,index) in amoutFDatas">
+			<span style="padding-left: 59px" v-if="index === 0" class="m-fma-title">F码：</span>
+			<span style="padding-left: 59px" v-if="index !== 0"></span>
+			<input type="text" name="coupon" class="coupon" value=""  v-model.trim="item.value" placeholder="输入F码" @blur="isRightFMA(item,index)">
+			<span class="addFma-span" style="color: #1890FF;cursor: pointer" @click="addFMa()" v-if="index === 0 && isOneBuyMoreMark === false">+添加F码</span>
+			<span class="delFma-span" style="color: #1890FF;cursor: pointer" @click="deletFMa(index)" v-else-if="index > 0 ">删除</span>
+			<span v-else style="width: 63px;">     </span>
+			<p class="warn-fma-container" v-html="item.error "> </p>
+		</div>
+		<div class="">
+			<span>收货人：</span><input type="text" name="username" class="username" placeholder="输入收货人姓名">
+		</div>
+		<div>
+			<span>联系电话：</span><input type="text" name="phone_number" class="phone_number" placeholder="输入收货人电话">
+		</div>
+		<div class="">
+			<span>收货地区：</span>
+			<div class="region-container" style="padding: 0 10px 0 30px;">
+				<!--省份选择-->
+				<select id="prov" name="address-level1" onchange="showCity(this)">
+					<option value="">省份</option>
+				</select>
+				<!--城市选择-->
+				<select id="city" name="address-level2" onchange="showCounty(this)">
+					<option value="">城市</option>
+				</select>
+				<!--县区选择-->
+				<select id="country" name="address-level3">
+					<option value="">区县</option>
+				</select>
+			</div>
+		</div>
+		<div>
+			<span>详细地址：</span><input type="text" name="address-detail" class="address" placeholder="请输入详细地址">
+		</div>
+		<!--<div class="flex flex-pack-center" style="height: 40px;line-height: 40px;margin-top: 16px">-->
+			<!--<span>数量：</span>-->
+			<!--<p  class="text-left device-acount" ><span class=" color-red ">{{ remarkBox }}</span>台</p>-->
+		<!--</div>-->
+		<!--<div class="flex flex-pack-center" style="height: 40px;line-height: 40px;margin-top: 16px">-->
+			<!--<span>金额：</span>-->
+			<!--<p  class="text-left money-many" ><span class=" color-red ">{{ totalPriceBox }}</span>元</p>-->
+		<!--</div>-->
+		<div class="flex flex-pack-center m-paymethod-content" style="height: 40px;line-height: 40px;margin-top: 16px">
+			<span>付款方式：</span>
+			<div class="pay-method text-left">
+				<div tit="alipay" class="price-paytype ac">
+					<img src="/assets/images/ic_alipay.png" alt="" style="width: 69px">
+				</div>
+			</div>
+			</p>
+		</div>
+		<button id="submit" type="submit" style='background: #1890FF;' class="payOrder-submit-btn">支付订单</button>
+	</div>
+	<div class="dialog dialog-box" style="top:50px;left:300px;display: none;" id="upgrade_dlg">
+		<h2 class="dialog-title">订单信息</h2>
+		<span class='dialog_warn'>只能填写数字！</span>
+		<div class="dlg-content">
+			<div tit="1y" class="price" style="border: 1px solid #458DEF">
+				<div class="price-date" style="margin-top: 0;">
+					<input type="text" name='amount' id='amount' placeholder="该F码最多限购100台">
+				</div>
+				<div class="price-text">¥
+					<label class="userprice">899</label>
+				</div>
+				<span class="icons">&#xe658;</span>
+			</div>
+			<div class="dlg-item">
+				<div tit="alipay" class="price-paytype ac" style="padding:12px 5px 8px 5px;">
+					<span style="font-size:24px;color:#00aaee;" class="icons">&#xe654;</span>
+					<span class="icons ico">&#xe658;</span>
+				</div>
+			</div>
+			<div class="dlg-item" style="text-align:right;margin-bottom:0;">
+				<button id="zhifu" class="button default">去支付 <label>¥ 899</label></button>
+			</div>
+		</div>
+	</div>
+	<div style="margin-top: 20px;margin-bottom: 100px;margin-left: 20%;margin-right: 20%; display: none;">
+		<span style="text-align: left;display: inherit;">温馨提示：</span>
+		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*1. 请仔细核对购买信息之后确认</span>
+		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*2. 一个F码只能使用一次</span>
+		<span style="font-size: 12px; line-height: 16px; color: #DB4533; margin-top: 10px; width: auto; display: block; text-align: left;">*3. 提交订单后24小时内未付款交易会自动关闭，并回收F码</span>
+	</div>
+	<div id="footer"></div>
+	<!--<div id="window-mask" class="window-mask" style="width: 100%;height: 100%;background: #ccc"></div>-->
+	<script src="/assets/js/vue.min.js"></script>
+	<!--<script src="https://unpkg.com/element-ui@2.1.0/lib/index.js"></script>-->
+	<script src="/assets/js/elementUiIndex.js"></script>
+	<script src="/assets/js/jquery-3.2.1.min.js"></script>
+	<!--背景图片自动更换-->
+	 <!--<script src="./assets/js/supersized.3.2.7.min.js"></script> -->
+	<script src="/assets/js/address.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src='/assets/js/customCupon.js'></script>
+	<script src="/common/load.js"></script>
+</body>
+
+</html>

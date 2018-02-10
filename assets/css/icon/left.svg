@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="51px" viewBox="0 0 27 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="关于" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-135.000000, -656.000000)">
+        <g id="主要成员" transform="translate(135.000000, 492.000000)" fill="#616161" fill-rule="nonzero">
+            <g id="left" transform="translate(13.500000, 189.500000) scale(-1, 1) translate(-13.500000, -189.500000) translate(0.000000, 164.000000)">
+                <polygon id="Line" points="0.792893219 1.5 1.5 0.792893219 26.2071068 25.5 25.5 26.2071068"></polygon>
+                <polygon id="Line-Copy" transform="translate(13.500000, 37.500000) scale(1, -1) translate(-13.500000, -37.500000) " points="0.792893219 25.5 1.5 24.7928932 26.2071068 49.5 25.5 50.2071068"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

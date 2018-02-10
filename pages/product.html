@@ -6,49 +6,67 @@
 <title>product</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
-<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../common/common.css">
+<link rel="icon" href="/assets/images/title.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/common/common.css">
+	<link rel="stylesheet" href="/assets/css/product-responsive.css">
 <style type="text/css">
-html, body, ul, li, h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	padding: 0;
-}
+	html, body, ul, li, h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+		padding: 0;
+		color: rgba(255,255,255,0.87);
+	}
+	input,button,select,textarea{outline:none;}
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 400;
 	}
-	body {
-		background: #000;
-		color: rgba(255,255,255,0.87);
+	.productPage {
+		font-weight: 500;
 	}
-	
+	.productPage .nav-pro-mouse {
+		color: rgba(255,255,255,.87);
+	}
+	.trink-icon {
+		border-top: 5px solid rgba(255,255,255,.87);
+	}
 	.banner {
-		padding-top: 168px;
+		padding-top: 120px;
 	}
 	.banner_left {
 		padding-top: 50px;
 	}
 	.banner_left h1{
 		font-size: 40px;
-		line-height: 58px;
+		line-height: 48px;
+        margin-bottom: 8px;
 	}
 	.banner_left h4 {
 		font-size: 24px;
-		line-height: 33px;
+		line-height: 32px;
 	}
 	.banner_left span {
 		font-size: 48px;
 		line-height: 67px;
 		color: #1890FF;
 		display: block;
-		font-weight: 200;
+		font-weight: 300;
+        margin-top: 16px;
 	}
 	.banner_left button {
-		width: 120px;
+		width: 160px;
 		height: 48px;
 		font-size: 20px; 
 		line-height: 28px;
+        background: none;
+        border: 1px solid rgba(24,144,255,.5);
+        border-radius: 24px;
+        margin-top: 32px;
 		color: #1890FF;
+	}
+    .banner_left button:hover {
+        border-color: rgba(255,255,255,.5);
+		color: #fff;
 	}
 	.banner_right img {
 		width: 100%;
@@ -57,16 +75,18 @@ html, body, ul, li, h1, h2, h3, h4, h5, h6 {
 	
 	.main {
 		text-align: center;
-		margin-top: 184px;
+		margin-top: 160px;
 	}
-	.main h1 {
-		font-size: 40px;
-		line-height: 56px;
-	}
-	.main h2 {
-		font-size: 24px;
-		line-height: 33px;
-	}
+	.main h1 , .faq h1{
+		font-size: 30px;
+		line-height: 38px;
+    }
+	.main h2 , .faq h2{
+        margin-top: 8px;
+		font-size: 20px;
+		line-height: 28px;
+        color: rgba(255,255,255,.54)!important;
+    }
 	.main img {
 		display: block;
 		margin-top: 80px;
@@ -76,7 +96,8 @@ html, body, ul, li, h1, h2, h3, h4, h5, h6 {
 
 
 	.faq {
-		margin-top: 184px;
+		margin-top: 160px;
+        margin-bottom: 120px;
 	}
 	.faq_list {
 		margin-top: 50px;
@@ -98,84 +119,100 @@ html, body, ul, li, h1, h2, h3, h4, h5, h6 {
 	}
 	.faq_list li:nth-child(even) {
 		width: 42%;
+        height: 200px;
 		float: right;
 	}
+    .faq_list .can-value-container {
+        height: 274px!important;
+    }
 	.faq_list li h4 {
-		font-size: 24px;
+		font-size: 20px;
 		color: #1890FF;
-		line-height: 32px;
+		line-height: 28px;
 	}
 	.faq_list li p {
 		font-size: 16px;
 		line-height: 24px;
+        color: rgba(255,255,255,.54);
+        margin-top: 16px;
 	}
 
+    .header {
+        background: rgba(0,0,0,1)!important;
+    }
 
-	@media (max-width: 992px) {
-		.banner {
-			text-align: center;
-		}
-		.main img {
-			height: 300px;
-		}
-		.faq_list li{
-			width: 100% !important;
-		}
-	}
+	/*@media (max-width: 992px) {*/
+		/*.banner {*/
+			/*text-align: center;*/
+		/*}*/
+		/*.main img {*/
+			/*height: 300px;*/
+		/*}*/
+		/*.faq_list li{*/
+			/*width: 100% !important;*/
+		/*}*/
+	/*}*/
+	/*#header .productPage a{*/
+		/*color: rgba(255,255,255,0.87);*/
+	/*}*/
 </style>
 </head>
 <body>
 	<div id="header"></div>
-	<div class="container" style="padding-top: 64px; background: #000;">
-		<section class="banner row">
-			<div class="banner_left col-md-6">
-				<h1>CAN星际宝盒</h1>
-				<h4>内容分发与广告分发节点设备</h4>
-				<span>¥ 899</span>	
-				<button type="button" class="btn" >订购</button>
-			</div>
-			<div class="banner_right col-md-6">
-				<img src="../assets/images/can_box_child.png">
-			</div>
-		</section>
-		<section class="main row">
-			<h1>人人皆可参与</h1>
-			<h2>您将会在这里发现自己的价值</h2>
-			<img src="../assets/images/picture.png">
-		</section>
-		<section class="faq row">
-			<h1 class="text-center">FAQ</h1>
-			<h2 class="text-center">常见问题解答</h2>
-			<ul class="faq_list">
-				<li class="">
-					<h4>电源插口?</h4>
-					<p>目前外置硬盘接口提供了5V供电，能够驱动2.5寸机械硬盘；3.5寸机械硬盘则需要配置12V电源；SSD需要支持5V供电。</p>
-				</li>
-				<li class="">
-					<h4>外观尺寸?</h4>
-					<p>目前正在依据概念外观设计，会做调整，主要是考虑集中存放和家用两种情况的需求差异极大，需两者兼顾。</p>
-				</li>
-				<li class="">
-					<h4>硬盘支持？</h4>
-					<p>目前外置硬盘接口提供了5V供电，能够驱动2.5寸机械硬盘；3.5寸机械硬盘则需要配置12V电源；SSD需要支持5V供电。</p>
-				</li>
-				<li class="">
-					<h4>CAN 的价值？</h4>
-					<p>CAN 构建的是开放生态，将会提供开放接口给所有参与者，CAN 的所有参与者都可以在其上构建开放的区块链应用，我们相信这种共同构建，共同获益的精神，是区块链的核心价值。<br><br><br><br><br><br><br>所有参与的人，都能为CAN网络创造可能性！</p>
-				</li>
-				<li class="">
-					<h4>上行速率？</h4>
-					<p>最佳上行速率为4Mbps，bps表示每秒比特(bit)数；如果一个1M字节(Byte)的文件，上传需要2秒钟，因为1 字节(Byte) = 8 比特(bit)。国内运营商大多数会保证8M以上宽带拥有4M上行，也就是512KB每秒的传输速度，下行2.5MB/秒。</p>
-				</li>
-			</ul>
-		</section>
+	<div style="padding-top: 64px; background: #000;">
+		<div class="container" >
+			<section class="banner row">
+				<div class="banner_left col-md-6">
+					<h1>CAN星际宝盒</h1>
+					<h4>内容分发与广告分发节点设备</h4>
+					<span>¥ 899</span>
+					<button type="button" class="customOrder-btn" >订购</button>
+				</div>
+				<div class="banner_right col-md-6">
+					<img src="../assets/images/box_child.png">
+				</div>
+			</section>
+			<section class="main row">
+				<h1>人人皆可参与</h1>
+				<h2>您将会在这里发现自己的价值</h2>
+				<img src="../assets/images/picture.png">
+			</section>
+			<section class="faq row">
+				<h1 class="text-center">FAQ</h1>
+				<h2 class="text-center">常见问题解答</h2>
+				<ul class="faq_list">
+					<li class="">
+						<h4>电源插口?</h4>
+						<p>目前外置硬盘接口提供了5V供电，能够驱动2.5寸机械硬盘；3.5寸机械硬盘则需要配置12V电源；SSD需要支持5V供电。</p>
+					</li>
+					<li class="">
+						<h4>外观尺寸?</h4>
+						<p>目前正在依据概念外观设计，会做调整，主要是考虑集中存放和家用两种情况的需求差异极大，需两者兼顾。</p>
+					</li>
+					<li class="">
+						<h4>硬盘支持？</h4>
+						<p>目前外置硬盘接口提供了5V供电，能够驱动2.5寸机械硬盘；3.5寸机械硬盘则需要配置12V电源；SSD需要支持5V供电。</p>
+					</li>
+					<li class="can-value-container">
+						<h4>CAN 的价值？</h4>
+						<p>CAN 构建的是开放生态，将会提供开放接口给所有参与者，CAN 的所有参与者都可以在其上构建开放的区块链应用，我们相信这种共同构建，共同获益的精神，是区块链的核心价值。<br><br>所有参与的人，都能为CAN网络创造可能性！</p>
+					</li>
+					<li class="">
+						<h4>上行速率？</h4>
+						<p>最佳上行速率为4Mbps，bps表示每秒比特(bit)数；如果一个1M字节(Byte)的文件，上传需要2秒钟，因为1 字节(Byte) = 8 比特(bit)。国内运营商大多数会保证8M以上宽带拥有4M上行，也就是512KB每秒的传输速度，下行2.5MB/秒。</p>
+					</li>
+				</ul>
+			</section>
+		</div>
 	</div>
 	<div id="footer"></div>
-<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
-<script type="text/javascript" src='../assets/js/util.js'></script>
-<script type="text/javascript">
-	$('#header').load('../common/Header.html .header');
-	$('#footer').load('../common/Footer.html .footer');
+<script type="text/javascript" src='/assets/js/jquery.min.js'></script>
+<script type="text/javascript" src='/assets/js/util.js'></script>
+<script src="../common/load.js"></script>
+<script>
+	$(".customOrder-btn").click(function(){
+        window.location.href =  './CustomOrderInfo.html'
+    })
 </script>
 </body>
 </html>
