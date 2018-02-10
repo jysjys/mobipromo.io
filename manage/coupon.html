@@ -71,6 +71,7 @@
 							<input type="text" class="form-control" id="single_amount" style="width:80px;" placeholder="台">
 							<span class="btn btn-info" id="add_btn">新增F码</span>
 							<span class="btn btn-info" id="codes_btn">查看F码列表</span>
+							<span class="btn btn-info" id="proxyPerson_btn">查看代理商</span>
 						</div>
 					</div>
 				</form>
@@ -163,6 +164,7 @@
 	var url = location.href;
 	var num = url.indexOf("?");
 	var proxyId = num < 0 ? '' : url.substr(num + 1);
+	console.log(proxyId)
 	if(parseInt(proxyId) + '' == 'NaN')
 		proxyId = '';
 	var ID = getCookieValue('manage');
@@ -180,6 +182,9 @@
 			searchData: {proxyId: proxyId}
 		},
 		methods: {
+            lookF () {
+                alert(11221)
+			},
 			getCoupon: function(curPage) {
 				var self = this;
 				self.searchData.curPage = curPage;
@@ -197,7 +202,8 @@
 			methods: {
 				update: function(index) {
 
-				}
+				},
+
 			}
 		}
 	});
@@ -271,23 +277,30 @@
 		 * F码列表
 		 */
 		$("#codes_btn").on('click', function() {
-			$.ajax({
-				url:'/promo/manage/coupon/getAllCoupons',
-				type: 'POST',
-				data: couponList.searchData,
-				success: function(data) {
-					var str = '';
-					for(var i = 0, len = data.list.length; i < len; i++) {
-						str += data.list[i].code + '\n';
-					}
-					$('#myModal').modal('toggle');
-					$('#codeList').html(str);
-				}
-			});
-		});
+            alert(1)
+            $.ajax({
+                url:'/promo/manage/coupon/getAllCoupons',
+                type: 'POST',
+                data: couponList.searchData,
+                success: function(data) {
+                    var str = '';
+                    for(var i = 0, len = data.list.length; i < len; i++) {
+                        str += data.list[i].code + '\n';
+                    }
+                    $('#myModal').modal('toggle');
+                    $('#codeList').html(str);
+                }
+            });
+        });
 		$('#codeList').on('click', function() {
 			$(this).select();
 		})
+        $("#proxyPerson_btn").on('click', function() {
+            if(proxyId === '') {
+                return false
+			}
+            window.location.href =  './proxylook.html?'+ proxyId
+        });
 	});
 	</script>
 </body>

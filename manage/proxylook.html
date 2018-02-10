@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/datetimepicker.css">
+    <link rel="stylesheet" href="../assets/css/manage/manage.css">
+    <title>后台管理中心</title>
+    <style>
+        .form-group {
+            font-weight: 700;
+        }
+        .proxyName {
+            font-size: 18px;
+        }
+        .record-list-title {
+            float: right;
+        }
+        .table-proxy-container {
+            table-layout: fixed;
+        }
+        .item_Adress {
+            position: relative;
+        }
+        .more-address {
+            position: absolute;
+            top: 100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="proxyList">
+    <div class="panel panel-primary">
+        <div class="panel panel-default search-panel">
+            <form class="form-inline search-form clearfix">
+                <div class="row">
+                    <div class="form-group">
+                        <span class="proxyName">{{proxyName}}   </span>
+                        <span>共退宝盒数量：<span>{{ refundBoxNum }}</span> 台</span>
+                    </div>
+                    <div class="form-group record-list-title">
+                        <p>共<span>{{ refundNum }}</span>条记录</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Table -->
+        <table class="table table-hover table-proxy-container" >
+            <thead>
+            <tr>
+                <th style="width: 240px">订单编号</th>
+                <th style="width: 88px">购买数量</th>
+                <th>电话</th>
+                <th style="width: 160px">邮箱</th>
+                <th>邮寄地址</th>
+                <th style="width: 240px">支付宝号</th>
+                <th>F码</th>
+                <th>退款状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, index) in refundSells">
+                <td>{{ item.tradeNumber }}</td>
+                <td>{{ item.buyAmount }}</td>
+                <td>{{ item.userTel}}</td>
+                <td>{{ item.userEmail }}</td>
+                <td class="item_Adress">{{ item.receivingAddress }}<span  class="more-address">adsfa</span></td>
+                <td>{{ item.tradeNo }}</td>
+                <td>{{ item.couponCode }}</td>
+                <td>
+                    <span class="label" :class="item.used ? 'label-danger' : 'label-success'">{{ item.status_ }}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="pager"></div>
+</div>
+<script src="../assets/js/jquery.min.js"></script>
+<script src='../assets/js/bootstrap.min.js'></script>
+<script src='../assets/js/datetimepicker.js'></script>
+<script src="../assets/js/vue.min.js"></script>
+<script src='../assets/js/util.js'></script>
+<script>
+    /**
+     *	获取cookie
+     */
+    function getCookieValue(name) { /**获取cookie的值，根据cookie的键获取值**/
+        //用处理字符串的方式查找到key对应value
+    var name = escape(name);
+        //读cookie属性，这将返回文档的所有cookie
+        var allcookies = document.cookie;
+        //查找名为name的cookie的开始位置
+        name += "=";
+        var pos = allcookies.indexOf(name);
+        //如果找到了具有该名字的cookie，那么提取并使用它的值
+        if (pos != -1) { //如果pos值为-1则说明搜索"version="失败
+            var start = pos + name.length; //cookie值开始的位置
+            var end = allcookies.indexOf(";", start); //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置
+            if (end == -1) end = allcookies.length; //如果end值为-1说明cookie列表里只有一个cookie
+            var value = allcookies.substring(start, end); //提取cookie的值
+            return (value); //对它解码
+        } else { //搜索失败，返回空字符串
+            return "";
+        }
+    }
+    var ID = getCookieValue("menage");
+    var url = location.href;
+    var num = url.indexOf("?");
+    var proxyId = num < 0 ? '' : url.substr(num + 1);
+    if(parseInt(proxyId) + '' == 'NaN')
+        proxyId = '';
+    var ID = getCookieValue('manage');
+    if(ID == '') {
+        window.location.href = './login.html'
+    }
+
+    /**
+     *	创建VUE实例
+     */
+    var proxyList = new Vue({
+        el: '#proxyList',
+        data: {
+            refundBoxNum : '',
+            refundNum: '',
+            refundSells: '',
+            proxyName: ''
+        },
+        mounted () {
+            this.getProxyList ()
+        },
+        methods: {
+            getProxyList () {
+                var url = location.href;
+                var num = url.indexOf("?");
+                var proxyId = num < 0 ? '' : url.substr(num + 1);
+                let paramsData = {proxyId:proxyId}
+                let vm = this
+                $.ajax({
+                    url:'/promo/manage/index/getRefundData',
+                    type: 'POST',
+                    async: false,
+                    data: paramsData,
+                    success: function(data) {
+                        console.log(data)
+                        vm.proxyName = data.proxyName
+                        vm.refundBoxNum = data.refundBoxNum
+                        vm.refundNum = data.refundNum
+                        vm.refundSells = data.refundSells
+                    }
+                });
+            }
+        }
+    });
+    $.get('./header.html', function(data) {
+        $('body').prepend(data);
+        $('.navbar li:eq(3)').addClass('active');
+    });
+
+</script>
+</body>
+</html>

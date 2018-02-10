@@ -4,26 +4,82 @@
 	<meta charset="UTF-8">
 	<title>Header</title>
 	<link rel="stylesheet" type="text/css" href="./common.css">
+	<link rel="stylesheet" href="../assets/css/index.css">
+	<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
 </head>
 <body>
-	<div class="header">
-		<ul class="logo">
-			<img src="../assets/css/icon/logo.svg" height="30px;">
-		</ul>
-		<ul class="head_l">
-			<li>主页</li>
-			<li>白皮书</li>
-			<li>项目</li>
-			<li>通知</li>
-			<li>CAN星际宝盒</li>
-		</ul>
-		<ul class="head_r">
-			<li>个人中心</li>
-			<li style='color: #1890FF;'>退出</li>
-			<li><i class="iconfont icon-ren"></i>English</li>
-		</ul>
-		<ul style="width: 100%; height: 50px; background: #666;"></ul>	
+	<div class="header-container">
+		<div style="display: flex;justify-content: left" class="web-head-container">
+			<div class="header clearfloat">
+				<ul class="logo">
+					<a href="/index.html">
+						<img src="../assets/css/icon/logo_white.svg" height="32px;">
+					</a>
+				</ul>
+				<ul class="head_l">
+					<li class="mainPape"><a href="../index.html">主页</a></li>
+					<li><a href="../whitepaper.pdf">白皮书</a></li>
+					<li class="productPage">
+						<div class="nav-pro-mouse flex flex-align-center">
+							产品 <span class="trink-icon"></span>
+						</div>
+						<div class="product-over-downContainer">
+							<div class="product-content flex">
+								<div class="product-img-list text-center" style="width: 72px">
+									<a href="../pages/product.html" class="pro-a-item">
+										<p class="product-img">
+											<img src="../assets/images/pic_device.png" alt="">
+										</p>
+										<p class="margin-top16">星际宝盒</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="news-page"><a href="../pages/info.html">资讯</a></li>
+					<li class="aboutUs-page"><a href="../pages/aboutUs.html">关于</a></li>
+				</ul>
+				<ul class="head_r">
+					<li class="isLoginHead"><a id="login" href="/pages/login.html">登录</a></li>
+					<li class="isLoginRegisterHead"><a href="/pages/register.html">注册</a></li>
+					<!--<li>-->
+						<!--<a href="javascript:void(0);" class="noDisableA">-->
+							<!--<i class="iconfont icon-ren"></i>简体中文-->
+						<!--</a>-->
+					<!--</li>-->
+				</ul>
+		</div>
+		</div>
+		<div class="m-header-container" style="display: none">
+			<div class="header flex flex-pack-justify flex-align-center">
+				<ul class="logo">
+					<a href="/index.html">
+						<img src="../assets/css/icon/logo_white.svg" height="32px;">
+					</a>
+				</ul>
+				<div class="m-header-right-btn">
+					<img src="/assets/css/icon/Artboard.svg" alt="">
+				</div>
+			</div>
+			<div class="select-headerdown" style="display: none">
+				<ul class="header_select_list">
+					<li class="mainPape"><a href="../index.html">主页</a></li>
+					<li><a href="../whitepaper.pdf">白皮书</a></li>
+					<li class="productPage m-productPage">
+						<a href="../pages/product.html">星际宝盒</a>
+					</li>
+					<li class="news-page"><a href="../pages/info.html">资讯</a></li>
+					<li class="aboutUs-page"><a href="../pages/aboutUs.html">关于</a></li>
+					<li class="isLoginHead"><a id="login" href="/pages/login.html">登录</a></li>
+					<li class="isLoginRegisterHead"><a href="/pages/register.html">注册</a></li>
+					<!--<li>-->
+						<!--<a href="javascript:void(0);" class="noDisableA">-->
+							<!--<i class="iconfont icon-ren"></i>简体中文-->
+						<!--</a>-->
+					<!--</li>-->
+				</ul>
+			</div>
+		</div>
 	</div>
-	
 </body>
 </html>

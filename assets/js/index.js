@@ -1,17 +1,17 @@
 $(window).load(function() {
 
-        $('.top_banner').css({
-          'height': $(window).height()
-        });
-        $('.top_banner>.container').css({
-          'height': $(window).height()
-        });
-        $('.top_banner').particleground({
-          dotColor: '#2F425E',
-          lineColor: '#5C5162'
-        });
+        // $('.top_banner').css({
+        //   'height': $(window).height()
+        // });
+        // $('.top_banner>.container').css({
+        //   'height': $(window).height()
+        // });
+        // $('.top_banner').particleground({
+        //   dotColor: '#2F425E',
+        //   lineColor: '#5C5162'
+        // });
 })
-      new WOW().init();
+      // new WOW().init();
       // var mySwiper = new Swiper('.swiper-container-carousel',{
       //   initialSlide :0,
       //   slidesPerView : 1,
