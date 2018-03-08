@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<title>mobipromo</title>
+</head>
+<body>
+	<div style="padding: 20px;">
+		<textarea id="trades" cols="30" rows="10" class="form-group"></textarea>
+		<div></div>
+		<button class="btn btn-default refund">退款</button>
+		<button class="btn btn-default non-pay">未付款订单</button>
+		<button class="btn btn-default paid">已付款订单</button>
+		<button class="btn btn-default" id="refunded">已退款订单</button>
+		<button class="btn btn-default" id="canceled">已取消订单</button>
+		<button class="btn btn-default" id="none">不存在订单</button>
+		<div id="div1"></div>
+	</div>
+</body>
+<script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
+<script type="text/javascript" src='../assets/js/bootstrap.min.js'></script>
+<script src='../assets/js/util.js'></script>
+<script>
+$(function() {
+
+	$('.refund').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/refundTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val()
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					alert('success ' + data.len + '个');
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('.non-pay').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/checkTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val(),
+				status: 'wait'
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.trades.length; i < len; i++) {
+						html.push(data.trades[i].tradeNumber);
+					}
+					$('#div1').html('未付款' + data.trades.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('.paid').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/checkTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val(),
+				status: 'ok'
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.trades.length; i < len; i++) {
+						html.push(data.trades[i].tradeNumber);
+					}
+					$('#div1').html('已付款' + data.trades.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('#refunded').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/checkTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val(),
+				status: 'refund'
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.trades.length; i < len; i++) {
+						html.push(data.trades[i].tradeNumber);
+					}
+					$('#div1').html('已退款' + data.trades.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('#canceled').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/checkTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val(),
+				status: 'cancel'
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var html = [];
+					for(var i = 0, len = data.trades.length; i < len; i++) {
+						html.push(data.trades[i].tradeNumber);
+					}
+					$('#div1').html('已取消' + data.trades.length + '个<br>' + html.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+
+	$('#none').on('click', function() {
+		$.ajax({
+			url: '/promo/manage/trade/checkTrades',
+			type: 'POST',
+			data: {
+				trades: $('#trades').val()
+			},
+			success: function(data) {
+				if(data.isSuccess) {
+					var trades = $('#trades').val().split('\n');
+					var tempTrades = $('#trades').val().toUpperCase().split('\n');
+					for(var i = 0, len = data.trades.length; i < len; i++) {
+						var tradeNumber = data.trades[i].tradeNumber;
+						var index = tempTrades.indexOf(tradeNumber.toUpperCase());
+						if(index >= 0) {
+							trades.splice(index, 1);
+							tempTrades.splice(index, 1);
+						}
+					}
+					$('#div1').html('不存在' + trades.length + '个<br>' + trades.join('<br>'));
+				}else {
+					alert('fail');
+				}
+			}
+		});
+	});
+});
+</script>
+</html>
