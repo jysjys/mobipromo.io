@@ -29,6 +29,9 @@
 $(function() {
 
 	$('.refund').on('click', function() {
+		var result = confirm('确定禁用?');
+		if(!result)
+			return;
 		$.ajax({
 			url: '/promo/manage/trade/refundTrades',
 			type: 'POST',
