@@ -233,7 +233,10 @@ html, body, ul, li {
 			/*overflow: hidden;*/
 			padding-top: 52px;
 			margin-bottom: 17px;
-			padding-left: calc(50% - 70px);
+			left: 50%;
+			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+			-moz-transform: translateX(-50%);
 			position: absolute;
 		}
 		.footer>div span {
@@ -254,7 +257,7 @@ html, body, ul, li {
 			width: 1px;
 			background: rgba(255,255,255,0.15);
 		}
-		.footer>div span:last-child::after {
+		.footer>div span:last-child::after ,.footer>div span:nth-child(4)::after{
 			width: 0!important;
 			height: 0;
 		}
@@ -291,6 +294,30 @@ html, body, ul, li {
 			width: 34px;
 			padding-bottom: 20px;
 		}
+		/*add right 5utoken qrcode*/
+.right-qrcord-container>img {
+	width: 69px;
+}
+.right-qrcord-container{
+	position: absolute;
+	right: -120px;
+	top: 14px;
+}
+.right-qrcord-container p{
+	font-size:10px;
+	-webkit-transform:scale(0.8);
+	color:rgba(255,255,255,0.38);
+	margin: 0;
+}
+.qrcord_downIcon {
+	position: absolute!important;
+	right: 46px;
+}
+.qrcord_downIcon img {
+	width: 34px;
+	padding-bottom: 20px;
+}
+
 	.product-over-downContainer {
 		transition:height 0.5s ease-in-out;
 		height: 0px;
