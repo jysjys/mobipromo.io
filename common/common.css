@@ -64,6 +64,72 @@ html, body, ul, li {
         margin: 0 auto;
         height: 100%;
     }
+	.ui-dialog-wrapper {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: auto;
+		margin: 0;
+		z-index: 20000;
+		background: rgba(0,0,0,.5);
+		display: none;
+	}
+	.ui-dialog {
+		position: fixed;
+		left:50%!important;
+		top:40%!important;
+		transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
+		width:392px;
+		box-shadow: 0 4px 12px 0 rgba(0,0,0,0.20);
+		border-radius: 4px;
+		background: #fff;
+		color: #000;
+		padding:20px;
+		font-size: 16px;
+	}
+	.ui-dialog>div{
+		width: 100%;
+	}
+	.ui-dialog .dialog-footer {
+		text-align: right;
+	}
+	.ui-dialog .dialog-body {
+		padding: 30px 20px;
+	}
+	.ui-dialog .dialog-footer button{
+		display: inline-block;
+		line-height: 1;
+		white-space: nowrap;
+		cursor: pointer;
+		background: #fff;
+		border: 1px solid #dcdfe6;
+		border-color: #dcdfe6;
+		color: #606266;
+		text-align: center;
+		box-sizing: border-box;
+		outline: none;
+		margin: 0;
+		font-weight: 500;
+		font-size: 14px;
+		border-radius: 4px;
+		padding: 12px 20px;
+	}
+	.ui-dialog .dialog-footer .sureLoginWarning {
+		color: #fff;
+		background-color: #e6a23c;
+		border-color: #e6a23c;
+	}
+	.icon-prompt_fill{
+		color: #1890FF;
+	}
+	.icon-guanbi {
+		color:#909399;
+		cursor: pointer;
+		font-size: 12px!important;
+	}
 
 
 @media screen and (max-width: 768px){
@@ -128,6 +194,9 @@ html, body, ul, li {
 	}
 	.aboutUs-btn {
 		width: 90%!important;
+	}
+	.right-qrcord-container {
+		right: -70px!important;
 	}
 }
 
@@ -199,7 +268,7 @@ html, body, ul, li {
 		position: relative;
 		/*padding-left: 32px;*/
 	}
-	.header .head_r li:nth-child(2)::after{
+	.header .head_r li:nth-child(4)::after{
 		content: '';
 		position: absolute;
 		right: 0;

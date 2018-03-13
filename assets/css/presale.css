@@ -195,8 +195,12 @@ i {
 		padding-left: 0;
 	}
 	button {
-		margin-left: 0;
+		margin-left: 18px;
 	}
+	.pay-method {
+		margin-left: 8px!important;
+	}
+
 }
 
 

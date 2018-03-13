@@ -46,6 +46,7 @@ select {
     margin-left: 12px ;
     border-radius: 5px;
     margin-top: 16px;
+    padding-left: 0!important;
 }
 #prov {
     margin-left: 0;
@@ -95,7 +96,7 @@ select {
 }
 .warn-fma-container {
     position: absolute;
-    left: 47%;
+    left: 46%;
     transform: translateX(-47%);
     color:#EC3324;
 }
@@ -109,7 +110,7 @@ select {
     }
     .presale-container > div > span {
         text-align: left!important;
-        transform: translateX(-88px);
+        transform: translateX(-90px);
         padding-top: 10px;
     }
     .m-paymethod-content {
@@ -120,6 +121,17 @@ select {
     }
     .payOrder-submit-btn {
         margin-top: 100px;
+    }
+    .addFma-span, .delFma-span {
+        transform: translateX(-110px)!important;
+    }
+    .addFma-itemContainer {
+        padding-top:0!important;
+        padding-bottom: 0!important;
+    }
+    .warn-fma-container {
+        left: 15%;
+        transform: translateX(-12%);
     }
 }
 
