@@ -89,6 +89,7 @@ html, body, ul, li {
 		color: #000;
 		padding:20px;
 		font-size: 16px;
+		text-align: left!important;
 	}
 	.ui-dialog>div{
 		width: 100%;
@@ -116,6 +117,7 @@ html, body, ul, li {
 		font-size: 14px;
 		border-radius: 4px;
 		padding: 12px 20px;
+		width:70px!important;
 	}
 	.ui-dialog .dialog-footer .sureLoginWarning {
 		color: #fff;
@@ -130,9 +132,18 @@ html, body, ul, li {
 		cursor: pointer;
 		font-size: 12px!important;
 	}
+	.isLoginRegisterHead p {
+		color: rgba(255,255,255,0.54)
+	}
 
 
 @media screen and (max-width: 768px){
+	.ui-dialog {
+		width: 80%;
+	}
+	.ui-dialog-wrapper {
+		z-index: 99999;
+	}
 	.web-head-container {
 		display: none!important;
 	}

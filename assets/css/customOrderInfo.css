@@ -30,7 +30,7 @@ select {
     appearance:none;
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari 和 Chrome */
-    width: 90px;
+    width: 30%;
     height: 40px;
     margin-top: 0;
     box-sizing: border-box;
@@ -46,7 +46,6 @@ select {
     margin-left: 12px ;
     border-radius: 5px;
     margin-top: 16px;
-    padding-left: 0!important;
 }
 #prov {
     margin-left: 0;

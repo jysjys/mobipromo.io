@@ -37,7 +37,7 @@ $(function(){
             contentType: "application/json; charset=utf-8",
             success: function(data) {
                 $(".isLoginHead").html("<a id=\"userCenter\" href=\"/dist/index.html\">个人中心</a>")
-                $(".isLoginRegisterHead").html("<p id=\"loginOut\">退出</p>")
+                $(".isLoginRegisterHead").html("<p class=\"loginOut\">退出</p>")
             },
             error: function(data) {
                 $(".isLoginHead").html("<a id=\"login\" href=\"/pages/login.html\">登录</a>")
@@ -45,7 +45,8 @@ $(function(){
             }
         });
         setTimeout(function(){
-            $("#loginOut").click(function(){
+            $(".loginOut").click(function(){
+                console.log(1323)
                 $(".ui-dialog-wrapper").show();
             })
         },500);
