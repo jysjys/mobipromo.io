@@ -3,11 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Header</title>
-	<link rel="stylesheet" type="text/css" href="./common.css">
-	<link rel="stylesheet" href="../assets/css/index.css">
-	<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
 </head>
 <body>
+<div id="header">
 	<div class="header-container">
 		<div style="display: flex;justify-content: left" class="web-head-container">
 			<div class="header clearfloat">
@@ -80,6 +78,22 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+        <div class="ui-dialog-wrapper">
+            <div class="ui-dialog" title="">
+				<div class="dialog-header">
+					<i class="iconfont icon-prompt_fill"></i>
+					<span>确认要退出登录吗？</span>
+					<i style="float: right" class="iconfont icon-guanbi"></i>
+                </div>
+                <div class="dialog-body"></div>
+                <div class="dialog-footer">
+                    <button class="cancelLogin">取消</button>
+                    <button  class="sureLoginWarning" style="margin-left: 10px;">确定</button>
+                </div>
+            </div>
+        </div>
+
+ 	</div>
+</div>
 </body>
 </html>

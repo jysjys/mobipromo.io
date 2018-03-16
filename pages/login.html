@@ -71,43 +71,54 @@
 	// 也可传多个参数typ：number：纯数字类型，letter：纯字母类型
 	// verifyCode.refresh();刷新图形验证码
 	// verifyCode.validate(code);验证图形验证码，参数code为用户输入的验证码，返回值：正确：true,错误：false
-	$("#submit").click(function () {
-		$('.warn').css('display', 'none');
-		var datalogin = {
-			username: $("input[name='phone']").val().trim(),
-			password: $("input[name='pwd']").val().trim(),
-			grant_type: "password"
-		}
-		console.log(datalogin)
-		// $(this).loading();
-		var that = this;
-		$.ajax({
-		   headers: {
-		          Accept: "application/json; charset=utf-8",
-		    	  Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
-		      },
-		   type: 'POST',
-		   url: '/promo/token',
-		   data: datalogin,
-		   contentType: "application/x-www-form-urlencoded",
-			success: function (data) {
+	function loginMethod() {
+        $('.warn').css('display', 'none');
+        var datalogin = {
+            username: $("input[name='phone']").val().trim(),
+            password: $("input[name='pwd']").val().trim(),
+            grant_type: "password"
+        }
+        console.log(datalogin)
+        // $(this).loading();
+        var that = this;
+        $.ajax({
+            headers: {
+                Accept: "application/json; charset=utf-8",
+                Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
+            },
+            type: 'POST',
+            url: '/promo/token',
+            data: datalogin,
+            contentType: "application/x-www-form-urlencoded",
+            success: function (data) {
                 var isEpid = verifyCode.validate($("input[name='epid']").val().trim());
                 if(!isEpid) {
                     $('.epid_warn').css('display', 'inline-block')
                     return false;
                 }
-				$(that).loading()
+                $(that).loading()
                 Util.setCookie('Authorization', data.access_token, 1);
-				window.location.href='/dist/index.html'
-			},
-			error: function (data) {
-				$(that).loading('close')
-				$(".login_warn").css({
-					'display': 'inline-block'
-				})
-			}
-		});
+                window.location.href='/dist/index.html'
+            },
+            error: function (data) {
+                $(that).loading('close')
+                $(".login_warn").css({
+                    'display': 'inline-block'
+                })
+            }
+        });
+	}
+
+	$("#submit").click(function () {
+        loginMethod()
 	});
+    $(document).keydown(function(event){
+        console.log(event.keyCode)
+		if(event.keyCode === 13) {
+		    console.log(11)
+            loginMethod()
+		}
+    });
 
 
 </script>
