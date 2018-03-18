@@ -473,11 +473,20 @@ html, body, ul, li {
 	.font-size24 {
 		font-size: 24px;
 	}
+	.font-size28 {
+		font-size: 28px;
+	}
 	.font-size30 {
 		font-size: 30px;
 	}
+	.font-size40 {
+		font-size: 40px;
+	}
 	.font-size48 {
 		font-size: 48px;
+	}
+	.font-size56 {
+		font-size: 56px;
 	}
 	.fontcolor-opocity-87 {
 		color:rgba(255,255,255,255.87);
@@ -538,7 +547,10 @@ html, body, ul, li {
 		-ms-flex-align: center;
 		align-items: center;
 	}
-
+	.flex-align-end {
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+	}
 	.flex-pack-center {
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
@@ -549,6 +561,12 @@ html, body, ul, li {
 	.flex-pack-justify {
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	.flex-pack-around {
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-around;
 		-ms-flex-pack: justify;
 		justify-content: space-between;
 	}
@@ -599,11 +617,20 @@ html, body, ul, li {
         line-height: 26px;
     }
     .line-height28 {
-        line-height: 28px;
-    }
+		 line-height: 28px;
+	 }
+	.line-height36 {
+		line-height: 36px;
+	}
     .line-height44 {
         line-height: 44px;
     }
+	.line-height48 {
+		line-height: 48px;
+	}
+	.line-height64 {
+		line-height: 64px;
+	}
     .font-weight400 {
         font-weight: 400;
     }

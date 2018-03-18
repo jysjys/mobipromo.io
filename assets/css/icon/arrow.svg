@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="10px" viewBox="0 0 22 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>箭头</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="前台" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-274.000000, -409.000000)" fill="#D8D8D8">
+            <path d="M288,413 L288,409 L296,414 L288,419 L288,415 L274,415 L274,413 L288,413 Z" id="箭头"></path>
+        </g>
+    </g>
+</svg>
