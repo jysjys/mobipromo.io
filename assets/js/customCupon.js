@@ -253,10 +253,7 @@ function btnPress(data){
 		receivingAddress: address
 	}
 	$('#upgrade_dlg').dialog();
-	// $('#upgrade_dlg').find('.price').off('click').on('click', function(){
-	// $(this).addClass('ac').siblings('.price').removeClass('ac');
-	// 	$('#zhifu label').text('¥ ' + $(this).find('.userprice').text());
-	// });
+
 	$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
 		$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
 	});
