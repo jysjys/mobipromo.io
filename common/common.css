@@ -239,6 +239,12 @@ html, body, ul, li {
 		height: 100%;
 		line-height: 64px;
 		padding:0;
+		width: calc(100% - 258px);
+		display: flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-flex;
+		justify-content: center;
 	}
 	.header ul li {
 		float: left;
@@ -412,7 +418,7 @@ html, body, ul, li {
 	}
 	.product-content {
 		position: absolute;
-		left: 30.5%;
+		left: 48%;
 		height: 100%;
 	}
 	.product-img-list {
