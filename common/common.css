@@ -207,7 +207,7 @@ html, body, ul, li {
 		width: 90%!important;
 	}
 	.right-qrcord-container {
-		right: -70px!important;
+		left: 200px !important;
 	}
 	.footer>p {
 		left:36%!important;
@@ -263,8 +263,7 @@ html, body, ul, li {
 	.header ul li {
 		float: left;
 		font-size: 14px;
-		padding-left: 32px;
-		padding-right: 24px;
+		padding: 0 24px;
 		cursor: pointer;
 		font-weight: 400;
 		transition: all 0.3s;
@@ -289,6 +288,7 @@ html, body, ul, li {
 	}
 	.header .head_r li:nth-child(1) {
 		padding-right: 32px;
+		padding-left: 0;
 	}
 	.header .head_r li:nth-child(2){
 		position: relative;
@@ -325,7 +325,7 @@ html, body, ul, li {
 			text-align: center;
 			/*overflow: hidden;*/
 			/*height: calc(100% - 438px);*/
-			min-height: 160px;
+			min-height: 220px;
 		}
 		.footer>div {
 			padding: 0 auto;
