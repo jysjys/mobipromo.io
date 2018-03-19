@@ -284,7 +284,25 @@
 <script src="../common/load.js"></script>
 <script>
 	$(".customOrder-btn").click(function(){
-        window.location.href =  './CustomOrderInfo.html'
+		var x = Util.getCookie('Authorization');
+		if (x == '' || x === undefined) {
+		    window.location.href = '/pages/login.html'
+		}
+		$.ajax({
+		    type: 'GET',
+		    async: false,
+		    headers: {
+		        Accept: "application/json; charset=utf-8",
+		        Authorization: 'Bearer' + ' ' + x
+		    },
+		    url: '/promo/authed/user/account',
+		    success: function (data) {
+		        window.location.href =  './CustomOrderInfo.html'
+		    },
+			error: function() {
+		        window.location.href = '/pages/login.html'
+			}
+		});
     })
 </script>
 </body>
