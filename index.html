@@ -16,11 +16,20 @@
     <link rel="stylesheet" type="text/css" href="common/common.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <style type="text/css">
+        .header .head_r .isLoginRegisterHead {
+            padding-right: 0;
+        }
+        .all-padding-wrapper {
+            padding: 0 150px;
+        }
         body {
             background: #000;
         }
         .swiper-container , .swiper-wrapper, .swiper-slide{
-
+            background-image: url("./assets/images/banner.png");
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            background-position: left;
         }
         .swiper-slide {
             height: 544px;
@@ -30,7 +39,7 @@
             font-family: Avenir-Heavy;
             position: absolute;
             top: 50%;
-            left: 143px;
+            left: 0px;
             transform: translateY(-50%);
             -webkit-transform: translateY(-50%);
             -moz-transform: translateY(-50%);
@@ -90,7 +99,6 @@
             padding-bottom: 96px;
         }
         .content-words-article {
-            width: 695px;
             margin: 0 auto;
             font-family: Avenir-Book;
             font-size: 14px;
@@ -117,14 +125,18 @@
             margin:0 auto;
         }
         .project-bottom-list .second-title-bottomProject {
-            width: 180px;
+            /*width: 180px;*/
             text-align: center;
         }
 
         .project-bottom-list .project-bottom-imgItem {
             width: 80px;
             height: 80px;
-            background: black;
+            /*background: black;*/
+            margin: 0 auto;
+        }
+        .project-bottom-list .project-bottom-imgItem img {
+            width: 80%;
             margin: 0 auto;
         }
         .title-bottom-baseline {
@@ -143,14 +155,12 @@
             padding-top: 96px;
         }
         .project-bottom-list ul {
-            margin: 0 200px;
+            margin: 0 auto;
         }
         .project-bottom-list ul li {
             list-style: none;
         }
         .business-bottom-container {
-            padding-left: 150px;
-            padding-right: 150px;
             padding-bottom: 96px;
         }
         .develop-route-container {
@@ -158,9 +168,14 @@
             background: #111111;
             padding-left: 150px;
             padding-right: 150px;
+            position: relative;
+            z-index: 888;
         }
         .develop-route-container ul li {
             list-style: none;
+        }
+        .develop-route-bottom-list li {
+            padding-left: 10%;
         }
         .develop-route-desc {
             font-family: Avenir-Book;
@@ -177,6 +192,66 @@
         .m-route-bottom-list {
             display: none;
         }
+        .column-base-img {
+            width: 32px;
+            margin-right: 16px;
+        }
+        .column-base-img img{
+            width: 100%;
+        }
+        .circle-theme {
+            width: 24px;
+            height: 24px;
+            border-radius:12px;
+            border: 3px solid #1890FF;
+        }
+        .circle-baseline-theme {
+            width: 90%;
+            margin:0 4%;
+            /*height: 3px;*/
+            border: 3px solid rgba(255,255,255,0.10);
+        }
+        #footer {
+            position: relative;
+            z-index: 9999;
+        }
+        .m-route-bottom-right-ul li:nth-child(2) {
+            margin-top: 20px;
+        }
+        .m-route-bottom-right-ul li:nth-child(3) {
+            margin-top: 17px;
+        }
+        .m-route-bottom-right-ul li:nth-child(4) {
+            margin-top: 15px;
+        }
+        .m-route-bottom-right-ul li:nth-child(5) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(6) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(7) {
+            margin-top: 16px;
+        }
+        @media screen and (min-width: 1080px){
+            .content-words-article {
+                width: 695px;
+            }
+            .project-bottom-list .second-title-bottomProject {
+                width: 180px;
+            }
+        }
+        @media screen and (min-width: 769px) and (max-width:920px) {
+            .header ul li   {
+                padding-right: 0;
+                padding-left: 8px;
+            }
+        }
+        @media screen and (min-width: 921px) and (max-width:1020px) {
+            .header ul li   {
+                padding-right: 0;
+            }
+        }
         /*mobile show*/
         @media screen and (max-width: 768px) {
             .index-main-container {
@@ -185,6 +260,9 @@
                 width: 100%;
                 overflow: hidden;
                 padding: 0 16px;
+            }
+            .develop-route-container {
+                padding-bottom: 48px!important;
             }
             .swiper-slide {
                 height: 400px;
@@ -275,7 +353,7 @@
     <div class="main-container canvas-wrap">
         <div class="index-main-container can-main-container">
             <!--轮播图-->
-            <div class="swiper-container swiper-container-vertical">
+            <div class="swiper-container swiper-container-vertical all-padding-wrapper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" style="display: none;">
                         <section class="swiper_banner_one text-center">
@@ -301,7 +379,7 @@
                 </div>
             </div>
             <!--项目概述-->
-            <div class="project-introduce-container">
+            <div class="project-introduce-container all-padding-wrapper">
                 <div class="project-header-content text-center">
                     <p class="project-header-mainTitle">项目概述</p>
                     <p class="title-bottom-baseline"></p>
@@ -312,30 +390,38 @@
                 <div class="project-bottom-list">
                     <ul class="flex flex-pack-around">
                         <li class="flex-1">
-                            <p class="project-bottom-imgItem"></p>
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/router_wifi.svg" alt="">
+                            </p>
                             <p class="first-title-bottomProject margin-top24">路由Wi-Fi</p>
-                            <p class="second-title-bottomProject">优质带宽邀您畅享极速上网体验优质带宽邀您畅享</p>
+                            <p class="second-title-bottomProject">优质带宽邀您畅享极速上网体验</p>
                         </li>
                         <li class="flex-1">
-                            <p class="project-bottom-imgItem"></p>
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/dapp.svg" alt="">
+                            </p>
                             <p class="first-title-bottomProject margin-top24">DAPP</p>
-                            <p class="second-title-bottomProject">区块链3.0技术搭建未来的去中心化应用公链</p>
+                            <p class="second-title-bottomProject">去中心化应用，区块链3.0时代的一条公链</p>
                         </li>
                         <li class="flex-1">
-                            <p class="project-bottom-imgItem"></p>
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/share_cdn.svg" alt="">
+                            </p>
                             <p class="first-title-bottomProject margin-top24">共享CDN</p>
-                            <p class="second-title-bottomProject">游戏、视频、直播等行业的内容提供商获得廉价带宽、降低成本</p>
+                            <p class="second-title-bottomProject">冗余流量贡献，创造个人价值</p>
                         </li>
                         <li class="flex-1">
-                            <p class="project-bottom-imgItem"></p>
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/marketing.svg" alt="">
+                            </p>
                             <p class="first-title-bottomProject margin-top24">近场营销</p>
-                            <p class="second-title-bottomProject">广告主获得最诚信、可靠的数字广告分发网络</p>
+                            <p class="second-title-bottomProject">深度体验到“近距离的美好”，实现精准营销</p>
                         </li>
                     </ul>
                 </div>
             </div>
             <!--主营业务-->
-            <div class="main-business-container">
+            <div class="main-business-container all-padding-wrapper">
                 <div class="ptext-center">
                     <p class="project-header-mainTitle">主营业务</p>
                     <p class="title-bottom-baseline"></p>
@@ -361,7 +447,7 @@
                 </div>
             </div>
             <!--发展路线-->
-            <div class="develop-route-container">
+            <div class="develop-route-container all-padding-wrapper">
                 <div class="project-header-content text-center">
                     <p class="project-header-mainTitle">发展路线</p>
                     <p class="title-bottom-baseline"></p>
@@ -374,6 +460,10 @@
                                 节点监控程序（Web端）完成<br/>
                                 硬件固件V1.0开发完成</p>
                             <p class="develop-route-date margin-top8">2018.01</p>
+                            <!--<div class="flex base-icon-container flex-align-center">-->
+                                <!--<p class="circle-theme"></p>-->
+                                <!--<p class="circle-baseline-theme"></p>-->
+                            <!--</div>-->
                         </li>
                         <li class="flex-1">
                             <p class="develop-route-desc flex flex-align-end">
@@ -381,7 +471,7 @@
                                 应用网络运行测试</p>
                             <p class="develop-route-date margin-top8">2018.03</p>
                         </li>
-                        <li class="flex-1">
+                        <li class="flex-1" style="text-indent: 4em">
                             <p class="develop-route-desc flex flex-align-end">
                                 CDN网络正式版本
                             <p class="develop-route-date  margin-top8">2018.06</p>
@@ -391,8 +481,10 @@
                             <p class="develop-route-date margin-top8">2018.09</p>
                         </li>
                     </ul>
-                    <p class="img-base-line"><hr/></p>
-                    <ul class="flex flex-pack-justify">
+                    <div class="img-base-line">
+                        <img src="./assets/images/Group_3.png" alt="" style="width: 100%">
+                    </div>
+                    <ul class="flex flex-pack-justify develop-route-bottom-list">
                         <li class="flex-1">
                             <p class="develop-route-date">2018.02</p>
                             <p class="develop-route-desc margin-top8">
@@ -403,61 +495,67 @@
                             <p class="develop-route-date">2018.04</p>
                             <p class="develop-route-desc margin-top8">CAN主链测试</p>
                         </li>
-                        <li class="flex-1">
+                        <li class="flex-1" style="text-indent: -6em">
                             <p class="develop-route-date">2018.07</p>
                             <p class="develop-route-desc  margin-top8">CAN主链上线</p>
                         </li>
                     </ul>
                 </div>
                 <div class="m-route-bottom-list">
-                    <ul class="">
-                        <li class="">
+                    <div class="flex">
+                        <div class="column-base-img">
+                            <img src="./assets/images/Group_2.png" alt="">
+                        </div>
+                        <ul class="m-route-bottom-right-ul">
+                            <li class="">
+                                <p class="develop-route-date">2018.01</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CDN网络测试版本<br/>
+                                    节点监控程序（Web端）完成<br/>
+                                    硬件固件V1.0开发完成
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.02</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    节点监控程序（安卓版）完成<br/>
+                                    广告分发网络原型完成</p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.03</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    去中心化广告客户端完成<br/>
+                                    应用网络运行测试
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.04</p>
+                                <p class="m-develop-route-desc margin-top8">CAN主链测试</p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.06</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CDN网络正式版本
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.07</p>
+                                <p class="m-develop-route-desc  margin-top8">CAN主链上线</p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.09</p>
+                                <p class="m-develop-route-desc margin-top8">应用（CDN服务、广告分发服务）公链运行</p>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <p class="develop-route-date">2018.01</p>
-                            <p class="m-develop-route-desc margin-top8">
-                                CDN网络测试版本<br/>
-                                节点监控程序（Web端）完成<br/>
-                                硬件固件V1.0开发完成
-                            </p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.02</p>
-                            <p class="m-develop-route-desc margin-top8">
-                                节点监控程序（安卓版）完成<br/>
-                                广告分发网络原型完成</p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.03</p>
-                            <p class="m-develop-route-desc margin-top8">
-                                去中心化广告客户端完成<br/>
-                                应用网络运行测试
-                            </p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.04</p>
-                            <p class="m-develop-route-desc margin-top8">CAN主链测试</p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.06</p>
-                            <p class="m-develop-route-desc margin-top8">
-                                CDN网络正式版本
-                            </p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.07</p>
-                            <p class="m-develop-route-desc  margin-top8">CAN主链上线</p>
-                        </li>
-                        <li class="">
-                            <p class="develop-route-date">2018.09</p>
-                            <p class="m-develop-route-desc margin-top8">应用（CDN服务、广告分发服务）公链运行</p>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
         </div>
         <div id="canvas" class="gradient" style="display: none"></div>
     </div>
+    <div id="footer"></div>
     <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
     <script src='assets/js/bootstrap.min.js'></script>
@@ -473,13 +571,13 @@
     <!--<script type="text/javascript" src="assets/js/kinetic.js"></script>-->
     <!--<script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>-->
     <script language="javascript" src='assets/js/index.js'></script>
-    <script src="common/load.js"></script>
+    <script src="./common/load.js"></script>
     <script>
-        $(window).load(function(){
-            $('.main-container').css({
-                'height': $(window).height()
-            });
-        })
+        // $(window).load(function(){
+        //     $('.main-container').css({
+        //         'height': $(window).height()
+        //     });
+        // })
     </script>
 </body>
 

@@ -25,7 +25,7 @@ html, body, ul, li {
 		padding: 0;
 	}
 	body {
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		font-family: Avenir, Roboto,
 		"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
 		SimSun, sans-serif;
         background: #000;
@@ -209,8 +209,22 @@ html, body, ul, li {
 	.right-qrcord-container {
 		right: -70px!important;
 	}
+	.footer>p {
+		left:36%!important;
+	}
+	.footer>div {
+		left: 38%!important;
+	}
+	.footer>div span {
+		padding-right: 25px!important;
+	}
+	.qrcord_downIcon {
+		right: 60px!important;
+	}
 }
 
+
+/*/-------------/*/
 	.header {
 		width: 100%;
 		/*width: 1168px!important;*/
@@ -219,8 +233,8 @@ html, body, ul, li {
 		z-index: 2001;
 		background: rgba(0,0,0,1);
 		color: #fff;
-		padding-left: 143px;
-		padding-right: 118px;
+		padding-left: 150px;
+		padding-right: 150px;
 		/*left: 50%;*/
 		/*transform: translateX(-50%);*/
 		box-sizing: border-box;
@@ -279,7 +293,6 @@ html, body, ul, li {
 	.header .head_r li:nth-child(2){
 		position: relative;
 		padding-left: 0px;
-		padding-right: 32px;
 	}
 	.header .head_r li:nth-child(3){
 		position: relative;
@@ -387,7 +400,7 @@ html, body, ul, li {
 .right-qrcord-container{
 	position: absolute;
 	right: -120px;
-	top: 14px;
+	top: 50%;
 }
 .right-qrcord-container p{
 	font-size:10px;
@@ -418,7 +431,7 @@ html, body, ul, li {
 	}
 	.product-content {
 		position: absolute;
-		left: 48%;
+		left: 47%;
 		height: 100%;
 	}
 	.product-img-list {
