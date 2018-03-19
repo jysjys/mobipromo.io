@@ -229,7 +229,7 @@ html, body, ul, li {
 		width: 100%;
 		/*width: 1168px!important;*/
 		height: 64px;
-		position: fixed;
+		/*position: fixed;*/
 		z-index: 2001;
 		background: rgba(0,0,0,1);
 		color: #fff;
@@ -421,7 +421,7 @@ html, body, ul, li {
 		transition:height 0.5s ease-in-out;
 		height: 0px;
 		background: rgba(24,24,24,1);
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0%;
 		width: 100%;
