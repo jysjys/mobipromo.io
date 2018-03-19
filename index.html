@@ -25,6 +25,10 @@
         body {
             background: #000;
         }
+        .swiper-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
         .swiper-container , .swiper-wrapper, .swiper-slide{
             background-image: url("./assets/images/banner.png");
             background-repeat: no-repeat;
@@ -45,10 +49,12 @@
             -webkit-transform: translateY(-50%);
             -moz-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
+            padding-left: 150px;
+            padding-right: 150px;
         }
         .shadow-little-box {
             position: absolute;
-            left: 68px;
+            left: 218px;
             top: 0;
             width: 96px;
             height: 102px;
@@ -262,6 +268,10 @@
         }
         /*mobile show*/
         @media screen and (max-width: 768px) {
+            .shadow-little-box {
+                width: 48px;
+                height: 56px;
+            }
             .index-main-container {
             }
             .index-main-container>div {

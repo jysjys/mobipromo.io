@@ -62,7 +62,7 @@ html, body, ul, li {
     .noDisableA:active {color: rgba(255,255,255,0.54);}
     .can-main-container {
         margin: 0 auto;
-        height: 100%;
+        /*height: 100%;*/
     }
 	.ui-dialog-wrapper {
 		position: fixed;
@@ -339,7 +339,7 @@ html, body, ul, li {
 			position: absolute;
 		}
 		.footer>div span {
-			padding: 0 15px;
+			padding: 0 10px;
 			/*border-right: 1px solid rgba(255,255,255,0.38);*/
 			font-size: 12px;
 			float: left;
