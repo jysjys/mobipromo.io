@@ -162,7 +162,7 @@ html, body, ul, li {
 		z-index: 999999;
 	}
 	.header_select_list {
-		padding-top: 64px;
+		/*padding-top: 64px;*/
 		position: fixed;
 		width: 100%;
 		z-index: 99999;
