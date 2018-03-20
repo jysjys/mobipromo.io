@@ -221,6 +221,9 @@ html, body, ul, li {
 	.qrcord_downIcon {
 		right: 60px!important;
 	}
+	#qq_Qrcode, #wechat_Qrcode {
+		left: -66px!important;
+	}
 }
 
 
@@ -375,7 +378,7 @@ html, body, ul, li {
 		#qq_Qrcode ,#wechat_Qrcode{
 			position: absolute;
 			top:-180px;
-			left: -60px;
+			left: -69px;
 			line-height: 0;
 			box-shadow: 0 0 8px 0 rgba(0,0,0,.38);
 			padding:0;

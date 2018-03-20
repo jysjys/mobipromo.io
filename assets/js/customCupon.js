@@ -85,13 +85,12 @@ var commodList = new Vue({
                         message: '不能同时添加多个空的F码',
                         type: 'error'
                     })
-					this.moreNullF = true
+					this.moreNullF = true;
                     return false
                 } else {
                     this.moreNullF = false
 				}
 			})
-			console.log(111)
 			if (!this.moreNullF && this.fmaNoNull) {
                 this.amoutFDatas.push({})
             } else {
@@ -139,7 +138,7 @@ var commodList = new Vue({
                             vm.moreNullF = true
 							return false
                         } else {
-                            vm.moreNullF = true
+                            vm.moreNullF = false
                         	if(index !== 0 && data.remark > 1) {
                                 vm.$message({
                                     message: '购买力大于1，请单独购买',
@@ -249,15 +248,13 @@ function btnPress(data){
 	// console.log(data)
 	$('.warn').remove();
     if (commodList.amoutFDatas.length > 1) {
-    	console.log(111)
         $('#amount').attr({value:data.remark,disabled:'false'});
         $(".userprice").html( $('#amount').val() * 899 );
         $("#zhifu label").html( '¥ ' + $('#amount').val() * 899 );
 	} else {
-    	console.log(222)
-		console.log(data.remark)
         $('#amount').attr('placeholder',data.remark == 1 ? '您可购买1台':'您可购买(1~' + data.remark + ')台').attr('value',data.remark);
         $(".userprice").html( $('#amount').val() * 899 );
+        $("#zhifu label").html( '¥ ' + $('#amount').val() * 899 );
     }
 	$(".dialog_warn").css('display','none')
 	warn_chouse();
@@ -388,7 +385,7 @@ $('#submit').on('click', function () {
 			return false
 		}
         counponsArrayVal.push($(this).val())
-    })
+    });
 	if (!noPayVerify) {
 		return false
     } else if (commodList.moreNullF) {
@@ -418,7 +415,8 @@ $('#submit').on('click', function () {
                     $('#submit').data('isLoading', false);
                 }
 		},
-			error: function (data) {
+			error: function (jqXhr) {
+			    console.log(jqXhr.status)
 				console.log('coupon_err');
 				$('#submit').data('isLoading', false);
 			}
