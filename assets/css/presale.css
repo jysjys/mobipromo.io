@@ -27,6 +27,9 @@ body {
 	display: inline-block;
 	width: 100px;
 	text-align: right;
+	/*padding-left: 25px;
+	box-sizing: border-box;*/
+
 }
 input {
 	border: 1px solid #D0D0D0;

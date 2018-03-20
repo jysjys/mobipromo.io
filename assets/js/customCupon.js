@@ -66,24 +66,40 @@ var commodList = new Vue({
 		loading: true,
 		fmaNoNull: false,
 		remarkBox: 0,
-        isOneBuyMoreMark: false
+        isOneBuyMoreMark: false,
+		moreNullF: false
 	},
 	mounted: function() {
 	},
 	watch: {
 	},
 	computed: {
-		totalPriceBox () {
-			return this.remarkBox * 899
-		}
 	},
 	mounted () {
 	},
 	methods: {
         addFMa () {
-        	this.amoutFDatas.push({})
+			this.amoutFDatas.forEach( x => {
+				if (JSON.stringify(x) === '{}'){
+                    this.$message({
+                        message: '不能同时添加多个空的F码',
+                        type: 'error'
+                    })
+					this.moreNullF = true;
+                    return false
+                } else {
+                    this.moreNullF = false
+				}
+			})
+			if (!this.moreNullF && this.fmaNoNull) {
+                this.amoutFDatas.push({})
+            } else {
+        		return false
+			}
         },
         deletFMa (index) {
+            this.moreNullF = false
+            this.fmaNoNull = true
             this.amoutFDatas.splice(index,1)
 		},
 		// 判断f码是否为空以及失去焦点的时候检查f码是否能用
@@ -110,11 +126,19 @@ var commodList = new Vue({
                         console.log(data)
                         if(data.not) {
                             vm.$set(vm.amoutFDatas,index,{error:'您填写的F码不存在',value:item.value})
+							// 让用户不能再添加f码有误的话
+							vm.moreNullF = true
+							return false
                         }else if(data.isUsed) {
                             vm.$set(vm.amoutFDatas,index,{error:'您填写的F码已使用过',value:item.value})
+                            vm.moreNullF = true
+							return false
                         }else if(data.isLocked) {
                             vm.$set(vm.amoutFDatas,index,{error:'您填写的F码已锁定',value:item.value})
+                            vm.moreNullF = true
+							return false
                         } else {
+                            vm.moreNullF = false
                         	if(index !== 0 && data.remark > 1) {
                                 vm.$message({
                                     message: '购买力大于1，请单独购买',
@@ -132,7 +156,6 @@ var commodList = new Vue({
                         }
                     },
                     error: function (data) {
-
                         console.log('coupon_err');
                         $('#submit').data('isLoading', false);
                     }
@@ -230,6 +253,8 @@ function btnPress(data){
         $("#zhifu label").html( '¥ ' + $('#amount').val() * 899 );
 	} else {
         $('#amount').attr('placeholder',data.remark == 1 ? '您可购买1台':'您可购买(1~' + data.remark + ')台').attr('value',data.remark);
+        $(".userprice").html( $('#amount').val() * 899 );
+        $("#zhifu label").html( '¥ ' + $('#amount').val() * 899 );
     }
 	$(".dialog_warn").css('display','none')
 	warn_chouse();
@@ -253,6 +278,7 @@ function btnPress(data){
 		receivingAddress: address
 	}
 	$('#upgrade_dlg').dialog();
+	$('')
 
 	$('#upgrade_dlg').find('.price-paytype').off('click').on('click', function(){
 		$(this).addClass('ac').siblings('.price-paytype').removeClass('ac');
@@ -359,10 +385,13 @@ $('#submit').on('click', function () {
 			return false
 		}
         counponsArrayVal.push($(this).val())
-    })
+    });
 	if (!noPayVerify) {
 		return false
-    }
+    } else if (commodList.moreNullF) {
+		return false
+	}
+	console.log(444)
     $.ajax({
 			type: 'POST',
 			async: false,
@@ -387,19 +416,26 @@ $('#submit').on('click', function () {
                     $('#submit').data('isLoading', false);
                 }
 		},
-			error: function (data) {
-				console.log('coupon_err');
+			error: function (jqXhr) {
+			    console.log(jqXhr.status);
+			    if (jqXhr.status === 401) {
+                    commodList.$message({
+                        message: '登录过期，请重新登录',
+                        type: 'error'
+                    });
+                    window.location.href = '/pages/login.html'
+				}
 				$('#submit').data('isLoading', false);
 			}
 	});
 });
 
 // 购买数量 select选中事件
-var amount = $("#amount").on('change', function(){
-	$(".userprice").html( $(this).val() * 899 );
-	$("#zhifu label").html( '¥ ' + $(this).val() * 899 );
-});
-$('#amount').on('input propertychange', function() {
+// var amount = $("#amount").on('change', function(){
+// 	$(".userprice").html( $(this).val() * 899 );
+// 	$("#zhifu label").html( '¥ ' + $(this).val() * 899 );
+// });
+$('#amount').on('change', function() {
 	$('.userprice').html( $(this).val() * 899 );
 	$("#zhifu label").html( '¥ ' + $(this).val() * 899 );
 });

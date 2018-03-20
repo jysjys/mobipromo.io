@@ -2,7 +2,7 @@ $(function(){
     $('#header').load('../common/Header.html .header-container',function () {
         var link = document.createElement( "link" );
         link.rel = "stylesheet";
-        link.href = "http://at.alicdn.com/t/font_589512_1ph2lh2uxk249529.css";
+        link.href = "http://at.alicdn.com/t/font_589512_githcloq2emw8kt9.css";
         document.getElementsByTagName( "head" )[0].appendChild( link );
         var UtilSS = {}
         UtilSS.getCookie = function (name) {
@@ -46,7 +46,6 @@ $(function(){
         });
         setTimeout(function(){
             $(".loginOut").click(function(){
-                console.log(1323)
                 $(".ui-dialog-wrapper").show();
             })
         },500);
@@ -98,14 +97,6 @@ $(function(){
                 $(".select-headerdown").slideUp(300)
             }
         })
-        // $(".m-productPage").click(function () {
-        //     if($(".m-product-lists").css("display") === 'none') {
-        //         $(".m-product-lists").slideDown(200)
-        //     } else {
-        //         $(".m-product-lists").slideUp(300)
-        //     }
-        // })
-
     });
     $('#footer').load('../common/Footer.html .footer',function(){
         $('.footer-downbig-Cotainer .qq-info').on('mouseover',function() {
@@ -120,5 +111,25 @@ $(function(){
         $('.footer-downbig-Cotainer .wechat-info').on('mouseout', function () {
             $("#wechat_Qrcode").css({display: 'none'})
         })
+        $('.footer-downbig-Cotainer .email-com-aTip').on('mouseover',function() {
+            $("#email_Tip").css({display: 'block'})
+        })
+        $('.footer-downbig-Cotainer .email-com-aTip').on('mouseout', function () {
+            $("#email_Tip").css({display: 'none'})
+        })
+        // 判断是否是微信内置浏览器
+        $(".email-com-a").click(function () {
+            // isWeixin()
+        })
+        function isWeixin(){
+            var ua = navigator.userAgent.toLowerCase();
+
+            if(ua.match(/MicroMessenger/i)=='micromessenger' && ua.match(/Android/i) != null ){
+
+            }else{
+                return false;
+            }
+        }
+
     });
 });

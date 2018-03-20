@@ -16,11 +16,49 @@
     <link rel="stylesheet" type="text/css" href="common/common.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <style type="text/css">
+        .header .head_r .isLoginRegisterHead {
+            padding-right: 0;
+        }
+        .all-padding-wrapper {
+            padding: 0 150px;
+        }
         body {
             background: #000;
         }
+        .swiper-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
         .swiper-container , .swiper-wrapper, .swiper-slide{
-            height: 100%;
+            background-image: url("./assets/images/banner.png");
+            background-repeat: no-repeat;
+            background-size:1440px 480px;
+            background-position: center;
+            position: relative;
+        }
+        .swiper-slide {
+            height: 544px;
+            position: relative;;
+        }
+        .swiper-slide .swiper-slide-content {
+            font-family: Avenir-Heavy;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+        .shadow-little-box {
+            position: absolute;
+            left: 218px;
+            top: 0;
+            width: 96px;
+            height: 102px;
+            background-image: linear-gradient(-90deg, rgba(17,17,17,0.50) 0%, rgba(17,17,17,0.00) 96%);
         }
         .swiper_banner_one {
             position: absolute;
@@ -53,7 +91,7 @@
             line-height: 48px;
             border:1px solid rgba(255,255,255,.22);
             border-radius: 24px;
-            margin: 0 auto;
+            /*margin: 0 auto;*/
             margin-top: 24px;
             cursor: pointer;
         }
@@ -70,15 +108,277 @@
         .aboutUs-btn a:hover {
             color: rgba(255,255,255,.87);
         }
+        .project-introduce-container {
+            background: #111111;
+            padding-bottom: 96px;
+        }
+        .content-words-article {
+            margin: 0 auto;
+            font-family: Avenir-Book;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            text-align: center;
+            line-height: 22px;
+        }
+        .project-bottom-list {
+            padding-top: 96px;
+        }
+        .first-title-bottomProject {
+            font-family: Avenir-Medium;
+            font-size: 18px;
+            color: rgba(255,255,255,0.87);
+            text-align: center;
+            line-height: 26px;
+            margin-bottom: 8px;
+        }
+        .second-title-bottomProject {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 22px;
+            margin:0 auto;
+        }
+        .project-bottom-list .second-title-bottomProject {
+            /*width: 180px;*/
+            text-align: center;
+        }
+
+        .project-bottom-list .project-bottom-imgItem {
+            width: 80px;
+            height: 80px;
+            /*background: black;*/
+            margin: 0 auto;
+        }
+        .project-bottom-list .project-bottom-imgItem img {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .title-bottom-baseline {
+            width: 64px;
+            height: 4px;
+            background: rgba(255,255,255,0.10);
+            margin: 32px auto;
+
+        }
+        .project-header-mainTitle {
+            font-family: PingFangSC-Medium;
+            font-size: 32px;
+            color: rgba(255,255,255,0.87);
+            text-align: center;
+            line-height: 40px;
+            padding-top: 96px;
+        }
+        .project-bottom-list ul {
+            margin: 0 auto;
+        }
+        .project-bottom-list ul li {
+            list-style: none;
+        }
+        .business-bottom-container {
+            padding-bottom: 96px;
+        }
+        .develop-route-container {
+            padding-bottom: 96px;
+            background: #111111;
+            padding-left: 150px;
+            padding-right: 150px;
+            position: relative;
+            z-index: 888;
+        }
+        .develop-route-container ul li {
+            list-style: none;
+        }
+        .develop-route-bottom-list li {
+            padding-left: 10%;
+        }
+        .develop-route-desc {
+            font-family: Avenir-Book;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 22px;
+            height: 66px;
+        }
+        .develop-route-date {
+            font-family: Avenir-Medium;
+            font-size: 18px;
+            color: rgba(255,255,255,0.87);
+        }
+        .m-route-bottom-list {
+            display: none;
+        }
+        .column-base-img {
+            width: 32px;
+            margin-right: 16px;
+        }
+        .column-base-img img{
+            width: 100%;
+        }
+        .circle-theme {
+            width: 24px;
+            height: 24px;
+            border-radius:12px;
+            border: 3px solid #1890FF;
+        }
+        .circle-baseline-theme {
+            width: 90%;
+            margin:0 4%;
+            /*height: 3px;*/
+            border: 3px solid rgba(255,255,255,0.10);
+        }
+        #footer {
+            position: relative;
+            z-index: 9999;
+        }
+        .m-route-bottom-right-ul li:nth-child(2) {
+            margin-top: 20px;
+        }
+        .m-route-bottom-right-ul li:nth-child(3) {
+            margin-top: 17px;
+        }
+        .m-route-bottom-right-ul li:nth-child(4) {
+            margin-top: 15px;
+        }
+        .m-route-bottom-right-ul li:nth-child(5) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(6) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(7) {
+            margin-top: 16px;
+        }
+        @media screen and (min-width: 1080px){
+            .content-words-article {
+                width: 695px;
+            }
+            .project-bottom-list .second-title-bottomProject {
+                width: 180px;
+            }
+        }
+        @media screen and (min-width: 769px) and (max-width:920px) {
+            .header ul li   {
+                padding-right: 0;
+                padding-left: 8px;
+            }
+        }
+        @media screen and (min-width: 921px) and (max-width:1020px) {
+            .header ul li   {
+                padding-right: 0;
+            }
+        }
+        /*mobile show*/
+        @media screen and (max-width: 768px) {
+            .swiper-container, .swiper-wrapper, .swiper-slide {
+                background: rgba(0,0,0,1);
+            }
+
+            .shadow-little-box {
+                width: 48px;
+                height: 56px;
+            }
+            .index-main-container {
+            }
+            .index-main-container>div {
+                width: 100%;
+                /*overflow: hidden;*/
+                padding: 0 16px;
+            }
+            .develop-route-container {
+                padding-bottom: 48px!important;
+            }
+            .swiper-slide {
+                height: 400px;
+                background: rgba(0,0,0,1);
+            }
+            .swiper-slide .swiper-slide-content {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+            }
+            .swiper-slide-content h1 {
+                font-size: 40px;
+                line-height: 48px;
+            }
+            .swiper-slide-content .first-title-p {
+                font-family: Avenir-Heavy;
+                font-size: 20px;
+                line-height: 32px;
+            }
+            .swiper-slide-content .second-title-p {
+                font-size: 16px;;
+                line-height: 26px;
+                margin-top: 8px;
+            }
+            .project-header-mainTitle {
+                font-size: 18px;
+                line-height: 26px;
+                padding-top: 48px;
+            }
+            .content-words-article {
+                width: 100%;
+            }
+            .project-bottom-list ul {
+                display: block;
+                margin:0;
+            }
+            .project-bottom-list ul li p:first-child {
+                float: left;
+            }
+            .project-bottom-list .second-title-bottomProject {
+                width: calc(100% - 100px);
+                text-align: left;
+            }
+            .first-title-bottomProject {
+                text-align: left;
+            }
+            .project-bottom-list .project-bottom-imgItem {
+                width: 64px;
+                height: 64px;
+                margin-right: 24px;
+            }
+            .project-bottom-list {
+                padding-top: 48px;
+            }
+            .project-introduce-container {
+                padding-bottom: 48px!important;
+            }
+            .title-bottom-baseline {
+                margin: 16px auto;
+            }
+            .business-bottom-container {
+                padding: 0;
+                padding-bottom: 48px;
+                display: block;
+            }
+            .business-left-container {
+                margin-right: 0!important;
+            }
+            .business-right-container {
+                margin-top: 48px;
+            }
+            .route-bottom-list {
+                display: none;
+            }
+            .develop-route-desc {
+                height: 0px;
+            }
+            .m-route-bottom-list {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="header"></div>
     <div class="main-container canvas-wrap">
         <div class="index-main-container can-main-container">
-            <div class="swiper-container swiper-container-vertical">
+            <!--轮播图-->
+            <div class="swiper-container swiper-container-vertical all-padding-wrapper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" style="display: none;">
                         <section class="swiper_banner_one text-center">
                                 <!--<img src="assets/css/icon/logo_white.svg" height="80px;">-->
                                 <h1 class="text-center font-weight400 font-size48">区块链3.0应用开发平台</h1>
@@ -89,20 +389,196 @@
                                 </div>
                         </section>
                     </div>
+                    <div class="swiper-slide">
+                        <div class="swiper-slide-content font-weight400">
+                            <h1 class="font-size56 line-height64">CONTENT</h1>
+                            <p class="font-size40 line-height48 first-title-p">AND AD NETWORK</p>
+                            <p class="font-size28 line-height36 margin-top24 second-title-p" style="color: rgba(255,255,255,0.65);">区块链 3.0 应用开发平台</p>
+                            <div class="aboutUs-btn text-center font-size18">
+                                <a href="pages/aboutUs.html">了解更多 <img src="./assets/css/icon/arrow.svg" alt=""></a>
+                            </div>
+                            <div class="shadow-little-box"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!--项目概述-->
+            <div class="project-introduce-container all-padding-wrapper">
+                <div class="project-header-content text-center">
+                    <p class="project-header-mainTitle">项目概述</p>
+                    <p class="title-bottom-baseline"></p>
+                    <p class="content-words-article">
+                        CAN是Content and AD Network的简称，是MobiPromo系统不断自我强化过程中的产品；在现有MobiPromo系统的基础上，基于区块链技术将系统去中心化，为广告主和内容供应商提供信息传递和内容分发服务；CAN是系统通证、将会接受无线网络营销交付服务，也是未来团队所有应用的基础设施。
+                    </p>
+                </div>
+                <div class="project-bottom-list">
+                    <ul class="flex flex-pack-around">
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/router_wifi.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">路由Wi-Fi</p>
+                            <p class="second-title-bottomProject">优质带宽邀您畅享极速上网体验</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/dapp.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">DAPP</p>
+                            <p class="second-title-bottomProject">去中心化应用，区块链3.0时代的一条公链</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/share_cdn.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">共享CDN</p>
+                            <p class="second-title-bottomProject">冗余流量贡献，创造个人价值</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="./assets/css/icon/marketing.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">近场营销</p>
+                            <p class="second-title-bottomProject">深度体验到“近距离的美好”，实现精准营销</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--主营业务-->
+            <div class="main-business-container all-padding-wrapper">
+                <div class="ptext-center">
+                    <p class="project-header-mainTitle">业务介绍</p>
+                    <p class="title-bottom-baseline"></p>
+                </div>
+                <div class="business-bottom-container flex flex-pack-justify">
+                    <div class="business-left-container flex-1" style="margin-right: 152px">
+                        <p class="first-title-bottomProject">广告分发服务</p>
+                        <p class="second-title-bottomProject">MobiPromo由软件（Mobipromo云端系统）和硬件（MobiPromo路由器）组成，从而进行Wi-Fi网络营销，帮助商户、广告主进行市场营销。覆盖区域为：商业场所、休闲娱乐场所、连锁餐饮、健康中心、休闲餐饮及酒吧、大学、购物中心、小超市、自动贩卖机、诊所、美容院、公交车站、铁路沿线等。<br/>
+                            <br/>
+                            复杂的后端系统将智能地分析广告内容性质，然后选择投放地点和时机，以获得最佳的效果。同时也能定位那些对特定广告感兴趣的人群，一方面可以提高效率，另一方面可以大幅降低成本。<br/>
+                            <br/>
+                            未来公共Wi-Fi业务将使用区块链技术，广告主每发起一笔广告订单都将以智能合约的方式记录，且每一名用户的真实行为数据不可篡改。此功能从根本上杜绝了虚假流量与点击率欺诈行为，这就是区块链技术与CAN在数字广告领域的魅力所在和价值所在。
+                        </p>
+                    </div>
+                    <div class="business-right-container flex-1">
+                        <p class="first-title-bottomProject">CDN 服务</p>
+                        <p class="second-title-bottomProject">
+                            游戏、视频、直播、下载、智能硬件等领域不断催生用户旺盛的网络使用需求，促使这些领域内企业的带宽成本越来越高，他们迫切想降低这一成本且具备强大的购买力，他们渴望获得廉价带宽。在未来CAN网络中，节点用户可以将冗余的流量、存储贡献给资源需求企业，他们可以大幅降低带宽和存储的成本，使业务更加稳定、提高效率。<br/>
+                            <br/>
+                            需求企业将持有的CAN作为CDN服务的燃料费即使用权，通过区块链网络配置，发布网络加速任务；用户使用CAN星际宝盒，与CAN官方平台账户相关联并保持稳定在线，即被认为该用户参与CDN服务，可获得CAN奖励。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--发展路线-->
+            <div class="develop-route-container all-padding-wrapper">
+                <div class="project-header-content text-center">
+                    <p class="project-header-mainTitle">发展路线</p>
+                    <p class="title-bottom-baseline"></p>
+                </div>
+                <div class="route-bottom-list">
+                    <ul class="flex flex-pack-justify">
+                        <li class="flex-1">
+                            <p class="develop-route-desc flex flex-align-end">
+                                CAN1.0 发布<br/>
+                                tinychain.js 开放源码
+                            </p>
+                            <p class="develop-route-date margin-top8">2018.03</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: -5em">
+                            <p class="develop-route-desc flex flex-align-end">
+                                CAN2.0 CDN服务模块
+                            </p>
+                            <p class="develop-route-date margin-top8">2018.05</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: -3em">
+                            <p class="develop-route-desc flex flex-align-end">CAN2.0 区块浏览器</p>
+                            <p class="develop-route-date margin-top8">2018.07</p>
+                        </li>
+                    </ul>
+                    <div class="img-base-line">
+                        <img src="./assets/images/roadmap_horizontal.png" alt="" style="width: 100%">
+                    </div>
+                    <ul class="flex flex-pack-justify develop-route-bottom-list">
+                        <li class="flex-1">
+                            <p class="develop-route-date">2018.04</p>
+                            <p class="develop-route-desc margin-top8">
+                                CAN2.0 原型发布
+                            </p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="develop-route-date">2018.06</p>
+                            <p class="develop-route-desc margin-top8">
+                                CAN2.0 广告服务模块<br/>
+                                CAN2.0 开放源码<br/>
+                                CAN2.0 测试网络开放</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: 5em">
+                            <p class="develop-route-date">2018.09</p>
+                            <p class="develop-route-desc  margin-top8">CAN2.0 主网上线</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-route-bottom-list">
+                    <div class="flex">
+                        <div class="column-base-img">
+                            <img src="./assets/images/roadmap_vertical.png" alt="">
+                        </div>
+                        <ul class="m-route-bottom-right-ul">
+                            <li class="">
+                                <p class="develop-route-date">2018.03</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN1.0 发布<br/>
+                                    tinychain.js 开放源码
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.04</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 原型发布
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.05</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 CDN服务模块
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.06</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 广告服务模块<br/>
+                                    CAN2.0 开放源码<br/>
+                                    CAN2.0 测试网络开放
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.07</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 区块浏览器
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.09</p>
+                                <p class="m-develop-route-desc margin-top8">CAN2.0 主网上线</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-        <div id="canvas" class="gradient"></div>
-
-
+        <!--<div id="canvas" class="gradient" style="display: none"></div>-->
     </div>
+    <div id="footer"></div>
     <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
     <script src='assets/js/bootstrap.min.js'></script>
     <script src="plugins/threeJsPlugin/js/three.min.js"></script>
     <script src="plugins/threeJsPlugin/js/projector.js"></script>
     <script src="plugins/threeJsPlugin/js/canvas-renderer.js"></script>
-    <script src="plugins/threeJsPlugin/js/3d-lines-animation.js"></script>
+    <!--<script src="plugins/threeJsPlugin/js/3d-lines-animation.js"></script>-->
     <script src="plugins/threeJsPlugin/js/color.js"></script>
 
     <!--<script type='text/javascript' src='assets/js/wow.min.js'></script>-->
@@ -111,13 +587,13 @@
     <!--<script type="text/javascript" src="assets/js/kinetic.js"></script>-->
     <!--<script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>-->
     <script language="javascript" src='assets/js/index.js'></script>
-    <script src="common/load.js"></script>
+    <script src="./common/load.js"></script>
     <script>
-        $(window).load(function(){
-            $('.main-container').css({
-                'height': $(window).height()
-            });
-        })
+        // $(window).load(function(){
+        //     $('.main-container').css({
+        //         'height': $(window).height()
+        //     });
+        // })
     </script>
 </body>
 

@@ -25,7 +25,7 @@ html, body, ul, li {
 		padding: 0;
 	}
 	body {
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		font-family: Avenir, Roboto,
 		"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
 		SimSun, sans-serif;
         background: #000;
@@ -62,7 +62,7 @@ html, body, ul, li {
     .noDisableA:active {color: rgba(255,255,255,0.54);}
     .can-main-container {
         margin: 0 auto;
-        height: 100%;
+        /*height: 100%;*/
     }
 	.ui-dialog-wrapper {
 		position: fixed;
@@ -80,8 +80,8 @@ html, body, ul, li {
 		position: fixed;
 		left:50%!important;
 		top:40%!important;
-		transform: translate(-50%,-50%);
-		-webkit-transform: translate(-50%,-50%);
+		transform: translate(-50%,-40%);
+		-webkit-transform: translate(-50%,-40%);
 		width:392px;
 		box-shadow: 0 4px 12px 0 rgba(0,0,0,0.20);
 		border-radius: 4px;
@@ -116,16 +116,16 @@ html, body, ul, li {
 		font-weight: 500;
 		font-size: 14px;
 		border-radius: 4px;
-		padding: 12px 20px;
+		padding: 8px 20px;
 		width:70px!important;
 	}
 	.ui-dialog .dialog-footer .sureLoginWarning {
 		color: #fff;
-		background-color: #e6a23c;
-		border-color: #e6a23c;
+		background-color: #1890FF;
+		border-color: #1890FF;
 	}
-	.icon-prompt_fill{
-		color: #1890FF;
+	.icon-wenhaofill{
+		color: #e6a23c;
 	}
 	.icon-guanbi {
 		color:#909399;
@@ -162,8 +162,8 @@ html, body, ul, li {
 		z-index: 999999;
 	}
 	.header_select_list {
-		padding-top: 64px;
-		position: fixed;
+		/*padding-top: 64px;*/
+		/*position: fixed;*/
 		width: 100%;
 		z-index: 99999;
 		background: #1a1a1a!important;
@@ -207,20 +207,43 @@ html, body, ul, li {
 		width: 90%!important;
 	}
 	.right-qrcord-container {
-		right: -70px!important;
+		left: 200px !important;
+	}
+	.footer>p {
+		left:36%!important;
+	}
+	.footer>div {
+		left: 38%!important;
+	}
+	.footer>div span {
+		padding-right: 25px!important;
+	}
+	.qrcord_downIcon {
+		right: 60px!important;
+	}
+	#qq_Qrcode, #wechat_Qrcode {
+		left: -66px!important;
+	}
+	#email_Tip {
+		left: -18px!important;
+	}
+	#email_Tip .qrcord_downIcon {
+		right: 92px!important;
 	}
 }
 
+
+/*/-------------/*/
 	.header {
 		width: 100%;
 		/*width: 1168px!important;*/
 		height: 64px;
-		position: fixed;
+		/*position: fixed;*/
 		z-index: 2001;
 		background: rgba(0,0,0,1);
 		color: #fff;
-		padding-left: 143px;
-		padding-right: 118px;
+		padding-left: 150px;
+		padding-right: 150px;
 		/*left: 50%;*/
 		/*transform: translateX(-50%);*/
 		box-sizing: border-box;
@@ -239,12 +262,17 @@ html, body, ul, li {
 		height: 100%;
 		line-height: 64px;
 		padding:0;
+		width: calc(100% - 258px);
+		display: flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-flex;
+		justify-content: center;
 	}
 	.header ul li {
 		float: left;
 		font-size: 14px;
-		padding-left: 32px;
-		padding-right: 24px;
+		padding: 0 24px;
 		cursor: pointer;
 		font-weight: 400;
 		transition: all 0.3s;
@@ -269,11 +297,11 @@ html, body, ul, li {
 	}
 	.header .head_r li:nth-child(1) {
 		padding-right: 32px;
+		padding-left: 0;
 	}
 	.header .head_r li:nth-child(2){
 		position: relative;
 		padding-left: 0px;
-		padding-right: 32px;
 	}
 	.header .head_r li:nth-child(3){
 		position: relative;
@@ -306,7 +334,7 @@ html, body, ul, li {
 			text-align: center;
 			/*overflow: hidden;*/
 			/*height: calc(100% - 438px);*/
-			min-height: 160px;
+			min-height: 220px;
 		}
 		.footer>div {
 			padding: 0 auto;
@@ -320,14 +348,15 @@ html, body, ul, li {
 			position: absolute;
 		}
 		.footer>div span {
-			padding: 0 15px;
+			padding: 0 10px;
 			/*border-right: 1px solid rgba(255,255,255,0.38);*/
 			font-size: 12px;
 			float: left;
 			cursor: pointer;
 			position: relative;
+			bottom: 0;
 		}
-		.footer div span::after{
+		.footer div .common-afterline-style::after{
 			content: '';
 			position: absolute;
 			top:50%;
@@ -337,13 +366,8 @@ html, body, ul, li {
 			width: 1px;
 			background: rgba(255,255,255,0.15);
 		}
-		.footer>div span:last-child::after ,.footer>div span:nth-child(4)::after{
-			width: 0!important;
-			height: 0;
-		}
-		.footer div span:last-child {
-			border-right: none;
-		}
+
+
 		.footer>p {
 			font-size: 14px;
 			color: rgba(255,255,255,0.38);
@@ -353,15 +377,20 @@ html, body, ul, li {
 			left:50%;
 			transform: translateX(-50%);
 		}
-		#qq_Qrcode ,#wechat_Qrcode{
+		#qq_Qrcode ,#wechat_Qrcode, #email_Tip{
 			position: absolute;
 			top:-180px;
-			left: -60px;
+			left: -69px;
 			line-height: 0;
 			box-shadow: 0 0 8px 0 rgba(0,0,0,.38);
 			padding:0;
 			display: none;
 			transition: all 0.5s ease-in-out;
+		}
+		#email_Tip {
+			top: -52px;
+			left: -36px;
+			line-height: 16px;
 		}
 		#qq_Qrcode>img ,#wechat_Qrcode>img {
 			width: 160px;
@@ -369,6 +398,9 @@ html, body, ul, li {
 		.qrcord_downIcon {
 			position: absolute!important;
 			right: 46px;
+		}
+		#email_Tip .qrcord_downIcon {
+			right: 63px;
 		}
 		.qrcord_downIcon img {
 			width: 34px;
@@ -381,7 +413,7 @@ html, body, ul, li {
 .right-qrcord-container{
 	position: absolute;
 	right: -120px;
-	top: 14px;
+	top: 50%;
 }
 .right-qrcord-container p{
 	font-size:10px;
@@ -402,7 +434,7 @@ html, body, ul, li {
 		transition:height 0.5s ease-in-out;
 		height: 0px;
 		background: rgba(24,24,24,1);
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0%;
 		width: 100%;
@@ -412,7 +444,7 @@ html, body, ul, li {
 	}
 	.product-content {
 		position: absolute;
-		left: 30.5%;
+		left: 47%;
 		height: 100%;
 	}
 	.product-img-list {
@@ -467,11 +499,20 @@ html, body, ul, li {
 	.font-size24 {
 		font-size: 24px;
 	}
+	.font-size28 {
+		font-size: 28px;
+	}
 	.font-size30 {
 		font-size: 30px;
 	}
+	.font-size40 {
+		font-size: 40px;
+	}
 	.font-size48 {
 		font-size: 48px;
+	}
+	.font-size56 {
+		font-size: 56px;
 	}
 	.fontcolor-opocity-87 {
 		color:rgba(255,255,255,255.87);
@@ -532,7 +573,10 @@ html, body, ul, li {
 		-ms-flex-align: center;
 		align-items: center;
 	}
-
+	.flex-align-end {
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+	}
 	.flex-pack-center {
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
@@ -543,6 +587,12 @@ html, body, ul, li {
 	.flex-pack-justify {
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	.flex-pack-around {
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-around;
 		-ms-flex-pack: justify;
 		justify-content: space-between;
 	}
@@ -593,11 +643,20 @@ html, body, ul, li {
         line-height: 26px;
     }
     .line-height28 {
-        line-height: 28px;
-    }
+		 line-height: 28px;
+	 }
+	.line-height36 {
+		line-height: 36px;
+	}
     .line-height44 {
         line-height: 44px;
     }
+	.line-height48 {
+		line-height: 48px;
+	}
+	.line-height64 {
+		line-height: 64px;
+	}
     .font-weight400 {
         font-weight: 400;
     }

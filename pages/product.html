@@ -69,7 +69,9 @@
 		color: #fff;
 	}
 	.banner_right img {
-		width: 100%;
+		width: 95%;
+		display: block;
+		margin: 0 auto;
 	}
 
 	
@@ -81,11 +83,12 @@
 		font-size: 30px;
 		line-height: 38px;
     }
-	.main h2 , .faq h2{
+	.main h2 , .faq h2, .parameter h2{
         margin-top: 8px;
-		font-size: 20px;
-		line-height: 28px;
-        color: rgba(255,255,255,.54)!important;
+		width: 64px;
+		height: 4px;
+		background: rgba(255,255,255,0.10);
+		margin: 30px auto 0 auto;
     }
 	.main img {
 		display: block;
@@ -93,6 +96,13 @@
 		margin: 80px auto 0 auto;
 		height: 500px
 	}
+
+	
+	.parameter {
+		margin-top: 160px;
+        margin-bottom: 120px;
+	}
+
 
 
 	.faq {
@@ -119,12 +129,12 @@
 	}
 	.faq_list li:nth-child(even) {
 		width: 42%;
-        height: 200px;
+        height: 252px;
 		float: right;
 	}
-    .faq_list .can-value-container {
+    /*.faq_list .can-value-container {
         height: 274px!important;
-    }
+    }*/
 	.faq_list li h4 {
 		font-size: 20px;
 		color: #1890FF;
@@ -140,6 +150,30 @@
     .header {
         background: rgba(0,0,0,1)!important;
     }
+
+
+
+    table {
+		margin-top: 64px;
+	}
+    tr td {
+    	font-size: 18px;
+    	height: 72px;
+    	line-height: 72px;
+    	text-align: center;
+    	border: 1px solid rgba(255,255,255,0.15);
+    	box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.15);
+    	box-sizing: border-box;
+    }
+	tr td:first-child {
+		width: 250px;
+		color: #ffffff;
+	}
+	tr td:last-child {
+		width: 918px;
+		color: rgba(255,255,255,0.65);
+
+	}
 
 	/*@media (max-width: 992px) {*/
 		/*.banner {*/
@@ -174,20 +208,59 @@
 			</section>
 			<section class="main row">
 				<h1>人人皆可参与</h1>
-				<h2>您将会在这里发现自己的价值</h2>
+				<h2></h2>
 				<img src="../assets/images/picture.png">
 			</section>
+			<section class="parameter row">
+				<h1 class="text-center">设备参数</h1>
+				<h2></h2>
+				<table class="text-center">
+					<tr>
+						<td>外观尺寸</td>
+						<td>120*120*30 mm</td>
+					</tr>
+					<tr>
+						<td>CPU</td>
+						<td>高通IPQ4019</td>
+					</tr>
+					<tr>
+						<td>内存</td>
+						<td>512MB DDR3</td>
+					</tr>
+					<tr>
+						<td>FLASH</td>
+						<td>128MB</td>
+					</tr>
+					<tr>
+						<td>无线</td>
+						<td>支持 5G 和 2.4G</td>
+					</tr>
+					<tr>
+						<td>接口</td>
+						<td>三个千兆自适应以太网接口 + USB3.0（外接扩容移动硬盘）</td>
+					</tr>
+					<tr>
+						<td>电源</td>
+						<td>电压 12V；功率 15W</td>
+					</tr>
+					<tr>
+						<td>工作温度</td>
+						<td>0 ~ 70℃</td>
+					</tr>
+				</table>
+			</section>
+
 			<section class="faq row">
 				<h1 class="text-center">FAQ</h1>
-				<h2 class="text-center">常见问题解答</h2>
+				<h2 class="text-center"></h2>
 				<ul class="faq_list">
 					<li class="">
 						<h4>电源插口?</h4>
-						<p>目前外置硬盘接口提供了5V供电，能够驱动2.5寸机械硬盘；3.5寸机械硬盘则需要配置12V电源；SSD需要支持5V供电。</p>
+						<p>双插，无接地；可以自配三插带接地电源。</p>
 					</li>
 					<li class="">
 						<h4>外观尺寸?</h4>
-						<p>目前正在依据概念外观设计，会做调整，主要是考虑集中存放和家用两种情况的需求差异极大，需两者兼顾。</p>
+						<p>第一代星际宝盒已开模完成，尺寸为120*120*30 mm。目前在做二代设备外观设计调整，会着重考虑集中存放和家用两种场景，保证各场景适用。</p>
 					</li>
 					<li class="">
 						<h4>硬盘支持？</h4>
@@ -211,7 +284,25 @@
 <script src="../common/load.js"></script>
 <script>
 	$(".customOrder-btn").click(function(){
-        window.location.href =  './CustomOrderInfo.html'
+		var x = Util.getCookie('Authorization');
+		if (x == '' || x === undefined) {
+		    window.location.href = '/pages/login.html'
+		}
+		$.ajax({
+		    type: 'GET',
+		    async: false,
+		    headers: {
+		        Accept: "application/json; charset=utf-8",
+		        Authorization: 'Bearer' + ' ' + x
+		    },
+		    url: '/promo/authed/user/account',
+		    success: function (data) {
+		        window.location.href =  './CustomOrderInfo.html'
+		    },
+			error: function() {
+		        window.location.href = '/pages/login.html'
+			}
+		});
     })
 </script>
 </body>
