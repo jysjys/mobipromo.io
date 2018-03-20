@@ -80,8 +80,8 @@ html, body, ul, li {
 		position: fixed;
 		left:50%!important;
 		top:40%!important;
-		transform: translate(-50%,-50%);
-		-webkit-transform: translate(-50%,-50%);
+		transform: translate(-50%,-40%);
+		-webkit-transform: translate(-50%,-40%);
 		width:392px;
 		box-shadow: 0 4px 12px 0 rgba(0,0,0,0.20);
 		border-radius: 4px;
@@ -116,16 +116,16 @@ html, body, ul, li {
 		font-weight: 500;
 		font-size: 14px;
 		border-radius: 4px;
-		padding: 12px 20px;
+		padding: 8px 20px;
 		width:70px!important;
 	}
 	.ui-dialog .dialog-footer .sureLoginWarning {
 		color: #fff;
-		background-color: #e6a23c;
-		border-color: #e6a23c;
+		background-color: #1890FF;
+		border-color: #1890FF;
 	}
-	.icon-prompt_fill{
-		color: #1890FF;
+	.icon-wenhaofill{
+		color: #e6a23c;
 	}
 	.icon-guanbi {
 		color:#909399;
@@ -163,7 +163,7 @@ html, body, ul, li {
 	}
 	.header_select_list {
 		/*padding-top: 64px;*/
-		position: fixed;
+		/*position: fixed;*/
 		width: 100%;
 		z-index: 99999;
 		background: #1a1a1a!important;

@@ -391,6 +391,7 @@ $('#submit').on('click', function () {
     } else if (commodList.moreNullF) {
 		return false
 	}
+	console.log(444)
     $.ajax({
 			type: 'POST',
 			async: false,
@@ -416,8 +417,14 @@ $('#submit').on('click', function () {
                 }
 		},
 			error: function (jqXhr) {
-			    console.log(jqXhr.status)
-				console.log('coupon_err');
+			    console.log(jqXhr.status);
+			    if (jqXhr.status === 401) {
+                    commodList.$message({
+                        message: '登录过期，请重新登录',
+                        type: 'error'
+                    });
+                    window.location.href = '/pages/login.html'
+				}
 				$('#submit').data('isLoading', false);
 			}
 	});
