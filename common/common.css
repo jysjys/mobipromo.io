@@ -224,6 +224,12 @@ html, body, ul, li {
 	#qq_Qrcode, #wechat_Qrcode {
 		left: -66px!important;
 	}
+	#email_Tip {
+		left: -18px!important;
+	}
+	#email_Tip .qrcord_downIcon {
+		right: 92px!important;
+	}
 }
 
 
@@ -348,8 +354,9 @@ html, body, ul, li {
 			float: left;
 			cursor: pointer;
 			position: relative;
+			bottom: 0;
 		}
-		.footer div span::after{
+		.footer div .common-afterline-style::after{
 			content: '';
 			position: absolute;
 			top:50%;
@@ -359,13 +366,8 @@ html, body, ul, li {
 			width: 1px;
 			background: rgba(255,255,255,0.15);
 		}
-		.footer>div span:last-child::after ,.footer>div span:nth-child(4)::after{
-			width: 0!important;
-			height: 0;
-		}
-		.footer div span:last-child {
-			border-right: none;
-		}
+
+
 		.footer>p {
 			font-size: 14px;
 			color: rgba(255,255,255,0.38);
@@ -375,7 +377,7 @@ html, body, ul, li {
 			left:50%;
 			transform: translateX(-50%);
 		}
-		#qq_Qrcode ,#wechat_Qrcode{
+		#qq_Qrcode ,#wechat_Qrcode, #email_Tip{
 			position: absolute;
 			top:-180px;
 			left: -69px;
@@ -385,12 +387,20 @@ html, body, ul, li {
 			display: none;
 			transition: all 0.5s ease-in-out;
 		}
+		#email_Tip {
+			top: -52px;
+			left: -36px;
+			line-height: 16px;
+		}
 		#qq_Qrcode>img ,#wechat_Qrcode>img {
 			width: 160px;
 		}
 		.qrcord_downIcon {
 			position: absolute!important;
 			right: 46px;
+		}
+		#email_Tip .qrcord_downIcon {
+			right: 63px;
 		}
 		.qrcord_downIcon img {
 			width: 34px;

@@ -32,8 +32,8 @@
         .swiper-container , .swiper-wrapper, .swiper-slide{
             background-image: url("./assets/images/banner.png");
             background-repeat: no-repeat;
-            background-size:100% 100%;
-            background-position: left;
+            background-size:1440px 480px;
+            background-position: center;
             position: relative;
         }
         .swiper-slide {
@@ -268,6 +268,10 @@
         }
         /*mobile show*/
         @media screen and (max-width: 768px) {
+            .swiper-container, .swiper-wrapper, .swiper-slide {
+                background: rgba(0,0,0,1);
+            }
+
             .shadow-little-box {
                 width: 48px;
                 height: 56px;

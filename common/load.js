@@ -111,36 +111,25 @@ $(function(){
         $('.footer-downbig-Cotainer .wechat-info').on('mouseout', function () {
             $("#wechat_Qrcode").css({display: 'none'})
         })
+        $('.footer-downbig-Cotainer .email-com-aTip').on('mouseover',function() {
+            $("#email_Tip").css({display: 'block'})
+        })
+        $('.footer-downbig-Cotainer .email-com-aTip').on('mouseout', function () {
+            $("#email_Tip").css({display: 'none'})
+        })
+        // 判断是否是微信内置浏览器
+        $(".email-com-a").click(function () {
+            // isWeixin()
+        })
         function isWeixin(){
             var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=='micromessenger'){
-                weixinFunc()
+
+            if(ua.match(/MicroMessenger/i)=='micromessenger' && ua.match(/Android/i) != null ){
+
             }else{
                 return false;
             }
         }
-        // 判断是否是微信内置浏览器
-        window.addEventListener('WeixinJSBridgeReady',function onBridgeReady() {
-            wexinFunc();
-        });
-        function weixinFunc() {
-            alert(111)
 
-            var url = window.location.href;
-            var check = "#mp.weixin.qq.com"
-            var flagIndex = url.lastIndexOf("#")
-            if(flagIndex > -1) {
-                var flag = url.substr(flagIndex)
-                if(flag != check) {
-                    url += check
-                    location.replace(url)
-                    location.reload()
-                }
-            } else {
-                url += check
-                location.replace(url)
-                location.reload()
-            }
-        }
     });
 });
