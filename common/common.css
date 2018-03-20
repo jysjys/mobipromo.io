@@ -216,10 +216,11 @@ html, body, ul, li {
 		left: 38%!important;
 	}
 	.footer>div span {
-		padding-right: 25px!important;
+		/*padding-right: 25px!important;*/
 	}
 	.qrcord_downIcon {
-		right: 60px!important;
+		right: 50px!important;
+		bottom: -35px!important;
 	}
 	#qq_Qrcode, #wechat_Qrcode {
 		left: -66px!important;
@@ -228,7 +229,7 @@ html, body, ul, li {
 		left: -18px!important;
 	}
 	#email_Tip .qrcord_downIcon {
-		right: 92px!important;
+		right: 78px!important;
 	}
 }
 
@@ -354,7 +355,7 @@ html, body, ul, li {
 			float: left;
 			cursor: pointer;
 			position: relative;
-			bottom: 0;
+			/*bottom: 0;*/
 		}
 		.footer div .common-afterline-style::after{
 			content: '';
@@ -424,6 +425,7 @@ html, body, ul, li {
 .qrcord_downIcon {
 	position: absolute!important;
 	right: 46px;
+	bottom: -37px;
 }
 .qrcord_downIcon img {
 	width: 34px;
