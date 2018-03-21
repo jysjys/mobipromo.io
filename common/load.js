@@ -44,6 +44,7 @@ $(function(){
                 $(".isLoginRegisterHead").html("<a href=\"/pages/register.html\">注册</a>")
             }
         });
+
         setTimeout(function(){
             $(".loginOut").click(function(){
                 $(".ui-dialog-wrapper").show();
@@ -74,7 +75,6 @@ $(function(){
         });
 
         $(".product-over-downContainer").css({width:$(window).width()})
-        $(".header-container").css({width:$(window).width()})
         $('.productPage').on('mouseover','div',function() {
             $(".productPage").css({color:'rgba(255,255,255,.87)'}) ;
             $(".trink-icon").css({borderTopColor:'rgba(255,255,255,.87)',transform:'rotate(180deg)'}) ;

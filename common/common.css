@@ -137,101 +137,7 @@ html, body, ul, li {
 	}
 
 
-@media screen and (max-width: 768px){
-	.ui-dialog {
-		width: 80%;
-	}
-	.ui-dialog-wrapper {
-		z-index: 99999;
-	}
-	.web-head-container {
-		display: none!important;
-	}
-	.m-header-container {
-		display: block!important;
-	}
-	.m-header-right-btn {
-		text-align: right;
-	}
-	.m-header-right-btn img {
-		width: 3rem;
-	}
-	.m-header-container .header {
-		width: 100%!important;
-		padding: 0 10px;
-		z-index: 999999;
-	}
-	.header_select_list {
-		/*padding-top: 64px;*/
-		/*position: fixed;*/
-		width: 100%;
-		z-index: 99999;
-		background: #1a1a1a!important;
-	}
-	.header_select_list>li {
-		width: 100%;
-		padding:15px;
-		text-align: left!important;
-	}
-	.header_select_list>li a {
-		width: 100%;
-		display: block;
-	}
-	.header_select_list>li:hover {
-		/*background: rgba(255,255,255,.87);*/
-	}
-	.product-img {
-		max-width: 36px!important;
-	}
-	.can-main-container {
-		width: 100%!important;
-	}
-	.font-size48 {
-		font-size: 24px!important;
-	}
-	.font-size18 {
-		font-size: 16px!important;
-	}
-	.index-can-content {
-		width: 100% !important;
-		padding:0 15px;
-		text-indent: 2em;
-	}
-	.swiper_banner_one {
-		width: 100%!important;
-	}
-	.qrcord_downIcon img {
-		margin-top: -1px;
-	}
-	.aboutUs-btn {
-		width: 90%!important;
-	}
-	.right-qrcord-container {
-		left: 200px !important;
-	}
-	.footer>p {
-		left:36%!important;
-	}
-	.footer>div {
-		left: 38%!important;
-	}
-	.footer>div span {
-		/*padding-right: 25px!important;*/
-	}
-	.qrcord_downIcon {
-		right: 50px!important;
-		bottom: -35px!important;
-	}
-	#qq_Qrcode, #wechat_Qrcode {
-		left: -66px!important;
-	}
-	#email_Tip {
-		left: -18px!important;
-	}
-	#email_Tip .qrcord_downIcon {
-		right: 78px!important;
-	}
-}
+
 
 
 /*/-------------/*/
@@ -241,7 +147,7 @@ html, body, ul, li {
 		height: 64px;
 		/*position: fixed;*/
 		z-index: 2001;
-		background: rgba(0,0,0,1);
+		background: rgba(0,0,0,0);
 		color: #fff;
 		padding-left: 150px;
 		padding-right: 150px;
@@ -671,3 +577,112 @@ html, body, ul, li {
 	[v-cloak] {
 		display: none;
 	}
+
+
+	/*meidia search*/
+@media screen and (max-width: 768px){
+	.ui-dialog {
+		width: 80%;
+	}
+	.ui-dialog-wrapper {
+		z-index: 99999;
+	}
+	.web-head-container {
+		display: none!important;
+	}
+	.m-header-container {
+		display: block!important;
+	}
+	.m-header-right-btn {
+		text-align: right;
+	}
+	.m-header-right-btn img {
+		width: 3rem;
+	}
+	.m-header-container .header {
+		width: 100%!important;
+		padding: 0 10px;
+		z-index: 999999;
+	}
+	.header_select_list {
+		/*padding-top: 64px;*/
+		/*position: fixed;*/
+		width: 100%;
+		z-index: 99999;
+		background: #1a1a1a!important;
+	}
+	.header_select_list>li {
+		width: 100%;
+		padding:15px;
+		text-align: left!important;
+	}
+	.header_select_list>li a {
+		width: 100%;
+		display: block;
+	}
+	.header_select_list>li:hover {
+		/*background: rgba(255,255,255,.87);*/
+	}
+	.product-img {
+		max-width: 36px!important;
+	}
+	.can-main-container {
+		width: 100%!important;
+	}
+	.font-size48 {
+		font-size: 24px!important;
+	}
+	.font-size18 {
+		font-size: 16px!important;
+	}
+	.index-can-content {
+		width: 100% !important;
+		padding:0 15px;
+		text-indent: 2em;
+	}
+	.swiper_banner_one {
+		width: 100%!important;
+	}
+	.qrcord_downIcon img {
+		margin-top: -1px;
+	}
+	.aboutUs-btn {
+		width: 90%!important;
+	}
+	.right-qrcord-container {
+		left: 200px !important;
+	}
+	.footer>p {
+		left:36%!important;
+	}
+	.footer>div {
+		left: 38%!important;
+	}
+	.footer>div span {
+		/*padding-right: 25px!important;*/
+	}
+	.qrcord_downIcon {
+		right: 50px!important;
+		bottom: -35px!important;
+	}
+	#qq_Qrcode, #wechat_Qrcode {
+		left: -66px!important;
+	}
+	#email_Tip {
+		left: -18px!important;
+	}
+	#email_Tip .qrcord_downIcon {
+		right: 78px!important;
+	}
+}
+@media screen and (min-width: 769px) and (max-width:920px) {
+	.header ul li   {
+		padding-right: 0;
+		padding-left: 8px;
+	}
+}
+@media screen and (min-width: 921px) and (max-width:1020px) {
+	.header ul li   {
+		padding-right: 0;
+	}
+}
