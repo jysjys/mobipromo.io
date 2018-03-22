@@ -74,7 +74,7 @@ $(function(){
             });
         });
 
-        $(".product-over-downContainer").css({width:$(window).width()})
+        // $(".product-over-downContainer").css({width:$(window).width()})
         $('.productPage').on('mouseover','div',function() {
             $(".productPage").css({color:'rgba(255,255,255,.87)'}) ;
             $(".trink-icon").css({borderTopColor:'rgba(255,255,255,.87)',transform:'rotate(180deg)'}) ;
