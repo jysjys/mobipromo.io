@@ -282,14 +282,14 @@
 	<div id="footer"></div>
 <script type="text/javascript" src='/assets/js/jquery.min.js'></script>
 <script type="text/javascript" src='/assets/js/util.js'></script>
-<script src="../common/load.js"></script>
+<script src="./load.js"></script>
 <script type="text/javascript" src="/common/version1.0.js"></script>
 
 	<script>
 	$(".customOrder-btn").click(function(){
 		var x = Util.getCookie('Authorization');
 		if (x == '' || x === undefined) {
-		    window.location.href = '/pages/login.html'
+		    window.location.href = './login.html'
 		}
 		$.ajax({
 		    type: 'GET',

@@ -39,7 +39,7 @@
 			</div>
 			<div>
 				<span>已有账户？</span>
-				<span><a href="./login.html">立即登陆</a></span>
+				<span><a href="./login.html">立即登录</a></span>
 			</div>
 		</form>
 		<form class="register_form_epid" style="display: none;">
@@ -121,7 +121,7 @@
 			$(".warn").css({'display':'none'})
 			var phone = $("input[name='phone']").val().trim(),
 			password = $("input[name='pwd']").val().trim(),
-			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 			if(!phone_number_reg.test(phone)) {
 				console.log('phone not empty')
 				$(".phone_warn").css({'display':'inline-block'});

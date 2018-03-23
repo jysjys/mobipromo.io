@@ -39,7 +39,7 @@
 			</div>
 			<div>
 				<span>已有賬戶？</span>
-				<span><a href="./login.html">立即登陸</a></span>
+				<span><a href="./login.html">立即登錄</a></span>
 			</div>
 		</form>
 		<form class="register_form_epid" style="display: none;">
@@ -62,7 +62,7 @@
 
 	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../assets/js/util.js"></script>
-	<script type="text/javascript" src="/common/load.js"></script>
+	<script type="text/javascript" src="./load.js"></script>
 	<script type="text/javascript" src="../assets/js/vue.min.js"></script>
 	<script src="../assets/js/elementUiIndex.js"></script>
 	<script type="text/javascript" src="/common/version1.0.js"></script>
@@ -99,7 +99,7 @@
 						return;
 					}
                     vm.$message({
-                        message: '注册成功',
+                        message: '注冊成功',
                         type: 'success'
                     });
                     setTimeout(function () {
@@ -121,7 +121,7 @@
 			$(".warn").css({'display':'none'})
 			var phone = $("input[name='phone']").val().trim(),
 			password = $("input[name='pwd']").val().trim(),
-			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 			if(!phone_number_reg.test(phone)) {
 				console.log('phone not empty')
 				$(".phone_warn").css({'display':'inline-block'});
