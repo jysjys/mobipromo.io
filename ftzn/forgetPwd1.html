@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+<title>mobipromo</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../assets/css/login.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/forgetPwd.css">
+<body>
+
+<div class="login-container">
+	<h1>找回登陆密码</h1>
+		<div style="position: relative;">
+			<input type="text" name="phone" class="phone" placeholder="手机号/邮箱" autocomplete="off"/>
+			<span style="color: #333; position: absolute; right: 10px; top: 40px;">+86</span>
+		</div>
+		<div>
+			<input type="text" class="phone_warn warn" value="您输入的手机号码不正确！" disabled='disabled'>
+		</div>
+		<div>
+			<input type="text" name="epid" class="epid" placeholder="验证码" autocomplete="off"/><button type="button" class="btn_epid">发送验证码</button>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="设置新的登陆密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="password" name="repeat_pwd" class="repeat_pwd" placeholder="重复输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<div>
+			<input type="text" class="login_warn warn" value="用户名或密码不正确！" disabled='disabled'>
+		</div>
+		<button id="submit" type="submit" style="margin-left: 0;">提 交</button>
+</div>
+
+<script src="../assets/js/jquery.min.js"></script>
+<!-- <script src="assets/js/common.js"></script> -->
+<!--背景图片自动更换-->
+<script src="../assets/js/supersized.3.2.7.min.js"></script>
+<script src="../assets/js/supersized-init.js"></script>
+<script type="text/javascript" src="/common/version1.0.js"></script>
+
+<script>
+// 短信倒计时
+$(".btn_epid").on('click', function() {
+	var time = 8;
+	$(".btn_epid").attr('disabled','disabled').css('background','#777');
+	var t = setInterval(function() {
+		if(time > 0) {
+			time --;
+			$(".btn_epid").text(time + 's');
+		}else{
+			window.clearTimeout(t);
+			$(".btn_epid").removeAttr('disabled').css('background','#338CF6').text("发送验证码");
+		}
+	},1000)
+})
+// 提交表单
+$("#submit").on('click', function() {
+	var phone = $(".phone").val().trim(),
+	epid = $(".epid").val().trim(),
+	password = $(".password").val().trim(),
+	repeat_pwd = $(".repeat_pwd").val().trim(),
+	phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+	var data = {
+		phone: phone,
+		epid: epid,
+		password
+	}
+	if(!phone_number_reg.test(phone)) {
+
+	}else if(password != repeat_pwd) {
+
+	}
+	$.ajax({
+		type: 'POST',
+		data: data,
+		url: ''
+	})
+
+})
+
+</script>
+</body>
+</html>

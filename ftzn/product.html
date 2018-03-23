@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>product</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="icon" href="/assets/images/title.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/common/common.css">
+	<link rel="stylesheet" href="/assets/css/product-responsive.css">
+<style type="text/css">
+	html, body, ul, li, h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+		padding: 0;
+		color: rgba(255,255,255,0.87);
+	}
+	input,button,select,textarea{outline:none;}
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 400;
+	}
+	.productPage {
+		font-weight: 500;
+	}
+	.productPage .nav-pro-mouse {
+		color: rgba(255,255,255,.87);
+	}
+	.trink-icon {
+		border-top: 5px solid rgba(255,255,255,.87);
+	}
+	.banner {
+		padding-top: 120px;
+	}
+	.banner_left {
+		padding-top: 50px;
+	}
+	.banner_left h1{
+		font-size: 40px;
+		line-height: 48px;
+        margin-bottom: 8px;
+	}
+	.banner_left h4 {
+		font-size: 24px;
+		line-height: 32px;
+	}
+	.banner_left span {
+		font-size: 48px;
+		line-height: 67px;
+		color: #1890FF;
+		display: block;
+		font-weight: 300;
+        margin-top: 16px;
+	}
+	.banner_left button {
+		width: 160px;
+		height: 48px;
+		font-size: 20px; 
+		line-height: 28px;
+        background: none;
+        border: 1px solid rgba(24,144,255,.5);
+        border-radius: 24px;
+        margin-top: 32px;
+		color: #1890FF;
+	}
+    .banner_left button:hover {
+        border-color: rgba(255,255,255,.5);
+		color: #fff;
+	}
+	.banner_right img {
+		width: 95%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	
+	.main {
+		text-align: center;
+		margin-top: 160px;
+	}
+	.main h1 , .faq h1{
+		font-size: 30px;
+		line-height: 38px;
+    }
+	.main h2 , .faq h2, .parameter h2{
+        margin-top: 8px;
+		width: 64px;
+		height: 4px;
+		background: rgba(255,255,255,0.10);
+		margin: 30px auto 0 auto;
+    }
+	.main img {
+		display: block;
+		margin-top: 80px;
+		margin: 80px auto 0 auto;
+		height: 500px
+	}
+
+	
+	.parameter {
+		margin-top: 160px;
+        margin-bottom: 120px;
+	}
+
+
+
+	.faq {
+		margin-top: 160px;
+        margin-bottom: 120px;
+	}
+	.faq_list {
+		margin-top: 50px;
+		overflow: hidden;
+		list-style: none;
+	}
+
+	.faq_list li {
+		border: 1px solid rgba(255,255,255,0.15);
+		border-radius: 4px;
+		padding: 24px;
+		box-sizing: border-box;
+		margin-bottom: 24px;
+	}
+	.faq_list li:nth-child(odd) {
+		width: 55%;
+		float: left;
+		margin-right: 3%;
+	}
+	.faq_list li:nth-child(even) {
+		width: 42%;
+        height: 252px;
+		float: right;
+	}
+    /*.faq_list .can-value-container {
+        height: 274px!important;
+    }*/
+	.faq_list li h4 {
+		font-size: 20px;
+		color: #1890FF;
+		line-height: 28px;
+	}
+	.faq_list li p {
+		font-size: 16px;
+		line-height: 24px;
+        color: rgba(255,255,255,.54);
+        margin-top: 16px;
+	}
+
+    .header {
+        background: rgba(0,0,0,1)!important;
+    }
+
+
+
+    table {
+		margin-top: 64px;
+	}
+    tr td {
+    	font-size: 18px;
+    	height: 72px;
+    	line-height: 72px;
+    	text-align: center;
+    	border: 1px solid rgba(255,255,255,0.15);
+    	box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.15);
+    	box-sizing: border-box;
+    }
+	tr td:first-child {
+		width: 250px;
+		color: #ffffff;
+	}
+	tr td:last-child {
+		width: 918px;
+		color: rgba(255,255,255,0.65);
+
+	}
+
+	/*@media (max-width: 992px) {*/
+		/*.banner {*/
+			/*text-align: center;*/
+		/*}*/
+		/*.main img {*/
+			/*height: 300px;*/
+		/*}*/
+		/*.faq_list li{*/
+			/*width: 100% !important;*/
+		/*}*/
+	/*}*/
+	/*#header .productPage a{*/
+		/*color: rgba(255,255,255,0.87);*/
+	/*}*/
+</style>
+</head>
+<body>
+	<div id="header"></div>
+	<div style="padding-top: 64px; background: #000;">
+		<div class="container" >
+			<section class="banner row">
+				<div class="banner_left col-md-6">
+					<h1>CAN星際寶盒</h1>
+					<h4>內容分發與廣告分發節點設備</h4>
+					<span>¥ 899</span>
+					<button type="button" class="customOrder-btn" >訂購</button>
+				</div>
+				<div class="banner_right col-md-6">
+					<img src="../assets/images/box_child.png">
+				</div>
+			</section>
+			<section class="main row">
+				<h1>人人皆可參與</h1>
+				<h2></h2>
+				<img src="../assets/images/picture.png">
+			</section>
+			<section class="parameter row">
+				<h1 class="text-center">設備參數</h1>
+				<h2></h2>
+				<table class="text-center">
+					<tr>
+						<td>外觀尺寸</td>
+						<td>120*120*30 mm</td>
+					</tr>
+					<tr>
+						<td>CPU</td>
+						<td>高通IPQ4019</td>
+					</tr>
+					<tr>
+						<td>內存</td>
+						<td>512MB DDR3</td>
+					</tr>
+					<tr>
+						<td>FLASH</td>
+						<td>128MB</td>
+					</tr>
+					<tr>
+						<td>無線</td>
+						<td>支持 5G 和 2.4G</td>
+					</tr>
+					<tr>
+						<td>接口</td>
+						<td>三個千兆自適應以太網接口 + USB3.0（外接擴容移動硬盤）</td>
+					</tr>
+					<tr>
+						<td>電源</td>
+						<td>電壓 12V；功率 15W</td>
+					</tr>
+					<tr>
+						<td>工作溫度</td>
+						<td>0 ~ 70℃</td>
+					</tr>
+				</table>
+			</section>
+
+			<section class="faq row">
+				<h1 class="text-center">FAQ</h1>
+				<h2 class="text-center"></h2>
+				<ul class="faq_list">
+					<li class="">
+						<h4>電源插口?</h4>
+						<p>雙插，無接地；可以自配三插帶接地電源。</p>
+					</li>
+					<li class="">
+						<h4>外觀尺寸?</h4>
+						<p>第一代星際寶盒已開模完成，尺寸為120*120*30 mm。目前在做二代設備外觀設計調整，會著重考慮集中存放和家用兩種場景，保証各場景適用。</p>
+					</li>
+					<li class="">
+						<h4>硬盤支持？</h4>
+						<p>目前外置硬盤接口提供了5V供電，能夠驅動2.5寸機械硬盤﹔3.5寸機械硬盤則需要配置12V電源﹔SSD需要支持5V供電。</p>
+					</li>
+					<li class="can-value-container">
+						<h4>CAN 的價值？</h4>
+						<p>CAN 構建的是開放生態，將會提供開放接口給所有參與者，CAN 的所有參與者都可以在其上構建開放的區塊鏈應用，我們相信這種共同構建，共同獲益的精神，是區塊鏈的核心價值。
+							<br><br>所有參與的人，都能為CAN網絡創造可能性！</p>
+					</li>
+					<li class="">
+						<h4>上行速率？</h4>
+						<p>最佳上行速率為4Mbps，bps表示每秒比特(bit)數﹔如果一個1M字節(Byte)的文件，上傳需要2秒鐘，因為1 字節(Byte) = 8 比特(bit)。國內運營商大多數會保証8M以上寬帶擁有4M上行，也就是512KB每秒的傳輸速度，下行2.5MB/秒。</p>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<div id="footer"></div>
+<script type="text/javascript" src='/assets/js/jquery.min.js'></script>
+<script type="text/javascript" src='/assets/js/util.js'></script>
+<script src="../common/load.js"></script>
+<script type="text/javascript" src="/common/version1.0.js"></script>
+
+	<script>
+	$(".customOrder-btn").click(function(){
+		var x = Util.getCookie('Authorization');
+		if (x == '' || x === undefined) {
+		    window.location.href = '/pages/login.html'
+		}
+		$.ajax({
+		    type: 'GET',
+		    async: false,
+		    headers: {
+		        Accept: "application/json; charset=utf-8",
+		        Authorization: 'Bearer' + ' ' + x
+		    },
+		    url: '/promo/authed/user/account',
+		    success: function (data) {
+		        window.location.href =  './CustomOrderInfo.html'
+		    },
+			error: function() {
+		        window.location.href = './login.html'
+			}
+		});
+    })
+</script>
+</body>
+</html>

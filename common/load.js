@@ -1,5 +1,5 @@
 $(function(){
-    $('#header').load('../common/Header.html .header-container',function () {
+    $('#header').load('/common/Header.html .header-container',function () {
         var link = document.createElement( "link" );
         link.rel = "stylesheet";
         link.href = "http://at.alicdn.com/t/font_589512_githcloq2emw8kt9.css";
@@ -74,6 +74,12 @@ $(function(){
             });
         });
 
+        $(".language-trangle-img").click(function () {
+           $(".languages-kinds").toggle()
+        })
+        $(".languages-kinds").on('click','li',function () {
+            $(this).find('a').css({color: '#1890FF'}).parent().siblings().find('a').css({color:'#333333'});
+        });
         // $(".product-over-downContainer").css({width:$(window).width()})
         $('.productPage').on('mouseover','div',function() {
             $(".productPage").css({color:'rgba(255,255,255,.87)'}) ;

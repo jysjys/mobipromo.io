@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>MobiPromo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ICO web site for CAN">
+    <meta name="keywords" content="MobiPromo, Blockchain, Decentralized, Ad">
+    <link rel="icon" href="/assets/images/title.png" type="image/png" sizes="16x16">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/swiper-3.4.2.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/iconfont.css">-->
+    <link rel="stylesheet" href="/assets/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="/common/common.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" >
+    <style type="text/css">
+        .header .head_r .isLoginRegisterHead {
+            padding-right: 0;
+        }
+        .all-padding-wrapper {
+            padding: 0 150px;
+        }
+        body {
+            background: #000;
+        }
+        .swiper-container {
+            padding-left: 0;
+            padding-right: 0;
+            height: 608px;
+            margin-top: -64px;
+        }
+        .swiper-container , .swiper-wrapper, .swiper-slide{
+            background-image: url("/assets/images/banner.png");
+            background-repeat: no-repeat;
+            background-size:1440px 600px;
+            background-position: center;
+            position: relative;
+        }
+        .swiper-slide {
+            position: relative;;
+        }
+        .swiper-slide .swiper-slide-content {
+            font-family: Avenir-Heavy;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+        .shadow-little-box {
+            position: absolute;
+            left: 218px;
+            top: 0;
+            width: 96px;
+            height: 102px;
+            background-image: linear-gradient(-90deg, rgba(17,17,17,0.50) 0%, rgba(17,17,17,0.00) 96%);
+        }
+        .swiper_banner_one {
+            position: absolute;
+            top:40%;
+            left:50%;
+            transform: translate(-50%,-40%);
+            color: rgba(255,255,255,.87);
+        }
+        .index-main-container {
+            position:  relative;
+            z-index: 2000;
+        }
+        #canvas{
+            width:100%;
+            position:absolute;
+            top:-5px;
+            left:0;
+            background: black;
+        }
+        .canvas-wrap{
+            position:relative;
+        }
+        .mainPape a{
+            color: rgba(255,255,255,.87);
+            font-weight: 500;
+        }
+        .aboutUs-btn {
+            width: 160px;
+            height: 48px;
+            line-height: 48px;
+            border:1px solid rgba(255,255,255,.22);
+            border-radius: 24px;
+            /*margin: 0 auto;*/
+            margin-top: 24px;
+            cursor: pointer;
+        }
+        .aboutUs-btn a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: rgba(255,255,255,.54);
+        }
+        .aboutUs-btn:hover {
+            border-color: rgba(255,255,255,.38);
+        }
+        .aboutUs-btn a:hover {
+            color: rgba(255,255,255,.87);
+        }
+        .project-introduce-container {
+            background: #111111;
+            padding-bottom: 96px;
+        }
+        .content-words-article {
+            margin: 0 auto;
+            font-family: Avenir-Book;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            text-align: center;
+            line-height: 22px;
+        }
+        .project-bottom-list {
+            padding-top: 96px;
+        }
+        .first-title-bottomProject {
+            font-family: Avenir-Medium;
+            font-size: 18px;
+            color: rgba(255,255,255,0.87);
+            text-align: center;
+            line-height: 26px;
+            margin-bottom: 8px;
+        }
+        .second-title-bottomProject {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 22px;
+            margin:0 auto;
+        }
+        .project-bottom-list .second-title-bottomProject {
+            /*width: 180px;*/
+            text-align: center;
+        }
+
+        .project-bottom-list .project-bottom-imgItem {
+            width: 80px;
+            height: 80px;
+            /*background: black;*/
+            margin: 0 auto;
+        }
+        .project-bottom-list .project-bottom-imgItem img {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .title-bottom-baseline {
+            width: 64px;
+            height: 4px;
+            background: rgba(255,255,255,0.10);
+            margin: 32px auto;
+
+        }
+        .project-header-mainTitle {
+            font-family: PingFangSC-Medium;
+            font-size: 32px;
+            color: rgba(255,255,255,0.87);
+            text-align: center;
+            line-height: 40px;
+            padding-top: 96px;
+        }
+        .project-bottom-list ul {
+            margin: 0 auto;
+        }
+        .project-bottom-list ul li {
+            list-style: none;
+        }
+        .business-bottom-container {
+            padding-bottom: 96px;
+        }
+        .develop-route-container {
+            padding-bottom: 96px;
+            background: #111111;
+            padding-left: 150px;
+            padding-right: 150px;
+            position: relative;
+            z-index: 888;
+        }
+        .develop-route-container ul li {
+            list-style: none;
+        }
+        .develop-route-bottom-list li {
+            padding-left: 10%;
+        }
+        .develop-route-desc {
+            font-family: Avenir-Book;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 22px;
+            height: 66px;
+        }
+        .develop-route-date {
+            font-family: Avenir-Medium;
+            font-size: 18px;
+            color: rgba(255,255,255,0.87);
+        }
+        .m-route-bottom-list {
+            display: none;
+        }
+        .column-base-img {
+            width: 32px;
+            margin-right: 16px;
+        }
+        .column-base-img img{
+            width: 100%;
+        }
+        .circle-theme {
+            width: 24px;
+            height: 24px;
+            border-radius:12px;
+            border: 3px solid #1890FF;
+        }
+        .circle-baseline-theme {
+            width: 90%;
+            margin:0 4%;
+            /*height: 3px;*/
+            border: 3px solid rgba(255,255,255,0.10);
+        }
+        #footer {
+            position: relative;
+            z-index: 9999;
+        }
+        .m-route-bottom-right-ul li:nth-child(2) {
+            margin-top: 20px;
+        }
+        .m-route-bottom-right-ul li:nth-child(3) {
+            margin-top: 17px;
+        }
+        .m-route-bottom-right-ul li:nth-child(4) {
+            margin-top: 15px;
+        }
+        .m-route-bottom-right-ul li:nth-child(5) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(6) {
+            margin-top: 16px;
+        }
+        .m-route-bottom-right-ul li:nth-child(7) {
+            margin-top: 16px;
+        }
+        @media screen and (min-width: 1080px){
+            .content-words-article {
+                width: 695px;
+            }
+            .project-bottom-list .second-title-bottomProject {
+                width: 180px;
+            }
+        }
+        /*mobile show*/
+        @media screen and (max-width: 768px) {
+            .swiper-container {
+                margin-top: 0;
+            }
+            .swiper-container, .swiper-wrapper, .swiper-slide {
+                background: rgba(0,0,0,1);
+            }
+
+            .shadow-little-box {
+                width: 48px;
+                height: 56px;
+            }
+            .index-main-container {
+            }
+            .index-main-container>div {
+                width: 100%;
+                /*overflow: hidden;*/
+                padding: 0 16px;
+            }
+            .develop-route-container {
+                padding-bottom: 48px!important;
+            }
+            .swiper-slide {
+                height: 400px;
+                background: rgba(0,0,0,1);
+            }
+            .swiper-slide .swiper-slide-content {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+            }
+            .swiper-slide-content h1 {
+                font-size: 40px;
+                line-height: 48px;
+            }
+            .swiper-slide-content .first-title-p {
+                font-family: Avenir-Heavy;
+                font-size: 20px;
+                line-height: 32px;
+            }
+            .swiper-slide-content .second-title-p {
+                font-size: 16px;;
+                line-height: 26px;
+                margin-top: 8px;
+            }
+            .project-header-mainTitle {
+                font-size: 18px;
+                line-height: 26px;
+                padding-top: 48px;
+            }
+            .content-words-article {
+                width: 100%;
+            }
+            .project-bottom-list ul {
+                display: block;
+                margin:0;
+            }
+            .project-bottom-list ul li p:first-child {
+                float: left;
+            }
+            .project-bottom-list .second-title-bottomProject {
+                width: calc(100% - 100px);
+                text-align: left;
+            }
+            .first-title-bottomProject {
+                text-align: left;
+            }
+            .project-bottom-list .project-bottom-imgItem {
+                width: 64px;
+                height: 64px;
+                margin-right: 24px;
+            }
+            .project-bottom-list {
+                padding-top: 48px;
+            }
+            .project-introduce-container {
+                padding-bottom: 48px!important;
+            }
+            .title-bottom-baseline {
+                margin: 16px auto;
+            }
+            .business-bottom-container {
+                padding: 0;
+                padding-bottom: 48px;
+                display: block;
+            }
+            .business-left-container {
+                margin-right: 0!important;
+            }
+            .business-right-container {
+                margin-top: 48px;
+            }
+            .route-bottom-list {
+                display: none;
+            }
+            .develop-route-desc {
+                height: 0px;
+            }
+            .m-route-bottom-list {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div class="main-container canvas-wrap">
+        <div class="index-main-container can-main-container">
+            <!--轮播图-->
+            <div class="swiper-container swiper-container-vertical all-padding-wrapper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="swiper-slide-content font-weight400">
+                            <h1 class="font-size56 line-height64">CONTENT</h1>
+                            <p class="font-size40 line-height48 first-title-p">AND AD NETWORK</p>
+                            <p class="font-size28 line-height36 margin-top24 second-title-p" style="color: rgba(255,255,255,0.65);">區塊鏈3.0應用開發平台</p>
+                            <div class="aboutUs-btn text-center font-size18">
+                                <a href="pages/aboutUs.html">了解更多 <img src="/assets/css/icon/arrow.svg" alt=""></a>
+                            </div>
+                            <div class="shadow-little-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--项目概述-->
+            <div class="project-introduce-container all-padding-wrapper">
+                <div class="project-header-content text-center">
+                    <p class="project-header-mainTitle">項目概述</p>
+                    <p class="title-bottom-baseline"></p>
+                    <p class="content-words-article">
+                        CAN是Content and AD Network的簡稱，是MobiPromo系統不斷自我強化過程中的產品﹔在現有MobiPromo系統的基礎上，基於區塊鏈技術將系統去中心化，為廣告主和內容供應商提供信息傳遞和內容分發服務﹔CAN是系統通証、將會接受無線網絡營銷交付服務，也是未來團隊所有應用的基礎設施。
+                    </p>
+                </div>
+                <div class="project-bottom-list">
+                    <ul class="flex flex-pack-around">
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="/assets/css/icon/router_wifi.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">路由Wi-Fi</p>
+                            <p class="second-title-bottomProject">優質帶寬邀您暢享極速上網體驗</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="/assets/css/icon/dapp.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">DAPP</p>
+                            <p class="second-title-bottomProject">去中心化應用，區塊鏈3.0時代的一條公鏈</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="/assets/css/icon/share_cdn.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">共享CDN</p>
+                            <p class="second-title-bottomProject">冗余流量貢獻，創造個人價值</p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="project-bottom-imgItem flex flex-align-center flex-pack-justify">
+                                <img src="/assets/css/icon/marketing.svg" alt="">
+                            </p>
+                            <p class="first-title-bottomProject margin-top24">近場營銷</p>
+                            <p class="second-title-bottomProject">深度體驗到“近距離的美好”，實現精准營銷</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--主营业务-->
+            <div class="main-business-container all-padding-wrapper">
+                <div class="ptext-center">
+                    <p class="project-header-mainTitle">業務介紹</p>
+                    <p class="title-bottom-baseline"></p>
+                </div>
+                <div class="business-bottom-container flex flex-pack-justify">
+                    <div class="business-left-container flex-1" style="margin-right: 152px">
+                        <p class="first-title-bottomProject">廣告分發服務</p>
+                        <p class="second-title-bottomProject">
+                            MobiPromo由軟件（Mobipromo雲端系統）和硬件（MobiPromo路由器）組成，從而進行Wi-Fi網絡營銷，幫助商戶、廣告主進行市場營銷。覆蓋區域為：商業場所、休閑娛樂場所、連鎖餐飲、健康中心、休閑餐飲及酒吧、大學、購物中心、小超市、自動販賣機、診所、美容院、公交車站、鐵路沿線等。<br/>
+                            <br/>
+                            復雜的后端系統將智能地分析廣告內容性質，然后選擇投放地點和時機，以獲得最佳的效果。同時也能定位那些對特定廣告感興趣的人群，一方面可以提高效率，另一方面可以大幅降低成本。<br/>
+                            <br/>
+                            未來公共Wi-Fi業務將使用區塊鏈技術，廣告主每發起一筆廣告訂單都將以智能合約的方式記錄，且每一名用戶的真實行為數據不可篡改。此功能從根本上杜絕了虛假流量與點擊率欺詐行為，這就是區塊鏈技術與CAN在數字廣告領域的魅力所在和價值所在。
+                        </p>
+                    </div>
+                    <div class="business-right-container flex-1">
+                        <p class="first-title-bottomProject">CDN服務</p>
+                        <p class="second-title-bottomProject">
+                            游戲、視頻、直播、下載、智能硬件等領域不斷催生用戶旺盛的網絡使用需求，促使這些領域內企業的帶寬成本越來越高，他們迫切想降低這一成本且具備強大的購買力，他們渴望獲得廉價帶寬。在未來CAN網絡中，節點用戶可以將冗余的流量、存儲貢獻給資源需求企業，他們可以大幅降低帶寬和存儲的成本，使業務更加穩定、提高效率。<br/>
+                            <br/>
+                            需求企業將持有的CAN作為CDN服務的燃料費即使用權，通過區塊鏈網絡配置，發布網絡加速任務﹔用戶使用CAN星際寶盒，與CAN官方平台賬戶相關聯並保持穩定在線，即被認為該用戶參與CDN服務，可獲得CAN獎勵。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--发展路线-->
+            <div class="develop-route-container all-padding-wrapper">
+                <div class="project-header-content text-center">
+                    <p class="project-header-mainTitle">發展路線</p>
+                    <p class="title-bottom-baseline"></p>
+                </div>
+                <div class="route-bottom-list">
+                    <ul class="flex flex-pack-justify">
+                        <li class="flex-1">
+                            <p class="develop-route-desc flex flex-align-end">
+                                CAN1.0 發布<br/>
+                                tinychain.js 開放源碼
+                            </p>
+                            <p class="develop-route-date margin-top8">2018.03</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: -5em">
+                            <p class="develop-route-desc flex flex-align-end">
+                                CAN2.0 CDN服務模塊
+                            </p>
+                            <p class="develop-route-date margin-top8">2018.05</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: -3em">
+                            <p class="develop-route-desc flex flex-align-end">CAN2.0 區塊瀏覽器</p>
+                            <p class="develop-route-date margin-top8">2018.07</p>
+                        </li>
+                    </ul>
+                    <div class="img-base-line">
+                        <img src="/assets/images/roadmap_horizontal.png" alt="" style="width: 100%">
+                    </div>
+                    <ul class="flex flex-pack-justify develop-route-bottom-list">
+                        <li class="flex-1">
+                            <p class="develop-route-date">2018.04</p>
+                            <p class="develop-route-desc margin-top8">
+                                CAN2.0 原型
+                            </p>
+                        </li>
+                        <li class="flex-1">
+                            <p class="develop-route-date">2018.06</p>
+                            <p class="develop-route-desc margin-top8">
+                                CAN2.0 廣告服務模塊<br/>
+                                CAN2.0 開放源碼<br/>
+                                CAN2.0 測試網絡開放</p>
+                        </li>
+                        <li class="flex-1" style="text-indent: 5em">
+                            <p class="develop-route-date">2018.09</p>
+                            <p class="develop-route-desc  margin-top8">CAN2.0 主網上線</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-route-bottom-list">
+                    <div class="flex">
+                        <div class="column-base-img">
+                            <img src="/assets/images/roadmap_vertical.png" alt="">
+                        </div>
+                        <ul class="m-route-bottom-right-ul">
+                            <li class="">
+                                <p class="develop-route-date">2018.03</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN1.0 發布<br/>
+                                    tinychain.js 開放源碼
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.04</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 原型
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.05</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 CDN服務模塊
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.06</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 廣告服務模塊<br/>
+                                    CAN2.0 開放源碼<br/>
+                                    CAN2.0 測試網絡開放
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.07</p>
+                                <p class="m-develop-route-desc margin-top8">
+                                    CAN2.0 區塊瀏覽器
+                                </p>
+                            </li>
+                            <li class="">
+                                <p class="develop-route-date">2018.09</p>
+                                <p class="m-develop-route-desc margin-top8">CAN2.0 主網上線</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!--<div id="canvas" class="gradient" style="display: none"></div>-->
+    </div>
+    <div id="footer"></div>
+    <script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script src='/assets/js/bootstrap.min.js'></script>
+    <script src="/plugins/threeJsPlugin/js/three.min.js"></script>
+    <script src="/plugins/threeJsPlugin/js/projector.js"></script>
+    <script src="/plugins/threeJsPlugin/js/canvas-renderer.js"></script>
+    <!--<script src="plugins/threeJsPlugin/js/3d-lines-animation.js"></script>-->
+    <script src="/plugins/threeJsPlugin/js/color.js"></script>
+
+    <!--<script type='text/javascript' src='assets/js/wow.min.js'></script>-->
+    <script type="text/javascript" src="/assets/js/swiper-3.4.2.min.js"></script>
+    <!--<script type='text/javascript' src='assets/js/jquery.particleground.min.js'></script>-->
+    <!--<script type="text/javascript" src="assets/js/kinetic.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/jquery.final-countdown.min.js"></script>-->
+    <script language="javascript" src='/assets/js/index.js'></script>
+    <script src="./load.js"></script>
+    <!--版本控制-->
+    <script type="text/javascript" src="/common/version1.0.js"></script>
+
+    <script>
+        // $(window).load(function(){
+        //     $('.main-container').css({
+        //         'height': $(window).height()
+        //     });
+        // })
+    </script>
+</body>
+
+</html>

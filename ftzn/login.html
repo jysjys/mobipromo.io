@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+<title>登录</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="../common/common.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
+</head>
+<body>
+	<header>
+		<img src="/assets/css/icon/logo_white.svg">
+	</header>
+	<form class="login_form" >
+		<h1 style="font-weight: 400;">
+			登錄
+			<!--LOGIN-->
+		</h1>
+		<div class="inp">
+			<!--Mobile/Email-->
+			<input type="text" name="phone" class="phone" placeholder="手機號/郵箱">
+		</div>
+		<div class="inp">
+			<!--Please enter password-->
+			<input type="password" name="pwd" class="pwd" placeholder="請輸入密碼">
+		</div>
+		<div class="inp flex flex-pack-justify" style="">
+			<!--Please enter code shown in image-->
+			<input type="text" name="epid" class="epid" placeholder="請輸入驗証碼" style="width: 198px;">
+			<span id="v_container"></span>
+		</div>
+		<span class="login_warn warn" style="float: left;color: #F5222D">
+			<!--username or password error-->
+			用戶名或密碼錯誤
+		</span>
+		<span class="epid_warn warn" style="float: left;color: #F5222D">
+			<!--code error-->
+			驗證碼錯誤
+		</span>
+
+		<div>
+			<button type="button" id="submit" class="btn">
+				<!--Confirm-->
+				立即登錄
+			</button>
+		</div>
+		<div>
+			<span><a href="./register.html">
+				<!--Create new account-->
+				立即注冊
+			</a></span>
+			<span><a href="./forgetPwd.html">
+				<!--Forget password ?-->
+				忘記密碼？
+			</a></span>
+		</div>
+
+	</form>
+<div id="footer"></div>
+<script type="text/javascript" src='../assets/js/jquery.min.js'></script>
+<script type="text/javascript" src='../assets/js/util.js'></script>
+<script type="text/javascript" src="/common/load.js"></script>
+<script type="text/javascript" src='../assets/js/gVerify.js'></script>
+<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+<script type="text/javascript" src="/common/version1.0.js"></script>
+
+<script type="">
+	var verifyCode = new GVerify("v_container");
+	// 只传一个id的时候，默认类型为数字和字母混合：“blend”
+	// 也可传多个参数typ：number：纯数字类型，letter：纯字母类型
+	// verifyCode.refresh();刷新图形验证码
+	// verifyCode.validate(code);验证图形验证码，参数code为用户输入的验证码，返回值：正确：true,错误：false
+	function loginMethod() {
+        $('.warn').css('display', 'none');
+        var datalogin = {
+            username: $("input[name='phone']").val().trim(),
+            password: $("input[name='pwd']").val().trim(),
+            grant_type: "password"
+        }
+        console.log(datalogin)
+        // $(this).loading();
+        var that = this;
+        $.ajax({
+            headers: {
+                Accept: "application/json; charset=utf-8",
+                Authorization:"Basic cHJvbW9zZXJ2ZXI6ZTYxOTcyMDViYTZmOWM2"
+            },
+            type: 'POST',
+            url: '/promo/token',
+            data: datalogin,
+            contentType: "application/x-www-form-urlencoded",
+            success: function (data) {
+                var isEpid = verifyCode.validate($("input[name='epid']").val().trim());
+                if(!isEpid) {
+                    $('.epid_warn').css('display', 'inline-block')
+                    return false;
+                }
+                $(that).loading()
+                Util.setCookie('Authorization', data.access_token, 1);
+
+				window.location.href='./dist/index.html'
+
+            },
+            error: function (data) {
+                $(that).loading('close')
+                $(".login_warn").css({
+                    'display': 'inline-block'
+                })
+            }
+        });
+	}
+
+	$("#submit").click(function () {
+        loginMethod()
+	});
+    $(document).keydown(function(event){
+        console.log(event.keyCode)
+		if(event.keyCode === 13) {
+            loginMethod()
+		}
+    });
+
+
+</script>
+<style type="text/css">
+	.warn {
+		display: none;
+	}
+</style>
+</body>
+</html>

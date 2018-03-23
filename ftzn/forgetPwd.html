@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="icon" href="../assets/images/title.png" type="image/png" sizes="16x16">
+<title>找回密码</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="/common/common.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
+<style type="text/css">
+	form {
+		margin-bottom: 150px !important;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<img src="../assets/css/icon/logo_white.svg">
+	</header>
+	<form class="forgetPwd_form">
+		<h1>找回密碼</h1>
+		<div>
+			<span>輸入與您的 CAN 帳戶相關聯的手機號</span>
+		</div>
+		<div class="inp">
+			<input type="text" name="phone" class="phone" placeholder="手機號">
+			<span class="phone_warn warn">手機格式不正確</span>
+			<span class="phoneTwo_warn warn">用戶沒有注冊</span>
+			<span class="phoneThree_warn warn">發送頻率過快,請稍後重試</span>
+			<span class="phoneFour_warn warn">短信發送失敗,請稍後重試</span>
+		</div>
+		<div>
+			<button type="button" id="submit" class="btn">確認</button>
+		</div>
+	</form>
+	<form class="forgetPwd_form_epid" style="display: none;">
+		<h1>驗證信息</h1>
+		<div>
+			<span>驗證碼已發送至您的手機號碼</span>
+			<span>15110277440</span>
+			<span><i>59</i>秒後可以重新發送</span>
+		</div>
+		<div class="inp">
+			<input type="text" name="epid" id="epid" class="epid" placeholder="請輸入驗證碼">
+			<span class="epid_warn warn">驗證碼輸入不正確</span>
+		</div>
+		<div>
+			<button type="button" id="vertication"  class="btn" disabled="disabled">驗證</button>
+		</div>
+	</form>
+	<form class="forgetPwd_form_set" style="display: none;">
+		<h1>設置新密碼</h1>
+		<div class="inp">
+			<input type="password" name="new_pwd" class="new_pwd" placeholder="輸入新密碼">
+		</div>
+		<div class="inp">
+			<input type="password" name="confirm" class="confirm" placeholder="再次输入新密码">
+			<span class="confirm_warn warn">兩次輸入不一致</span>
+			<span class="confirmTwo_warn warn">請輸入有效用賬戶信息</span>
+			<span class="confirmThree_warn warn">密碼長度必須是6到20位的字符，並且不能包含空格</span>
+			<span class="confirmFour_warn warn">請求出錯,稍候重試</span>
+		</div>
+		<div>
+			<button type="button" id="new_pwd" class="btn">驗證</button>
+		</div>
+	</form>
+	<div id="footer"></div>
+	<script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
+	<script type="text/javascript" src='../assets/js/util.js'></script>
+	<script type="text/javascript" src="./load.js"></script>
+	<script type="text/javascript" src="/common/version1.0.js"></script>
+
+	<script type="text/javascript">
+		var data = {}
+		// 确认手机号
+		$('#submit').on('click', function () {
+			warn();
+		});
+		// 验证短信epid
+		$("#vertication").on('click', function() {
+			$('.warn').css('display', 'none')
+			var epid = $("input[name = 'epid']").val().trim();
+			data.epid = epid;
+			console.log(data);
+			$(this).loading();
+			$.ajax({
+			   type: 'POST',
+			   url: '/promo/resetpassword/verifycode',
+			   data: {
+			   	'code': epid
+			   },
+				success: (res) => {
+					if (res.code) {
+						$('.epid_warn').css('display', 'inline-block')
+						return;
+					}
+					$(this).loading('close');
+					$(".forgetPwd_form_epid").remove();
+					$(".forgetPwd_form_set").css('display', 'block');
+				},
+				error: (err, data) => {
+					$(this).loading('close')
+					$('.epid_warn').css('display', 'inline-block')
+				}
+			})
+		});
+		// 设置新密码
+		$("#new_pwd").on('click', function () {
+			$('.warn').css('display', 'none')
+			var new_pwd = $("input[name = 'new_pwd']").val().trim(),
+			confirm = $("input[name = 'confirm']").val().trim()
+			if(new_pwd != confirm) {
+				$('.confirm_warn').css('display', 'inline-block');
+				return;
+			}
+			$(this).loading()
+			$.ajax({
+			   type: 'POST',
+			   url: '/promo/resetpassword',
+			   data: {
+			   	'code': data.epid,
+			   	'password': new_pwd,
+			   	'repassword': confirm
+			   },
+				success: function (res) {
+					$('#new_pwd').loading('close')
+					if(!res.code) {
+						window.location.href = './login.html'
+					} else if(res.code == '11000') {
+						$('.confirmTwo_warn').css('display', 'inline-block')
+					} else if(res.code == '11001') {
+						$('.confirmThree_warn').css('display', 'inline-block')
+					} else if(res.code == '11003') {
+						$('.confirmFour_warn').css('display', 'inline-block')
+					}
+				},
+				error: function (err, res) {
+					$('#new_pwd').loading('close')
+				}
+			})
+
+		});
+		// 表单验证
+		function warn () {
+			$(".warn").css({'display':'none'})
+			var phone = $("input[name='phone']").val().trim(),
+			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			if(!phone_number_reg.test(phone)) {
+				console.log('phone not empty')
+				$(".phone_warn").css({'display':'inline-block'});
+				return;
+			}
+			data = {
+				phone: phone
+			};
+			$("#submit").loading();
+			$.ajax({
+			   type: 'POST',
+			   url: '/promo/resetpassword/sendcode',
+			   data: {
+			   	'account': data.phone
+			   },
+				success: function (res) {
+					console.log(res);
+					$('#submit').loading('close')
+					if(!res.code) {
+						$('.forgetPwd_form').remove();
+						console.log('23fsda2e')
+						$('.forgetPwd_form_epid').css('display', 'block');
+						$('.forgetPwd_form_epid div:eq(0) span:eq(1)').html(phone);
+						countDown()
+					} else if(res.code == '11001') {
+						$('.phoneTwo_warn').css('display', 'inline-block')
+						return;
+					} else if(res.code == '11002') {
+						$('.phoneThree_warn').css('display', 'inline-block')
+						return;
+					} else if(res.code == '11004') {
+                        $('.phoneFour_warn').css('display', 'inline-block')
+                        return;
+                    }
+				},
+				error: function (err, data) {
+					console.log(err, data);
+					$("#submit").loading('close');
+					return;
+				}
+			})
+		}
+		// 倒计时
+		function countDown () {
+			var time = 59;
+			var t =	setInterval( function() {
+				if(time>1) {
+					time -- ;
+					$('.forgetPwd_form_epid div:eq(0) span:eq(2)').loading().html(
+						'<i>' + time + '</i>秒後可以重新發送'
+						).css({
+						'color': 'rgba(0,0,0,0.38)'
+					});
+					// $('#vertication').attr('disabled', 'disabled');
+                    $('#vertication').removeAttr('disabled');
+                }else {
+					clearInterval(t);
+					time = 59;
+					$('.forgetPwd_form_epid div:eq(0) span:eq(2)').on('click', function() {
+							sms();
+							countDown();
+							$(this).off('click');
+					}).loading('close').html('重新發送').css({
+						'color': '#1890FF',
+						'cursor': 'pointer'
+					});
+					// $('#vertication').removeAttr('disabled');
+				}
+			}, 1000);
+		}
+		// 短信验证码
+		function sms () {
+			$.ajax({
+			   type: 'POST',
+			   url: '/promo/resetpassword/sendcode',
+			   data: {
+			   	'account': data.phone
+			   },
+				success: function (res) {
+					
+				},
+				error: function (err, data) {
+					
+				}
+			})
+		}
+	</script>
+</body>
+</html>
