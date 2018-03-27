@@ -7,8 +7,8 @@
 <body>
 <div id="header">
 	<div class="header-container">
-		<div style="display: flex;justify-content: left" class="web-head-container">
-			<div class="header clearfloat">
+		<div  class="web-head-container flex flex-pack-justify">
+			<div class="header clearfloat  ">
 				<ul class="logo">
 					<a href="/index.html">
 						<img src="../assets/css/icon/logo_white.svg" height="32px;">
@@ -40,14 +40,21 @@
 				<ul class="head_r">
 					<li class="isLoginHead"><a id="login" href="/pages/login.html">登录</a></li>
 					<li class="isLoginRegisterHead"><a href="/pages/register.html">注册</a></li>
-					<!--<li>-->
-						<!--<a href="javascript:void(0);" class="noDisableA">-->
-							<!--<i class="iconfont icon-ren"></i>简体中文-->
-						<!--</a>-->
-					<!--</li>-->
+					<li class="changeLanguage-wrapper">
+						<img src="../assets/css/icon/language.svg" alt="" style="width: 24px;height: 24px" class="language-trangle-img">
+						<ul class="languages-kinds">
+							<li><a href="/index.html">简体中文</a></li>
+							<li><a href="/ftzn/index.html">繁體中文</a></li>
+							<!--<li><a href="/cn/index.html">English</a></li>-->
+							<p class="Triangle-language">
+								<img src="../assets/images/Triangle.png" alt="">
+							</p>
+						</ul>
+					</li>
 				</ul>
 		</div>
 		</div>
+
 		<div class="m-header-container" style="display: none">
 			<div class="header flex flex-pack-justify flex-align-center">
 				<ul class="logo">
@@ -70,11 +77,8 @@
 					<li class="aboutUs-page"><a href="../pages/aboutUs.html">关于</a></li>
 					<li class="isLoginHead"><a id="login" href="/pages/login.html">登录</a></li>
 					<li class="isLoginRegisterHead"><a href="/pages/register.html">注册</a></li>
-					<!--<li>-->
-						<!--<a href="javascript:void(0);" class="noDisableA">-->
-							<!--<i class="iconfont icon-ren"></i>简体中文-->
-						<!--</a>-->
-					<!--</li>-->
+					<li><a href="/index.html">简体中文</a></li>
+					<li><a href="/ftzn/index.html">繁体中文</a></li>
 				</ul>
 			</div>
 		</div>
@@ -92,7 +96,6 @@
                 </div>
             </div>
         </div>
-
  	</div>
 </div>
 </body>

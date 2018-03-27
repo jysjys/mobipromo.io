@@ -71,6 +71,8 @@
 	<script type="text/javascript" src='../assets/js/jquery-3.2.1.min.js'></script>
 	<script type="text/javascript" src='../assets/js/util.js'></script>
 	<script type="text/javascript" src="/common/load.js"></script>
+	<script type="text/javascript" src="/common/version1.0.js"></script>
+
 	<script type="text/javascript">
 		var data = {}
 		// 确认手机号
@@ -82,7 +84,6 @@
 			$('.warn').css('display', 'none')
 			var epid = $("input[name = 'epid']").val().trim();
 			data.epid = epid;
-			console.log(data);
 			$(this).loading();
 			$.ajax({
 			   type: 'POST',
@@ -91,13 +92,15 @@
 			   	'code': epid
 			   },
 				success: (res) => {
-					if (res.code) {
+					if (!res.isSuccess) {
 						$('.epid_warn').css('display', 'inline-block')
 						return;
+					} else {
+                        $(this).loading('close');
+                        $(".forgetPwd_form_epid").remove();
+                        $(".forgetPwd_form_set").css('display', 'block');
 					}
-					$(this).loading('close');
-					$(".forgetPwd_form_epid").remove();
-					$(".forgetPwd_form_set").css('display', 'block');
+
 				},
 				error: (err, data) => {
 					$(this).loading('close')
@@ -125,15 +128,18 @@
 			   },
 				success: function (res) {
 					$('#new_pwd').loading('close')
-					if(!res.code) {
+					if(res.isSuccess) {
 						window.location.href = './login.html'
-					} else if(res.code == '11000') {
-						$('.confirmTwo_warn').css('display', 'inline-block')
-					} else if(res.code == '11001') {
-						$('.confirmThree_warn').css('display', 'inline-block')
-					} else if(res.code == '11003') {
-						$('.confirmFour_warn').css('display', 'inline-block')
+					} else {
+                        if(res.code == '11000') {
+                            $('.confirmTwo_warn').css('display', 'inline-block')
+                        } else if(res.code == '11001') {
+                            $('.confirmThree_warn').css('display', 'inline-block')
+                        } else if(res.code == '11003') {
+                            $('.confirmFour_warn').css('display', 'inline-block')
+                        }
 					}
+
 				},
 				error: function (err, res) {
 					$('#new_pwd').loading('close')
@@ -162,24 +168,24 @@
 			   	'account': data.phone
 			   },
 				success: function (res) {
-					console.log(res);
 					$('#submit').loading('close')
-					if(!res.code) {
-						$('.forgetPwd_form').remove();
-						console.log('23fsda2e')
-						$('.forgetPwd_form_epid').css('display', 'block');
-						$('.forgetPwd_form_epid div:eq(0) span:eq(1)').html(phone);
-						countDown()
-					} else if(res.code == '11001') {
-						$('.phoneTwo_warn').css('display', 'inline-block')
-						return;
-					} else if(res.code == '11002') {
-						$('.phoneThree_warn').css('display', 'inline-block')
-						return;
-					} else if(res.code == '11004') {
-                        $('.phoneFour_warn').css('display', 'inline-block')
-                        return;
-                    }
+                    if(res.isSuccess) {
+                        $('.forgetPwd_form').remove();
+                        $('.forgetPwd_form_epid').css('display', 'block');
+                        $('.forgetPwd_form_epid div:eq(0) span:eq(1)').html(phone);
+                        countDown()
+                    } else {
+                        if(res.code == '11001') {
+                            $('.phoneTwo_warn').css('display', 'inline-block')
+                            return;
+                        } else if(res.code == '11002') {
+                            $('.phoneThree_warn').css('display', 'inline-block')
+                            return;
+                        } else if(res.code == '11004') {
+                            $('.phoneFour_warn').css('display', 'inline-block')
+                            return;
+                        }
+					}
 				},
 				error: function (err, data) {
 					console.log(err, data);

@@ -1,4 +1,4 @@
-@media (max-width:767px) {
+@media (max-width:768px) {
   .banner {
     padding-top: 0 !important;
   }
@@ -6,6 +6,7 @@
   .banner_left {
     padding-top: 25px !important;
     padding-bottom: 80px;
+    text-align:center ;
   }
 
   .banner_left h4 {

@@ -10,61 +10,72 @@
 <link rel="stylesheet" href="/common/common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/login_register.css">
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
 </head>
 <body>
-	<header>
-		<img src="../assets/css/icon/logo_white.svg">
-	</header>
-	<form class="register_form">
-		<h1>注册</h1>
-		<div class="inp">
-			<input type="text" name="phone" class="phone" placeholder="手机号">
-			<span class="phone_warn warn">格式不正确</span>
-			<span class="phoneTwo_warn warn">用户已经注册</span>
-			<span class="phoneThree_warn warn">发送频率过快,请稍后重试</span>
-		</div>
-		<div class="inp">
-			<input type="password" name="pwd" class="pwd" placeholder="请输入密码">
-			<span class="pwd_warn warn">密码不能为空</span>
-			<span class="pwd_warn_length warn">密码长度必须是6到20位的字符，并且不能包含空格</span>
-		</div>
-		<div style="overflow: hidden;">
-			<span>点击确认注册，即表示您已阅读并同意<a href="../CAN用户服务协议.pdf" target="_blank"> CAN用户协议</a></span>
-		</div>
-		<div>
-			<button type="button" id="submit" class="btn">继续</button>
-		</div>
-		<div>
-			<span>已有账户？</span>
-			<span><a href="./login.html">立即登陆</a></span>
-		</div>
-	</form>
-	<form class="register_form_epid" style="display: none;">
-		<h1>验证手机号</h1>
-		<div>
-			<span>验证码已发送至您的手机号码</span>
-			<span>15110277440</span>
-			<span><i></i>秒后可以重新发送</span>
-		</div>
-		<div class="inp">
-			<input type="text" name="epid" class="epid" placeholder="请输入验证码">
-			<span class="epid_warn warn">验证码错误</span>
-		</div>
-		<div>
-			<button type="button" id="verification" class="btn">验证</button>
-		</div>
-	</form>
-	<div id="footer"></div>
+	<div id="register-wrapper">
+		<header>
+			<img src="../assets/css/icon/logo_white.svg">
+		</header>
+		<form class="register_form">
+			<h1>注册</h1>
+			<div class="inp">
+				<input type="text" name="phone" class="phone" placeholder="手机号">
+				<span class="phone_warn warn">格式不正确</span>
+				<span class="phoneTwo_warn warn">用户已经注册</span>
+				<span class="phoneThree_warn warn">发送频率过快,请稍后重试</span>
+			</div>
+			<div class="inp">
+				<input type="password" name="pwd" class="pwd" placeholder="请输入密码">
+				<span class="pwd_warn warn">密码不能为空</span>
+				<span class="pwd_warn_length warn">密码长度必须是6到20位的字符，并且不能包含空格</span>
+			</div>
+			<div style="overflow: hidden;">
+				<span>点击继续，即表示您已阅读并同意<a href="../CAN用户服务协议.pdf" target="_blank"> CAN用户协议</a></span>
+			</div>
+			<div>
+				<button type="button" id="submit" class="btn">继续</button>
+			</div>
+			<div>
+				<span>已有账户？</span>
+				<span><a href="./login.html">立即登录</a></span>
+			</div>
+		</form>
+		<form class="register_form_epid" style="display: none;">
+			<h1>验证手机号</h1>
+			<div>
+				<span>验证码已发送至您的手机号码</span>
+				<span>15110277440</span>
+				<span><i></i>秒后可以重新发送</span>
+			</div>
+			<div class="inp">
+				<input type="text" name="epid" class="epid" placeholder="请输入验证码">
+				<span class="epid_warn warn">验证码错误</span>
+			</div>
+			<div>
+				<button type="button" id="verification" class="btn">验证</button>
+			</div>
+		</form>
+		<div id="footer"></div>
+	</div>
+
 	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../assets/js/util.js"></script>
 	<script type="text/javascript" src="/common/load.js"></script>
+	<script type="text/javascript" src="../assets/js/vue.min.js"></script>
+	<script src="../assets/js/elementUiIndex.js"></script>
+	<script type="text/javascript" src="/common/version1.0.js"></script>
+
 	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#register-wrapper',
+		});
 		var data = {};
 		// 点击确认
 		$("#submit").click(function () {
 			warn()
 		});
-
 
 		// 点击验证
 		$("#verification").on('click', function() {
@@ -87,7 +98,13 @@
 						$('.epid_warn').css('display', 'inline-block')
 						return;
 					}
-					window.location.href="./login.html"
+                    vm.$message({
+                        message: '注册成功',
+                        type: 'success'
+                    });
+                    setTimeout(function () {
+                        window.location.href="./login.html"
+                    }, 3000)
 				},
 				error: function (res) {
 					$('#verification').loading('close')
@@ -104,7 +121,7 @@
 			$(".warn").css({'display':'none'})
 			var phone = $("input[name='phone']").val().trim(),
 			password = $("input[name='pwd']").val().trim(),
-			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 			if(!phone_number_reg.test(phone)) {
 				console.log('phone not empty')
 				$(".phone_warn").css({'display':'inline-block'});
