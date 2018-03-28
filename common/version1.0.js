@@ -1,7 +1,7 @@
 
 versionController();
 function versionController() {
-    var version = '1.0.0';
+    var version = '1.1.0';
     var links = document.getElementsByTagName('link');
     var scripts = document.getElementsByTagName('script');
     // es6可以换种语法针对domlist集合做处理
