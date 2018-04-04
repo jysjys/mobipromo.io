@@ -15,8 +15,11 @@
 			margin: 0;
 			padding: 0;
 		}
-		.container {
-			padding: 60px;
+		/*.container {*/
+			/*padding: 60px;*/
+		/*}*/
+		.logisictsinfo-container {
+			margin-top: 80px;
 		}
 		.main-container {
 			width: 80%;
@@ -73,12 +76,17 @@
 			overflow-y: auto;
 		}
 		.submitLogistsInfo-btn {
-			margin: 50px auto;
+			margin: 30px auto;
 			width: 400px;
 			padding: 8px;
 		}
 		#logisticCompany {
 			width: 300px;
+		}
+		.result-info {
+			font-size: 18px;
+			padding-top: 20px;
+			color: #00aaee;
 		}
 		@media screen and (max-width: 768px) {
 			.container {
@@ -102,7 +110,7 @@
 	</style>
 </head>
 <body>
-	<div class="container text-center">
+	<div class="container text-center logisictsinfo-container">
 		<div class="main-header-container">
 			<div class="">
 				<label for="logisticCompany">物流公司：</label>
@@ -123,8 +131,8 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn btn-primary submitLogistsInfo-btn text-center">提交</button>
 		<p class="result-info"></p>
+		<button class="btn btn-primary submitLogistsInfo-btn text-center">提交</button>
 	</div>
 
 	<script src="../assets/js/jquery.min.js"></script>
