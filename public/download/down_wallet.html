@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>MobiPromo</title>
+		<meta charset="utf-8">
+		<link rel="icon" href="../../assets/logos/can132.png" type="image/png" sizes="16x16">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="MobiPromo, Blockchain, Decentralized, Ad">
+		<!-- <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" /> -->
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
+			.wapper {
+				width: 100%;
+				height: 100%;
+				background: url(../../assets/images/down_wallet.png);
+				background-size: cover;
+				background-size: 100% 100%;
+			}
+			.child {
+				padding-top: 75%;
+				padding-left: 30%;
+				color: #ffffff;
+			}
+			.child p {
+				line-height: 26px;
+				font-size: 18px;
+			}
+	</style>
+	</head>
+	<body>
+		<div class="wapper">
+			<div class="child">
+				<p>1.请点击右上角按钮！</p>
+				<p>2.选择浏览器打开！</p>
+			</div>
+		</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		var ua = navigator.userAgent.toLowerCase();
+	　　 var isWeixin = ua.indexOf('micromessenger') != -1;
+	　　 if (isWeixin) {
+	　　 }else{
+			$('div').css("display","none");
+			window.location.href='http://mobipromo.io/public/download/apk/canwallet_5utoken.apk'
+	　　 }
+	</script>
+	</body>
+	</html>
