@@ -100,7 +100,7 @@ function init() {
         address = $('#location').val(),
         count = $('.item_l a').val(),
         address_d = $('textarea').val(),
-        phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
         if(!name) {
             $(".userName_warn").css('display', 'block');
             return;

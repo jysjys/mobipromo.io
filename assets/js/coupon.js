@@ -203,7 +203,7 @@ function warn_chouse () {
 		addressDetail = $("input[name='address-detail']").val().trim(),
 		coupon = $("input[name='coupon']").val().trim();
 		// buyAmount = $("[name='buyAmount']").val().trim() * 1;
-	var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+	var phone_number_reg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
 		email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 	$('.warn').remove();
 	var errorContent = $('<input>', {'class': 'warn'}),
