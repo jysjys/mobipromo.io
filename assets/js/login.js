@@ -49,7 +49,7 @@ $("#submit").click(function () {
 				
 			// 	window.location.href="./presale.html"
 			// }
-			window.location.href='../activity/1.html'
+			window.location.href='../../activity_oldName/1.html'
 		},
 		error: function (data) {
 			$(".login_warn").css({

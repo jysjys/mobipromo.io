@@ -147,7 +147,7 @@ function getList() {
 			if(result.isOrdered) {
 				$(".btn_ver").css({
 					'display': 'block'
-				}).attr('href', '../activity/1.html')
+				}).attr('href', '../activity_oldName/1.html')
 			}
 			console.log(result)
 			var data = result.data;

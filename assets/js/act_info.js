@@ -23,7 +23,7 @@ function init() {
     var activityId = time_ago[3];
     // $.ajax({
     //     type: 'POST',
-    //     url: '/promo/manage/activity/checkCode',
+    //     url: '/promo/manage/activity_oldName/checkCode',
     //     data: {query: time_ago.join(',')},
     //     async: false,
     //     success: function(data) {
@@ -129,7 +129,7 @@ function init() {
         $(this).data('isLoading', true);
         $.ajax({
             type: 'POST',
-            url: '/promo/manage/activity/addMember',
+            url: '/promo/manage/activity_oldName/addMember',
             data: data,
             success: function(data) {
                 $(".button").data('isLoading', false);

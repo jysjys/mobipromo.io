@@ -69,7 +69,7 @@ var commodList = new Vue({
 					curPage: self.curPage
 				}),
 				contentType: "application/json; charset=utf-8",
-				url: '/promo/authed/activity/selllist',
+				url: '/promo/authed/activity_oldName/selllist',
 				success: function(data) {
 					self.loading = false;
 					if(data.isOrdered.count != null && parseInt(data.isOrdered.count) - parseInt(data.isOrdered.used) <= 0) {
@@ -124,7 +124,7 @@ var commodList = new Vue({
 						Accept: "application/json; charset=utf-8",
 						Authorization: 'Bearer' + ' ' + x
 					},
-					url: '/promo/alipay/activity/order/payagain',
+					url: '/promo/alipay/activity_oldName/order/payagain',
 					data: JSON.stringify({tradeNumber: item.tradeNumber}),
 					type: 'POST',
 					contentType: "application/json; charset=utf-8",
@@ -291,7 +291,7 @@ function btnPress(){
 				Accept: "application/json; charset=utf-8",
 				Authorization: 'Bearer' + ' ' + x
 			},
-			url: '/promo/authed/activity/sell/msg',
+			url: '/promo/authed/activity_oldName/sell/msg',
 			data: JSON.stringify(jsonData),
 			type: 'POST',
 			contentType: "application/json; charset=utf-8",
